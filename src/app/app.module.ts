@@ -2,26 +2,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
-import {UsersService} from './users.service';
-import {UsersArrayService} from './users-array.service';
-import {FormsModule} from '@angular/forms';
-
-
-
+import { HomePageComponent } from './home-page/home-page.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SignUpComponent
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    BrowserAnimationsModule,
   ],
-  providers: [
-    {provide: UsersService, useClass: UsersArrayService}
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
