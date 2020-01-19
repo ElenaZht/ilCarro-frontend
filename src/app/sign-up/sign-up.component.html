@@ -1,45 +1,22 @@
 <div class="card" id="reg_card">
-  <form class="card-body" #sign_upForm="ngForm" (ngSubmit)="onSubmit(sign_upForm)">
-    <header class="card-title">
-      <h1 id="reg_lable">Registration</h1>
-      <h5 id="type_data">Type your data and hit Yalla!</h5>
-    </header>
-    <input  class="form-control reg-data"  placeholder="Name"  type="string" id="inp1"
-                    #name="ngModel" name="name" required  [(ngModel)]="sign_upForm.name">
-    <div class="error" *ngIf="!name.valid && name.touched">
-      Name is required.
-    </div>
-            <input  class="form-control reg-data" placeholder="Last name"  type="string" id="inp2" #last_name="ngModel" name="last"  required [(ngModel)]="sign_upForm.last_name">
-    <div class="error" *ngIf="!last_name.valid && last_name.touched">
-      Last name is required.
-    </div>
-            <input  class="form-control reg-data" placeholder="Email"  type="email" id="inp3" #email="ngModel" name="email"
-                    [(ngModel)]="sign_upForm.email" required pattern="[^@\s]+@[^@\s]+\.[^@\s]+">
-    <div class="error" *ngIf="!email.valid && email.touched">
-      Email is required (Exp.:Smith@example.com, Smith@gmail.com, etc.).
-    </div>
-            <input  class="form-control reg-data" placeholder="Password"  type="password" #password="ngModel" id="inp4" name="password" [(ngModel)]="sign_upForm.password" required minlength="8">
-    <div class="error" *ngIf="!password.valid && password.touched">
-      Password is required (minimum 8 symbols).
-    </div>
-
-  <div id="iagree">
-            <input type="checkbox" id="check" name="check"  #check="ngModel"
-                   [(ngModel)]="sign_upForm.check">
+  <header class="card-title">
+            <h1 id="reg_lable">Registration</h1>
+            <h5 id="type_data">Type your data and hit Yalla!</h5>
+  </header>
+  <form class="card-body">
+            <input  class="form-control reg-data" placeholder="Name" required type="string" id="inp1">
+            <input  class="form-control reg-data" placeholder="Last name" required type="string" id="inp2">
+            <input  class="form-control reg-data" placeholder="Email" required type="email" id="inp3">
+            <input  class="form-control reg-data" placeholder="Password" required type="any" id="inp4">
+  </form>
+  <div class="form-group" id="iagree">
+            <input type="checkbox" id="agree_check">
     <label id="agree_lable">I agree to the <a>terms of use</a> and <a>privacy policy</a>.</label>
-    <p class="error" *ngIf="checkboxError" id="err_check">
-      Choose to continue.
-    </p>
   </div>
   <div id="button_y_div">
-          <button id="button_yalla" type="submit" [disabled]="!sign_upForm.form.valid">
+          <button id="button_yalla">
             <span id="y">Y'alla!</span>
           </button>
   </div>
-  </form>
-  <div *ngIf="errorText !== ''" class="danger">{{errorText}}</div>
-
-    <div class="trapezoid" id="trap"></div>
-
+  <div class="trapezoid" id="trap"></div>
 </div>
-

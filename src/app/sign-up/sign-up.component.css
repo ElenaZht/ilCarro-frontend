@@ -1,79 +1,79 @@
 #reg_card{
   flex-grow: 1;
-  height: 426px;
-  width: 100%;
+  top: 80px;
+  left: 1291px;
+  width: 629px;
+  height: 745px;
   background: #FFFFFF 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 6px #0000005F;
   opacity: 1;
-  display: flex;
-  flex-direction: column;
 }
 #reg_lable{
   top: 189px;
   left: 1365px;
-  width: 130px;
-  height: 25px;
+  width: 194px;
+  height: 37px;
   text-align: left;
-  font: 22px/29px Raleway-Black;
+  font: 32px/43px Raleway-Black;
   letter-spacing: 0;
   color: #EA2340;
   opacity: 1;
-  padding-left: 50px;
+  padding-top: 109px;
+  padding-left: 74px;
   margin-bottom: 0px;
 }
 #button_yalla{
   top: 629px;
   left: 1365px;
-  width: 126px;
-  height: 32px;
+  width: 188px;
+  height: 48px;
   background: #EA2340 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 6px #00000052;
   opacity: 1;
-  margin-left: 50px;
+  margin-left: 74px;
 }
 #button_y_div{
-  padding-top: 44px;
+  padding-top: 66px;
 }
 .card-body{
-  width: 360px;
-  flex-grow: 1;
+  width: 629px;
 }
 
 #type_data{
-  padding-left: 50px;
+  padding-left: 74px;
   top: 221px;
   left: 1365px;
-  width: 139px;
-  height: 13px;
+  width: 207px;
+  height: 19px;
   text-align: left;
-  font: 10px/7px Raleway-Regular;
+  font: 16px/10px Raleway-Regular;
   letter-spacing: 0;
   color: #06263998;
   opacity: 1;
   margin-top: 0px;
-  padding-top: 2.5px;
+  padding-top: 4px;
 }
 .reg-data{
-  width: 249px;
-  height: 10px;
+  width: 371px;
+  height: 15px;
   opacity: 1;
-  margin-left: 50px;
+  margin-left: 74px;
   padding-left: 6px;
-  padding-top: 13px;
-  padding-bottom: 6px;
+  padding-top: 23px;
+  padding-bottom: 9px;
 
 }
 #inp1{
   top: 265px;
-  margin-bottom: 8px;
+  margin-bottom: 15px;
 }
 #inp2{
   top: 327px;
-  margin-bottom: 8px;
+  margin-bottom: 15px;
 }
 #inp3{
   top: 389px;
-  margin-bottom: 8px;
+  margin-bottom: 15px;
 }
 #inp4{
   top: 451px;
@@ -81,15 +81,15 @@
 #iagree{
   top: 548px;
   left: 1388px;
-  width: 201px;
-  height: 10px;
+  width: 300px;
+  height: 15px;
   text-align: left;
-  font: 9px/16px Raleway-Regular;
+  font: 13px/24px Raleway-Regular;
   letter-spacing: 0;
   color: #06263998;
   opacity: 1;
-  margin-left: 50px;
-  padding-top: 34px;
+  margin-left: 74px;
+  padding-top: 50px;
 }
 .trapezoid {
   border-bottom: 10px solid #EA2340;
@@ -109,44 +109,46 @@
   font-family: Raleway-Bold;
   src: url('../../assets/fonts/Raleway-Bold.ttf') format("opentype");
 }
-#check{
+#agree_check{
   top: 549px;
   left: 1365px;
-  width: 12px;
-  height: 12px;
+  width: 18px;
+  height: 18px;
   text-align: left;
+  font: Light 13px/41px Font Awesome 5 Pro;
   letter-spacing: 0;
   color: #EA2340;
   opacity: 1;
 }
 #agree_lable{
-  top: 548px;
-  left: 1390px;
-  width: 181px;
-  height: 10px;
-  text-align: left;
-  font: 12px/16px Raleway-Regular;
-  letter-spacing: 0;
-  color: #06263998;
-  opacity: 1;
+   top: 548px;
+   left: 1390px;
+   width: 271px;
+   height: 15px;
+   text-align: left;
+   font: 18px/24px Raleway-Regular;
+   letter-spacing: 0;
+   color: #06263998;
+   opacity: 1;
   padding-left: 11px;
  }
 #trap{
+  top: 721px;
+  left: 16px;
   width: 50px;
   height: 10px;
-  border-bottom: 12px solid #EA2340;
+  border-bottom: 10px solid #EA2340;
   border-right: 17px solid transparent;
   opacity: 1;
-  margin-bottom: 6px;
-  margin-left: 5px;
+  position: absolute;
 }
 #y{
   top: 641px;
   left: 1432px;
-  width: 36px;
-  height: 14px;
+  width: 54px;
+  height: 21px;
   text-align: center;
-  font: 12px/27px Raleway-Bold;
+  font: 18px/59px Raleway-Bold;
   letter-spacing: 0;
   color: #FFFFFF;
   opacity: 1;
@@ -156,33 +158,14 @@ a{
   text-decoration: underline;
   text-decoration-color: #06263998;
 }
-
+.card-title{
+  height: 190px;
+}
 input::placeholder{
   font-size: 18px;
   color: #06263998;
 }
 input{
-  font-size: 16px;
+  font-size: 24px;
   color: black;
-}
-.error{
-  color: red;
-  font: 11px/13px Raleway-Regular;
-  padding-left: 50px;
-}
-#err_check{
-  padding-left: 32px;
-  margin-top: 0px;
-}
-.danger{
-  color: #a94442;
-  background-color: #f2dede;
-  padding: 15px;
-  margin-top: 20px;
-  border: 1px solid #EA2340;
-  border-radius: 4px;
-  margin-left: 20px;
-  margin-right: 20px;
-  font: 18px/24px Raleway-Regular;
-  font-weight: bold;
 }
