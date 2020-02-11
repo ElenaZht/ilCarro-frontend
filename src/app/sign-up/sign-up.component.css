@@ -7,8 +7,6 @@
   background: #FFFFFF 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 6px #0000005F;
   opacity: 1;
-  display: flex;
-  flex-direction: column;
 }
 #reg_lable{
   top: 189px;
@@ -39,7 +37,6 @@
 }
 .card-body{
   width: 629px;
-  flex-grow: 1;
 }
 
 #type_data{
@@ -112,7 +109,7 @@
   font-family: Raleway-Bold;
   src: url('../../assets/fonts/Raleway-Bold.ttf') format("opentype");
 }
-#check{
+#agree_check{
   top: 549px;
   left: 1365px;
   width: 18px;
@@ -136,13 +133,14 @@
   padding-left: 11px;
  }
 #trap{
+  top: 721px;
+  left: 16px;
   width: 50px;
   height: 10px;
-  border-bottom: 12px solid #EA2340;
+  border-bottom: 10px solid #EA2340;
   border-right: 17px solid transparent;
   opacity: 1;
-  margin-bottom: 14px;
-  margin-left: 5px;
+  position: absolute;
 }
 #y{
   top: 641px;
@@ -170,25 +168,4 @@ input::placeholder{
 input{
   font-size: 24px;
   color: black;
-}
-.error{
-  color: red;
-  font: 16px/20px Raleway-Regular;
-  padding-left: 74px;
-}
-#err_check{
-  padding-left: 32px;
-  margin-top: 0px;
-}
-.danger{
-  color: #a94442;
-  background-color: #f2dede;
-  padding: 15px;
-  margin-top: 20px;
-  border: 1px solid #EA2340;
-  border-radius: 4px;
-  margin-left: 20px;
-  margin-right: 20px;
-  font: 18px/24px Raleway-Regular;
-  font-weight: bold;
 }
