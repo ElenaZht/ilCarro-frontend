@@ -1,0 +1,101 @@
+@font-face {
+  font-family: Raleway-Regular;
+  src: url('../../assets/fonts/Raleway-Regular.ttf') format("opentype");
+}
+@font-face {
+  font-family: Raleway-Bold;
+  src: url('../../assets/fonts/Raleway-Bold.ttf') format("opentype");
+}
+.flex-container{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 777px;
+  top: -145px;
+
+}
+.comment{
+  display: flex;
+  flex-direction: row;
+  top: 2303px;
+  left: 293px;
+  width: 525px;
+  height: 89px;
+  opacity: 1;
+  padding-bottom: 62px;
+}
+.comment_body{
+  display: flex;
+  flex-direction: column;
+  padding-left: 26px;
+}
+.comment_info{
+  display: flex;
+  flex-direction: row;
+}
+.user_photo{
+  top: 2303px;
+  left: 293px;
+  width: 89px;
+  height: 89px;
+  background: transparent url('../../assets/user_photo.png') 0% 0% no-repeat padding-box;
+  opacity: 1;
+  border-radius: 50px;
+}
+.comment span{
+  top: 2303px;
+  left: 408px;
+  width: 410px;
+  height: 50px;
+  text-align: left;
+  font: 16px/24px Raleway-Regular;
+  letter-spacing: 0px;
+  color: #062639;
+  opacity: 1;
+}
+.comment .user_name{
+  top: 2373px;
+  left: 408px;
+  width: 97px;
+  height: 19px;
+  text-align: left;
+  font: 16px/24px Raleway-Bold;
+  letter-spacing: 0px;
+  color: #EA2340;
+  opacity: 1;
+}
+.comment .comment_date{
+  left: 539px;
+  width: 116px;
+  height: 15px;
+  text-align: left;
+  font: 13px/24px Raleway-Regular;
+  letter-spacing: 0px;
+  color: #06263998;
+  opacity: 1;
+  padding-bottom: 62px;
+  padding-top: 5px;
+}
+#feedbacks_title{
+  top: 119px;
+  left: 283px;
+  width: 367px;
+  height: 109px;
+  text-align: left;
+  font: Bold 54px/54px Bebas Neue;
+  letter-spacing: 0px;
+  color: #062639;
+  text-transform: capitalize;
+  opacity: 1;
+  position: relative;
+}
+.container{
+  position: relative;
+  left: 293px;
+  top: 210px;
+  width: 1327px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
