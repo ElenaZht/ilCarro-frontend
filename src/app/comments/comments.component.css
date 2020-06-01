@@ -10,92 +10,86 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  height: 777px;
-  top: -145px;
+  height: 100%;
+  width: 100%;
+  padding-bottom: 10vh;
 
 }
 .comment{
   display: flex;
   flex-direction: row;
-  top: 2303px;
-  left: 293px;
-  width: 525px;
-  height: 89px;
+  width: 49%;
+  height: 30%;
   opacity: 1;
-  padding-bottom: 62px;
+  align-items: center;
 }
 .comment_body{
   display: flex;
   flex-direction: column;
-  padding-left: 26px;
 }
 .comment_info{
   display: flex;
   flex-direction: row;
 }
 .user_photo{
-  top: 2303px;
-  left: 293px;
-  width: 89px;
-  height: 89px;
-  background: transparent url('../../assets/user_photo.png') 0% 0% no-repeat padding-box;
+  width: 40%;
+  height: 10vh;
+  background: transparent url('../../assets/user_photo.png') no-repeat padding-box;
   opacity: 1;
-  border-radius: 50px;
+  clip-path: circle(40% at 50% 50%);
+  background-size: cover;
 }
 .comment span{
-  top: 2303px;
-  left: 408px;
-  width: 410px;
-  height: 50px;
+  width: 80%;
+  height: 50%;
   text-align: left;
-  font: 16px/24px Raleway-Regular;
+  font: 12px/18px Raleway-Regular;
   letter-spacing: 0px;
   color: #062639;
   opacity: 1;
 }
 .comment .user_name{
-  top: 2373px;
-  left: 408px;
-  width: 97px;
-  height: 19px;
+  width: 30%;
+  height: 20%;
   text-align: left;
   font: 16px/24px Raleway-Bold;
   letter-spacing: 0px;
   color: #EA2340;
   opacity: 1;
+  margin: 0;
 }
 .comment .comment_date{
-  left: 539px;
-  width: 116px;
-  height: 15px;
+  width: 40%;
+  height: 20%;
   text-align: left;
   font: 13px/24px Raleway-Regular;
   letter-spacing: 0px;
   color: #06263998;
   opacity: 1;
-  padding-bottom: 62px;
-  padding-top: 5px;
+  margin: 0;
+
 }
 #feedbacks_title{
-  top: 119px;
-  left: 283px;
-  width: 367px;
-  height: 109px;
+  padding-left: 11%;
+  width: 25%;
+  height: 30%;
   text-align: left;
-  font: Bold 54px/54px Bebas Neue;
+  font: Bold 36px/36px Bebas Neue;
   letter-spacing: 0px;
   color: #062639;
   text-transform: capitalize;
   opacity: 1;
   position: relative;
+  padding-top: 10vh;
+  padding-bottom: 10vh;
 }
 .container{
   position: relative;
-  left: 293px;
-  top: 210px;
-  width: 1327px;
+  width: 75%;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
+  height: 45vh;
+  margin: auto;
 }
 

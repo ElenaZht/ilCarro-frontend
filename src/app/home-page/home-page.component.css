@@ -11,10 +11,9 @@
   src: url('../../assets/fonts/Raleway-Regular.ttf') format("opentype");
 }
 #megadiv{
-  width: 1920px;
+  width: 80%;
   margin: auto;
   align-content: center;
-  height: 100%;
   border-right: 2px solid #0000005f;
   border-left: 2px solid #0000005f;
 
@@ -23,113 +22,116 @@
   background:transparent url('../../assets/ilcarroMAIN.png') 0% 0% no-repeat padding-box;
   opacity: 1;
   background-size: cover;
-  width: 1920px;
-  height: 745px;
-  background-position: left -575px top -3px;
+  width: 67%;
+  background-position-x: right;
 }
 .flex-container{
   display: flex;
 }
 #div1{
   align-items: stretch;
-  height: 744px;
+  height: 68%;
+  overflow: hidden;
 }
 #div1_1{
-  flex-direction: column;
-  max-height: 766px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
 #div2{
+  display: flex;
   flex-direction: row;
   top: 825px;
   left: 0px;
-  width: 1920px;
-  height: 266px;
-  background: #062639 0% 0% no-repeat padding-box;
-  box-shadow: 0px 3px 6px
+  width: 100%;
+  height: 100%;
+  justify-content: space-evenly;
 }
 #never_mis{
-  size: 54px;
-  padding-top: 50px;
-  font: 54px/54px "Bebas Neue" ;
+  size: 36px;
+  padding-top: 36px;
+  font: 36px/36px "Bebas Neue" ;
   letter-spacing: 0;
   color: #FFFFFF;
   text-transform: capitalize;
   opacity: 1;
-  padding-left: 184px;
-  width: 320px;
-  height: 109px;
+  width: 215px;
+  height: 73px;
   border: red;
   border-radius: 1px;
   flex-grow: 1;
+  margin-left: 20%;
 }
 #some_text_1{
-  size: 16px;
-  top: 92px;
-  width: 641px;
-  height: 97px;
+  size: 11px;
+  top: 62px;
+  width: 343px;
+  height: 65px;
   text-align: left;
-  font: 16px/24px Raleway-Regular;
+  font: 11px/16px Raleway-Regular;
   letter-spacing: 0;
   color: #FFFFFF;
   opacity: 1;
   position: relative;
-  padding-left: 57px;
+  margin-top: 4px;
 }
 #div2\.1{
-  flex-grow: 1;
   display: flex;
   flex-direction: column;
-  top: 908px;
-  left: 1365px;
-  width: 272px;
+  top: 608px;
   text-align: left;
-  font: 32px/32px Raleway-Black;
+  font: 21px/21px Raleway-Black;
   letter-spacing: 0;
   color: #EA2340;
   opacity: 1;
 
 }
 #some_text_2{
-  size: 32px;
-  width: 272px;
+  size: 21px;
+  width: 182px;
   height: 69px;
   text-align: left;
-  font: 32px/32px Raleway-Black;
+  font: 21px/21px Raleway-Black;
   letter-spacing: 0;
   color: #EA2340;
   opacity: 1;
-  top: 59px;
+  top: 40px;
   position: relative;
-  padding-left: 163px;
+  padding-left: 90px;
 
 }
 #button_join{
-  top: 30px;
-  left: 163px;
-  width: 146px;
-  height: 48px;
+  top: 20px;
+  left: 109px;
+  width: 98px;
+  height: 32px;
   background: #EA2340 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 6px #00000052;
   opacity: 1;
   position: relative;
-  font: 18px/59px Raleway-Bold;
+  font: 12px/40px Raleway-Bold;
   color: white;
   border: none;
-  line-height: 48px;
+  line-height: 32px;
 }
 
 #red_line_max{
-  border-bottom: 24px solid #EA2340;
-  border-right: 32px solid transparent;
+  border-bottom: 16px solid #EA2340;
+  border-right: 21px solid transparent;
   opacity: 1;
-  width: 1698px;
-  top: -250px;
+  width: 88%;
+  top: -167px;
   position: relative;
 }
 #never_wrap{
-  width: 504px;
+  width: 338px;
+  display: flex;
 }
 #wrap{
-  height: 266px;
+  height: 178px;
+  top: 825px;
+  left: 0px;
+  background: #062639 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px;
 }
