@@ -1,0 +1,227 @@
+@font-face {
+  font-family: Bebas Neue;
+  src: url('../../assets/fonts/Bebas-Neue-Bold.ttf') format("opentype");
+}
+@font-face {
+  font-family: Raleway-Regular;
+  src: url('../../assets/fonts/Raleway-Regular.ttf') format("opentype");
+}
+#div3{
+  flex-direction: row;
+  top: 0px;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  opacity: 1;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 13rem;
+
+}
+#div3_1{
+  width: 40px;
+  height: 100px;
+  text-align: left;
+}
+#three{
+  size: 40px;
+  font: 100px/100px "Bebas Neue";
+  letter-spacing: 0;
+  color: #EA2340;
+  text-transform: capitalize;
+  opacity: 1;
+  height: 100px;
+  margin: 0;
+}
+#div3_2{
+  width: 245px;
+  height: 73px;
+  text-align: left;
+  opacity: 1;
+  position: relative;
+}
+#some_text_3{
+  size: 36px;
+  font: 36px/36px "Bebas Neue";
+  letter-spacing: 0;
+  color: #062639;
+  text-transform: capitalize;
+  width: 245px;
+  height: 100px;
+  margin-top: 0;
+}
+#div3_3{
+  width: 430px;
+  height: 65px;
+  text-align: left;
+  opacity: 1;
+
+}
+#some_text_4{
+  size: 11px;
+  font: 11px/16px Raleway-Regular;
+  letter-spacing: 0;
+  color: #062639;
+  width: 430px;
+  height: 100px;
+  position: relative;
+  margin-top: 0;
+}
+#div4{
+  width: 100%;
+  height: 50vh;
+  background: #062639 0% 0% no-repeat padding-box;
+  opacity: 1;
+  position: relative;
+  overflow: hidden;
+}
+#div5{
+  position: relative;
+  width: 102%;
+  height: 90%;
+  background: #EA2340 0% 0% no-repeat padding-box;
+  opacity: 1;
+  -webkit-transform: skew(30deg);
+  -moz-transform: skew(30deg);
+  -o-transform: skew(30deg);
+}
+#div6{
+  display: flex;
+  flex-direction: row;
+  width: 130%;
+  height: 65%;
+  position: relative;
+  top: 1rem;
+  overflow: hidden;
+  left: -2%;
+
+
+}
+#zaz{
+  width: 80%;
+  height: 90%;
+  background: transparent url('../../assets/zaz.jpg') 0% 0% no-repeat padding-box ;
+  background-position: center;
+  background-size: cover;
+  opacity: 1;
+  clip-path: polygon(0 0, 70% 0, 100% 100%, 30% 100%);
+  position: relative;
+
+}
+#gaz{
+  width: 80%;
+  height: 90%;
+  background: transparent url('../../assets/gaz.jpg') 0% 0% no-repeat padding-box;
+  background-position: center;
+  background-size: cover;
+  opacity: 1;
+  clip-path: polygon(0 0, 70% 0, 100% 100%, 30% 100%);
+  position: relative;
+  left: -10%;
+
+}
+#azlk{
+  width: 80%;
+  height: 90%;
+  background: transparent url('../../assets/azlk.jpg') 0% 0% no-repeat padding-box;
+  background-position: center;
+  background-size: cover;
+  opacity: 1;
+  clip-path: polygon(0 0, 70% 0, 100% 100%, 30% 100%);
+  position: relative;
+  left: -20%;
+}
+#car_titles{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  position: absolute;
+  top: 69%;
+  width: 100%;
+
+}
+.card-body{
+  width: 100%;
+  height: 45%;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000052;
+  opacity: 1;
+  top: -10px;
+  display: flex;
+  align-items: center;
+}
+.whitecard p{
+  font: 30px/35px Bebas Neue;
+  letter-spacing: 0px;
+  color: #FFFFFF;
+  text-transform: capitalize;
+  opacity: 1;
+  margin-top: 5px;
+  margin-bottom: 0px;
+  text-align: center;
+}
+.dolar{
+  left: 5%;
+  text-align: center;
+  font: Bold 31px/102px Raleway;
+  letter-spacing: 0px;
+  color: #EA2340;
+  opacity: 1;
+  position: relative;
+}
+.price{
+  left: 10%;
+  text-align: center;
+  font: Bold 70px/106px Bebas Neue;
+  letter-spacing: 0px;
+  color: #EA2340;
+  text-transform: capitalize;
+  opacity: 1;
+  position: relative;
+}
+.perday{
+  height: 3vh;
+  font: 20px/25px Bebas Neue;
+  letter-spacing: 0px;
+  color: #06263998;
+  text-transform: capitalize;
+  opacity: 1;
+  transform: rotate(-90deg);
+  display: block;
+  position: relative;
+  left: 6%;
+  width: 4vw;
+  text-align: center;
+
+}
+.whitecard{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 22vh;
+}
+#whitecard1{
+  position: relative;
+}
+#whitecard2{
+  position: relative;
+}
+#whitecard3{
+  position: relative;
+}
+#wrap2{
+  display: flex; justify-content: space-between; align-items: center
+}
+.flex_column_relative{
+  display:flex;
+  flex-direction: column;
+  position: relative;
+}
+#div6_wrapper{
+  width: 100%;
+  height: 60vh;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left:0;
+}

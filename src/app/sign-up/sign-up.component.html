@@ -1,9 +1,9 @@
 <div class="card" id="reg_card">
-  <header class="card-title">
-            <h1 id="reg_lable">Registration</h1>
-            <h5 id="type_data">Type your data and hit Yalla!</h5>
-  </header>
   <form class="card-body" #sign_upForm="ngForm" (ngSubmit)="onSubmit(sign_upForm)">
+    <header class="card-title">
+      <h1 id="reg_lable">Registration</h1>
+      <h5 id="type_data">Type your data and hit Yalla!</h5>
+    </header>
     <input  class="form-control reg-data"  placeholder="Name"  type="string" id="inp1"
                     #name="ngModel" name="name" required  [(ngModel)]="sign_upForm.name">
     <div class="error" *ngIf="!name.valid && name.touched">

@@ -6,14 +6,17 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import {UsersService} from './users.service';
 import {UsersArrayService} from './users-array.service';
 import {FormsModule} from '@angular/forms';
-
-
-
+import { HomePageComponent } from './home-page/home-page.component';
+import { PopularCarsComponent } from './popular-cars/popular-cars.component';
+import { CommentsComponent } from './comments/comments.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SignUpComponent
+    HomePageComponent,
+    SignUpComponent,
+    PopularCarsComponent,
+    CommentsComponent
   ],
   imports: [
     BrowserModule,
