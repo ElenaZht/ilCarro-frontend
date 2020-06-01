@@ -1,9 +1,7 @@
 #reg_card{
   flex-grow: 1;
-  top: 80px;
-  left: 1291px;
-  width: 629px;
-  height: 745px;
+  height: 426px;
+  width: 100%;
   background: #FFFFFF 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 6px #0000005F;
   opacity: 1;
@@ -13,70 +11,69 @@
 #reg_lable{
   top: 189px;
   left: 1365px;
-  width: 194px;
-  height: 37px;
+  width: 130px;
+  height: 25px;
   text-align: left;
-  font: 32px/43px Raleway-Black;
+  font: 22px/29px Raleway-Black;
   letter-spacing: 0;
   color: #EA2340;
   opacity: 1;
-  padding-top: 109px;
-  padding-left: 74px;
+  padding-left: 50px;
   margin-bottom: 0px;
 }
 #button_yalla{
   top: 629px;
   left: 1365px;
-  width: 188px;
-  height: 48px;
+  width: 126px;
+  height: 32px;
   background: #EA2340 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 6px #00000052;
   opacity: 1;
-  margin-left: 74px;
+  margin-left: 50px;
 }
 #button_y_div{
-  padding-top: 66px;
+  padding-top: 44px;
 }
 .card-body{
-  width: 629px;
+  width: 360px;
   flex-grow: 1;
 }
 
 #type_data{
-  padding-left: 74px;
+  padding-left: 50px;
   top: 221px;
   left: 1365px;
-  width: 207px;
-  height: 19px;
+  width: 139px;
+  height: 13px;
   text-align: left;
-  font: 16px/10px Raleway-Regular;
+  font: 10px/7px Raleway-Regular;
   letter-spacing: 0;
   color: #06263998;
   opacity: 1;
   margin-top: 0px;
-  padding-top: 4px;
+  padding-top: 2.5px;
 }
 .reg-data{
-  width: 371px;
-  height: 15px;
+  width: 249px;
+  height: 10px;
   opacity: 1;
-  margin-left: 74px;
+  margin-left: 50px;
   padding-left: 6px;
-  padding-top: 23px;
-  padding-bottom: 9px;
+  padding-top: 13px;
+  padding-bottom: 6px;
 
 }
 #inp1{
   top: 265px;
-  margin-bottom: 15px;
+  margin-bottom: 8px;
 }
 #inp2{
   top: 327px;
-  margin-bottom: 15px;
+  margin-bottom: 8px;
 }
 #inp3{
   top: 389px;
-  margin-bottom: 15px;
+  margin-bottom: 8px;
 }
 #inp4{
   top: 451px;
@@ -84,15 +81,15 @@
 #iagree{
   top: 548px;
   left: 1388px;
-  width: 300px;
-  height: 15px;
+  width: 201px;
+  height: 10px;
   text-align: left;
-  font: 13px/24px Raleway-Regular;
+  font: 9px/16px Raleway-Regular;
   letter-spacing: 0;
   color: #06263998;
   opacity: 1;
-  margin-left: 74px;
-  padding-top: 50px;
+  margin-left: 50px;
+  padding-top: 34px;
 }
 .trapezoid {
   border-bottom: 10px solid #EA2340;
@@ -115,24 +112,23 @@
 #check{
   top: 549px;
   left: 1365px;
-  width: 18px;
-  height: 18px;
+  width: 12px;
+  height: 12px;
   text-align: left;
-  font: Light 13px/41px Font Awesome 5 Pro;
   letter-spacing: 0;
   color: #EA2340;
   opacity: 1;
 }
 #agree_lable{
-   top: 548px;
-   left: 1390px;
-   width: 271px;
-   height: 15px;
-   text-align: left;
-   font: 18px/24px Raleway-Regular;
-   letter-spacing: 0;
-   color: #06263998;
-   opacity: 1;
+  top: 548px;
+  left: 1390px;
+  width: 181px;
+  height: 10px;
+  text-align: left;
+  font: 12px/16px Raleway-Regular;
+  letter-spacing: 0;
+  color: #06263998;
+  opacity: 1;
   padding-left: 11px;
  }
 #trap{
@@ -141,16 +137,16 @@
   border-bottom: 12px solid #EA2340;
   border-right: 17px solid transparent;
   opacity: 1;
-  margin-bottom: 14px;
+  margin-bottom: 6px;
   margin-left: 5px;
 }
 #y{
   top: 641px;
   left: 1432px;
-  width: 54px;
-  height: 21px;
+  width: 36px;
+  height: 14px;
   text-align: center;
-  font: 18px/59px Raleway-Bold;
+  font: 12px/27px Raleway-Bold;
   letter-spacing: 0;
   color: #FFFFFF;
   opacity: 1;
@@ -160,21 +156,19 @@ a{
   text-decoration: underline;
   text-decoration-color: #06263998;
 }
-.card-title{
-  height: 190px;
-}
+
 input::placeholder{
   font-size: 18px;
   color: #06263998;
 }
 input{
-  font-size: 24px;
+  font-size: 16px;
   color: black;
 }
 .error{
   color: red;
-  font: 16px/20px Raleway-Regular;
-  padding-left: 74px;
+  font: 11px/13px Raleway-Regular;
+  padding-left: 50px;
 }
 #err_check{
   padding-left: 32px;
