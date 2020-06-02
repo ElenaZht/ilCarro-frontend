@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {MatDialog} from '@angular/material/dialog';
+import { SingUpDialogComponent } from '../sing-up-dialog/sing-up-dialog.component';
+
 
 @Component({
   selector: 'app-home-page',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
   }
 
+  joinUs() {
+    console.log('works!');
+
+    const dialogRef = this.dialog.open(SingUpDialogComponent, {panelClass: 'custom-dialog-container'});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+    });
+  }
 }

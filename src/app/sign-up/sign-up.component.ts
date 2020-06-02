@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {User, UsersService} from '../users.service';
 import {NgForm} from '@angular/forms';
 
@@ -8,6 +8,7 @@ import {NgForm} from '@angular/forms';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
+  @Output() signUpResult = new EventEmitter<boolean>();
   checkboxError: boolean;
   errorText: string;
   constructor(private usersService: UsersService) {
@@ -28,6 +29,7 @@ export class SignUpComponent implements OnInit {
       .subscribe(res => {
         if (res) {
           signUpForm.reset();
+          this.signUpResult.emit(true);
         }
       }, err => {
         this.errorText = err;
