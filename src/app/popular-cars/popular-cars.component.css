@@ -97,10 +97,11 @@
 
 
 }
+
 #zaz{
   width: 80%;
   height: 90%;
-  background: transparent url('../../assets/zaz.jpg') 0% 0% no-repeat padding-box ;
+  background: transparent url('../../assets/no_image.jpg') 0% 0% no-repeat padding-box ;
   background-position: center;
   background-size: cover;
   opacity: 1;
@@ -111,7 +112,7 @@
 #gaz{
   width: 80%;
   height: 90%;
-  background: transparent url('../../assets/gaz.jpg') 0% 0% no-repeat padding-box;
+  background: transparent url('../../assets/no_image.jpg') 0% 0% no-repeat padding-box;
   background-position: center;
   background-size: cover;
   opacity: 1;
@@ -123,7 +124,7 @@
 #azlk{
   width: 80%;
   height: 90%;
-  background: transparent url('../../assets/azlk.jpg') 0% 0% no-repeat padding-box;
+  background: transparent url('../../assets/no_image.jpg') 0% 0% no-repeat padding-box;
   background-position: center;
   background-size: cover;
   opacity: 1;
