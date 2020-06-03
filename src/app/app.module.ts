@@ -13,6 +13,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {MatDialogModule} from '@angular/material/dialog';
 import { SingUpDialogComponent } from './sing-up-dialog/sing-up-dialog.component';
+import {CarsService} from './cars.service';
+import {MockCarsService} from './mock-cars.service';
 
 
 @NgModule({
@@ -31,7 +33,8 @@ import { SingUpDialogComponent } from './sing-up-dialog/sing-up-dialog.component
     MatDialogModule
   ],
   providers: [
-    {provide: UsersService, useClass: UsersArrayService}
+    {provide: UsersService, useClass: UsersArrayService},
+    {provide: CarsService, useClass: MockCarsService}
   ],
   entryComponents: [SingUpDialogComponent],
 

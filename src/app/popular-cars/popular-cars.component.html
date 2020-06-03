@@ -20,34 +20,34 @@
     <div id="div6_wrapper">
 
       <div class="flex-container" id="div6">
-        <div id="zaz" ></div>
-        <div id="gaz"></div>
-        <div id="azlk"></div>
+        <div id="zaz"  [ngStyle]="{'background-image': ' url('+topCars[0].url+')'}"></div>
+        <div id="gaz" [ngStyle]="{'background-image': ' url('+topCars[1].url+')'}"></div>
+        <div id="azlk" [ngStyle]="{'background-image': ' url('+topCars[2].url+')'}"></div>
       </div>
     </div>
 
     <div class="flex-container" id="car_titles">
       <div class="whitecard" id="whitecard1">
-        <p>REDDEVIL</p>
+        <p>{{topCars[0].title}}</p>
         <div class="card-body">
           <span class="dolar">$</span>
-          <span class="price">230</span>
+          <span class="price">{{topCars[0].price}}</span>
           <span class="perday">per day</span>
         </div>
       </div>
       <div class="whitecard" id="whitecard2">
-        <p>BLACKSTAR</p>
+        <p>{{topCars[1].title}}</p>
         <div class="card-body">
           <span class="dolar">$</span>
-          <span class="price">300</span>
+          <span class="price">{{topCars[1].price}}</span>
           <span class="perday">per day</span>
         </div>
       </div>
       <div class="whitecard" id="whitecard3">
-        <p>PneumoDaddy</p>
+        <p>{{topCars[2].title}}</p>
         <div class="card-body">
           <span class="dolar">$</span>
-          <span class="price">180</span>
+          <span class="price">{{topCars[2].price}}</span>
           <span class="perday">per day</span>
         </div>
       </div>

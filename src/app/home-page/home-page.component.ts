@@ -9,10 +9,10 @@ import { SingUpDialogComponent } from '../sing-up-dialog/sing-up-dialog.componen
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
-
   constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
+
   }
 
   joinUs() {
