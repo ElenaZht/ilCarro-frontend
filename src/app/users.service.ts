@@ -6,6 +6,13 @@ export interface User {
   email: string;
   password: string;
 }
+export interface Comment {
+  url: string;
+  name: string;
+  date: any;
+  text: string;
+}
 export abstract class UsersService {
   abstract AddUser(user: User): Observable<boolean>;
+  abstract getComments(n: number): Observable<Comment[]>;
 }
