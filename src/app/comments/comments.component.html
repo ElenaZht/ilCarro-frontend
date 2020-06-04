@@ -1,71 +1,15 @@
 <div class="flex-container">
   <span id="feedbacks_title">LATTEST FEEDBACKS FROM OUR CUSTOMERS</span>
   <div class="container">
-      <div class="comment">
-        <div class="user_photo"></div>
-        <div class="comment_body">
-        <span>Candy canes topping dessert jelly beans pie jelly
-          beans sweet roll. Toffee cotton candy cake chocolate cake. </span>
-          <div class="comment_info">
-            <p class="user_name">Lena Zht</p>
-            <p class="comment_date">22 September 2019</p>
-          </div>
+    <div class="comment" *ngFor="let comment of comments">
+      <div class="user_photo" [ngStyle]="{'background-image': ' url('+comment.url+')'}"></div>
+      <div class="comment_body">
+      <span>{{comment.text}}</span>
+        <div class="comment_info">
+          <p class="user_name">{{comment.name}}</p>
+          <p class="comment_date">{{comment.date}}</p>
         </div>
       </div>
-      <div class="comment">
-        <div class="user_photo"></div>
-        <div class="comment_body">
-        <span>Candy canes topping dessert jelly beans pie jelly
-          beans sweet roll. Toffee cotton candy cake chocolate cake. </span>
-          <div class="comment_info">
-            <p class="user_name">Lena Zht</p>
-            <p class="comment_date">22 September 2019</p>
-          </div>
-        </div>
-      </div>
-      <div class="comment">
-        <div class="user_photo"></div>
-        <div class="comment_body">
-        <span>Candy canes topping dessert jelly beans pie jelly
-          beans sweet roll. Toffee cotton candy cake chocolate cake.</span>
-          <div class="comment_info">
-            <p class="user_name">Lena Zht</p>
-            <p class="comment_date">22 September 2019</p>
-          </div>
-        </div>
-      </div>
-      <div class="comment">
-        <div class="user_photo"></div>
-        <div class="comment_body">
-        <span>Candy canes topping dessert jelly beans pie jelly
-          beans sweet roll. Toffee cotton candy cake chocolate cake.</span>
-          <div class="comment_info">
-            <p class="user_name">Lena Zht</p>
-            <p class="comment_date">22 September 2019</p>
-          </div>
-        </div>
-      </div>
-      <div class="comment">
-        <div class="user_photo"></div>
-        <div class="comment_body">
-        <span>Candy canes topping dessert jelly beans pie jelly
-          beans sweet roll. Toffee cotton candy cake chocolate cake.</span>
-          <div class="comment_info">
-            <p class="user_name">Lena Zht</p>
-            <p class="comment_date">22 September 2019</p>
-          </div>
-        </div>
-      </div>
-      <div class="comment">
-        <div class="user_photo"></div>
-        <div class="comment_body">
-        <span>Candy canes topping dessert jelly beans pie jelly
-          beans sweet roll. Toffee cotton candy cake chocolate cake..</span>
-          <div class="comment_info">
-            <p class="user_name">Lena Zht</p>
-            <p class="comment_date">22 September 2019</p>
-          </div>
-        </div>
-      </div>
+    </div>
   </div>
 </div>
