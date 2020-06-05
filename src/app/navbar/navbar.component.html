@@ -1,0 +1,14 @@
+<div class="container">
+  <label routerLink="homepage"  id="logo" ></label>
+  <ul>
+    <li routerLink="homepage" class="nav-link" routerLinkActive="active_tab">
+      <label >Home</label>
+    </li>
+    <li routerLink="signupwind" routerLinkActive="active_tab" (click)="joinUs()" class="nav-link">
+      <label>Sign Up</label>
+    </li>
+
+
+  </ul>
+</div>
+<router-outlet></router-outlet>

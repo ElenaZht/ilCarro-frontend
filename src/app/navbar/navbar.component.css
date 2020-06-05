@@ -1,0 +1,57 @@
+@font-face {
+  font-family: Raleway-Bold;
+  src: url('../../assets/fonts/Raleway-Bold.ttf') format("opentype");
+}
+.container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 80%;
+  margin: auto;
+  align-content: center;
+  height: 11vh;
+  background: #062639 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000029;
+  opacity: 1;
+  border-left: 2px solid #0000005f;
+  border-right: 2px solid #0000005f;
+}
+.nav-link{
+  text-align: center;
+  font: 10px/16px Raleway-Bold;
+  letter-spacing: 0px;
+  color: #FFFFFF;
+  opacity: 1;
+  margin-right: 3vw;
+  width: 7vw;
+  height: 8vh;
+  padding-top: 2vh;
+}
+label{
+  text-align: left;
+  font: 16px/19px Raleway-Bold;
+  letter-spacing: 0px;
+  color: #FFFFFF;
+  opacity: 1;
+}
+ul{
+  display: flex;
+  flex-direction: row;
+  margin-top: 3vh;
+  list-style: none;
+  justify-content: flex-end;
+  max-width: 50%;
+
+}
+#logo{
+  width: 18%;
+  height: 49%;
+  background: transparent url('../../assets/logo.svg') 0% 0% no-repeat padding-box;
+  opacity: 1;
+  margin-top: 3vh;
+}
+.active_tab{
+  background: #EA2340 0% 0% no-repeat padding-box;
+  z-index: 0;
+  box-shadow: 0px 3px 6px #00000029;
+}
