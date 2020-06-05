@@ -15,6 +15,11 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { SingUpDialogComponent } from './sing-up-dialog/sing-up-dialog.component';
 import {CarsService} from './cars.service';
 import {MockCarsService} from './mock-cars.service';
+import { NavbarComponent } from './navbar/navbar.component';
+import { Router } from '@angular/router';
+import {RoutingModule} from './routing/routing.module';
+import { EmptyPageComponent } from './empty-page/empty-page.component';
+
 
 
 @NgModule({
@@ -24,13 +29,16 @@ import {MockCarsService} from './mock-cars.service';
     SignUpComponent,
     PopularCarsComponent,
     CommentsComponent,
-    SingUpDialogComponent
+    SingUpDialogComponent,
+    NavbarComponent,
+    EmptyPageComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    RoutingModule
   ],
   providers: [
     {provide: UsersService, useClass: UsersArrayService},
@@ -40,4 +48,6 @@ import {MockCarsService} from './mock-cars.service';
 
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(router: Router) {}
+}
