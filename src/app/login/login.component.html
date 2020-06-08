@@ -1,0 +1,28 @@
+<div class="card" id="reg_card">
+  <form class="card-body" #login_Form="ngForm" (ngSubmit)="onSubmit(login_Form)">
+    <header class="card-title">
+      <h1 id="reg_lable">Log in</h1>
+      <h5 id="type_data">Type your data and hit Yalla!</h5>
+    </header>
+
+    <input  class="form-control reg-data" placeholder="Email"  type="email" id="inp1" #email="ngModel" name="email"
+            [(ngModel)]="login_Form.email" required pattern="[^@\s]+@[^@\s]+\.[^@\s]+">
+    <div class="error" *ngIf="!email.valid && email.touched">
+      Email is required (Exp.:Smith@example.com, Smith@gmail.com, etc.).
+    </div>
+    <input  class="form-control reg-data" placeholder="Password"  type="password" #password="ngModel" id="inp2" name="password" [(ngModel)]="login_Form.password" required minlength="8">
+    <div class="error" *ngIf="!password.valid && password.touched">
+      Password is required (minimum 8 symbols).
+    </div>
+
+    <div id="button_y_div">
+      <button id="button_yalla" type="submit" [disabled]="!login_Form.form.valid">
+        <span id="y">Y'alla!</span>
+      </button>
+    </div>
+  </form>
+  <div *ngIf="errorText !== ''" class="danger">{{errorText}}</div>
+
+  <div class="trapezoid" id="trap"></div>
+
+</div>

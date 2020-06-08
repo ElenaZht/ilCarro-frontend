@@ -19,6 +19,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { Router } from '@angular/router';
 import {RoutingModule} from './routing/routing.module';
 import { EmptyPageComponent } from './empty-page/empty-page.component';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -31,7 +32,8 @@ import { EmptyPageComponent } from './empty-page/empty-page.component';
     CommentsComponent,
     SingUpDialogComponent,
     NavbarComponent,
-    EmptyPageComponent
+    EmptyPageComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
