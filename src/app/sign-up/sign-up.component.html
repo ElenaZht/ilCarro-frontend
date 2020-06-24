@@ -5,11 +5,11 @@
       <h5 id="type_data">Type your data and hit Yalla!</h5>
     </header>
     <input  class="form-control reg-data"  placeholder="Name"  type="string" id="inp1"
-                    #name="ngModel" name="name" required  [(ngModel)]="sign_upForm.name">
+                    #name="ngModel" name="first_name" required  [(ngModel)]="sign_upForm.name">
     <div class="error" *ngIf="!name.valid && name.touched">
       Name is required.
     </div>
-            <input  class="form-control reg-data" placeholder="Last name"  type="string" id="inp2" #last_name="ngModel" name="last"  required [(ngModel)]="sign_upForm.last_name">
+            <input  class="form-control reg-data" placeholder="Last name"  type="string" id="inp2" #last_name="ngModel" name="second_name"  required [(ngModel)]="sign_upForm.last_name">
     <div class="error" *ngIf="!last_name.valid && last_name.touched">
       Last name is required.
     </div>

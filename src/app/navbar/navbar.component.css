@@ -55,3 +55,6 @@ ul{
   z-index: 0;
   box-shadow: 0px 3px 6px #00000029;
 }
+::ng-deep.custom-dialog-container > mat-dialog-container {
+  padding: 0!important;
+}
