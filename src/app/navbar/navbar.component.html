@@ -4,9 +4,14 @@
     <li routerLink="homepage" class="nav-link" routerLinkActive="active_tab">
       <label >Home</label>
     </li>
-    <li routerLink="signupwind" routerLinkActive="active_tab" (click)="joinUs()" class="nav-link">
+    <li *ngIf="!this.usersService.isLoggedIn()" routerLink="signupwind" routerLinkActive="active_tab" (click)="joinUs()" class="nav-link">
       <label>Sign Up</label>
     </li>
+    <li *ngIf="!this.usersService.isLoggedIn()" routerLink="loginwind" routerLinkActive="active_tab" (click)="logIn()" class="nav-link">
+      <label>Log in</label>
+    </li>
+    <li *ngIf="this.usersService.isLoggedIn()" class="nav-link" >
+      <label  (click)="logout()">logout</label>
 
 
   </ul>

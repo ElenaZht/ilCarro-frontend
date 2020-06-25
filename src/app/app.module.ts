@@ -19,7 +19,12 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { Router } from '@angular/router';
 import {RoutingModule} from './routing/routing.module';
 import { EmptyPageComponent } from './empty-page/empty-page.component';
-
+import { LoginComponent } from './login/login.component';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import {JwtInterceptor} from './helpers/jwt.interceptor';
+import {FakeBackendInterceptor} from './helpers/fake-backend';
+import {AuthGuard} from './helpers/auth.guard';
+import {ToastrModule} from 'ngx-toastr';
 
 
 @NgModule({
@@ -31,20 +36,26 @@ import { EmptyPageComponent } from './empty-page/empty-page.component';
     CommentsComponent,
     SingUpDialogComponent,
     NavbarComponent,
-    EmptyPageComponent
+    EmptyPageComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    RoutingModule
-  ],
+    RoutingModule,
+    HttpClientModule,
+    ToastrModule.forRoot({timeOut: 1000, positionClass: 'toast-top-right'})
+    ],
   providers: [
     {provide: UsersService, useClass: UsersArrayService},
-    {provide: CarsService, useClass: MockCarsService}
+    {provide: CarsService, useClass: MockCarsService},
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: FakeBackendInterceptor, multi: true}
+
   ],
-  entryComponents: [SingUpDialogComponent],
+  entryComponents: [SingUpDialogComponent, LoginComponent],
 
   bootstrap: [AppComponent]
 })

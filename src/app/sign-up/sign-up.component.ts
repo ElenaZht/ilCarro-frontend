@@ -27,13 +27,15 @@ export class SignUpComponent implements OnInit {
     console.log(' то место', user);
     this.usersService.AddUser(user)
       .subscribe(res => {
+        console.log(res)
         if (res) {
           signUpForm.reset();
+          this.errorText = '';
           this.signUpResult.emit(true);
         }
       }, err => {
-        this.errorText = err;
         console.log(err);
+        this.errorText = err.statusText;
       });
   }
 }
