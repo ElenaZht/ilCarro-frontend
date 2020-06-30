@@ -1,0 +1,279 @@
+footer {
+  left: 0px;
+  width: 1920px;
+  height: 442px;
+  background: #062639 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000029;
+  opacity: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer_context_left {
+  top: 45px;
+  left: 160px;
+  width: 608px;
+  height: 61px;
+  text-align: left;
+  font: 16px/24px Raleway-Regular;
+  letter-spacing: 0;
+  color: #FFFFFF;
+  opacity: 1;
+  position: relative;
+}
+
+.footer_logo {
+  top: -25px;
+  left: 868px;
+  width: 184px;
+  height: 33px;
+  background: 0% 0% no-repeat padding-box;
+  opacity: 1;
+  position: relative;
+}
+
+.icon_facebook {
+  top: -75px;
+  left: 1425px;
+  width: 25px;
+  height: 29px;
+  text-align: left;
+  font: 29px/60px Font Awesome Brands;
+  letter-spacing: 2.58px;
+  color: #FFFFFF;
+  opacity: 1;
+  position: relative;
+}
+
+.icon_telegram {
+  top: -75px;
+  left: 1480px;
+  width: 28px;
+  height: 29px;
+  text-align: left;
+  font: 29px/60px Font Awesome Brands;
+  letter-spacing: 2.58px;
+  color: #FFFFFF;
+  opacity: 1;
+  position: relative;
+}
+
+.icon_vk {
+  top: -75px;
+  left: 1530px;
+  width: 34px;
+  height: 30px;
+  text-align: left;
+  font: 30px/62px Font Awesome Brands;
+  letter-spacing: 2.67px;
+  color: #FFFFFF;
+  opacity: 1;
+  position: relative;
+}
+
+.icon_instagram {
+  top: -75px;
+  left: 1580px;
+  width: 25px;
+  height: 29px;
+  text-align: left;
+  font: 29px/60px Font Awesome Brands;
+  letter-spacing: 2.58px;
+  color: #FFFFFF;
+  opacity: 1;
+  position: relative;
+}
+
+.icon_slack {
+  top: -75px;
+  left: 1620px;
+  width: 26px;
+  height: 29px;
+  text-align: left;
+  font: 29px/60px Font Awesome Brands;
+  letter-spacing: 2.58px;
+  color: #FFFFFF;
+  opacity: 1;
+  position: relative;
+}
+
+.search {
+  top: -30px;
+  left: 1117px;
+  width: 53px;
+  height: 19px;
+  bottom: 269px;
+  right: 750px;
+  text-align: left;
+  font: Bold 16px/19px Raleway;
+  letter-spacing: 0;
+  color: #FFFFFF;
+  opacity: 1;
+  margin-right: 66px;
+  position: relative;
+}
+
+.let_the_car_work {
+  top: -30px;
+  left: 1125px;
+  width: 123px;
+  height: 19px;
+  text-align: left;
+  font: Bold 16px/19px Raleway;
+  letter-spacing: 0;
+  color: #FFFFFF;
+  opacity: 1;
+  margin-right: 66px;
+  position: relative;
+}
+
+.terms_of_use {
+  top: -30px;
+  left: 1130px;
+  width: 97px;
+  height: 19px;
+  text-align: left;
+  font: Bold 16px/19px Raleway;
+  letter-spacing: 0;
+  color: #FFFFFF;
+  opacity: 1;
+  margin-right: 66px;
+  position: relative;
+}
+
+footer .sign_up {
+  top: -30px;
+  left: 1140px;
+  width: 58px;
+  height: 19px;
+  text-align: left;
+  font: Bold 16px/19px Raleway;
+  letter-spacing: 0;
+  color: #FFFFFF;
+  opacity: 1;
+  margin-right: 66px;
+  position: relative;
+}
+
+footer .log_in {
+  top: -30px;
+  left: 1150px;
+  width: 46px;
+  height: 19px;
+  text-align: left;
+  font: Bold 16px/19px Raleway;
+  letter-spacing: 0;
+  color: #FFFFFF;
+  opacity: 1;
+  margin-right: 66px;
+  position: relative;
+}
+
+footer hr {
+  top: -10px;
+  left: 445px;
+  right: 164px;
+  width: 715px;
+  height: 0px;
+  border: 1px solid #FFFFFF;
+  opacity: 1;
+  position: relative;
+}
+
+.parallelogram {
+  top: 128px;
+  left: -272px;
+  width: 1070px;
+  height: 314px;
+  background: #EA2340 0% 0% no-repeat padding-box;
+  opacity: 1;
+  position: absolute;
+  transform: skew(60deg);
+}
+
+.parall_context {
+  top: -50px;
+  left: 160px;
+  height: 109px;
+  text-align: left;
+  font: Bold 54px/54px Bebas Neue;
+  letter-spacing: 0;
+  color: #FFFFFF;
+  text-transform: capitalize;
+  opacity: 1;
+  position: relative;
+}
+
+.footer_number {
+  top: 207px;
+  left: 1485px;
+  right: 163px;
+  bottom: 139px;
+  width: 279px;
+  height: 55px;
+  text-align: center;
+  font: Bold 54px/54px Bebas Neue;
+  letter-spacing: 0;
+  color: #EA2340;
+  text-transform: capitalize;
+  opacity: 1;
+  position: absolute;
+  display: inline;
+}
+
+.footer_address {
+  top: 347px;
+  left: 1530px;
+  width: 227px;
+  height: 43px;
+  bottom: 52px;
+  text-align: right;
+  font: 16px/24px Raleway;
+  letter-spacing: 0;
+  color: #FFFFFF;
+  opacity: 1;
+  position: absolute;
+}
+
+.footer_top_cities {
+  top: 248px;
+  left: 1117px;
+  width: 83px;
+  height: 19px;
+  text-align: left;
+  font: 16px/24px Raleway;
+  letter-spacing: 0;
+  color: #FFFFFF;
+  opacity: 0.55;
+  position: sticky;
+  display: inline;
+}
+
+.top_cities1 {
+  list-style-type: none;
+  top: 274px;
+  left: 1117px;
+  width: 91px;
+  height: 116px;
+  bottom: 52px;
+  text-align: left;
+  font: 16px/24px Raleway;
+  letter-spacing: 0;
+  color: #FFFFFF;
+  opacity: 1;
+  position: absolute;
+}
+
+.top_cities2 {
+  list-style-type: none;
+  top: 274px;
+  left: 1255px;
+  width: 91px;
+  height: 116px;
+  text-align: left;
+  font: 16px/24px Raleway;
+  letter-spacing: 0;
+  color: #FFFFFF;
+  opacity: 1;
+  position: absolute;
+}
