@@ -1,279 +1,191 @@
 footer {
   left: 0px;
-  width: 1920px;
-  height: 442px;
+  width: 80%;
+  height: 40vh;
   background: #062639 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 6px #00000029;
   opacity: 1;
   position: relative;
-  overflow: hidden;
+  /*overflow: hidden;*/
+  margin: auto;
+  border-right: 2px solid #0000005f;
+  border-left: 2px solid #0000005f;
+
 }
 
 .footer_context_left {
-  top: 45px;
-  left: 160px;
-  width: 608px;
   height: 61px;
   text-align: left;
-  font: 16px/24px Raleway-Regular;
   letter-spacing: 0;
   color: #FFFFFF;
-  opacity: 1;
+  opacity: 0.55;
   position: relative;
+  top: 10%;
+  left: 7%;
+  width: 34%;
+  font: 9px/12px Raleway-Regular;
+  display: inline-block;
+
 }
 
 .footer_logo {
-  top: -25px;
-  left: 868px;
-  width: 184px;
-  height: 33px;
+  top: 1.5vh;
+  left: 8%;
+  width: 15%;
+  height: 15%;
   background: 0% 0% no-repeat padding-box;
   opacity: 1;
   position: relative;
 }
 
-.icon_facebook {
-  top: -75px;
-  left: 1425px;
-  width: 25px;
-  height: 29px;
-  text-align: left;
+.icon {
   font: 29px/60px Font Awesome Brands;
-  letter-spacing: 2.58px;
   color: #FFFFFF;
   opacity: 1;
   position: relative;
-}
-
-.icon_telegram {
-  top: -75px;
-  left: 1480px;
-  width: 28px;
-  height: 29px;
-  text-align: left;
-  font: 29px/60px Font Awesome Brands;
-  letter-spacing: 2.58px;
-  color: #FFFFFF;
-  opacity: 1;
-  position: relative;
-}
-
-.icon_vk {
-  top: -75px;
-  left: 1530px;
-  width: 34px;
-  height: 30px;
-  text-align: left;
-  font: 30px/62px Font Awesome Brands;
-  letter-spacing: 2.67px;
-  color: #FFFFFF;
-  opacity: 1;
-  position: relative;
-}
-
-.icon_instagram {
-  top: -75px;
-  left: 1580px;
-  width: 25px;
-  height: 29px;
-  text-align: left;
-  font: 29px/60px Font Awesome Brands;
-  letter-spacing: 2.58px;
-  color: #FFFFFF;
-  opacity: 1;
-  position: relative;
-}
-
-.icon_slack {
-  top: -75px;
-  left: 1620px;
-  width: 26px;
-  height: 29px;
-  text-align: left;
-  font: 29px/60px Font Awesome Brands;
-  letter-spacing: 2.58px;
-  color: #FFFFFF;
-  opacity: 1;
-  position: relative;
-}
-
-.search {
-  top: -30px;
-  left: 1117px;
-  width: 53px;
-  height: 19px;
-  bottom: 269px;
-  right: 750px;
-  text-align: left;
-  font: Bold 16px/19px Raleway;
-  letter-spacing: 0;
-  color: #FFFFFF;
-  opacity: 1;
-  margin-right: 66px;
-  position: relative;
-}
-
-.let_the_car_work {
-  top: -30px;
-  left: 1125px;
-  width: 123px;
-  height: 19px;
-  text-align: left;
-  font: Bold 16px/19px Raleway;
-  letter-spacing: 0;
-  color: #FFFFFF;
-  opacity: 1;
-  margin-right: 66px;
-  position: relative;
-}
-
-.terms_of_use {
-  top: -30px;
-  left: 1130px;
-  width: 97px;
-  height: 19px;
-  text-align: left;
-  font: Bold 16px/19px Raleway;
-  letter-spacing: 0;
-  color: #FFFFFF;
-  opacity: 1;
-  margin-right: 66px;
-  position: relative;
-}
-
-footer .sign_up {
-  top: -30px;
-  left: 1140px;
-  width: 58px;
-  height: 19px;
-  text-align: left;
-  font: Bold 16px/19px Raleway;
-  letter-spacing: 0;
-  color: #FFFFFF;
-  opacity: 1;
-  margin-right: 66px;
-  position: relative;
-}
-
-footer .log_in {
-  top: -30px;
-  left: 1150px;
-  width: 46px;
-  height: 19px;
-  text-align: left;
-  font: Bold 16px/19px Raleway;
-  letter-spacing: 0;
-  color: #FFFFFF;
-  opacity: 1;
-  margin-right: 66px;
-  position: relative;
-}
-
-footer hr {
-  top: -10px;
-  left: 445px;
-  right: 164px;
-  width: 715px;
-  height: 0px;
-  border: 1px solid #FFFFFF;
-  opacity: 1;
-  position: relative;
+  padding-right: 2vw;
 }
 
 .parallelogram {
-  top: 128px;
-  left: -272px;
-  width: 1070px;
-  height: 314px;
+  bottom: 0;
+  width: 55%;
+  height: 70%;
   background: #EA2340 0% 0% no-repeat padding-box;
   opacity: 1;
   position: absolute;
-  transform: skew(60deg);
+  clip-path: polygon(0% 0%, 42% 0%, 100% 100%, 0% 100%);
 }
 
 .parall_context {
-  top: -50px;
-  left: 160px;
-  height: 109px;
   text-align: left;
-  font: Bold 54px/54px Bebas Neue;
   letter-spacing: 0;
   color: #FFFFFF;
   text-transform: capitalize;
   opacity: 1;
-  position: relative;
+  position: absolute;
+  top: 45%;
+  left: 7%;
+  font: Bold 30px/30px Bebas Neue;
 }
 
 .footer_number {
-  top: 207px;
-  left: 1485px;
-  right: 163px;
-  bottom: 139px;
-  width: 279px;
-  height: 55px;
-  text-align: center;
-  font: Bold 54px/54px Bebas Neue;
+  text-align: right;
+  font: Bold 35px/35px Bebas Neue;
   letter-spacing: 0;
   color: #EA2340;
   text-transform: capitalize;
   opacity: 1;
-  position: absolute;
-  display: inline;
+  position: relative;
+  display: flex;
+  margin: 0;
+  width: 100%;
+  height: 50%;
 }
 
 .footer_address {
-  top: 347px;
-  left: 1530px;
-  width: 227px;
-  height: 43px;
-  bottom: 52px;
   text-align: right;
-  font: 16px/24px Raleway;
-  letter-spacing: 0;
-  color: #FFFFFF;
-  opacity: 1;
-  position: absolute;
-}
-
-.footer_top_cities {
-  top: 248px;
-  left: 1117px;
-  width: 83px;
-  height: 19px;
-  text-align: left;
-  font: 16px/24px Raleway;
   letter-spacing: 0;
   color: #FFFFFF;
   opacity: 0.55;
-  position: sticky;
-  display: inline;
+  position: relative;
+  width: 100%;
+  height: 35%;
+  font: 11px/20px Raleway;
+  display: flex;
+  margin: 0;
+}
+.cities_wrap {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 80%;
+}
+#top_cities{
+  text-align: left;
+  font: 14px/22px Raleway;
+  letter-spacing: 0;
+  color: #FFFFFF;
+  opacity: 0.55;
+  display: flex;
+  flex-direction: column;
+}
+.footer_top_cities {
+  width: 15%;
+  height: 40%;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  left: 60%;
+  bottom: -2.5vh;
+
 }
 
-.top_cities1 {
+.top_cities {
   list-style-type: none;
-  top: 274px;
-  left: 1117px;
-  width: 91px;
-  height: 116px;
-  bottom: 52px;
+  width: 45%;
+  height: 100%;
   text-align: left;
-  font: 16px/24px Raleway;
+  font: 12px/12px Raleway;
   letter-spacing: 0;
   color: #FFFFFF;
   opacity: 1;
-  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+
 }
 
-.top_cities2 {
-  list-style-type: none;
-  top: 274px;
-  left: 1255px;
-  width: 91px;
-  height: 116px;
+.footer_social_links_list {
+  width: 30%;
+  display: inline-block;
+  position: relative;
+  top: 1vh;
+  left: 21%;
+}
+.footer_nav_items {
+  display: flex;
+  position: relative;
+  width: 100%;
+  justify-content: space-between;
+}
+.nav_item {
   text-align: left;
-  font: 16px/24px Raleway;
+  font: 12px/15px Raleway;
   letter-spacing: 0;
   color: #FFFFFF;
   opacity: 1;
-  position: absolute;
+  position: relative;
+  text-decoration: none;
+  display: flex;
+}
+.footer_line {
+  position: relative;
+  display: flex;
+  width: 100%;
+}
+.footer_city {
+  color: #FFFFFF;
+  opacity: 0.55;
+
+}
+.data_wrap {
+  display: flex;
+  flex-direction: column;
+  width: 18%;
+  height: 40%;
+  left: 76%;
+  position: relative;
+  bottom: 13.5vh;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav_wrap {
+  display: flex;
+  flex-direction: column;
+  width: 33%;
+  left: 60%;
+  position: relative;
 }

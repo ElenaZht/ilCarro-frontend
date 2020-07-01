@@ -4,75 +4,81 @@
     gummi bears jelly-o bonbon fruitcake tootsie
   </p>
 
-  <img [src]="logo" class="footer_logo">
+  <img [src]="logo" class="footer_logo" >
 
   <div class="footer_social_links_list">
-    <fa-icon class="icon_facebook" [icon]="['fab', 'facebook-square']"></fa-icon>
-    <fa-icon class="icon_telegram" [icon]="['fab', 'telegram']"></fa-icon>
-    <fa-icon class="icon_vk" [icon]="['fab', 'vk']"></fa-icon>
-    <fa-icon class="icon_instagram" [icon]="['fab', 'instagram']"></fa-icon>
-    <fa-icon class="icon_slack" [icon]="['fab', 'slack-hash']"></fa-icon>
+    <fa-icon class="icon" [icon]="['fab', 'facebook-square']"></fa-icon>
+    <fa-icon class="icon" [icon]="['fab', 'telegram']"></fa-icon>
+    <fa-icon class="icon" [icon]="['fab', 'vk']"></fa-icon>
+    <fa-icon class="icon" [icon]="['fab', 'instagram']"></fa-icon>
+    <fa-icon class="icon" [icon]="['fab', 'slack-hash']"></fa-icon>
+  </div>
+
+  <div class="nav_wrap">
+    <div class="footer_nav_items">
+      <a class="nav_item" href="">Search</a>
+      <a class="nav_item" href="">Let the car work</a>
+      <a class="nav_item" href="">Terms of use</a>
+      <a class="nav_item" href="" routerLink="signupwind" (click)="joinUs()">Sign up</a>
+      <a class="nav_item" href=""  routerLink="loginwind" (click)="logIn()">Log in</a>
+    </div>
+    <hr class="footer_line">
+
   </div>
 
 
-  <div class="footer_nav_items">
-    <a class="search" href="">Search</a>
-    <a class="let_the_car_work" href="">Let the car work</a>
-    <a class="terms_of_use" href="">Terms of use</a>
-    <a class="sign_up" href="">Sign up</a>
-    <a class="log_in" href=""><strong>Log in</strong></a>
-  </div>
-
-  <hr class="footer_line">
 
   <div class="parallelogram">
   </div>
 
-  <div class="footer_top_cities">TOP CITIES</div>
-  <ul class>
-    <div class="top_cities1">
-      <li>
-        <a class="footer_city1">New-York </a>
-      </li>
-      <li>
-        <a class="footer_city2">Tokyo</a>
-      </li>
-      <li>
-        <a class="footer_city3">Paris</a>
-      </li>
-      <li>
-        <a class="footer_city4">London </a>
-      </li>
-      <li>
-        <a class="footer_city5">Los Angeles </a>
-      </li>
+  <div class="footer_top_cities">
+    <span id="top_cities">TOP CITIES</span>
+    <div class="cities_wrap">
+      <ul class="top_cities">
+              <li>
+                <a class="footer_city">New-York </a>
+              </li>
+              <li>
+                <a class="footer_city">Tokyo</a>
+              </li>
+              <li>
+                <a class="footer_city">Paris</a>
+              </li>
+              <li>
+                <a class="footer_city">London </a>
+              </li>
+              <li>
+                <a class="footer_city">Los Angeles </a>
+              </li>
+      </ul>
+      <ul class="top_cities">
+              <li>
+                <a class="footer_city">Vienna</a>
+              </li>
+              <li>
+                <a class="footer_city">Moscow</a>
+              </li>
+              <li>
+                <a class="footer_city">Warsaw</a>
+              </li>
+              <li>
+                <a class="footer_city">Berlin</a>
+              </li>
+              <li>
+                <a class="footer_city">Seattle</a>
+              </li>
+      </ul>
     </div>
-  </ul>
-  <ul class>
-    <div class="top_cities2">
-      <li>
-        <a class="footer_city6">Vienna</a>
-      </li>
-      <li>
-        <a class="footer_city7">Moscow</a>
-      </li>
-      <li>
-        <a class="footer_city8">Warsaw</a>
-      </li>
-      <li>
-        <a class="footer_city9">Berlin</a>
-      </li>
-      <li>
-        <a class="footer_city10">Seattle</a>
-      </li>
-    </div>
-  </ul>
+  </div>
 
-  <p class="footer_number">
-    08-616-8800-55
-  </p>
 
-  <div class="footer_address">1600 Amphitheatre Pkwy Mountain View, CA 94043, USA</div>
+  <div class="data_wrap">
+    <p class="footer_number">
+      08-616-8800-55
+    </p>
+    <div class="footer_address">1600 Amphitheatre Pkwy Mountain View, CA 94043, USA</div>
+  </div>
+
   <p class="parall_context">The ultimate <br> car rental service</p>
 </footer>
 
