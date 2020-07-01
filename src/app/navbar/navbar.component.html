@@ -4,6 +4,9 @@
     <li routerLink="homepage" class="nav-link" routerLinkActive="active_tab">
       <label >Home</label>
     </li>
+    <li routerLink="terms" class="nav-link" routerLinkActive="active_tab">
+      <label >Terms of use</label>
+    </li>
     <li *ngIf="!this.usersService.isLoggedIn()" routerLink="signupwind" routerLinkActive="active_tab" (click)="joinUs()" class="nav-link">
       <label>Sign Up</label>
     </li>

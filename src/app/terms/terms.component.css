@@ -1,0 +1,64 @@
+@font-face {
+  font-family: Raleway-Regular;
+  src: url('../../assets/fonts/Raleway-Regular.ttf') format("opentype");
+}
+@font-face {
+  font-family: Raleway-Bold;
+  src: url('../../assets/fonts/Raleway-Bold.ttf') format("opentype");
+}
+.main_container {
+  opacity: 1;
+  background-size: cover;
+  width: 80%;
+  margin: auto;
+  border-right: 2px solid #0000005f;
+  border-left: 2px solid #0000005f;
+  background-position-x: center;
+
+}
+.main_list {
+  width: 80%;
+  margin: auto;
+  font: 11px/16px Raleway-Regular;
+  color: black;
+  padding-top: 2%;
+  padding-bottom: 5%;
+
+  opacity: 1;
+}
+ol, ul {
+  list-style-type: none;
+
+}
+.bold {
+  font: 11px/16px Raleway-Bold;
+  padding-left: 3%;
+}
+.img {
+  background:transparent url('../../assets/ilcarroMAIN.png') 0% 0% no-repeat padding-box;
+  height: 10vh;
+  padding-top: 10%;
+  opacity: 0.5;
+  background-size: cover;
+  background-position: bottom center;
+}
+.span_wrap {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  height: 100%;
+  position: relative;
+  left: 5%;
+  top: -86%;
+  justify-content: space-between;
+}
+#terms_big {
+  display: flex;
+  font: 41px/16px Raleway-Bold;
+
+}
+#terms_small {
+  display: flex;
+  font: 14px/16px Raleway-Bold;
+
+}
