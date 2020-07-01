@@ -4,9 +4,8 @@ import {MatDialog} from '@angular/material';
 import {Location} from '@angular/common';
 import {LoginComponent} from '../login/login.component';
 import {Router} from '@angular/router';
-import {Comment, UsersService} from '../users.service';
+import { UsersService} from '../users.service';
 import {ToastrService} from 'ngx-toastr';
-import {environment} from '../environments/environment';
 import { HttpClient } from '@angular/common/http';
 
 
