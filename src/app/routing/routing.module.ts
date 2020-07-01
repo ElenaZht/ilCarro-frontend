@@ -6,9 +6,11 @@ import {RouterModule, Routes} from '@angular/router';
 import {EmptyPageComponent} from '../empty-page/empty-page.component';
 import {LoginComponent} from '../login/login.component';
 import {AuthGuard} from '../helpers/auth.guard';
+import {TermsComponent} from '../terms/terms.component';
 
 const routes: Routes = [
   { path: 'homepage', component: HomePageComponent },
+  {path: 'terms', component: TermsComponent},
   { path: 'signup', component: SignUpComponent },
   { path: 'signupwind', component: EmptyPageComponent},
   {path: 'login', component: LoginComponent},

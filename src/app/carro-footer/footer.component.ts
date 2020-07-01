@@ -13,7 +13,6 @@ import {LoginComponent} from '../login/login.component';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
-
   logo = '../assets/img/logo.svg';
   joinUs() {
     const dialogRef = this.dialog.open(SingUpDialogComponent, {panelClass: 'custom-dialog-container'});
@@ -29,9 +28,13 @@ export class FooterComponent implements OnInit {
       if (!result) {this.router.navigate(['/homepage']); }
     });
   }
+
   constructor(private router: Router,  private location: Location, public dialog: MatDialog) { }
 
   ngOnInit() {
   }
 
+  up() {
+    window.scrollTo(0, 0);
+  }
 }

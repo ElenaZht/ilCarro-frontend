@@ -29,6 +29,7 @@ import {FooterModule} from './carro-footer/footer/footer.module';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {fab} from '@fortawesome/free-brands-svg-icons';
+import { TermsComponent } from './terms/terms.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import {fab} from '@fortawesome/free-brands-svg-icons';
     SingUpDialogComponent,
     NavbarComponent,
     EmptyPageComponent,
-    LoginComponent
+    LoginComponent,
+    TermsComponent
   ],
   imports: [
     BrowserModule,
@@ -71,8 +73,3 @@ export class AppModule {
   }
 }
 
-// export class AppModule {
-//   constructor() {
-//     library.add(fab);
-//   }
-// }
