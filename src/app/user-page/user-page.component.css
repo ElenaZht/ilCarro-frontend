@@ -1,0 +1,126 @@
+@font-face {
+  font-family: Raleway-Regular;
+  src: url('../../assets/fonts/Raleway-Regular.ttf') format("opentype");
+}
+.main-container {
+  display: flex;
+  flex-direction: column;
+  border-left: 2px solid #0000005f;
+  border-right: 2px solid #0000005f;
+  width: 80%;
+  height: 80%;
+  margin: auto;
+  justify-content: space-between;
+}
+.container {
+  display: flex;
+  width: 90%;
+  margin: auto;
+  height: 100%;
+  position: relative;
+  flex-direction: column;
+
+}
+.a,.b,.c, .h, .f, .i, .j, .b-k, .b-l {
+  display: flex;
+  position: relative;
+}
+.a {
+  height: 40%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  top: 3%;
+  /*border: 2px solid #0000005f;*/
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #0000005F;
+
+}
+.b {
+  height: 100%;
+  width: 25%;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 2px solid #0000005f;
+
+
+}
+.c {
+  height: 100%;
+  width: 70%;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+.d {
+  height: 70%;
+  width: 100%;
+  background: transparent url('../../assets/user_photo.png') no-repeat padding-box;
+  opacity: 1;
+  background-size: cover;
+  border-bottom: 2px solid #0000005f;
+
+
+}
+.e {
+  height: 25%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font: 19px/19px Raleway-Regular;
+
+
+}
+.h {
+  flex-direction: row;
+  justify-content: space-around;
+  border-bottom: 2px solid #0000005f;
+  height: 10%;
+
+}
+.i {
+  flex-direction: column;
+  height: 90%;
+}
+.f {
+  flex-direction: row;
+  justify-content: space-between;
+  height: 40%;
+  align-items: center;
+  background: lightgray;
+  border-bottom: 2px solid #0000005f;
+
+}
+.g {
+  width: 20%;
+  background: transparent url('../../assets/zaz.jpg') no-repeat padding-box;
+  opacity: 1;
+  background-size: cover;
+  height: 90%;
+  margin-left: 1%;
+}
+.g2 {
+  width: 20%;
+  background: transparent url('../../assets/gaz.jpg') no-repeat padding-box;
+  opacity: 1;
+  background-size: cover;
+  height: 90%;
+  margin-left: 1%;
+
+
+}
+.j {
+  width: 65%;
+  flex-direction: column;
+}
+.b-k {
+  width: 7%;
+  height: 30%;
+}
+.b-l {
+  width: 3%;
+  height: 30%;
+  right: 3%;
+
+}

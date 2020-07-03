@@ -1,12 +1,12 @@
-﻿﻿import { Injectable } from '@angular/core';
-import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTTP_INTERCEPTORS } from '@angular/common/http';
+﻿import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
 import { User } from '../users.service';
+import { Injectable } from '@angular/core';
 
-let users: User[] = [{ id: 1, first_name: 'Lena', second_name: 'Zht',
+const users: User[] = [{ id: 1, first_name: 'Lena', second_name: 'Zhytomirsky',
   email: 'elenazht@gmail.com', password: '12345678'}];
-let comments = [{
+const comments = [{
   url: '../../assets/face1.jpg',
   name: 'Alex',
   date: '22 september 2019',

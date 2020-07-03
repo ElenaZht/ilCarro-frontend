@@ -7,11 +7,17 @@ import {EmptyPageComponent} from '../empty-page/empty-page.component';
 import {LoginComponent} from '../login/login.component';
 import {AuthGuard} from '../helpers/auth.guard';
 import {TermsComponent} from '../terms/terms.component';
+import {UserPageComponent} from '../user-page/user-page.component';
+import {LetTheCarWorkComponent} from '../let-the-car-work/let-the-car-work.component';
+import {CarComponent} from '../car/car.component';
 
 const routes: Routes = [
   { path: 'homepage', component: HomePageComponent },
   {path: 'terms', component: TermsComponent},
+  {path: 'myaccount', component: UserPageComponent},
+  {path: 'letthecarwork', component: LetTheCarWorkComponent},
   { path: 'signup', component: SignUpComponent },
+  { path: 'car', component: CarComponent},
   { path: 'signupwind', component: EmptyPageComponent},
   {path: 'login', component: LoginComponent},
   {path: 'loginwind', component: EmptyPageComponent},

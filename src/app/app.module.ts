@@ -30,6 +30,9 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {fab} from '@fortawesome/free-brands-svg-icons';
 import { TermsComponent } from './terms/terms.component';
+import { UserPageComponent } from './user-page/user-page.component';
+import { LetTheCarWorkComponent } from './let-the-car-work/let-the-car-work.component';
+import { CarComponent } from './car/car.component';
 
 
 @NgModule({
@@ -43,7 +46,10 @@ import { TermsComponent } from './terms/terms.component';
     NavbarComponent,
     EmptyPageComponent,
     LoginComponent,
-    TermsComponent
+    TermsComponent,
+    UserPageComponent,
+    LetTheCarWorkComponent,
+    CarComponent
   ],
   imports: [
     BrowserModule,
