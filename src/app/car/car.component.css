@@ -26,9 +26,10 @@
 .photo {
   height: 100%;
   width: 65%;
-  background: transparent url('../../assets/zaz.jpg') no-repeat padding-box;
+  background: transparent url('../../assets/no_image.jpg') no-repeat padding-box;
   opacity: 1;
   background-size: cover;
+  background-position: center;
   position: relative;
   display: flex;
 
@@ -145,6 +146,7 @@
   position: relative;
   height: 100%;
   width: 60%;
+  justify-content: space-between;
 
 }
 .map {
@@ -159,12 +161,14 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  width: 60%;
+  width: auto;
+  max-width: 48%;
+
 }
 .col2 {
   display: flex;
   height: 100%;
-  width: 60%;
+  max-width: 48%;
   flex-direction: column;
 
 }
@@ -173,20 +177,23 @@
   height: 40%;
   width: 100%;
   flex-direction: row;
+  justify-content: space-between;
 
 }
 .col4 {
   display: flex;
   flex-direction: row;
   height: 40%;
-  width: 100%;
+  max-width: 90%;
   text-align: left;
+  justify-content: space-between;
+
 }
 .col5 {
   display: flex;
   flex-direction: row;
   height: 40%;
-  width: 100%;
+  justify-content: space-around;
 }
 .col6 {
   display: flex;
@@ -197,7 +204,7 @@
 .col7, .col8, .col9, .col10{
   display: flex;
   height: 100%;
-  width: 25%;
+  width: auto;
   flex-direction: column;
   font:  16px/24px Raleway-Regular;
 
@@ -211,21 +218,23 @@
 .col12 {
   display: flex;
   height: 100%;
-  width: 66%;
+  width: auto;
+  max-width: 80%;
   justify-content: space-between;
 
 }
 .col13 {
   display: flex;
   height: 100%;
-  width: 30%;
+  width:auto;
   justify-content: space-between;
 
 }
 .col14 {
   display: flex;
   height: 100%;
-  width: 70%;
+  width: auto;
+  max-width: 68%;
   justify-content: space-between;
 
 }

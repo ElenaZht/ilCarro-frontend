@@ -11,8 +11,9 @@ export class CommentsComponent implements OnInit {
   constructor(private usersService: UsersService) { }
 
   ngOnInit() {
-    this.usersService.getComments(5).subscribe(res => {
-      this.comments = res;
+    this.usersService.getComments().subscribe(res => {
+      this.comments = res.slice(0, 6);
+      console.log(res.slice(0, 6));
    });
   }
 

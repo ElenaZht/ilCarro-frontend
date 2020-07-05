@@ -17,7 +17,7 @@ const routes: Routes = [
   {path: 'myaccount', component: UserPageComponent},
   {path: 'letthecarwork', component: LetTheCarWorkComponent},
   { path: 'signup', component: SignUpComponent },
-  { path: 'car', component: CarComponent},
+  { path: 'car/:id', component: CarComponent},
   { path: 'signupwind', component: EmptyPageComponent},
   {path: 'login', component: LoginComponent},
   {path: 'loginwind', component: EmptyPageComponent},

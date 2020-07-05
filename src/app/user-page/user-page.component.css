@@ -26,12 +26,11 @@
   position: relative;
 }
 .a {
-  height: 40%;
   width: 100%;
+  min-height: 50vh;
   display: flex;
   justify-content: space-between;
   top: 3%;
-  /*border: 2px solid #0000005f;*/
   background: #FFFFFF 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 6px #0000005F;
 
@@ -49,15 +48,15 @@
   height: 100%;
   width: 70%;
   flex-direction: column;
-  justify-content: space-between;
 
 }
 .d {
-  height: 70%;
+  height: 100%;
   width: 100%;
-  background: transparent url('../../assets/user_photo.png') no-repeat padding-box;
+  background: transparent url('../../assets/no_image.jpg') no-repeat padding-box;
   opacity: 1;
   background-size: cover;
+  background-position: center;
   border-bottom: 2px solid #0000005f;
 
 
@@ -81,23 +80,25 @@
 }
 .i {
   flex-direction: column;
-  height: 90%;
+  min-height: 7vh;
+
 }
 .f {
   flex-direction: row;
   justify-content: space-between;
-  height: 40%;
   align-items: center;
   background: lightgray;
   border-bottom: 2px solid #0000005f;
+  min-width: 5vh;
 
 }
 .g {
-  width: 20%;
-  background: transparent url('../../assets/zaz.jpg') no-repeat padding-box;
+  width: 10%;
+  background: transparent url('../../assets/no_image.jpg') no-repeat padding-box;
   opacity: 1;
   background-size: cover;
-  height: 90%;
+  background-position: center;
+  height: 5vh;
   margin-left: 1%;
 }
 .g2 {
@@ -113,14 +114,18 @@
 .j {
   width: 65%;
   flex-direction: column;
+  color: #383838;
 }
 .b-k {
-  width: 7%;
-  height: 30%;
+
 }
 .b-l {
-  width: 3%;
-  height: 30%;
   right: 3%;
 
+}
+.icon {
+  font: 15px/15px Font Awesome Regular;
+  color: #0000005F;
+  opacity: 1;
+  position: relative;
 }

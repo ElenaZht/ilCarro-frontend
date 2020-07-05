@@ -25,7 +25,7 @@ export class UsersArrayService implements UsersService {
 
   }
 
-  getComments(n: number): Observable<Comment[]> {
+  getComments(): Observable<Comment[]> {
     return this.http.get<Comment[]>(`${environment.apiUrl}/users/comments`);
   }
   logIn(email: string, password: string ): Subject<User> {
@@ -58,6 +58,10 @@ export class UsersArrayService implements UsersService {
       return true;
     }
     return false;
+  }
+
+  getCommentsById(id: Array<number>): Observable<Comment[]> {
+    return undefined;
   }
 
 }
