@@ -5,6 +5,10 @@ import {Car, CarsService} from '../cars.service';
 import { library, icon } from '@fortawesome/fontawesome-svg-core';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import {LoginComponent} from '../login/login.component';
+import {AddCarComponent} from '../add-car/add-car.component';
+import {MatDialog} from '@angular/material';
+
 
 library.add(faPen);
 library.add(faTrash);
@@ -23,7 +27,7 @@ export class UserPageComponent implements OnInit {
   cars: Array<Car>;
 
 
-  constructor(private usersService: UsersService,  private router: Router, private carsService: CarsService, private route: ActivatedRoute) { }
+  constructor(private usersService: UsersService,  private router: Router, private carsService: CarsService, private route: ActivatedRoute, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.user = this.usersService.getCurrentUser();
@@ -36,5 +40,13 @@ export class UserPageComponent implements OnInit {
   toCar(id) {
     this.router.navigate(['/car', id]);
 
+  }
+
+  addCar() {
+    const dialogRef = this.dialog.open(AddCarComponent, {panelClass: 'custom-dialog-container'});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed nav bar', result);
+      if (!result) {this.router.navigate(['/myaccount']); }
+    });
   }
 }
