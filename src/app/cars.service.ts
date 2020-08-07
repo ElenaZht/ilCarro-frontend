@@ -1,10 +1,24 @@
 import {Observable} from 'rxjs';
-import {User} from './users.service';
 
-export interface TopCar {
-  url: string;
-  title: string;
-  price: number;
+// export interface TopCar {
+//   url: string;
+//   title: string;
+//   price: number;
+// }
+export interface Location {
+  country: string;
+  city: string;
+  street: string;
+  region: string;
+  zip: number;
+  lat: number;
+  lng: number;
+}
+export interface Features {
+  multimediaDisplay: boolean;
+  abs: boolean;
+  climatControl: boolean;
+  childAutoseat: boolean;
 }
 export interface Car {
   id: number;
@@ -13,7 +27,7 @@ export interface Car {
   price: number;
   owner_id: number;
   year: number;
-  location: string;
+  location: Location;
   engine: string;
   fuel: string;
   gear: string;
@@ -25,14 +39,19 @@ export interface Car {
   seats: number;
   class: string;
   about_text: string;
-  features: Array<string>;
+  features: Features;
   rating: number;
   comments: Array<number>;
+  model: string;
 }
 export abstract class CarsService {
   constructor() { }
-  abstract getTopCars(): Observable<TopCar[]>;
+  abstract getTopCars(): Observable<Car[]>;
   abstract getCarById(id: number): Observable<Car>;
   abstract getCarByUserId(id: number): Observable<Car[]>;
+  abstract addCar(car: Car): Observable<boolean>;
+  abstract editCar(car: Car): Observable<boolean>;
+  abstract removeCar(id: number): Observable<boolean>;
+
 
 }

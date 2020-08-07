@@ -1,0 +1,50 @@
+<div class="card" id="reg_card">
+  <form class="card-body" #rentForm="ngForm" (ngSubmit)="onSubmit(rentForm)">
+    <header class="card-title">
+      <h1 id="reg_lable">Rent this car</h1>
+      <h5 id="type_data">Choose date and hit Rent!</h5>
+      <div class="rent-time">
+        <span>Rent car for day and more. Renting and returning time is <strong style="color: #EA2340">12:00</strong>.</span>
+      </div>
+
+    </header>
+    <div class="input-wrap">
+      <div class="input-div">
+        <label>City: </label>
+        <input  class="form-control" type="text" [value]="city" disabled>
+      </div>
+      <div class="input-div">
+        <label>From: </label>
+        <mat-form-field>
+          <input matInput [matDatepicker]="myDatePicker" [matDatepickerFilter]="dateFilter.bind(this)" #dateOn="ngModel" name="dateOn" [(ngModel)]="rentForm.dateOn" required [min]="minDate">
+            <div class="error" *ngIf="!dateOn">-->
+                      Date is required.
+            </div>
+          <mat-datepicker-toggle [for]="myDatePicker" matSuffix></mat-datepicker-toggle>
+          <mat-datepicker #myDatePicker></mat-datepicker>
+        </mat-form-field>
+
+      </div>
+      <div class="input-div">
+        <label>Till: </label>
+        <mat-form-field>
+          <input matInput [matDatepicker]="myDatePicker2" [matDatepickerFilter]="dateFilter.bind(this)" #dateOff="ngModel" name="dateOff" [(ngModel)]="rentForm.dateOf" required [min]="minDate">
+             <div class="error" *ngIf="!dateOff">
+                      Date is required.
+              </div>
+          <mat-datepicker-toggle [for]="myDatePicker2" matSuffix></mat-datepicker-toggle>
+          <mat-datepicker #myDatePicker2></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div id="button_y_div">
+<!--        <button id="button_yalla" type="submit" [disabled]="!rentForm.valid" >-->
+        <button id="button_yalla" type="submit"  >
+          <span id="y">Rent!</span>
+        </button>
+      </div>
+    </div>
+
+  </form>
+  <div *ngIf="errorText !== ''" class="danger">{{errorText}}</div>
+</div>

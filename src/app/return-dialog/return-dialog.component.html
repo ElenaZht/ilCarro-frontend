@@ -1,0 +1,50 @@
+<div class="container">
+  <button class="exit" type="submit" (click)="exit()">x</button>
+  <span class="title">Are you ready to return this car?</span>
+  <span class="mini-title">We are hopping you enjoyed this experience!</span>
+  <div class="order-details">
+    <div class="image" [ngStyle]="{'background-image': ' url('+order.carUrl+')'}"></div>
+    <div style="margin: auto;">
+      <div class="car-name">{{order.carName}}</div>
+      <div class="order-dates">
+        <div>{{order.dateOn | date: 'dd-MMM-yyyy h:mm'}}</div>
+        <div>{{order.dateOff | date: 'dd-MMM-yyyy h:mm'}}</div>
+        </div>
+    </div>
+
+  </div>
+  <div class="add-comment">
+    <span class="comment-title">Please, leave some words about this car</span>
+    <div class="divider">
+      <mat-divider></mat-divider>
+    </div>
+    <form #commentForm="ngForm" (ngSubmit)="onSubmit(commentForm)">
+      <textarea type="text" maxlength="100" name="text"  #text="ngModel" [(ngModel)]="commentForm.text"></textarea>
+      <div class="stars-wrap">
+        <div class="stars">
+          <fa-icon *ngFor="let star of stars" class="icon" [icon]="['fas', 'star']" (click)="onStar(star)" [style.color]="newRating>=star ? 'gold' : '#999999'"></fa-icon>
+
+        </div>
+
+      </div>
+      <div class="ihaveproblem">
+        <div style="display: flex; justify-content: space-between">
+          <span class="problem-text">You have any problems with this car? We will take care of this.</span>
+          <button>
+            <span style="color: #EA2340" (click)="onSupport()">Support</span>
+          </button>
+        </div>
+        <div class="divider">
+          <mat-divider></mat-divider>
+        </div>
+      </div>
+
+      <button class="return" type="submit">
+        <span class="r">Return car</span>
+      </button>
+    </form>
+
+
+  </div>
+
+</div>

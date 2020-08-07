@@ -34,6 +34,18 @@ import { UserPageComponent } from './user-page/user-page.component';
 import { LetTheCarWorkComponent } from './let-the-car-work/let-the-car-work.component';
 import { CarComponent } from './car/car.component';
 import { AddCarComponent } from './add-car/add-car.component';
+import { StarRatingModule } from 'angular-star-rating';
+import {MatButtonToggleModule, MatDatepickerModule, MatInputModule, MatNativeDateModule, MatTabsModule} from '@angular/material';
+import {MatDividerModule} from '@angular/material/divider';
+import {AgmCoreModule} from '@agm/core';
+import { RentFormComponent } from './rent-form/rent-form.component';
+import {RentService} from './rent.service';
+import {MockRentService} from './mock-rent.service';
+import {MAT_DATE_LOCALE} from '@angular/material';
+import { PaymentDialogComponent } from './payment-dialog/payment-dialog.component';
+import { ReturnDialogComponent } from './return-dialog/return-dialog.component';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import { LoginOrSignDialogComponent } from './login-or-sign-dialog/login-or-sign-dialog.component';
 
 
 @NgModule({
@@ -51,7 +63,11 @@ import { AddCarComponent } from './add-car/add-car.component';
     UserPageComponent,
     LetTheCarWorkComponent,
     CarComponent,
-    AddCarComponent
+    AddCarComponent,
+    RentFormComponent,
+    PaymentDialogComponent,
+    ReturnDialogComponent,
+    LoginOrSignDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -60,18 +76,32 @@ import { AddCarComponent } from './add-car/add-car.component';
     MatDialogModule,
     RoutingModule,
     HttpClientModule,
-    ToastrModule.forRoot({timeOut: 1000, positionClass: 'toast-top-right'}),
+    ToastrModule.forRoot({timeOut: 8000, positionClass: 'toast-top-right'}),
     FooterModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    StarRatingModule,
+    MatButtonToggleModule,
+    MatDividerModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    NgxMaterialTimepickerModule,
+    MatTabsModule,
+    AgmCoreModule.forRoot({
+        apiKey: 'AIzaSyCjZpKwxl9P88Y2kGDyTKkkLmS-IMxT8eY'
+      }
+    ),
+    MatInputModule
   ],
   providers: [
     {provide: UsersService, useClass: UsersArrayService},
     {provide: CarsService, useClass: MockCarsService},
+    {provide: RentService, useClass: MockRentService},
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
-    {provide: HTTP_INTERCEPTORS, useClass: FakeBackendInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: FakeBackendInterceptor, multi: true},
+    {provide: MAT_DATE_LOCALE, useValue: 'en-GB'}
 
   ],
-  entryComponents: [SingUpDialogComponent, LoginComponent],
+  entryComponents: [SingUpDialogComponent, LoginComponent, PaymentDialogComponent, ReturnDialogComponent, LoginOrSignDialogComponent],
 
   bootstrap: [AppComponent]
 })

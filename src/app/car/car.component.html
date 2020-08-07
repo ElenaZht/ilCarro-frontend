@@ -2,7 +2,9 @@
   <div class="container">
     <div class="wrap">
       <div class="photo" [ngStyle]="{'background-image': ' url('+car.img_url+')'}"></div>
-      <div class="form"></div>
+      <div class="form">
+        <app-rent-form></app-rent-form>
+      </div>
     </div>
     <div class="wcard">
       <div class="card-body">
@@ -17,10 +19,25 @@
     </div>
   </div>
   <div class="paral-wrap">
-  <div class="parallelogram"></div>
+  <div class="parallelogram">
+    <div class="stars" >
+      <div *ngFor="let s of stars" class="star">
+        <fa-icon class="icon" [icon]="['fas', 'star']"></fa-icon>
+      </div>
+    </div>
+
+  </div>
   </div>
   <div class="data-wrap">
     <div class="car-data">
+      <div *ngIf="car.owner_id == user.id" class="btns">
+        <button class="b-k" (click)="editCar(car)">
+          <fa-icon class="icon" [icon]="['fas', 'pen']"></fa-icon>
+        </button>
+        <button class="b-l" (click)="removeCar(car.id)">
+          <fa-icon class="icon" [icon]="['fas', 'trash']"></fa-icon>
+        </button>
+      </div>
       <div class="col1">
         <div class="col3">
           <div class="col7">
@@ -64,17 +81,98 @@
       <div class="col2">
         <div class="col5">
           <div class="col13">Location:</div>
-          <div class="col14">{{car.location}}</div>
+          <div class="location-list">
+            <div class="location-item">
+              <span class="location-item-title">Country:</span>
+              <span>{{car.location.country}}</span>
+            </div>
+            <div class="location-item">
+              <span class="location-item-title">City:</span>
+              <span>{{car.location.city}}</span>
+            </div>
+            <div class="location-item">
+              <span class="location-item-title">Region:</span>
+              <span>{{car.location.region}}</span>
+            </div>
+            <div class="location-item">
+              <span class="location-item-title">Street:</span>
+              <span>{{car.location.street}}</span>
+            </div>
+            <div class="location-item">
+              <span class="location-item-title">ZIP:</span>
+              <span>{{car.location.zip}}</span>
+            </div>
+          </div>
         </div>
         <div class="col6">
           <div class="col15">Features:</div>
           <div class="col16">
-            <span *ngFor="let f of features">- {{f}}</span>
+            <div class="feature">
+              <div *ngIf="car.features.multimediaDisplay" >
+                <fa-icon class="icon" [icon]="['fas', 'check']"></fa-icon>
+              </div>
+              <div *ngIf="!car.features.multimediaDisplay">
+                <fa-icon class="icon" [icon]="['fas', 'times']"></fa-icon>
+              </div>
+              <span class="feature-title">Multimedia display</span>
+            </div>
+            <div class="feature">
+              <div *ngIf="car.features.abs">
+                <fa-icon class="icon" [icon]="['fas', 'check']"></fa-icon>
+              </div>
+              <div *ngIf="!car.features.abs">
+                <fa-icon class="icon" [icon]="['fas', 'times']"></fa-icon>
+              </div>
+              <span class="feature-title">ABS</span>
+            </div>
+            <div class="feature">
+              <div *ngIf="car.features.climatControl">
+                <fa-icon class="icon" [icon]="['fas', 'check']"></fa-icon>
+              </div>
+              <div *ngIf="!car.features.climatControl">
+                <fa-icon class="icon" [icon]="['fas', 'times']"></fa-icon>
+              </div>
+              <span class="feature-title">Climatcontrol</span>
+            </div>
+            <div class="feature">
+              <div *ngIf="car.features.childAutoseat">
+                <fa-icon class="icon" [icon]="['fas', 'check']"></fa-icon>
+              </div>
+              <div *ngIf="!car.features.childAutoseat">
+                <fa-icon class="icon" [icon]="['fas', 'times']"></fa-icon>
+              </div>
+              <span class="feature-title">Child autoseat</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="map"></div>
+      <agm-map [latitude]="latitude"  [longitude]="longitude">
+        <agm-marker [latitude]="latitude"  [longitude]="longitude"></agm-marker>
+      </agm-map>
+  </div>
+  <div class="comments-wrap">
+    <div class="comments-container">
+      <div class="comment" *ngFor="let comment of comments">
+        <div class="user_photo" [ngStyle]="{'background-image': ' url('+comment.url+')'}"></div>
+        <div class="comment_body">
+          <div class="com-stars">
+            <div class="com-star" *ngFor="let s of [].constructor(comment.stars)">
+              <fa-icon [icon]="['fas', 'star']"></fa-icon>
+            </div>
+          </div>
+          <span>{{comment.text}}</span>
+          <div class="comment_info">
+            <p class="user_name">{{comment.name}}</p>
+            <p class="comment_date">{{comment.date | date: 'd MMMM yyyy'}}</p>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="comments && comments.length < 1" class="no_comments">
+        <span> No comments yet.</span>
+      </div>
+    </div>
+
   </div>
 
 </div>

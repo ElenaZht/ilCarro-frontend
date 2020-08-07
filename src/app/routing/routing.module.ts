@@ -13,14 +13,14 @@ import {CarComponent} from '../car/car.component';
 import {AddCarComponent} from '../add-car/add-car.component';
 
 const routes: Routes = [
-  { path: 'homepage', component: HomePageComponent },
+  {path: 'homepage', component: HomePageComponent },
   {path: 'terms', component: TermsComponent},
   {path: 'myaccount', component: UserPageComponent},
   {path: 'letthecarwork', component: LetTheCarWorkComponent},
-  { path: 'signup', component: SignUpComponent },
-  { path: 'car/:id', component: CarComponent},
-  { path: 'signupwind', component: EmptyPageComponent},
-  { path: 'addcarwind', component: UserPageComponent},
+  {path: 'signup', component: SignUpComponent },
+  {path: 'car/:id', component: CarComponent},
+  {path: 'signupwind', component: EmptyPageComponent},
+  {path: 'addcarwind', component: UserPageComponent},
   {path: 'login', component: LoginComponent},
   {path: 'addcar', component: AddCarComponent},
   {path: 'loginwind', component: EmptyPageComponent},

@@ -1,36 +1,156 @@
 <div class="main-container">
+  <div  class="notification"  *ngFor="let order of waitingOrders; let i=index;" >
+    <span>User {{order.renterName}} returned your car <strong>{{order.carName}}</strong> being rented <strong>from {{order.dateOn | date: 'dd-MMM-yyyy h:mm'}} till {{order.dateOff | date: 'dd-MMM-yyyy h:mm'}}</strong>.</span>
+    <span><strong>Is everything okey?</strong></span>
+    <div class="notif-btns">
+      <button class="okey" (click)="onCloseNotifReturn(order, i)">Okey</button>
+      <button class="support" (click)="onSupport()">Support</button>
+    </div>
+  </div>
+  <div  class="notification"  *ngFor="let order of canceledOrders; let i=index;" >
+    <span>User {{order.renterName}} canceled your car <strong>{{order.carName}}</strong> being rented <strong>from {{order.dateOn | date: 'dd-MMM-yyyy h:mm'}} till {{order.dateOff | date: 'dd-MMM-yyyy h:mm'}}</strong>.</span>
+    <div class="notif-btns">
+      <button class="okey" (click)="onCloseNotifCancel(order, i)">Okey</button>
+    </div>
+  </div>
   <div class="container">
     <div class="a" >
-      <div class="b">
-        <div class="d" [ngStyle]="{'background-image': ' url('+user.url+')', 'background-position': 'center'}"></div>
-        <div class="e">
-          <span>{{user.first_name}} {{user.second_name}}</span>
-          <span>email: {{user.email}}</span>
+      <div class="b" *ngIf="user$ | async as userVar">
+        <div class="d" [ngStyle]="{'background-image': ' url('+userVar.url+')', 'background-position': 'center'}">
+          <input style="visibility: hidden" class="hover-text" id="chooseFile" type='file' (change)="onSelectFile($event)">
+          <label for="chooseFile" class="hover-text"> <fa-icon size="4x" [icon]="['fas', 'images']"></fa-icon></label>
         </div>
+        <form class="e" #editUserForm="ngForm" (ngSubmit)="onSubmit(editUserForm)">
+          <div class="user_form_left">
+            <span>name: </span>
+            <span>email: </span>
+          </div>
+          <div class="user_form_rigth">
+            <span >{{userVar.first_name + ' ' + userVar.second_name}}</span>
+            <span>{{userVar.email}}</span>
+          </div>
+          <div class="user_form_btns">
+            <button class="edit_user"  (click)="show = !show; errorText = '';" type="button">
+              <fa-icon *ngIf="!show" class="icon" [icon]="['fas', 'pen']"></fa-icon>
+              <span *ngIf="show">Close</span>
+            </button>
+
+            <div *ngIf="show">
+              <input type="email" id="email_input" placeholder="My name" name="userName" [(ngModel)]="displayName">
+
+            </div>
+            <div *ngIf="show">
+              <input type="email" id="name_input" placeholder="My new email" name="userEmail" [(ngModel)]="displayEmail" pattern="[^@\s]+@[^@\s]+\.[^@\s]+">
+            </div>
+
+
+            <button *ngIf="show" type="submit" class="submitEdition">Change</button>
+          </div>
+
+          <mat-button-toggle class="danger" (click)="removeUser(userVar.id)">Delete my account</mat-button-toggle>
+
+        </form>
+        <div *ngIf="errorText !== ''" class="errorText">{{errorText}}</div>
+
       </div>
       <div class="c">
         <div class="h">
           <span>My cars</span>
-          <button routerLink="addcarwind" (click)="addCar()">+Add</button>
+          <button (click)="addCar()">+Add</button>
+          <button (click)="refresh()">Refresh</button>
         </div>
-        <div class="i" *ngFor="let car of cars">
-          <div class="f">
-            <div class="g" (click)="toCar(car.id)" [ngStyle]="{'background-image': ' url('+car.img_url+')'}"></div>
-            <div class="j" (click)="toCar(car.id)">
-              <span>Car name: {{car.title}}</span>
-              <span>Fuel cons: {{car.fuel_cons}}</span>
-              <span>Price: {{car.price}}</span>
+        <div class="divider">
+          <mat-divider></mat-divider>
+        </div>
+        <div class="my-cars">
+          <div class="i" *ngFor="let car of cars">
+            <div class="f">
+              <div class="g" (click)="toCar(car.id)" [ngStyle]="{'background-image': ' url('+car.img_url+')'}"></div>
+              <div class="j" (click)="toCar(car.id)">
+                <span>Car name: {{car.title}}</span>
+                <span>Fuel cons: {{car.fuel_cons}} /100km</span>
+                <span>Price: {{car.price}} $/day</span>
+              </div>
+              <button class="b-k" (click)="editCar(car)">
+                <fa-icon class="icon" [icon]="['fas', 'pen']"></fa-icon>
+              </button>
+              <button class="b-l" (click)="removeCar(car)">
+                <fa-icon class="icon" [icon]="['fas', 'trash']"></fa-icon>
+              </button>
             </div>
-            <button class="b-k">
-              <fa-icon class="icon" [icon]="['fas', 'pen']"></fa-icon>
-            </button>
-            <button class="b-l">
-              <fa-icon class="icon" [icon]="['fas', 'trash']"></fa-icon>
-            </button>
-          </div>
 
+          </div>
+        </div>
+
+        <div class="no_cars" *ngIf="cars && cars.length < 1">
+          <span>No cars yet!</span>
         </div>
       </div>
     </div>
   </div>
+
+  <div class="orders-container">
+    <mat-tab-group>
+      <mat-tab label="Orders of my cars">
+        <div class="order-main-wrap">
+          <div *ngFor="let order of carsOrders" class="order-wrap">
+            <div class="order" [style.border]="order.state == State.WaitToGo ? 'solid #EA2340 2px' : 'solid #0000005F 2px'"  [style.opacity]="order.state === State.WaitToReturn ? 0.5 : 2">
+              <div style="display: flex; flex-direction: column">
+                <div class="order_img" [ngStyle]="{'background-image': ' url('+order.carUrl+')'}" (click)="toCar(order.carId)"></div>
+                <div class="order_info" style="position: relative; top: -50%;" (click)="toCar(order.carId)">{{order.carName}}</div>
+              </div>
+              <div style="display: flex; flex-direction: column;width: 36%; padding-left: 2%;">
+                <span>rented by: </span>
+                <div class="order_info">{{order.renterName}}</div>
+              </div>
+              <div class="order_time">
+                <div class="order_info">from: {{order.dateOn | date: 'dd-MMM-yyyy h:mm'}}</div>
+                <div class="order_info">untill: {{order.dateOff | date: 'dd-MMM-yyyy h:mm'}}</div>
+              </div>
+              <div class="status">{{State[order.state]}}</div>
+              <div *ngIf="order.state == State.WaitToGo" class="return-btn">
+                <button class="cancel" (click)="cancelOrderByOwner(order)">cancel</button>
+              </div>
+
+            </div>
+
+          </div>
+          <div *ngIf="carsOrders && carsOrders.length < 1">
+            <span class="no_orders">No orders of my cars yet.</span>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="My orders">
+        <div class="order-main-wrap">
+          <div *ngFor="let order of myOrders" class="order-wrap">
+            <div class="order" [style.border]="order.state == State.WaitToGo ? 'solid #EA2340 2px' : 'solid #0000005F 2px'" [style.opacity]="order.state == State.WaitToReturn ? '0.5' : '1'">
+              <div style="display: flex; flex-direction: column; position: relative;">
+                <div class="order_img" [ngStyle]="{'background-image': ' url('+order.carUrl+')'}"  (click)="toCar(order.carId)"></div>
+                <div class="order_info" (click)="toCar(order.carId)" >{{order.carName}}</div>
+              </div>
+              <div style="display: flex; flex-direction: column;width: 36%; padding-left: 2%;">
+                <span>car owner: </span>
+                <div class="order_info">{{order.carOwnerName}}</div>
+              </div>
+              <div class="order_time">
+                <div class="order_info">from: {{order.dateOn | date: 'dd-MMM-yyyy h:mm'}}</div>
+                <div class="order_info">untill: {{order.dateOff | date: 'dd-MMM-yyyy h:mm'}}</div>
+              </div>
+              <div class="status">{{State[order.state]}}</div>
+              <div *ngIf="order.state == State.WaitToGo" class="return-btn">
+                <button class="cancel" *ngIf="!ordersStatus[order.orderId]" (click)="cancelOrder(order)">cancel</button>
+                <button class="return" *ngIf="ordersStatus[order.orderId]" (click)="returnCar(order)">return</button>
+              </div>
+
+            </div>
+
+          </div>
+          <div *ngIf="myOrders && myOrders.length < 1">
+            <span class="no_orders">No orders yet.</span>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+
 </div>

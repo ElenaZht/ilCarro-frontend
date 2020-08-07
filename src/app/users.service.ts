@@ -1,6 +1,4 @@
 import {Observable, Subject} from 'rxjs';
-import {until} from 'selenium-webdriver';
-import ableToSwitchToFrame = until.ableToSwitchToFrame;
 
 export interface User {
   url: string;
@@ -17,14 +15,22 @@ export interface Comment {
   date: any;
   text: string;
   id: number;
+  carId: number;
+  stars: number;
 }
 export abstract class UsersService {
   abstract AddUser(user: User): Observable<boolean>;
+  abstract removeUser(id: number): Observable<boolean>;
   abstract getComments(): Observable<Comment[]>;
-  abstract getCommentsById(id: Array<number>): Observable<Comment[]>;
-  abstract logIn(email: string, password: string ): Subject<User>;
+  abstract getCommentById(id: number): Observable<Comment>;
+  abstract addComment(comment: Comment): Observable<boolean>;
+  abstract getUserById(id: number): Observable<User>;
+  abstract logIn(email: string, password: string ): Observable<User>;
   abstract getCurrentUser(): User;
   abstract logout();
   abstract isLoggedIn(): boolean;
+  abstract editUser(id: number, firstName: string, secondName: string, email: string, url: string): Observable<boolean>;
+  abstract getUser(): Observable<User>;
+  abstract test();
 
 }

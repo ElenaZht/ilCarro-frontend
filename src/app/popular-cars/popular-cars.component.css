@@ -101,7 +101,7 @@
 #zaz{
   width: 80%;
   height: 90%;
-  background: transparent url('../../assets/no_image.jpg') 0% 0% no-repeat padding-box ;
+  background: transparent url('../../assets/no_car_image2.jpg') 0% 0% no-repeat padding-box ;
   background-position: center;
   background-size: cover;
   opacity: 1;
@@ -112,7 +112,7 @@
 #gaz{
   width: 80%;
   height: 90%;
-  background: transparent url('../../assets/no_image.jpg') 0% 0% no-repeat padding-box;
+  background: transparent url('../../assets/no_car_image2.jpg') 0% 0% no-repeat padding-box;
   background-position: center;
   background-size: cover;
   opacity: 1;
@@ -124,7 +124,7 @@
 #azlk{
   width: 80%;
   height: 90%;
-  background: transparent url('../../assets/no_image.jpg') 0% 0% no-repeat padding-box;
+  background: transparent url('../../assets/no_car_image2.jpg') 0% 0% no-repeat padding-box;
   background-position: center;
   background-size: cover;
   opacity: 1;
@@ -225,4 +225,7 @@
   position: absolute;
   top: 0;
   left:0;
+}
+.com-star {
+  color: gold;
 }

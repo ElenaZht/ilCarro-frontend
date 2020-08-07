@@ -9,7 +9,7 @@
 .card-body {
   display: flex;
   flex-direction: column;
-  height: 60vh;
+  height: 65vh;
   width: 50vw;
   justify-content: center;
   box-shadow: 0px 3px 6px #0000005F;
@@ -18,12 +18,10 @@
 .group-details {
   display: flex;
   flex-direction: column;
-  width: 70%;
 }
 .group-location {
   display: flex;
   flex-direction: column;
-  width: 70%;
 
 }
 .groups {
@@ -38,12 +36,13 @@
 
 }
 .group-img {
-  border: 2px solid #0000005f;
-  height: 30vh;
+  height: 50vh;
   width: 40%;
   left: 2%;
   position: relative;
-
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
 
 }
 .group-features {
@@ -82,7 +81,6 @@
   width: 10vw;
   position: relative;
   left: 20vw;
-  color: #EA2340;
 
 }
 .card-title {
@@ -97,4 +95,51 @@ span {
   color: #383838;
   font: 17px/27px Raleway-Bold;
 
+}
+.prew_img {
+  height: 24vh;
+  width: 100%;
+}
+.group-wrap {
+  flex-direction: column;
+  display: flex;
+}
+.group-details-left {
+  flex-direction: row;
+  display: flex;
+  position: relative;
+  width: 20%;
+}
+.group-details-rigth {
+  flex-direction: column;
+  display: flex;
+  position: relative;
+  width: 70%;
+
+}
+label{
+  margin: 0;
+  color: #383838;
+  font: 15px/15px Raleway-Regular;
+
+}
+.group-details-item {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+}
+agm-map {
+  height: 21vh;
+  width: 20vw;
+  box-shadow: 0px 3px 6px #00000052;
+
+}
+.map-wrap {
+  display: flex;
+  position: relative;
+
+}
+.img-wrap {
+  border: 2px solid #0000005f;
+  height: 52.5%;
 }

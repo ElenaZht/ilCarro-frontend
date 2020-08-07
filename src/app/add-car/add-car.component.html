@@ -1,131 +1,261 @@
 <div class="card" id="reg_card">
-  <form class="card-body" #add_carForm="ngForm" (ngSubmit)="onSubmit(add_carForm)">
+  <form class="card-body" #addCarForm="ngForm" (ngSubmit)="onSubmit(addCarForm)">
     <header class="card-title">
-      <h1 id="reg_lable">Add new car</h1>
+      <h1 id="reg_lable">{{formTitle}}</h1>
     </header>
     <div class="groups">
       <div class="group-img">
-        <input type="file" (change)="onFileSelected($event)">
-        <button (click)="onUpload()">Uploaded</button>
+        <div class="img-wrap">
+          <input type="file" (change)="onFileSelected($event)">
+          <div *ngIf="currentCar.img_url">
+            <img [src]="currentCar.img_url" class="prew_img"/>
+          </div>
+        </div>
+        <div class="map-wrap">
+          <agm-map [latitude]="latitude"  [longitude]="longitude" (mapClick)="onChosenLocation($event)">
+            <agm-marker [latitude]="latitude"  [longitude]="longitude"></agm-marker>
+          </agm-map>
+        </div>
+
       </div>
       <div class="wrap">
         <div class="group-details">
-          <span>Add car details:</span>
-          <input  class="form-control reg-data"  placeholder="Title"  type="string" id="inp1"
-                  #title="ngModel" name="title" required  [(ngModel)]="add_carForm.title">
-          <div class="error" *ngIf="!title.valid && title.touched">
-            Title is required.
+          <span>{{btnSubmitTitile}} car details:</span>
+          <div class="group-wrap">
+            <div class="group-details-item">
+              <label class="group-details-left">title: </label>
+              <input class="form-control reg-data group-details-rigth"  placeholder="Title"  type="string" id="inp1"
+                      #title="ngModel" name="title" required  [(ngModel)]="currentCar.title">
+              <div class="error" *ngIf="!title.valid && title.touched">
+                Title is required.
+              </div>
+            </div>
+            <div class="group-details-item">
+              <label class="group-details-left">model: </label>
+              <input  class="form-control reg-data group-details-rigth" placeholder="Model"  type="string" id="inp2" #model="ngModel" name="model"  required [(ngModel)]="currentCar.model">
+              <div class="error" *ngIf="!model.valid && model.touched">
+                Model is required.
+              </div>
+            </div>
+            <div class="group-details-item">
+              <label class="group-details-left">year: </label>
+              <input class="form-control reg-data group-details-rigth" list="years" label="Choose a year"  [max]="2020" [(ngModel)]="currentCar.year" required id="inp3" #year="ngModel" name="year"  placeholder="Year" >
+              <datalist id="years">
+                <option>2003</option>
+                <option>2004</option>
+                <option>2005</option>
+                <option>2006</option>
+                <option>2007</option>
+                <option>2008</option>
+                <option>2009</option>
+                <option>2010</option>
+                <option>2011</option>
+                <option>2012</option>
+                <option>2013</option>
+                <option>2014</option>
+                <option>2015</option>
+                <option>2016</option>
+                <option>2017</option>
+                <option>2018</option>
+                <option>2019</option>
+                <option>2020</option>
+              </datalist>
+              <div class="error" *ngIf="!year.valid && year.touched">
+                Year is required .
+              </div>
+            </div>
+            <div class="group-details-item">
+              <label class="group-details-left">engine: </label>
+              <input  class="form-control reg-data group-details-rigth" placeholder="Engine"  type="string" #engine="ngModel" id="inp4" name="engine" [(ngModel)]="currentCar.engine" required>
+              <div class="error" *ngIf="!engine.valid && engine.touched">
+                Engine is required .
+              </div>
+            </div>
+            <div class="group-details-item">
+              <label class="group-details-left">fuel: </label>
+              <input list="fuels" class="form-control reg-data group-details-rigth" placeholder="Fuel"  type="string" #fuel="ngModel" id="inp5" name="fuel" [(ngModel)]="currentCar.fuel" required>
+              <datalist id="fuels">
+                <option>Benzine</option>
+                <option>Gas</option>
+                <option>Solar</option>
+                <option>Electricity</option>
+              </datalist>
+              <div class="error" *ngIf="!fuel.valid && fuel.touched">
+                Fuel is required .
+              </div>
+            </div>
+            <div class="group-details-item">
+              <label class="group-details-left">fuel cons: </label>
+              <input  class="form-control reg-data group-details-rigth" placeholder="Fuel cons /100km"  type="string" #fuelcons="ngModel" id="inp6" name="fuelcons" [(ngModel)]="currentCar.fuel_cons" required>
+              <div class="error" *ngIf="!fuelcons.valid && fuelcons.touched">
+                Fuel cons is required .
+              </div>
+            </div>
+            <div class="group-details-item">
+              <label class="group-details-left">wd: </label>
+              <input list="wds" class="form-control reg-data group-details-rigth" placeholder="WD"  type="string" #wd="ngModel" id="inp7" name="wd" [(ngModel)]="currentCar.wd" required>
+              <datalist id="wds">
+                <option>RWD</option>
+                <option>FWD</option>
+                <option>4WD</option>
+                <option>AWD</option>
+              </datalist>
+              <div class="error" *ngIf="!wd.valid && wd.touched">
+                WD is required .
+              </div>
+            </div>
+            <div class="group-details-item">
+              <label class="group-details-left">hp: </label>
+              <input  class="form-control reg-data group-details-rigth" placeholder="Horsepower /W"  type="number" #hp="ngModel" id="inp8" name="hp" [(ngModel)]="currentCar.hp" required>
+              <div class="error" *ngIf="!hp.valid && hp.touched">
+                Horsepower is required .
+              </div>
+            </div>
+            <div class="group-details-item">
+              <label class="group-details-left">torque: </label>
+              <input  class="form-control reg-data group-details-rigth" placeholder="Torque /N*m"  type="number" #torque="ngModel" id="inp9" name="torque" [(ngModel)]="currentCar.torque" required>
+              <div class="error" *ngIf="!torque.valid && torque.touched">
+                Torque is required .
+              </div>
+            </div>
+            <div class="group-details-item">
+              <label class="group-details-left">doors: </label>
+              <input  class="form-control reg-data group-details-rigth" placeholder="Doors"  type="number" #doors="ngModel" id="inp10" name="doors" [(ngModel)]="currentCar.doors" required>
+              <div class="error" *ngIf="!doors.valid && doors.touched">
+                Number of doors is required .
+              </div>
+            </div>
+            <div class="group-details-item">
+              <label class="group-details-left">seats: </label>
+              <input  class="form-control reg-data group-details-rigth" placeholder="Seats"  type="number" #seats="ngModel" id="inp11" name="seats" [(ngModel)]="currentCar.seats" required>
+              <div class="error" *ngIf="!seats.valid && seats.touched">
+                Number of seats is required .
+              </div>
+            </div>
+            <div class="group-details-item">
+              <label class="group-details-left">class: </label>
+              <input list="classes" class="form-control reg-data group-details-rigth" placeholder="Class"  type="string" #class="ngModel" id="inp12" name="class" [(ngModel)]="currentCar.class" required>
+              <datalist id="classes">
+                <option value="A">
+                <option value="B">
+                <option value="C">
+              </datalist>
+              <div class="error" *ngIf="!class.valid && class.touched">
+                Class is required .
+              </div>
+            </div>
+            <div class="group-details-item">
+              <label class="group-details-left">gear: </label>
+              <input list="gears" class="form-control reg-data group-details-rigth" placeholder="Gear"  type="string" #gear="ngModel" id="inp13" name="gear" [(ngModel)]="currentCar.gear" required>
+              <datalist id="gears">
+                <option>Manual</option>
+                <option>Automatic</option>
+                <option>CVT</option>
+                <option>Semi-automatic</option>
+              </datalist>
+              <div class="error" *ngIf="!gear.valid && gear.touched">
+                Gear is required .
+              </div>
+            </div>
+            <div class="group-details-item">
+              <label class="group-details-left">price: </label>
+              <input  class="form-control reg-data group-details-rigth" placeholder="Price($)"  type="number" #price="ngModel" id="inp14" name="price" [(ngModel)]="currentCar.price" required>
+              <div class="error" *ngIf="!price.valid && price.touched">
+                Price is required .
+              </div>
+            </div>
           </div>
-          <input  class="form-control reg-data" placeholder="Model"  type="string" id="inp2" #model="ngModel" name="model"  required [(ngModel)]="add_carForm.model">
-          <div class="error" *ngIf="!model.valid && model.touched">
-            Model is required.
-          </div>
-          <input  class="form-control reg-data" placeholder="Year"  type="number" id="inp3" #year="ngModel" name="year"
-                  [(ngModel)]="add_carForm.year" required>
-          <div class="error" *ngIf="!year.valid && year.touched">
-            Year is required .
-          </div>
-          <input  class="form-control reg-data" placeholder="Engine"  type="string" #engine="ngModel" id="inp4" name="engine" [(ngModel)]="add_carForm.engine" required>
-          <div class="error" *ngIf="!engine.valid && engine.touched">
-            Engine is required .
-          </div>
-          <input  class="form-control reg-data" placeholder="Fuel"  type="string" #fuel="ngModel" id="inp5" name="guel" [(ngModel)]="add_carForm.fuel" required>
-          <div class="error" *ngIf="!fuel.valid && fuel.touched">
-            Fuel is required .
-          </div>
-          <input  class="form-control reg-data" placeholder="Fuel cons"  type="string" #fuelcons="ngModel" id="inp6" name="fuelcons" [(ngModel)]="add_carForm.fuel_cons" required>
-          <div class="error" *ngIf="!fuelcons.valid && fuelcons.touched">
-            Fuel cons is required .
-          </div>
-          <input  class="form-control reg-data" placeholder="WD"  type="string" #wd="ngModel" id="inp7" name="wd" [(ngModel)]="add_carForm.wd" required>
-          <div class="error" *ngIf="!wd.valid && wd.touched">
-            WD is required .
-          </div>
-          <input  class="form-control reg-data" placeholder="Horsepower"  type="string" #hp="ngModel" id="inp8" name="hp" [(ngModel)]="add_carForm.hp" required>
-          <div class="error" *ngIf="!hp.valid && hp.touched">
-            Horsepower is required .
-          </div>
-          <input  class="form-control reg-data" placeholder="Torque"  type="string" #torque="ngModel" id="inp9" name="torque" [(ngModel)]="add_carForm.torque" required>
-          <div class="error" *ngIf="!torque.valid && torque.touched">
-            Torque is required .
-          </div>
-          <input  class="form-control reg-data" placeholder="Doors"  type="number" #doors="ngModel" id="inp10" name="doors" [(ngModel)]="add_carForm.doors" required>
-          <div class="error" *ngIf="!doors.valid && doors.touched">
-            Number of doors is required .
-          </div>
-          <input  class="form-control reg-data" placeholder="Seats"  type="number" #seats="ngModel" id="inp11" name="seats" [(ngModel)]="add_carForm.seats" required>
-          <div class="error" *ngIf="!seats.valid && seats.touched">
-            Number of seats is required .
-          </div>
-          <input  class="form-control reg-data" placeholder="Class"  type="string" #class="ngModel" id="inp12" name="class" [(ngModel)]="add_carForm.class" required>
-          <div class="error" *ngIf="!class.valid && class.touched">
-            Class is required .
-          </div>
-          <input  class="form-control reg-data" placeholder="Gear"  type="string" #gear="ngModel" id="inp13" name="gear" [(ngModel)]="add_carForm.gear" required>
-          <div class="error" *ngIf="!gear.valid && gear.touched">
-            Gear is required .
-          </div>
-          <input  class="form-control reg-data" placeholder="Price"  type="number" #price="ngModel" id="inp14" name="price" [(ngModel)]="add_carForm.price" required>
-          <div class="error" *ngIf="!price.valid && price.touched">
-            Price is required .
-          </div>
+
         </div>
 
         <div class="group-location">
-          <span>Add car location:</span>
-          <input  class="form-control reg-data"  placeholder="Country"  type="string" id="inp15"
-                  #country="ngModel" name="country" required  [(ngModel)]="add_carForm.country">
-          <div class="error" *ngIf="!country.valid && country.touched">
-            Country is required.
+          <span>{{btnSubmitTitile}} car location:</span>
+          <div class="group-wrap">
+            <div class="group-details-item">
+              <label class="group-details-left">country: </label>
+              <input  class="form-control reg-data group-details-rigth"  placeholder="Country"  type="string" id="inp15"
+                      #country="ngModel" name="country" required  [(ngModel)]="currentCar.location.country">
+              <div class="error" *ngIf="!country.valid && country.touched">
+                Country is required.
+              </div>
+            </div>
+            <div class="group-details-item">
+              <label class="group-details-left">city: </label>
+              <input  class="form-control reg-data group-details-rigth" placeholder="City"  type="string" id="inp16" #city="ngModel" name="city"  required [(ngModel)]="currentCar.location.city">
+              <div class="error" *ngIf="!city.valid && city.touched">
+                City is required.
+              </div>
+            </div>
+            <div class="group-details-item">
+              <label class="group-details-left">street: </label>
+              <input  class="form-control reg-data group-details-rigth" placeholder="Street"  type="street" id="inp17" #street="ngModel" name="street" [(ngModel)]="currentCar.location.street" required>
+              <div class="error" *ngIf="!street.valid && street.touched">
+                Street is required.
+              </div>
+            </div>
+            <div class="group-details-item">
+              <label class="group-details-left">region: </label>
+              <input  class="form-control reg-data group-details-rigth" placeholder="Region"  type="region" #region="ngModel" id="inp18" name="region" [(ngModel)]="currentCar.location.region">
+              <div class="error" *ngIf="!region.valid && region.touched">
+                Region is required.
+              </div>
+            </div>
+            <div class="group-details-item">
+              <label class="group-details-left">zip: </label>
+              <input  class="form-control reg-data group-details-rigth" placeholder="ZIP"  type="zip" #zip="ngModel" id="inp19" name="zip" [(ngModel)]="currentCar.location.zip" required minlength="6" maxlength="6">
+              <div class="error" *ngIf="!zip.valid && zip.touched">
+                ZIP is required (6 symbols).
+              </div>
+            </div>
           </div>
-          <input  class="form-control reg-data" placeholder="City"  type="string" id="inp16" #city="ngModel" name="city"  required [(ngModel)]="add_carForm.city">
-          <div class="error" *ngIf="!city.valid && city.touched">
-            City is required.
-          </div>
-          <input  class="form-control reg-data" placeholder="Street"  type="street" id="inp17" #street="ngModel" name="street" [(ngModel)]="add_carForm.street" required>
-          <div class="error" *ngIf="!street.valid && street.touched">
-            Street is required.
-          </div>
-          <input  class="form-control reg-data" placeholder="Region"  type="region" #region="ngModel" id="inp18" name="region" [(ngModel)]="add_carForm.region">
-          <div class="error" *ngIf="!region.valid && region.touched">
-            Region is required.
-          </div>
-          <input  class="form-control reg-data" placeholder="ZIP"  type="zip" #zip="ngModel" id="inp19" name="zip" [(ngModel)]="add_carForm.zip" required minlength="6" maxlength="6">
-          <div class="error" *ngIf="!zip.valid && zip.touched">
-            ZIP is required (6 symbols).
-          </div>
+
         </div>
         </div>
       <div class="wrap">
         <div class="group-features">
           <span>Features:</span>
-          <div><input type="checkbox" id="check1" name="check1" value="Multimedia display">
-            <label for="check1">Multimedia display</label></div>
-          <div><input type="checkbox" id="check2" name="check2" value="ABS">
-            <label for="check2">ABS</label></div>
-          <div><input type="checkbox" id="check3" name="check3" value="Climatcontrol">
-            <label for="check3">Climatcontrol</label></div>
-          <div><input type="checkbox" id="check4" name="check4" value="Child autoseat">
-            <label for="check4">Child autoseat</label></div>
+          <div>
+            <input type="checkbox" [(ngModel)]="this.currentCar.features.multimediaDisplay" [ngModelOptions]="{standalone: true}">
+            <label>Multimedia display</label>
+          </div>
+          <div>
+            <input type="checkbox" [(ngModel)]="this.currentCar.features.abs" [ngModelOptions]="{standalone: true}">
+            <label>ABS</label>
+          </div>
+          <div>
+            <input type="checkbox" [(ngModel)]="this.currentCar.features.climatControl" [ngModelOptions]="{standalone: true}">
+            <label>Climatcontrol</label>
+          </div>
+          <div>
+            <input type="checkbox" [(ngModel)]="this.currentCar.features.childAutoseat" [ngModelOptions]="{standalone: true}">
+            <label>Child autoseat</label>
+          </div>
 
         </div>
         <div class="group-about">
           <span>About:</span>
-          <input class="text">
-      </div>
+          <input class="text" #about_text="ngModel" [(ngModel)]="currentCar.about_text" name="about_text" maxlength="50">
+        </div>
         <div class="btn-wrap">
-          <button id="button_add" type="submit" [disabled]="!add_carForm.form.valid">
-            <span id="y">Add</span>
+          <button id="button_add" type="submit" >
+            <span id="y">{{btnSubmitTitile}}</span>
           </button>
         </div>
-    </div>
+
+      </div>
 
 
 
-    </div>
+
+
+      </div>
+
+
+
   </form>
   <div *ngIf="errorText !== ''" class="danger">{{errorText}}</div>
 
   <div class="trapezoid" id="trap"></div>
-
 </div>
+
+

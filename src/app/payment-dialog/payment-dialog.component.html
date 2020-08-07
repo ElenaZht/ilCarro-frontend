@@ -1,0 +1,18 @@
+<div class="container">
+  <span class="title">Payment detailes</span>
+  <div class="imgs">
+    <div class="mastercard" ></div>
+    <div class="visa" ></div>
+    <div class="paypal" ></div>
+  </div>
+
+  <form class="payform">
+    <input placeholder="CARD OWNER ID" required>
+    <input placeholder="CARD NUMBER" required>
+    <div class="wraper">
+      <input placeholder="EXPIRATION DATE" class="date" required>
+      <input placeholder="CVV" class="cvv" required>
+    </div>
+  <button type="button" class="pay-btn" (click)="onPay()">Pay the car</button>
+  </form>
+</div>

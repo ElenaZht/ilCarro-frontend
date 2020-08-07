@@ -27,12 +27,12 @@ export class LoginComponent implements OnInit {
         if (answer && answer.first_name) {
           console.log('user recieved', user);
           loginForm.reset();
-          this.router.navigate(['/homepage']);
           this.dialogRef.close(true);
+        } else {
+          this.errorText = 'Wrong login or password.';
         }
       }, err => {
         console.log(err);
-        this.errorText = err.statusText;
       }
   );
   }

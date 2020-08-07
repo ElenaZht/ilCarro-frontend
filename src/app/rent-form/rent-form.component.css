@@ -1,17 +1,18 @@
 #reg_card{
   flex-grow: 1;
-  height: 426px;
-  width: 100%;
+  height: 100%;
+  width: 24vw;
   background: #FFFFFF 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 6px #0000005F;
   opacity: 1;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 #reg_lable{
   top: 189px;
   left: 1365px;
-  width: 130px;
+  width: 42%;
   height: 25px;
   text-align: left;
   font: 22px/29px Raleway-Black;
@@ -28,14 +29,14 @@
   height: 32px;
   background: #EA2340 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 6px #00000052;
+  border: 0;
   opacity: 1;
-  margin-left: 50px;
+  margin-left: 20%;
 }
 #button_y_div{
-  padding-top: 44px;
+  padding-top: 15%;
 }
 .card-body{
-  width: 360px;
   flex-grow: 1;
 }
 
@@ -43,7 +44,7 @@
   padding-left: 50px;
   top: 221px;
   left: 1365px;
-  width: 139px;
+  width: 50%;
   height: 13px;
   text-align: left;
   font: 10px/7px Raleway-Regular;
@@ -53,50 +54,8 @@
   margin-top: 0px;
   padding-top: 2.5px;
 }
-.reg-data{
-  width: 249px;
-  height: 10px;
-  opacity: 1;
-  margin-left: 50px;
-  padding-left: 6px;
-  padding-top: 13px;
-  padding-bottom: 6px;
 
-}
-#inp1{
-  top: 265px;
-  margin-bottom: 8px;
-}
-#inp2{
-  top: 327px;
-  margin-bottom: 8px;
-}
-#inp3{
-  top: 389px;
-  margin-bottom: 8px;
-}
-#inp4{
-  top: 451px;
-}
-#iagree{
-  top: 548px;
-  left: 1388px;
-  width: 201px;
-  height: 10px;
-  text-align: left;
-  font: 9px/16px Raleway-Regular;
-  letter-spacing: 0;
-  color: #06263998;
-  opacity: 1;
-  margin-left: 50px;
-  padding-top: 34px;
-}
-.trapezoid {
-  border-bottom: 10px solid #EA2340;
-  border-right: 15px solid transparent;
-  opacity: 1;
-  width: 67px;
-}
+
 @font-face {
   font-family: Raleway-Black;
   src: url('../../assets/fonts/Raleway-Black.ttf') format("opentype");
@@ -109,70 +68,34 @@
   font-family: Raleway-Bold;
   src: url('../../assets/fonts/Raleway-Bold.ttf') format("opentype");
 }
-#check{
-  top: 549px;
-  left: 1365px;
-  width: 12px;
-  height: 12px;
-  text-align: left;
-  letter-spacing: 0;
-  color: #EA2340;
-  opacity: 1;
-}
-#agree_lable{
-  top: 548px;
-  left: 1390px;
-  width: 181px;
-  height: 10px;
-  text-align: left;
-  font: 12px/16px Raleway-Regular;
-  letter-spacing: 0;
-  color: #06263998;
-  opacity: 1;
-  padding-left: 11px;
- }
-#trap{
-  width: 50px;
-  height: 10px;
-  border-bottom: 12px solid #EA2340;
-  border-right: 17px solid transparent;
-  opacity: 1;
-  margin-bottom: 6px;
-  margin-left: 5px;
-}
+
 #y{
   top: 641px;
   left: 1432px;
   width: 36px;
   height: 14px;
   text-align: center;
-  font: 12px/27px Raleway-Bold;
+  font: 18px/27px Raleway-Bold;
   letter-spacing: 0;
   color: #FFFFFF;
   opacity: 1;
   margin: auto;
 }
-a{
-  text-decoration: underline;
-  text-decoration-color: #06263998;
-}
 
 input::placeholder{
   font-size: 18px;
   color: #06263998;
+  width: 50%;
 }
 input{
   font-size: 16px;
   color: black;
+  width: 80%;
 }
 .error{
   color: red;
   font: 11px/13px Raleway-Regular;
   padding-left: 50px;
-}
-#err_check{
-  padding-left: 32px;
-  margin-top: 0px;
 }
 .danger{
   color: #a94442;
@@ -186,4 +109,48 @@ input{
   font: 18px/24px Raleway-Regular;
   font-weight: bold;
 }
+.input-wrap {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  height: 50%;
+  justify-content: space-around;
+  margin-left: 5%;
+  margin-top: 5%;
+  align-items: inherit;
 
+}
+.input-div {
+  display: flex;
+  justify-content: space-between;
+  height: 15%;
+  align-items: center;
+
+}
+label {
+  font: 15px/7px Raleway-Regular;
+  letter-spacing: 0;
+  color: #06263998;
+}
+.rent-time {
+  width: 80%;
+  margin: auto;
+  font: 15px/16px Raleway-Regular;
+  color: #06263998;
+
+}
+.mat-form-field {
+  width: 80%;
+}
+.danger{
+  color: #a94442;
+  background-color: #f2dede;
+  border: 1px solid #EA2340;
+  border-radius: 4px;
+  font: 18px/24px Raleway-Regular;
+  font-weight: bold;
+  margin-bottom: 2%;
+  margin-top: 5%;
+  margin-left: 4%;
+  margin-right: 4%;
+}
