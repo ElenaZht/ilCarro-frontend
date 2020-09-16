@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {NgForm} from '@angular/forms';
 import {Car, Location, CarsService, Features} from '../cars.service';
-import {UsersService} from '../users.service';
+import {User, UsersService} from '../users.service';
 import {ToastrService} from 'ngx-toastr';
 import {MouseEvent} from '@agm/core';
 
@@ -22,7 +22,7 @@ export class AddCarComponent implements OnInit {
   selectedFile: File = null;
   selectedItemsList = [];
   isNew: boolean;
-  user = this.usersService.getCurrentUser();
+  user: User;
   public currentCar: Car;
   formTitle: string;
   btnSubmitTitile: string;
@@ -32,13 +32,13 @@ export class AddCarComponent implements OnInit {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<AddCarComponent>, private http: HttpClient, private carsService: CarsService, private usersService: UsersService, private toastr: ToastrService) {
     console.log('my data', data);
-    if (data) {
-      this.currentCar = data;
+    this.user = data.user;
+    if (data.car) {
+      this.currentCar = data.car;
       this.formTitle = 'Edit your car';
       this.btnSubmitTitile = 'Edit';
       this.isNew = false;
-      this.latitude = this.currentCar.location.lat;
-      this.longitude = this.currentCar.location.lng;
+
 
 
     } else {
@@ -52,6 +52,8 @@ export class AddCarComponent implements OnInit {
       this.formTitle = 'Add new car';
       this.btnSubmitTitile = 'Add';
       this.isNew = true;
+      this.currentCar.location.lat = this.latitude;
+      this.currentCar.location.lng = this.longitude;
       console.log('No car, add new car mode', this.currentCar);
     }
   }
@@ -60,8 +62,8 @@ export class AddCarComponent implements OnInit {
   }
 
   onFileSelected(event: any) {
-    this.selectedFile = <File> event.target.files[0];
-    let reader = new FileReader();
+    this.selectedFile = event.target.files[0] as File;
+    const reader = new FileReader();
     reader.readAsDataURL(this.selectedFile);
     reader.onload = (_) => {
       this.currentCar.img_url = reader.result.toString();
@@ -91,6 +93,7 @@ export class AddCarComponent implements OnInit {
           if (res) {
             addCarForm.reset();
             this.errorText = '';
+            this.dialogRef.close();
           }
         }, err => {
           console.log(err);
@@ -116,7 +119,7 @@ export class AddCarComponent implements OnInit {
 
   onChosenLocation(event) {
     console.log(event);
-    this.latitude = event.coords.lat;
-    this.longitude = event.coords.lng;
+    this.currentCar.location.lat = event.coords.lat;
+    this.currentCar.location.lng = event.coords.lng;
   }
 }

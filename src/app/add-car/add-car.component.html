@@ -12,8 +12,8 @@
           </div>
         </div>
         <div class="map-wrap">
-          <agm-map [latitude]="latitude"  [longitude]="longitude" (mapClick)="onChosenLocation($event)">
-            <agm-marker [latitude]="latitude"  [longitude]="longitude"></agm-marker>
+          <agm-map [latitude]="currentCar.location.lat"  [longitude]="currentCar.location.lng" [zoom]="10" (mapClick)="onChosenLocation($event)">
+            <agm-marker [latitude]="currentCar.location.lat"  [longitude]="currentCar.location.lng"></agm-marker>
           </agm-map>
         </div>
 

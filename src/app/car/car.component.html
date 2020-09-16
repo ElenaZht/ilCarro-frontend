@@ -30,13 +30,13 @@
   </div>
   <div class="data-wrap">
     <div class="car-data">
-      <div *ngIf="car.owner_id == user.id" class="btns">
-        <button class="b-k" (click)="editCar(car)">
-          <fa-icon class="icon" [icon]="['fas', 'pen']"></fa-icon>
-        </button>
-        <button class="b-l" (click)="removeCar(car.id)">
-          <fa-icon class="icon" [icon]="['fas', 'trash']"></fa-icon>
-        </button>
+      <div *ngIf="(user$ | async)?.id == car.owner_id" class="btns">
+          <button class="b-k" (click)="editCar(car)">
+            <fa-icon class="icon" [icon]="['fas', 'pen']"></fa-icon>
+          </button>
+          <button class="b-l" (click)="removeCar(car.id)">
+            <fa-icon class="icon" [icon]="['fas', 'trash']"></fa-icon>
+          </button>
       </div>
       <div class="col1">
         <div class="col3">
@@ -147,8 +147,8 @@
         </div>
       </div>
     </div>
-      <agm-map [latitude]="latitude"  [longitude]="longitude">
-        <agm-marker [latitude]="latitude"  [longitude]="longitude"></agm-marker>
+      <agm-map [latitude]="car.location.lat"  [longitude]="car.location.lng" [zoom]="10">
+        <agm-marker [latitude]="car.location.lat"  [longitude]="car.location.lng"></agm-marker>
       </agm-map>
   </div>
   <div class="comments-wrap">

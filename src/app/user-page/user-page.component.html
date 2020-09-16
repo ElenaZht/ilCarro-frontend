@@ -57,13 +57,12 @@
         <div class="h">
           <span>My cars</span>
           <button (click)="addCar()">+Add</button>
-          <button (click)="refresh()">Refresh</button>
         </div>
         <div class="divider">
           <mat-divider></mat-divider>
         </div>
         <div class="my-cars">
-          <div class="i" *ngFor="let car of cars">
+          <div class="i" *ngFor="let car of cars$ | async">
             <div class="f">
               <div class="g" (click)="toCar(car.id)" [ngStyle]="{'background-image': ' url('+car.img_url+')'}"></div>
               <div class="j" (click)="toCar(car.id)">
@@ -82,7 +81,7 @@
           </div>
         </div>
 
-        <div class="no_cars" *ngIf="cars && cars.length < 1">
+        <div class="no_cars" *ngIf="(cars$ | async)?.length < 1">
           <span>No cars yet!</span>
         </div>
       </div>

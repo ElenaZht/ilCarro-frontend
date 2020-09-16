@@ -384,7 +384,7 @@ const orders_init: Order[] = [
     renterName: 'Haim Petrov',
     dateOn: 'Sat, 01 Aug 2020 16:00:00 GMT',
     dateOff: 'Mon, 03 Aug 2020 16:00:00 GMT',
-    state: State.OnTheWay
+    state: State.WaitToGo
 
   },
   {
@@ -493,14 +493,14 @@ function getCars() {
 }
 
 function addCar(car) {
-  let cars = getCars();
+  const cars = getCars();
   cars.push(car);
   localStorage.setItem('cars', JSON.stringify(cars));
   console.log('cars after add: ', cars);
 }
 
 function updateCar(carID, newValue) {
-  let cars = getCars();
+  const cars = getCars();
   const idx = cars.findIndex(c => c.id === carID);
   cars[idx] = newValue;
   localStorage.setItem('cars', JSON.stringify(cars));
@@ -509,7 +509,7 @@ function updateCar(carID, newValue) {
 }
 function removeCar(carID) {
   console.log('fake delete car');
-  let cars = getCars()
+  const cars = getCars();
   const i = cars.findIndex(car => car.id === carID);
   cars.splice(i, 1);
   console.log(cars);

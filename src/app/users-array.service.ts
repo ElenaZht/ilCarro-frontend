@@ -4,7 +4,7 @@ import {BehaviorSubject, Observable, of, Subject, throwError} from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from './environments/environment';
 import {Car} from './cars.service';
-import {map} from 'rxjs/operators';
+import {catchError, map} from 'rxjs/operators';
 
 
 @Injectable({
@@ -39,19 +39,22 @@ export class UsersArrayService implements UsersService {
   getComments(): Observable<Comment[]> {
     return this.http.get<Comment[]>(`${environment.apiUrl}/users/comments`);
   }
-  logIn(email: string, password: string ): Observable<User> {
-    this.http.post<User>(`${environment.apiUrl}/users/login`, {email, password})
-      .subscribe(user => {
+  logIn(email: string, password: string ): Observable<boolean> {
+    return this.http.post<User>(`${environment.apiUrl}/users/login`, {email, password})
+      .pipe(map(user => {
       console.log(user);
       if (user && user.token) {
         localStorage.setItem('user', JSON.stringify(user));
         this.currentUser = user;
         this.user$.next(user);
+        return true;
       }
-    }, err => {
-        console.log(err);
-    });
-    return this.user$.asObservable();
+      return false;
+    }), catchError(err => {
+          this.logout();
+          console.log('login error', err);
+          return throwError(err.statusText);
+      }));
  }
   getCurrentUser(): User {
     return this.currentUser;

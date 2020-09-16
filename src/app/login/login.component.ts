@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     console.log(' то место', user);
     this.usersService.logIn(user.email, user.password)
       .subscribe(answer => {
-        if (answer && answer.first_name) {
+        if (answer) {
           console.log('user recieved', user);
           loginForm.reset();
           this.dialogRef.close(true);
@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
         }
       }, err => {
         console.log(err);
+        this.errorText = err;
       }
   );
   }

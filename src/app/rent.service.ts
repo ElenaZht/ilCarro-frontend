@@ -15,7 +15,6 @@ export interface Order {
 }
 export enum State {
   WaitToGo,
-  OnTheWay,
   WaitToReturn,
   Returned,
   Canceled,

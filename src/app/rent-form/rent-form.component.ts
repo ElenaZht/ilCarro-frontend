@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Car, CarsService} from '../cars.service';
-import {UsersService} from '../users.service';
+import {User, UsersService} from '../users.service';
 import {ActivatedRoute} from '@angular/router';
 import {Order, RentService, State} from '../rent.service';
 import {NgForm} from '@angular/forms';
@@ -9,6 +9,7 @@ import {Location} from '@angular/common';
 import {PaymentDialogComponent} from '../payment-dialog/payment-dialog.component';
 import {ToastrService} from 'ngx-toastr';
 import {LoginOrSignDialogComponent} from '../login-or-sign-dialog/login-or-sign-dialog.component';
+import {Subscription} from 'rxjs';
 
 
 @Component({
@@ -16,10 +17,9 @@ import {LoginOrSignDialogComponent} from '../login-or-sign-dialog/login-or-sign-
   templateUrl: './rent-form.component.html',
   styleUrls: ['./rent-form.component.css']
 })
-export class RentFormComponent implements OnInit {
+export class RentFormComponent implements OnInit, OnDestroy {
   // public value: Date;
   city: string;
-  private subscription: any;
   car: Car;
   cars: any;
   id: number;
@@ -27,11 +27,16 @@ export class RentFormComponent implements OnInit {
   minDate: Date;
   minTime: number;
   bysyDates = [];
+  user: User;
+  subscription: Subscription;
 
   constructor(private usersService: UsersService, private carsService: CarsService, private route: ActivatedRoute, private rentService: RentService, public dialog: MatDialog,  private location: Location, private toastr: ToastrService) {}
 
 
   ngOnInit() {
+    this.subscription = this.usersService.getUser().subscribe(res => {
+      this.user = res;
+    });
     this.minDate = new Date();
     this.id = parseInt(this.route.snapshot.paramMap.get('id'));
     this.carsService.getCarById(this.id).subscribe(
@@ -55,6 +60,10 @@ export class RentFormComponent implements OnInit {
     );
 
   }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
   dateFilter(date) {
     let found = this.bysyDates.find(el => el.start <=  date && date <= el.end);
     return found === undefined;
@@ -81,13 +90,14 @@ export class RentFormComponent implements OnInit {
       this.errorText = 'Date of return must be later than date of beginning';
       return;
     }
-    order.renterId = this.usersService.getCurrentUser().id;
-    order.renterName = this.usersService.getCurrentUser().first_name + ' ' + this.usersService.getCurrentUser().second_name;
+    order.renterId = this.user.id;
+    order.renterName = this.user.first_name + ' ' + this.user.second_name;
     if (!this.checkOverlapping(order)) {
-      console.log('****************************** dates not valid, occupied in the middle');
       this.errorText = 'Please, choose dates, that not includes orders of other consumers';
       return;
     }
+    order.dateOn = order.dateOn.toUTCString();
+    order.dateOff = order.dateOff.toUTCString();
     const dialogRef = this.dialog.open(PaymentDialogComponent, {panelClass: 'custom-dialog-container'});
     dialogRef.afterClosed().subscribe(result => {
       console.log('The payment dialog was closed', result);
@@ -111,13 +121,13 @@ export class RentFormComponent implements OnInit {
   onSubmit(rentForm: NgForm) {
     let order = rentForm.value as Order;
     console.log(order);
-    order.dateOn = rentForm.value.dateOn.toUTCString();
-    order.dateOff = rentForm.value.dateOff.toUTCString();
+    order.dateOn = rentForm.value.dateOn;
+    order.dateOff = rentForm.value.dateOff;
     order.carName = this.car.title;
     order.carId = this.car.id;
     order.carUrl = this.car.img_url;
     order.carOwnerId = this.car.owner_id;
-    if (this.usersService.getCurrentUser() && this.usersService.getCurrentUser().token) {
+    if (this.user && this.user.token) {
       this.handleSubmit(order, rentForm);
     } else {
       const dialogRef = this.dialog.open(LoginOrSignDialogComponent, {panelClass: 'custom-dialog-container'});

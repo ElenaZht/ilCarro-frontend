@@ -15,7 +15,7 @@ import {AddCarComponent} from '../add-car/add-car.component';
 const routes: Routes = [
   {path: 'homepage', component: HomePageComponent },
   {path: 'terms', component: TermsComponent},
-  {path: 'myaccount', component: UserPageComponent},
+  {path: 'myaccount', component: UserPageComponent, canActivate: [AuthGuard], children: []},
   {path: 'letthecarwork', component: LetTheCarWorkComponent},
   {path: 'signup', component: SignUpComponent },
   {path: 'car/:id', component: CarComponent},

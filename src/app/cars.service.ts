@@ -48,7 +48,7 @@ export abstract class CarsService {
   constructor() { }
   abstract getTopCars(): Observable<Car[]>;
   abstract getCarById(id: number): Observable<Car>;
-  abstract getCarByUserId(id: number): Observable<Car[]>;
+  abstract getCarsByUserId(id: number): Observable<Car[]>;
   abstract addCar(car: Car): Observable<boolean>;
   abstract editCar(car: Car): Observable<boolean>;
   abstract removeCar(id: number): Observable<boolean>;

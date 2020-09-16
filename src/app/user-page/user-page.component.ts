@@ -7,7 +7,7 @@ import {faImages, faPen, faTrash} from '@fortawesome/free-solid-svg-icons';
 import {AddCarComponent} from '../add-car/add-car.component';
 import {MatDialog} from '@angular/material';
 import {NgForm} from '@angular/forms';
-import {Observable} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 import {ToastrService} from 'ngx-toastr';
 import {Order, RentService, State} from '../rent.service';
 import {ReturnDialogComponent} from '../return-dialog/return-dialog.component';
@@ -29,10 +29,10 @@ const images = icon({ prefix: 'fas', iconName: 'images' });
   styleUrls: ['./user-page.component.css']
 })
 export class UserPageComponent implements OnInit, OnDestroy {
-  cars: Array<Car>;
+  cars$: Observable<Car[]>;
   user$: Observable<User>;
-  private subscription: any;
-  private id: number;
+  private user$subscription: Subscription;
+  private user: User;
   displayName: string;
   displayEmail: string;
   carsOrders: Order[];
@@ -45,16 +45,18 @@ export class UserPageComponent implements OnInit, OnDestroy {
   canceledOrders: Order[];
   ordersStatus = {};
   errorText: string;
+  myCarsOrdersSubscription: Subscription;
+  myOrdersSubscription: Subscription;
 
 
   constructor(private usersService: UsersService,  private router: Router, private carsService: CarsService, private route: ActivatedRoute, public dialog: MatDialog, private toastr: ToastrService, private rentService: RentService) { }
   ngOnInit() {
     this.errorText = '';
     this.user$ = this.usersService.getUser();
-    this.subscription = this.user$.subscribe(user => {
-      console.log('got user info');
-      this.id = user.id;
-      this.rentService.getCarsOrders(user.id).subscribe(res => {
+    this.user$subscription = this.user$.subscribe(user => {
+      this.user = user;
+      this.myCarsOrdersSubscription = this.rentService.getCarsOrders(user.id).subscribe(res => {
+        console.log('get cars orders');
         this.carsOrders = res;
         for (const or of this.carsOrders) {
           or.dateOn = new Date(`${or.dateOn} UTC`);
@@ -73,7 +75,7 @@ export class UserPageComponent implements OnInit, OnDestroy {
           this.showNotification(orc);
         }
       });
-      this.rentService.getMyOrders(user.id).subscribe(res => {
+      this.myOrdersSubscription = this.rentService.getMyOrders(user.id).subscribe(res => {
         this.myOrders = res;
 
         for (const or of this.myOrders) {
@@ -93,9 +95,7 @@ export class UserPageComponent implements OnInit, OnDestroy {
       });
       this.displayName = user.first_name + ' ' +  user.second_name;
       this.displayEmail = user.email;
-      this.carsService.getCarByUserId(user.id).subscribe(res => {
-        this.cars = res;
-      }, error => console.log(error));
+      this.cars$ = this.carsService.getCarsByUserId(user.id);
     });
   }
   onSelectFile(event: any) {
@@ -103,16 +103,17 @@ export class UserPageComponent implements OnInit, OnDestroy {
     let reader = new FileReader();
     reader.readAsDataURL(this.selectedFile);
     reader.onload = (_) => {
-      const currUser = this.usersService.getCurrentUser();
-      currUser.url = reader.result.toString();
-      this.usersService.editUser(currUser.id, currUser.first_name, currUser.second_name, currUser.email, currUser.url).subscribe(res => {
+      // this.user.url = reader.result.toString();
+      this.usersService.editUser(this.user.id, this.user.first_name, this.user.second_name, this.user.email, reader.result.toString()).subscribe(res => {
         console.log(res);
       });
     };
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.user$subscription.unsubscribe();
+    this.myCarsOrdersSubscription.unsubscribe();
+    this.myOrdersSubscription.unsubscribe();
   }
   showNotification(order) {
     console.log('SHOW NOTIF FOR ORDER:', order);
@@ -149,7 +150,7 @@ export class UserPageComponent implements OnInit, OnDestroy {
   }
 
   addCar() {
-    const dialogRef = this.dialog.open(AddCarComponent, {panelClass: 'custom-dialog-container'});
+    const dialogRef = this.dialog.open(AddCarComponent, {panelClass: 'custom-dialog-container', data: {user: this.user}});
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed add car', result);
     });
@@ -158,7 +159,7 @@ export class UserPageComponent implements OnInit, OnDestroy {
   editCar(car) {
     const carClone: Car = {...car};
     carClone.location = {...car.location};
-    const dialogRef = this.dialog.open(AddCarComponent, {panelClass: 'custom-dialog-container', data: {...carClone}});
+    const dialogRef = this.dialog.open(AddCarComponent, {panelClass: 'custom-dialog-container', data: {car: carClone, user: this.user}});
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed edit car', result);
     });
@@ -167,7 +168,7 @@ export class UserPageComponent implements OnInit, OnDestroy {
         const carClone: Car = {...car};
         console.log('return for car: ', car);
         // carClone.location = {...car.location};
-        const dialogRef = this.dialog.open(ReturnDialogComponent, {panelClass: 'custom-dialog-container', data: {...carClone}});
+        const dialogRef = this.dialog.open(ReturnDialogComponent, {panelClass: 'custom-dialog-container', data: {car: carClone, user: this.user}});
         dialogRef.afterClosed().subscribe(result => {
           console.log('The dialog was closed edit car', result);
         });
@@ -194,12 +195,6 @@ export class UserPageComponent implements OnInit, OnDestroy {
     this.toastr.success('You canceled order on car' + ' ' + order.carName + ' successfully', ' ');
   }
 
-  refresh() {
-    this.carsService.getCarByUserId(this.id).subscribe(res => {
-      this.cars = res;
-      console.log(res);
-    }, error => console.log(error));
-  }
 
   onSubmit(editUserForm: NgForm) {
     this.errorText = '';
@@ -219,11 +214,8 @@ export class UserPageComponent implements OnInit, OnDestroy {
     }
     user.first_name = editUserForm.value.userName.substr(0, editUserForm.value.userName.indexOf(' '));
     user.second_name = editUserForm.value.userName.substr(editUserForm.value.userName.indexOf(' ') + 1, editUserForm.value.userName.length);
-    let currentUser = this.usersService.getCurrentUser();
-    console.log('name:' , user.first_name);
-    console.log('second:' , user.second_name);
-    console.log('email:' , user.email);
-    this.usersService.editUser(currentUser.id, user.first_name, user.second_name, user.email, user.url).subscribe(
+
+    this.usersService.editUser(this.user.id, user.first_name, user.second_name, user.email, this.user.url).subscribe(
             res => {
               console.log(res);
             });

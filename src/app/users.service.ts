@@ -25,8 +25,8 @@ export abstract class UsersService {
   abstract getCommentById(id: number): Observable<Comment>;
   abstract addComment(comment: Comment): Observable<boolean>;
   abstract getUserById(id: number): Observable<User>;
-  abstract logIn(email: string, password: string ): Observable<User>;
-  abstract getCurrentUser(): User;
+  abstract logIn(email: string, password: string ): Observable<boolean>;
+  // abstract getCurrentUser(): User;
   abstract logout();
   abstract isLoggedIn(): boolean;
   abstract editUser(id: number, firstName: string, secondName: string, email: string, url: string): Observable<boolean>;

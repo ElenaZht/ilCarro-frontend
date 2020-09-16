@@ -3,7 +3,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {Order} from '../rent.service';
 import {faStar} from '@fortawesome/free-solid-svg-icons';
 import {icon, library} from '@fortawesome/fontawesome-svg-core';
-import {Comment, UsersService} from '../users.service';
+import {Comment, User, UsersService} from '../users.service';
 import {NgForm} from '@angular/forms';
 import {RentService} from '../rent.service';
 import {ToastrService} from 'ngx-toastr';
@@ -21,9 +21,11 @@ export class ReturnDialogComponent implements OnInit {
   order: Order;
   newRating: number;
   stars: number[] = [1, 2 , 3, 4, 5];
+  user: User;
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<ReturnDialogComponent>, private rentService: RentService, private userService: UsersService, private toastr: ToastrService) {
     if (data) {
-      this.order = data;
+      this.order = data.car;
+      this.user = data.user;
       this.order.dateOn = new Date(`${this.order.dateOn} UTC`);
       this.order.dateOff = new Date(`${this.order.dateOff} UTC`);
       console.log('ORDER HERE IS ', this.order);
@@ -46,7 +48,7 @@ export class ReturnDialogComponent implements OnInit {
     console.log('I TRY TO ADD NEW COMMENT:', comment);
     comment.stars = this.newRating;
     comment.name = this.order.renterName;
-    comment.url = this.userService.getCurrentUser().url;
+    comment.url = this.user.url;
     comment.date = new Date();
     comment.carId = this.order.carId;
     console.log('commentForm.value.text', commentForm.value.text);
