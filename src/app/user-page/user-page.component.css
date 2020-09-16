@@ -1,0 +1,362 @@
+@font-face {
+  font-family: Raleway-Regular;
+  src: url('../../assets/fonts/Raleway-Regular.ttf') format("opentype");
+}
+.main-container {
+  display: flex;
+  flex-direction: column;
+  border-left: 2px solid #0000005f;
+  border-right: 2px solid #0000005f;
+  width: 80%;
+  margin: auto;
+  justify-content: space-between;
+}
+.container {
+  display: flex;
+  width: 90%;
+  margin: auto;
+  height: 50vh;
+  position: relative;
+  flex-direction: column;
+
+}
+.a,.b,.c, .h, .f, .i, .j, .b-k, .b-l {
+  display: flex;
+  position: relative;
+}
+.a {
+  width: 100%;
+  min-height: 50vh;
+  display: flex;
+  justify-content: space-between;
+  top: 3%;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #0000005F;
+
+}
+.b {
+  height: 100%;
+  width: 25%;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 2px solid #0000005f;
+
+
+}
+.c {
+  height: 100%;
+  width: 70%;
+  flex-direction: column;
+  margin-right: 1%;
+}
+.d {
+  height: 100%;
+  width: 100%;
+  background: transparent url('../../assets/no_image.jpg') no-repeat padding-box;
+  opacity: 1;
+  background-size: cover;
+  background-position: center;
+  border-bottom: 2px solid #0000005f;
+
+
+}
+.e {
+  height: 25%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+}
+.h {
+  flex-direction: row;
+  justify-content: space-around;
+  height: 10%;
+  align-items: center;
+
+}
+.i {
+  flex-direction: column;
+  min-height: 7vh;
+
+}
+.i:hover {
+  background-color: white;
+}
+.f {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: lightgray;
+  min-width: 5vh;
+  box-shadow: 0px 3px 6px #0000005F;
+
+}
+.g {
+  width: 10%;
+  background: transparent url('../../assets/no_image.jpg') no-repeat padding-box;
+  opacity: 1;
+  background-size: cover;
+  background-position: center;
+  height: 5vh;
+  margin-left: 1%;
+}
+.g2 {
+  width: 20%;
+  background: transparent url('../../assets/gaz.jpg') no-repeat padding-box;
+  opacity: 1;
+  background-size: cover;
+  height: 90%;
+  margin-left: 1%;
+
+
+}
+.j {
+  width: 65%;
+  flex-direction: column;
+  color: #383838;
+}
+.b-k {
+
+}
+.b-l {
+  right: 3%;
+
+}
+.icon {
+  font: 15px/15px Font Awesome Regular;
+  color: #0000005F;
+  opacity: 1;
+  position: relative;
+}
+.email_wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.edit_user {
+  position: absolute;
+  left: 84%;
+  top: 81%;
+  right: 5%;
+}
+.submitEdition {
+  position: absolute;
+  top: 81%;
+}
+.user_form_left {
+  display: flex;
+  flex-direction: column;
+  color: #0000005f;
+  margin-left: 5%;
+
+}
+.user_form_rigth {
+  display: flex;
+  flex-direction: column;
+   margin-left: 5%;
+}
+.user_form_btns {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5%;
+
+}
+#email_input, #name_input {
+  width: 91%;
+}
+.no_cars {
+}
+.danger {
+  color: red;
+  font: 14px/14px Raleway-Regular;
+  position: absolute;
+  top: 103%;
+}
+.divider {
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+.my-cars-orders-container {
+  display: flex;
+  width: 48%;
+  height: 40vh;
+  box-shadow: 0px 3px 6px #0000005F;
+  margin-top: 7%;
+  margin-bottom: 1%;
+}
+.my-orders-container {
+  display: flex;
+  width: 48%;
+  height: 40vh;
+  box-shadow: 0px 3px 6px #0000005F;
+  margin-bottom: 1%;
+  margin-top: 7%;
+
+}
+.orders-wrap {
+  width: 90%;
+  /*height: 90%;*/
+  margin: auto;
+  position: relative;
+  overflow-y: hidden;
+  top: 5%;
+  justify-content: space-around;
+}
+.orders-container {
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+  margin-right: 5%;
+  margin-left: 35%;
+  margin-top: 3%;
+  height: 65.5vh;
+  margin-bottom: 5%;
+}
+.return {
+  background: #EA2340;
+  border: 0;
+  color: white;
+  box-shadow: 0px 3px 6px #0000005F;
+  width: 5vw;
+  height: 3vh;
+  font: 14px/14px Raleway-Regular;
+}
+.cancel {
+  background: #EA2340;
+  border: 0;
+  color: white;
+  box-shadow: 0px 3px 6px #0000005F;
+  width: 5vw;
+  height: 3vh;
+  font: 14px/14px Raleway-Regular;
+}
+.status {
+  position: absolute;
+  top: -8%;
+  left: 70%;
+  background: #999999;
+  border: 0;
+  color: white;
+  box-shadow: 0px 3px 6px #0000005F;
+  padding-left: 1%;
+  padding-right: 1%;
+}
+.order-wrap {
+  /*position: absolute;*/
+  /*top: 0; bottom: 0;*/
+  /*left: 0; right: 0;*/
+}
+.order {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  height: 12vh;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1%;
+  padding-left: 1%;
+  padding-right: 1%;
+
+}
+.order_img {
+  background-image: url('../../assets/no_user_image.jpg');
+  display: flex;
+  height: 8vh;
+  width: 8vw;
+  background-size: cover;
+  margin-right: 2%;
+}
+.order_info {
+  display: flex;
+}
+.order_time {
+  display: flex;
+  flex-direction: column;
+  width: 55%;
+  align-items: center;
+  padding-left: 2%;
+}
+.order-main-wrap {
+  overflow-y: auto;
+  height: 90%;
+  font-size: 14px;
+  padding-top: 1%;
+  position: relative;
+
+}
+.return-btn {
+  position: relative;
+  flex-direction: column;
+
+}
+.notification {
+  position: sticky;
+  width: 90%;
+  height: 12vh;
+  margin: auto;
+  border: solid #EA2340;
+  box-shadow: 0px 3px 6px #0000005F;
+
+  color: black;
+  opacity: 0.8;
+  font: 16px/20px Raleway-Regular;
+  margin-top: 1%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.notif-btns {
+  display: flex;
+  width: 20%;
+  justify-content: space-around;
+  height: 25%;
+}
+.my-cars {
+  overflow-y: scroll;
+  height: 85%;
+}
+.no_orders {
+  color: #0000005f;
+}
+.d:hover .hover-text{
+  position: absolute;
+  top: 50%;
+  left:  50%;
+  transform: translate(-50%,-50%);
+  z-index: 2;
+  visibility: visible;
+  color: white;
+
+
+}
+.d:hover {
+  background-color: #999999;
+  opacity: 0.5;
+}
+.hover-text {
+  visibility: hidden;
+}
+mat-tab-group {
+  width: 100%;
+  padding-right: 1.5%;
+  padding-left: 1.5%;
+  box-shadow: 0px 3px 6px #0000005F;
+  padding-top: 2%;
+
+}
+
+.errorText{
+  color: #a94442;
+  background-color: #f2dede;
+  padding: 2%;
+  margin-bottom: 2%;
+  margin-top: 20px;
+  border: 1px solid #EA2340;
+  border-radius: 4px;
+  margin-left: 20px;
+  margin-right: 20px;
+  font: 16px/18px Raleway-Regular;
+  font-weight: bold;
+}

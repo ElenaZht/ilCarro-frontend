@@ -1,0 +1,384 @@
+@font-face {
+  font-family: Bebas Neue;
+  src: url('../../assets/fonts/Bebas-Neue-Bold.ttf') format("opentype");
+}
+@font-face {
+  font-family: Raleway-Regular;
+  src: url('../../assets/fonts/Raleway-Regular.ttf') format("opentype");
+}
+.main {
+  width: 80%;
+  margin: auto;
+  border-left: 2px solid #0000005f;
+  border-right: 2px solid #0000005f;
+}
+.container {
+  display: flex;
+  width: 90%;
+  height: 60vh;
+  margin: auto;
+  position: relative;
+  padding-top: 1%;
+  flex-direction: column;
+
+
+}
+.photo {
+  height: 100%;
+  width: 65%;
+  background: transparent url('../../assets/no_image.jpg') no-repeat padding-box;
+  opacity: 1;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+
+
+}
+.form {
+  height: 100%;
+  width: 34%;
+  position: relative;
+  display: flex;
+
+}
+.card-body {
+  width: 148px;
+  height: 100%;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000052;
+  opacity: 1;
+  top: -10px;
+  display: flex;
+  align-items: center;
+}
+.wrap {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  justify-content: space-between;
+
+}
+.wcard {
+  position: absolute;
+  width: 100%;
+  height: 15%;
+  top: 82%;
+  left: 52%;
+
+}
+.dolar{
+  left: 5%;
+  text-align: center;
+  font: Bold 31px/102px Raleway;
+  letter-spacing: 0px;
+  color: black;
+  opacity: 1;
+  position: relative;
+}
+.price{
+  left: 10%;
+  text-align: center;
+  font: Bold 70px/106px Bebas Neue;
+  letter-spacing: 0px;
+  color: black;
+  text-transform: capitalize;
+  opacity: 1;
+  position: relative;
+}
+.perday{
+  height: 3vh;
+  font: 20px/25px Bebas Neue;
+  letter-spacing: 0px;
+  color: #06263998;
+  text-transform: capitalize;
+  opacity: 1;
+  transform: rotate(-90deg);
+  display: block;
+  position: relative;
+  left: 6%;
+  width: 4vw;
+  text-align: center;
+
+}
+.car-title{
+  width: 50%;
+  height: 15%;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: center;
+}
+.title {
+  font: Bold 54px/66px Bebas Neue;
+  color: black;
+
+}
+.year {
+  font: Bold 20px/20px Bebas Neue;
+  color: #06263998;
+  padding-left: 1%;
+}
+.parallelogram {
+  width: 36%;
+  height: 4vh;
+  background: #EA2340 0% 0% no-repeat padding-box;
+  opacity: 1;
+  clip-path: polygon(0% 0%, 90% 0%, 80% 100%, 0% 100%);
+  display: flex;
+  align-items: center;
+}
+.paral-wrap {
+  margin-bottom: 5vh;
+
+}
+.data-wrap {
+  display: flex;
+  flex-direction: row;
+  height: 55vh;
+  position: relative;
+  top: 10%;
+  width: 90%;
+  margin: auto;
+  justify-content: space-between;
+}
+.car-data {
+  display: flex;
+  position: relative;
+  height: 100%;
+  width: 55%;
+  justify-content: space-between;
+  font: 15px/20px Raleway-Regular;
+}
+
+agm-map {
+  height: 54vh;
+  width: 30vw;
+  box-shadow: 0px 3px 6px #00000052;
+
+}
+.col1 {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: auto;
+  max-width: 48%;
+
+}
+.col2 {
+  display: flex;
+  height: 100%;
+  max-width: 48%;
+  flex-direction: column;
+
+}
+.col3 {
+  display: flex;
+  height: 40%;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+
+}
+.col4 {
+  display: flex;
+  flex-direction: row;
+  height: 40%;
+  max-width: 90%;
+  text-align: left;
+  justify-content: space-between;
+
+}
+.col5 {
+  display: flex;
+  flex-direction: row;
+  height: 40%;
+  justify-content: space-around;
+}
+.col6 {
+  display: flex;
+  flex-direction: row;
+  height: 40%;
+  width: 100%;
+}
+.col7, .col8, .col9, .col10{
+  display: flex;
+  height: 100%;
+  width: auto;
+  flex-direction: column;
+}
+.col11 {
+  display: flex;
+  height: 100%;
+  width: 33%;
+  justify-content: space-between;
+}
+.col12 {
+  display: flex;
+  height: 100%;
+  width: auto;
+  max-width: 80%;
+  justify-content: space-between;
+
+}
+.col13 {
+  display: flex;
+  height: 100%;
+  width:auto;
+  justify-content: space-between;
+
+}
+.col14 {
+  display: flex;
+  height: 100%;
+  width: auto;
+  max-width: 68%;
+  justify-content: space-between;
+
+}
+.col15 {
+  display: flex;
+  height: 100%;
+  width: 30%;
+}
+.col16 {
+  display: flex;
+  height: 100%;
+  width: 70%;
+  flex-direction: column;
+  padding-left: 5%;
+}
+.stars {
+  position: relative;
+  right: -57%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center
+}
+.star .icon{
+  color: white;
+  box-shadow: 0px 3px 6px #00000052;
+
+}
+.btns {
+  height: 5%;
+}
+.location-list {
+  list-style: none;
+  margin-left: 5%;
+  justify-content: space-between;
+}
+.location-item {
+  display: flex;
+  margin-right: 2%;
+}
+.red {
+  border: solid orange;
+}
+.location-item-title {
+  color: #06263998;
+  margin-right: 5%;
+}
+.comments-wrap {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-top: 5%;
+  padding-bottom: 3%;
+
+}
+.comments-container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  background-color: #f7f7f7;
+  width: 90%;
+  margin: auto;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: justify;
+
+}
+.comment{
+display: flex;
+flex-direction: row;
+width: 100%;
+height: 12vh;
+opacity: 1;
+align-items: center;
+
+}
+.user_photo{
+width: 12vh;
+height: 12vh;
+background: transparent url('../../assets/no_image.jpg') no-repeat padding-box;
+opacity: 1;
+clip-path: circle(40% at 50% 50%);
+background-size: cover;
+}
+.comment span{
+width: 100%;
+height: 50%;
+text-align: left;
+font: 12px/18px Raleway-Regular;
+letter-spacing: 0px;
+color: #062639;
+opacity: 1;
+margin: auto;
+}
+.comment_body{
+display: flex;
+flex-direction: column;
+width: 60%;
+height: 80%;
+padding-left: 10px;
+
+}
+.comment_info{
+display: flex;
+flex-direction: row;
+}
+.user_name{
+width: 30%;
+height: 20%;
+text-align: left;
+font: 16px/24px Raleway-Bold;
+letter-spacing: 0px;
+color: #EA2340;
+opacity: 1;
+margin: 0;
+}
+.comment_date{
+text-align: left;
+font: 13px/24px Raleway-Regular;
+letter-spacing: 0px;
+color: #06263998;
+opacity: 1;
+margin: 0;
+}
+.feature {
+display: flex;
+flex-direction: row;
+}
+.feature-title{
+padding-left: 5%;
+}
+.icon {
+color: #06263998;
+
+}
+.com-star {
+  color: gold;
+}
+.com-stars {
+  display: flex;
+}
+.no_comments {
+  height: 5vh;
+  margin-left: 5%;
+  margin-top: 1%;
+
+}

@@ -27,7 +27,7 @@ export class SignUpComponent implements OnInit {
     console.log(' то место', user);
     this.usersService.AddUser(user)
       .subscribe(res => {
-        console.log(res)
+        console.log(res);
         if (res) {
           signUpForm.reset();
           this.errorText = '';
@@ -38,6 +38,7 @@ export class SignUpComponent implements OnInit {
         this.errorText = err.statusText;
       });
   }
+
 }
 
 

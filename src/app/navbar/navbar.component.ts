@@ -26,8 +26,13 @@ export class NavbarComponent implements OnInit {
   logIn() {
     const dialogRef = this.dialog.open(LoginComponent, {panelClass: 'custom-dialog-container'});
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
-      if (!result) {this.router.navigate(['/homepage']); }
+      console.log('The dialog was closed nav bar', result);
+      if (!result) {
+        this.router.navigate(['/homepage']);
+      } else  {
+        this.router.navigate(['/myaccount']);
+
+      }
     });
   }
 

@@ -24,15 +24,16 @@ export class LoginComponent implements OnInit {
     console.log(' то место', user);
     this.usersService.logIn(user.email, user.password)
       .subscribe(answer => {
-        if (answer && answer.first_name) {
+        if (answer) {
           console.log('user recieved', user);
           loginForm.reset();
-          this.router.navigate(['/homepage']);
           this.dialogRef.close(true);
+        } else {
+          this.errorText = 'Wrong login or password.';
         }
       }, err => {
         console.log(err);
-        this.errorText = err.statusText;
+        this.errorText = err;
       }
   );
   }

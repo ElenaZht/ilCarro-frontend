@@ -1,0 +1,80 @@
+@font-face {
+  font-family: Raleway-Regular;
+  src: url('../../assets/fonts/Raleway-Regular.ttf') format("opentype");
+}
+.container {
+  height: 40vh;
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 3px 6px #0000005F;
+
+}
+.title {
+  color: #EA2340;
+  height: 6vh;
+  position: relative;
+  top: 3vh;
+  font: 25px/29px Raleway-Black;
+  width: 80%;
+  left: 10%;
+}
+.mastercard {
+  background-image: url('../../assets/mastercard.png');
+  background-size: cover;
+  height: 6vh;
+  width: 3vw;
+}
+.visa {
+  background-image: url('../../assets/visa.png');
+  background-size: cover;
+  height: 6vh;
+  width: 3vw;
+
+}
+.paypal {
+  background-image: url('../../assets/paypal.png');
+  background-size: cover;
+  height: 6vh;
+  width: 3vw;
+
+}
+.imgs {
+  display: flex;
+  width: 60%;
+  justify-content: space-around;
+  left: 20%;
+  position: relative;
+  top: 4%;
+
+}
+.payform {
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+  position: relative;
+  top: 15%;
+  left: 9%;
+  width: 80%;
+  justify-content: space-around;
+}
+.date {
+  width: 50%;
+}
+.cvv {
+  width: 30%;
+}
+.wraper {
+  display: flex;
+  justify-content: space-between;
+}
+.pay-btn {
+  background: #EA2340;
+  border: 0;
+  color: white;
+  box-shadow: 0px 3px 6px #0000005F;
+  width: 10vw;
+  height: 3vh;
+  position: relative;
+  left: 20%;
+}

@@ -5,7 +5,7 @@
         <p id="three">3</p>
       </div>
       <div id="div3_2">
-        <p id="some_text_3">MOST POPULAR CHOICES IN YOUR AREA</p>
+        <p id="some_text_3">MOST POPULAR CHOICES</p>
       </div>
     </div>
     <div id="div3_3">
@@ -20,15 +20,15 @@
     <div id="div6_wrapper">
 
       <div class="flex-container" id="div6">
-        <div id="zaz"  [ngStyle]="{'background-image': ' url('+topCars[0].url+')'}"></div>
-        <div id="gaz" [ngStyle]="{'background-image': ' url('+topCars[1].url+')'}"></div>
-        <div id="azlk" [ngStyle]="{'background-image': ' url('+topCars[2].url+')'}"></div>
+        <div  id="zaz"  [ngStyle]="{'background-image': ' url('+topCars[0].img_url+')'}" (click)="onTopCar(topCars[0].id)"></div>
+        <div  id="gaz" [ngStyle]="{'background-image': ' url('+topCars[1].img_url+')'}" (click)="onTopCar(topCars[1].id)"></div>
+        <div  id="azlk" [ngStyle]="{'background-image': ' url('+topCars[2].img_url+')'}" (click)="onTopCar(topCars[2].id)"></div>
       </div>
     </div>
 
     <div class="flex-container" id="car_titles">
       <div class="whitecard" id="whitecard1">
-        <p>{{topCars[0].title}}</p>
+        <p>{{topCars[0].title}}  {{topCars[0].rating}}<fa-icon class='com-star' [icon]="['fas', 'star']"></fa-icon></p>
         <div class="card-body">
           <span class="dolar">$</span>
           <span class="price">{{topCars[0].price}}</span>
@@ -36,7 +36,7 @@
         </div>
       </div>
       <div class="whitecard" id="whitecard2">
-        <p>{{topCars[1].title}}</p>
+        <p>{{topCars[1].title}}  {{topCars[0].rating}}<fa-icon class='com-star' [icon]="['fas', 'star']"></fa-icon></p>
         <div class="card-body">
           <span class="dolar">$</span>
           <span class="price">{{topCars[1].price}}</span>
@@ -44,7 +44,7 @@
         </div>
       </div>
       <div class="whitecard" id="whitecard3">
-        <p>{{topCars[2].title}}</p>
+        <p>{{topCars[2].title}}  {{topCars[0].rating}}<fa-icon class='com-star' [icon]="['fas', 'star']"></fa-icon></p>
         <div class="card-body">
           <span class="dolar">$</span>
           <span class="price">{{topCars[2].price}}</span>

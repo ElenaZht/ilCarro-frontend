@@ -1,0 +1,156 @@
+#reg_card{
+  flex-grow: 1;
+  height: 100%;
+  width: 24vw;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #0000005F;
+  opacity: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+#reg_lable{
+  top: 189px;
+  left: 1365px;
+  width: 42%;
+  height: 25px;
+  text-align: left;
+  font: 22px/29px Raleway-Black;
+  letter-spacing: 0;
+  color: #EA2340;
+  opacity: 1;
+  padding-left: 50px;
+  margin-bottom: 0px;
+}
+#button_yalla{
+  top: 629px;
+  left: 1365px;
+  width: 126px;
+  height: 32px;
+  background: #EA2340 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000052;
+  border: 0;
+  opacity: 1;
+  margin-left: 20%;
+}
+#button_y_div{
+  padding-top: 15%;
+}
+.card-body{
+  flex-grow: 1;
+}
+
+#type_data{
+  padding-left: 50px;
+  top: 221px;
+  left: 1365px;
+  width: 50%;
+  height: 13px;
+  text-align: left;
+  font: 10px/7px Raleway-Regular;
+  letter-spacing: 0;
+  color: #06263998;
+  opacity: 1;
+  margin-top: 0px;
+  padding-top: 2.5px;
+}
+
+
+@font-face {
+  font-family: Raleway-Black;
+  src: url('../../assets/fonts/Raleway-Black.ttf') format("opentype");
+}
+@font-face {
+  font-family: Raleway-Regular;
+  src: url('../../assets/fonts/Raleway-Regular.ttf') format("opentype");
+}
+@font-face {
+  font-family: Raleway-Bold;
+  src: url('../../assets/fonts/Raleway-Bold.ttf') format("opentype");
+}
+
+#y{
+  top: 641px;
+  left: 1432px;
+  width: 36px;
+  height: 14px;
+  text-align: center;
+  font: 18px/27px Raleway-Bold;
+  letter-spacing: 0;
+  color: #FFFFFF;
+  opacity: 1;
+  margin: auto;
+}
+
+input::placeholder{
+  font-size: 18px;
+  color: #06263998;
+  width: 50%;
+}
+input{
+  font-size: 16px;
+  color: black;
+  width: 80%;
+}
+.error{
+  color: red;
+  font: 11px/13px Raleway-Regular;
+  padding-left: 50px;
+}
+.danger{
+  color: #a94442;
+  background-color: #f2dede;
+  padding: 15px;
+  margin-top: 20px;
+  border: 1px solid #EA2340;
+  border-radius: 4px;
+  margin-left: 20px;
+  margin-right: 20px;
+  font: 18px/24px Raleway-Regular;
+  font-weight: bold;
+}
+.input-wrap {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  height: 50%;
+  justify-content: space-around;
+  margin-left: 5%;
+  margin-top: 5%;
+  align-items: inherit;
+
+}
+.input-div {
+  display: flex;
+  justify-content: space-between;
+  height: 15%;
+  align-items: center;
+
+}
+label {
+  font: 15px/7px Raleway-Regular;
+  letter-spacing: 0;
+  color: #06263998;
+}
+.rent-time {
+  width: 80%;
+  margin: auto;
+  font: 15px/16px Raleway-Regular;
+  color: #06263998;
+
+}
+.mat-form-field {
+  width: 80%;
+}
+.danger{
+  color: #a94442;
+  background-color: #f2dede;
+  border: 1px solid #EA2340;
+  border-radius: 4px;
+  font: 18px/24px Raleway-Regular;
+  font-weight: bold;
+  margin-bottom: 2%;
+  margin-top: 5%;
+  margin-left: 4%;
+  margin-right: 4%;
+}

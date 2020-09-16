@@ -4,6 +4,11 @@
     <div class="comment" *ngFor="let comment of comments">
       <div class="user_photo" [ngStyle]="{'background-image': ' url('+comment.url+')'}"></div>
       <div class="comment_body">
+        <div class="com-stars">
+          <div class="com-star" *ngFor="let s of [].constructor(comment.stars)">
+            <fa-icon [icon]="['fas', 'star']"></fa-icon>
+          </div>
+        </div>
       <span>{{comment.text}}</span>
         <div class="comment_info">
           <p class="user_name">{{comment.name}}</p>
