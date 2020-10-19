@@ -14,11 +14,12 @@
 
   </div>
   <div class="add-comment">
-    <span class="comment-title">Please, leave some words about this car</span>
+    <span *ngIf="order.carOwnerId !== order.renterId" class="comment-title">Please, leave some words about this car</span>
+    <span *ngIf="order.carOwnerId === order.renterId" class="comment-title">Make my car free again!</span>
     <div class="divider">
       <mat-divider></mat-divider>
     </div>
-    <form #commentForm="ngForm" (ngSubmit)="onSubmit(commentForm)">
+    <form #commentForm="ngForm" (ngSubmit)="onSubmit(commentForm)" *ngIf="order.carOwnerId !== order.renterId">
       <textarea type="text" maxlength="100" name="text"  #text="ngModel" [(ngModel)]="commentForm.text"></textarea>
       <div class="stars-wrap">
         <div class="stars">
@@ -43,6 +44,9 @@
         <span class="r">Return car</span>
       </button>
     </form>
+    <button class="return" *ngIf="order.renterId === order.carOwnerId" (click)="returnMyCar(order)">
+      <span class="r">Return my car</span>
+    </button>
 
 
   </div>

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Car, CarsService} from '../cars.service';
 import {User, UsersService} from '../users.service';
@@ -23,7 +23,7 @@ import {Observable} from 'rxjs';
   styleUrls: ['./car.component.css']
 })
   export class CarComponent implements OnInit {
-
+  @Input() inputCarId: number;
   car: Car = {id: 0, img_url: '../../assets/no_image.jpg', title: 'no name', model: 'no model',  price: 0, owner_id: 0, year: 0, location: {country: 'unknown', city: 'unknown', region: 'unknown', street: 'unknown', zip: 0, lat: 0.0, lng: 0.0}, engine: 'unknown',
               fuel: 'unknown', gear: 'unknown', fuel_cons: '0', wd: 'unknown', hp: 0, torque: 0, doors: 0, seats: 0, class: 'unknown', about_text: 'no text',
               features: {multimediaDisplay: false, abs: false, climatControl: false, childAutoseat: false},
@@ -41,7 +41,12 @@ import {Observable} from 'rxjs';
     this.user$ = this.usersService.getUser();
 
     window.scroll(0,0);
-    this.id = parseInt(this.route.snapshot.paramMap.get('id'));
+    console.log('this input car', this.inputCarId);
+    if (this.inputCarId) {
+      this.id = this.inputCarId;
+      } else {
+        this.id = parseInt(this.route.snapshot.paramMap.get('id'));
+      }
     this.carsService.getCarById(this.id).subscribe(res => {
       this.car = res;
       this.car.features = res.features;
@@ -71,7 +76,7 @@ import {Observable} from 'rxjs';
   editCar(car) {
     const carClone: Car = {...car};
     carClone.location = {...car.location};
-    const dialogRef = this.dialog.open(AddCarComponent, {panelClass: 'custom-dialog-container', data: {...carClone}});
+    const dialogRef = this.dialog.open(AddCarComponent, {panelClass: 'custom-dialog-container', data: {car: carClone}});
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed edit car', result);
     });

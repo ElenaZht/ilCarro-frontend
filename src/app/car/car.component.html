@@ -3,7 +3,7 @@
     <div class="wrap">
       <div class="photo" [ngStyle]="{'background-image': ' url('+car.img_url+')'}"></div>
       <div class="form">
-        <app-rent-form></app-rent-form>
+        <app-rent-form [inputCarId]="id"></app-rent-form>
       </div>
     </div>
     <div class="wcard">

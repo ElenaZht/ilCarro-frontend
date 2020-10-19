@@ -26,8 +26,8 @@ export class ReturnDialogComponent implements OnInit {
     if (data) {
       this.order = data.car;
       this.user = data.user;
-      this.order.dateOn = new Date(`${this.order.dateOn} UTC`);
-      this.order.dateOff = new Date(`${this.order.dateOff} UTC`);
+      this.order.dateOn = new Date(this.order.dateOn);
+      this.order.dateOff = new Date(this.order.dateOff);
       console.log('ORDER HERE IS ', this.order);
   }
 
@@ -83,5 +83,15 @@ export class ReturnDialogComponent implements OnInit {
   }
   showToastr(order) {
     this.toastr.success('Yor returned car ' + ' ' + order.carName + '. Waiting of car owner(' + order.carOwnerName + ')approving.',  ' ');
+  }
+
+  returnMyCar(order: Order) {
+    this.rentService.returnCar(this.order).subscribe(
+      res => {
+        console.log(res);
+        this.dialogRef.close();
+        this.showToastr(this.order);
+      }
+    );
   }
 }

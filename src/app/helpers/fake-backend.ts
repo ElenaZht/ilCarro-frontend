@@ -1,10 +1,10 @@
-﻿import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
-import { Observable, of, throwError } from 'rxjs';
-import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
-import { User } from '../users.service';
-import { Injectable } from '@angular/core';
+﻿import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse} from '@angular/common/http';
+import {Observable, of, throwError} from 'rxjs';
+import {delay, dematerialize, materialize, mergeMap} from 'rxjs/operators';
+import {User} from '../users.service';
+import {Injectable} from '@angular/core';
 import {Car} from '../cars.service';
-import {State, Order} from '../rent.service';
+import {Order, State} from '../rent.service';
 
 const users_init: User[] = [
                     { url: '../../assets/user_photo.jpg', id: 1, first_name: 'Lena', second_name: 'Zhytomirsky',
@@ -30,15 +30,15 @@ const cars_init: Car[] = [
     features: {multimediaDisplay: true, abs: true, climatControl: true, childAutoseat: false},
     rating: 3, comments: [1003, 1004, 1005]},
   { id: 102, img_url: '../../assets/gaz.jpg', title: 'GAZ', model: '02',  price: 170, owner_id: 120, year: 1999,  location: {country: 'Russia', city: 'Voronezh', region: 'Voronezh Oblast', street: 'Ulitsa Generala Lizyukova, 4', zip: 394053, lat: 51.6605982, lng: 39.2005858}, engine: '3.0L V6 DOHC',
-    fuel: 'Benzin', gear: 'Mehanic', fuel_cons: '80', wd: 'RWD', hp: 180, torque: 300, doors: 4, seats: 5, class: 'C', about_text: 'BRAND NEW FULLY LOADED CUSTOM 2018 RANGE ROVER HSE with a 3.0 Liter Supercharged V6 Engine. The Range Rover HSE has a 380 horsepower V6, 8-Speed automatic transmission with gearshift paddles, all wheel drive, sliding panoramic roof, Bluetooth and USB.',
+    fuel: 'Benzin', gear: 'CVT', fuel_cons: '80', wd: 'RWD', hp: 180, torque: 300, doors: 4, seats: 5, class: 'C', about_text: 'BRAND NEW FULLY LOADED CUSTOM 2018 RANGE ROVER HSE with a 3.0 Liter Supercharged V6 Engine. The Range Rover HSE has a 380 horsepower V6, 8-Speed automatic transmission with gearshift paddles, all wheel drive, sliding panoramic roof, Bluetooth and USB.',
     features: {multimediaDisplay: false, abs: false, climatControl: false, childAutoseat: true},
     rating: 5, comments: [1006, 1007, 1008]},
   { id: 103, img_url: '../../assets/bmv.jpg', title: 'BMV', model: 'x6', price: 200, owner_id: 122, year: 2018, location: {country: 'Israel', city: 'Holon', region: 'Gush Dan', street: 'Ulitsa HaBika, 9', zip: 394883, lat: 32.0193121, lng: 34.7804076}, engine: '3.0L V6 DOHC',
-    fuel: 'Benzin', gear: 'Automatic', fuel_cons: '150', wd: 'RWD', hp: 250, torque: 400, doors: 4, seats: 5, class: 'A', about_text: 'BRAND NEW FULLY LOADED CUSTOM 2018 RANGE ROVER HSE with a 3.0 Liter Supercharged V6 Engine. The Range Rover HSE has a 380 horsepower V6, 8-Speed automatic transmission with gearshift paddles, all wheel drive, sliding panoramic roof, Bluetooth and USB.',
+    fuel: 'Benzin', gear: 'Semi-automatic', fuel_cons: '150', wd: 'RWD', hp: 250, torque: 400, doors: 4, seats: 5, class: 'A', about_text: 'BRAND NEW FULLY LOADED CUSTOM 2018 RANGE ROVER HSE with a 3.0 Liter Supercharged V6 Engine. The Range Rover HSE has a 380 horsepower V6, 8-Speed automatic transmission with gearshift paddles, all wheel drive, sliding panoramic roof, Bluetooth and USB.',
     features: {multimediaDisplay: true, abs: true, climatControl: true, childAutoseat: false},
     rating: 5, comments: [1009, 1010, 1011]},
   { id: 104, img_url: '../../assets/ford_fiesta.jpg', title: 'Ford', model: 'Fiesta', price: 190, owner_id: 122, year: 2017, location: {country: 'Israel', city: 'Ramat Gan', region: 'Gush Dan', street: 'Ulitsa Lechi, 14', zip: 394883, lat: 32.0686867, lng: 34.8246812}, engine: '3.0L V6 DOHC',
-    fuel: 'Benzin', gear: 'Automatic', fuel_cons: '150', wd: 'RWD', hp: 250, torque: 400, doors: 4, seats: 5, class: 'A', about_text: 'BRAND NEW FULLY LOADED CUSTOM 2018 RANGE ROVER HSE with a 3.0 Liter Supercharged V6 Engine. The Range Rover HSE has a 380 horsepower V6, 8-Speed automatic transmission with gearshift paddles, all wheel drive, sliding panoramic roof, Bluetooth and USB.',
+    fuel: 'Benzin', gear: 'Semi-automatic', fuel_cons: '150', wd: 'RWD', hp: 250, torque: 400, doors: 4, seats: 5, class: 'A', about_text: 'BRAND NEW FULLY LOADED CUSTOM 2018 RANGE ROVER HSE with a 3.0 Liter Supercharged V6 Engine. The Range Rover HSE has a 380 horsepower V6, 8-Speed automatic transmission with gearshift paddles, all wheel drive, sliding panoramic roof, Bluetooth and USB.',
     features:  {multimediaDisplay: true, abs: true, climatControl: false, childAutoseat: false},
     rating: 4, comments: [1012, 1013, 1014]},
   { id: 105, img_url: '../../assets/gaz2go.jpg', title: 'Gaz2Go', model: 'Mini',  price: 100, owner_id: 122, year: 2020, location: {country: 'Israel', city: 'Tel Aviv', region: 'Gush Dan', street: 'Ulitsa Perez, 100', zip: 394883, lat: 32.0804808, lng: 34.7805274}, engine: '3.0L V6 DOHC',
@@ -50,7 +50,7 @@ const cars_init: Car[] = [
     features:  {multimediaDisplay: true, abs: true, climatControl: true, childAutoseat: true},
     rating: 5, comments: [1018, 1019, 1020]},
   { id: 107, img_url: '../../assets/honda_amaze.jpg', title: 'Honda', model: 'Amaze', price: 300, owner_id: 123, year: 2020, location: {country: 'Israel', city: 'Holon', region: 'Gush Dan', street: 'Ulitsa Perez, 12', zip: 394883, lat: 32.0193121, lng: 34.7804076}, engine: '3.0L V6 DOHC',
-    fuel: 'Benzin', gear: 'Automatic', fuel_cons: '180', wd: 'RWD', hp: 250, torque: 400, doors: 4, seats: 5, class: 'A', about_text: 'BRAND NEW FULLY LOADED CUSTOM 2018 RANGE ROVER HSE with a 3.0 Liter Supercharged V6 Engine. The Range Rover HSE has a 380 horsepower V6, 8-Speed automatic transmission with gearshift paddles, all wheel drive, sliding panoramic roof, Bluetooth and USB.',
+    fuel: 'Benzin', gear: 'Semi-automatic', fuel_cons: '180', wd: 'RWD', hp: 250, torque: 400, doors: 4, seats: 5, class: 'B', about_text: 'BRAND NEW FULLY LOADED CUSTOM 2018 RANGE ROVER HSE with a 3.0 Liter Supercharged V6 Engine. The Range Rover HSE has a 380 horsepower V6, 8-Speed automatic transmission with gearshift paddles, all wheel drive, sliding panoramic roof, Bluetooth and USB.',
     features: {multimediaDisplay: true, abs: true, climatControl: true, childAutoseat: false},
     rating: 5, comments: [1021, 1023]},
   { id: 108, img_url: '../../assets/mercedes_benz.jpg', title: 'Mercedes', model: 'Benz', price: 220, owner_id: 123, year: 2019, location: {country: 'Israel', city: 'Holon', region: 'Gush Dan', street: 'Ulitsa Golda Meir, 9', zip: 394883, lat: 32.0193121, lng: 34.7804076}, engine: '3.0L V6 DOHC',
@@ -488,6 +488,41 @@ const orders_init: Order[] = [
 
 ];
 
+function calculate_distnace(lat1 , lon1 , lat2, lon2) {
+  console.log('sdasdasdasda')
+  const R = 6371e3; // metres
+  const phi1 = lat1 * Math.PI / 180; // φ, λ in radians
+  const phi2 = lat2 * Math.PI / 180;
+  const deltaPhi = (lat2 - lat1) * Math.PI / 180;
+  const deltaGamma = (lon2 - lon1) * Math.PI / 180;
+
+  const a = Math.sin(deltaPhi / 2) * Math.sin(deltaPhi / 2) +
+    Math.cos(phi1) * Math.cos(phi2) *
+    Math.sin(deltaGamma / 2 ) * Math.sin(deltaGamma / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+  console.log('DISTANCE TO CAR', R * c);
+  return  R * c; // in metres
+}
+
+function checkBisyDates(cId, date1, date2) {
+  console.log('if bisy dates', date1, date2);
+  let busy = [];
+  let orders = getOrders().filter(o => o.carId === cId);
+  console.log('orders for this car', orders);
+  for (let or of orders) {
+    busy.push({start: new Date(`${or.dateOn} UTC`).setHours(0, 0, 0, 0),
+            end: new Date(`${or.dateOff} UTC`).setHours(0, 0, 0, 0)});
+  }
+  console.log('busy dates for the car', busy);
+  let found = busy.find(el => el.start <=  date2 && date1 <= el.end);
+  if (found) {
+    console.log('i found busy');
+    return false;
+  }
+  return true;
+}
+
 function getCars() {
   return  JSON.parse(localStorage.getItem('cars'));
 }
@@ -574,6 +609,50 @@ function updateOrder(order) {
   localStorage.setItem('orders', JSON.stringify(orders));
   console.log('orders after update: ', orders);
 
+}
+function filterCars(fprams) {
+  let cars = getCars();
+  if (fprams.rating) {
+    cars = cars.filter(c => c.rating === fprams.rating);
+  }
+  if (fprams.price && fprams.price !== 0) {
+    cars = cars.filter(c => c.price <= fprams.price);
+  }
+  if (fprams.dateOn && fprams.dateOff) {
+    cars = cars.filter(c => checkBisyDates(c.id, fprams.dateOn, fprams.dateOff));
+  }
+  if (fprams.features.multimediaDisplay) {
+    cars = cars.filter(c => c.features.multimediaDisplay === fprams.features.multimediaDisplay);
+  }
+  if (fprams.features.abs) {
+    cars = cars.filter(c => c.features.abs === fprams.features.abs);
+  }
+  if (fprams.features.climatControl) {
+    cars = cars.filter(c => c.features.climatControl === fprams.features.climatControl);
+  }
+  if (fprams.features.childAutoseat) {
+    cars = cars.filter(c => c.features.childAutoseat === fprams.features.childAutoseat);
+  }
+  if (fprams.gear && fprams.gear !== '') {
+    console.log(typeof(fprams.gear));
+    console.log('gear is', fprams.gear);
+    cars = cars.filter(c => c.gear === fprams.gear);
+  }
+  if (fprams.year) {
+    cars = cars.filter(c => c.year === fprams.year);
+    console.log('type of f.year is', typeof (fprams.year));
+  }
+  if (fprams.class && fprams.class !== '') {
+    cars = cars.filter(c => c.class === fprams.class);
+  }
+  if (fprams.city && fprams.city !== '') {
+    cars = cars.filter(c => c.location.city === fprams.city);
+  }
+  if (fprams.location.lng && fprams.location.lat && fprams.rad) {
+    cars = cars.filter(c => calculate_distnace(fprams.location.lat, fprams.location.lng, c.location.lat, c.location.lng) <= fprams.rad);
+  }
+  console.log('CARS COMES', cars);
+  return cars;
 }
 
 @Injectable()
@@ -668,6 +747,18 @@ export class FakeBackendInterceptor implements HttpInterceptor {
               }
             }
             break;
+        case url.endsWith('/cars/allcars') && method === 'GET':
+              const cars = getCars();
+              if (cars) {
+                return ok(cars);
+              } else {
+                return throwError({status: 404, statusText: 'Cars not found'});
+              }
+        case url.endsWith('/cars/filteredcars') && method === 'POST':
+          const fprams = body;
+          console.log('FILTER', fprams);
+          const fcars = filterCars(fprams);
+          return ok(fcars);
         case url.substring(0, url.lastIndexOf('/')).endsWith('cars/user') && method === 'GET':
           const userId = parseInt(url.substring(url.lastIndexOf('/') + 1));
           return ok(getCars().filter(c => c.owner_id === userId));
@@ -766,7 +857,6 @@ export class FakeBackendInterceptor implements HttpInterceptor {
           console.log('topCars fake backend');
           const topCars = getCars().sort((a, b) => b.rating - a.rating).slice(0, 3);
           console.log('top cars', topCars);
-          // const topCars = [{ img_url: '../../assets/zaz.jpg', title: 'zaz', price: 230}];
           return ok(topCars);
         case url.endsWith('/orders/addorder') && method === 'POST' :
           body.orderId = getOrders().length + 1;

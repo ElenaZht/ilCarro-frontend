@@ -1,0 +1,11 @@
+.exit{
+  width: 23px;
+  position: absolute;
+  left: 90%;
+  top: 13%;
+}
+.container {
+  width: 84vw;
+  height: 70vh;
+}
+
