@@ -11,10 +11,12 @@ import {UserPageComponent} from '../user-page/user-page.component';
 import {LetTheCarWorkComponent} from '../let-the-car-work/let-the-car-work.component';
 import {CarComponent} from '../car/car.component';
 import {AddCarComponent} from '../add-car/add-car.component';
+import {SearchComponent} from '../search/search.component';
 
 const routes: Routes = [
   {path: 'homepage', component: HomePageComponent },
   {path: 'terms', component: TermsComponent},
+  {path: 'search', component: SearchComponent},
   {path: 'myaccount', component: UserPageComponent, canActivate: [AuthGuard], children: []},
   {path: 'letthecarwork', component: LetTheCarWorkComponent},
   {path: 'signup', component: SignUpComponent },

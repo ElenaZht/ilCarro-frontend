@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {Car, CarsService} from '../cars.service';
 import {User, UsersService} from '../users.service';
 import {ActivatedRoute} from '@angular/router';
@@ -18,6 +18,7 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./rent-form.component.css']
 })
 export class RentFormComponent implements OnInit, OnDestroy {
+  @Input() inputCarId: number;
   // public value: Date;
   city: string;
   car: Car;
@@ -38,7 +39,7 @@ export class RentFormComponent implements OnInit, OnDestroy {
       this.user = res;
     });
     this.minDate = new Date();
-    this.id = parseInt(this.route.snapshot.paramMap.get('id'));
+    this.id = this.inputCarId;
     this.carsService.getCarById(this.id).subscribe(
       res => {
         console.log('rent form res: ', res);
@@ -73,16 +74,22 @@ export class RentFormComponent implements OnInit, OnDestroy {
     this.toastr.success('from ' + ' ' + order.dateOn + ' ' + 'till ' + ' ' + order.dateOff, 'You rented car' + ' ' + order.carName);
   }
   checkOverlapping(order) {
-    let foundOn = this.bysyDates.find(el => el.start <  order.dateOn && order.dateOn <= el.end);
-    let foundOff = this.bysyDates.find(el => el.start <=  order.dateOf && order.dateOf <= el.end);
-    console.log('found on', foundOn);
-    console.log('found off', foundOff);
-    return !(foundOn || foundOn);
+    const foundInside = this.bysyDates.find(el => el.start < order.dateOn && order.dateOff <= el.end);
+    const foundInsideOn = this.bysyDates.find(el => el.start <  order.dateOn && order.dateOn <= el.end);
+    const foundInsideOff = this.bysyDates.find(el => el.start >  order.dateOn && order.dateOff <= el.end);
+    const foundOutside = this.bysyDates.find(el => el.start >  order.dateOn && order.dateOff >= el.end);
+    console.log('foundInside', foundInside);
+    console.log('foundInsideOn', foundInsideOn);
+    console.log('foundInsideOff', foundInsideOff);
+    console.log('foundOutside', foundOutside);
+    return !(foundInside || foundInsideOn || foundInsideOff || foundOutside);
 
   }
 
   handleSubmit(order, rentForm) {
-    if (order.dateOn === order.dateOff) {
+    console.log('HANDLING SUBMIT', 'dateon:', order.dateOn, 'dateoff:', order.dateOff);
+    if (order.dateOn.getTime() === order.dateOff.getTime()) {
+      console.log('i saw same dates!');
       this.errorText = 'Please, choose at least 1 day of rent.';
       return;
     }
@@ -128,6 +135,7 @@ export class RentFormComponent implements OnInit, OnDestroy {
     order.carUrl = this.car.img_url;
     order.carOwnerId = this.car.owner_id;
     if (this.user && this.user.token) {
+      console.log('user and token presents');
       this.handleSubmit(order, rentForm);
     } else {
       const dialogRef = this.dialog.open(LoginOrSignDialogComponent, {panelClass: 'custom-dialog-container'});

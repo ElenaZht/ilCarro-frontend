@@ -1,0 +1,213 @@
+<div class="main">
+  <div class="param-wind">
+
+
+    <div class = "tabinator">
+      <h1>Search your car fast and easy!</h1>
+      <h5>More than 1000 cars on our platform, any time, any needs, your best.</h5>
+      <input type = "radio" id = "tab1" name = "tabs" checked>
+      <label for = "tab1">
+        <p>Basic</p>
+      </label>
+      <input type = "radio" id = "tab2" name = "tabs">
+      <label for = "tab2">
+        <fa-icon class="icon" [icon]="['fas', 'tools']"></fa-icon>
+
+      </label>
+      <input type = "radio" id = "tab3" name = "tabs">
+      <label for = "tab3">
+        <fa-icon class="icon" [icon]="['fas', 'map-marker-alt']"></fa-icon>
+
+      </label>
+
+
+      <div id = "content1">
+        <div class="price-wrap">
+          <label for="price" >Price under ($)</label>
+          <mat-slider thumbLabel step="50" id="price" min="0" max="500" color="warn" [(ngModel)]="priceval"></mat-slider>
+        </div>
+        <div class="rating-wrap" >
+          <label>Rating</label>
+          <div class="stars-wrap" >
+            <div class="stars">
+              <fa-icon *ngFor="let star of stars" class="icon"  [icon]="['fas', 'star']" (click)="onStar(star)" [style.color]="newRating>=star ? 'gold' : '#999999'"></fa-icon>
+
+            </div>
+
+          </div>
+        </div>
+        <div class="date-wrap">
+          <label for="dateon">Date On</label>
+          <mat-form-field  id="dateon">
+            <input matInput [matDatepicker]="myDatePicker" [(ngModel)]="dateOn">
+            <mat-datepicker-toggle [for]="myDatePicker" matSuffix></mat-datepicker-toggle>
+            <mat-datepicker #myDatePicker></mat-datepicker>
+          </mat-form-field>
+
+        </div>
+        <div class="date-wrap">
+          <label for="dateoff">Date Off</label>
+          <mat-form-field  id="dateoff">
+            <input matInput [matDatepicker]="myDatePicker2" [(ngModel)]="dateOff">
+            <mat-datepicker-toggle [for]="myDatePicker2" matSuffix></mat-datepicker-toggle>
+            <mat-datepicker #myDatePicker2></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+
+        <div class="btn-wrap">
+          <button class="search_button" type="submit" (click)="onSubmit(filter)">
+            <span id="srch_btn1">
+                      <fa-icon class="icon" [icon]="['fas', 'search']"></fa-icon>
+            </span>
+          </button>
+          <button class="btn-clear" (click)="onClear1()">
+            <span>clear</span>
+          </button>
+        </div>
+      </div>
+      <div id = "content2">
+        <div>
+          <div class="group-features">
+            <span>Features:</span>
+            <div class="f-wrap">
+              <input type="checkbox" id="f1" [(ngModel)]="this.filter.features.multimediaDisplay" [ngModelOptions]="{standalone: true}">
+              <label for="f1">Multimedia display</label>
+            </div>
+            <div class="f-wrap">
+              <input type="checkbox" id="f2" [(ngModel)]="this.filter.features.abs" [ngModelOptions]="{standalone: true}">
+              <label for="f2">ABS</label>
+            </div>
+            <div class="f-wrap">
+              <input type="checkbox" id="f3" [(ngModel)]="this.filter.features.climatControl" [ngModelOptions]="{standalone: true}">
+              <label for="f3">Climatcontrol</label>
+            </div>
+            <div class="f-wrap">
+              <input type="checkbox" id="f4" [(ngModel)]="this.filter.features.childAutoseat" [ngModelOptions]="{standalone: true}">
+              <label for="f4">Child autoseat</label>
+            </div>
+
+          </div>
+          <div class="c-wrap">
+            <label class="group-details-left">gear: </label>
+            <input list="gears" class="form-control reg-data group-details-rigth" placeholder="Gear" [(ngModel)]="gear" type="string" id="c1" name="gear"  required>
+            <datalist id="gears">
+              <option>Mehanic</option>
+              <option>Automatic</option>
+              <option>CVT</option>
+              <option>Semi-automatic</option>
+            </datalist>
+          </div>
+          <div class="c-wrap">
+            <label class="group-details-left">year: </label>
+            <input class="form-control reg-data group-details-rigth" list="years" label="Choose a year" [(ngModel)]="year" [max]="2020" required id="c2" name="year"  placeholder="Year" >
+            <datalist id="years">
+              <option>2003</option>
+              <option>2004</option>
+              <option>2005</option>
+              <option>2006</option>
+              <option>2007</option>
+              <option>2008</option>
+              <option>2009</option>
+              <option>2010</option>
+              <option>2011</option>
+              <option>2012</option>
+              <option>2013</option>
+              <option>2014</option>
+              <option>2015</option>
+              <option>2016</option>
+              <option>2017</option>
+              <option>2018</option>
+              <option>2019</option>
+              <option>2020</option>
+            </datalist>
+          </div>
+          <div class="c-wrap">
+            <label class="group-details-left">class: </label>
+            <input list="classes" class="form-control reg-data group-details-rigth" placeholder="Class" [(ngModel)]="class" type="string"id="c3" name="class"  required>
+            <datalist id="classes">
+              <option value="A">
+              <option value="B">
+              <option value="C">
+            </datalist>
+          </div>
+
+        </div>
+        <div class="btn-wrap">
+          <button class="search_button" type="submit" (click)="onSubmit(filter)">
+            <span id="srch_btn2">
+                      <fa-icon class="icon" [icon]="['fas', 'search']"></fa-icon>
+            </span>
+          </button>
+          <button class="btn-clear" (click)="onClear2()">
+            <span>clear</span>
+          </button>
+        </div>
+      </div>
+      <div id = "content3">
+        <div id="cities_wrap">
+          <label class="group-details-left">City: </label>
+          <input list="cities" class="form-control" placeholder="Tel Aviv" [(ngModel)]="city" type="string" id="inp-city" name="cities" >
+          <datalist id="cities">
+            <option *ngFor="let c of cities">{{c}}</option>
+          </datalist>
+        </div>
+        <div style="display: flex">
+          <h5>Or search cars in radius of</h5>
+          <input id="inpDis"type="number" [(ngModel)]="rad">
+          <h5>m</h5>
+          <fa-icon style="color: #0000005F;margin-bottom: 5%" class="icon" [icon]="['fas', 'arrow-down']"></fa-icon>
+        </div>
+        <div id="map-wrap">
+          <agm-map [latitude]="lat"  [longitude]="lng" [zoom]="10" (mapClick)="onChosenLocation($event)">
+            <agm-marker [latitude]="lat"  [longitude]="lng"></agm-marker>
+          </agm-map>
+        </div>
+        <div class="btn-wrap">
+          <button class="search_button" type="submit" (click)="onSubmit(filter)">
+            <span id="srch_btn3">
+                      <fa-icon class="icon" [icon]="['fas', 'search']"></fa-icon>
+            </span>
+          </button>
+          <button class="btn-clear" (click)="onClear3()">
+            <span>clear</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="cars-wind">
+    <div class="list-wrap">
+      <ul class="all-cars">
+        <li class="car-card" *ngFor="let car of allCars" (click)="toCar(car.id)">
+          <div class="img" [ngStyle]="{'background-image': ' url('+car.img_url+')'}"></div>
+          <div class="info">
+            <div class="info-row">
+              <div class="name">{{car.title}}</div>
+              <div class="price-card">
+                <span class="dolar">$</span>
+                <span class="price">{{car.price}}</span>
+                <span class="perday">per day</span>
+              </div>
+            </div>
+            <div class="info-row">
+              <div class="stars-wrap" *ngIf="car.rating">
+                <div class="rating" *ngFor="let s of [].constructor(car.rating)">
+                  <fa-icon class='com-star' [icon]="['fas', 'star']"></fa-icon>
+                </div>
+              </div>
+
+              <div class="city">{{car.location.city}}</div>
+            </div>
+          </div>
+        </li>
+
+
+
+      </ul>
+    </div>
+
+  </div>
+</div>

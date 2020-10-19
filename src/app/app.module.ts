@@ -35,7 +35,14 @@ import { LetTheCarWorkComponent } from './let-the-car-work/let-the-car-work.comp
 import { CarComponent } from './car/car.component';
 import { AddCarComponent } from './add-car/add-car.component';
 import { StarRatingModule } from 'angular-star-rating';
-import {MatButtonToggleModule, MatDatepickerModule, MatInputModule, MatNativeDateModule, MatTabsModule} from '@angular/material';
+import {
+  MatButtonToggleModule,
+  MatDatepickerModule,
+  MatInputModule,
+  MatNativeDateModule,
+  MatSliderModule,
+  MatTabsModule
+} from '@angular/material';
 import {MatDividerModule} from '@angular/material/divider';
 import {AgmCoreModule} from '@agm/core';
 import { RentFormComponent } from './rent-form/rent-form.component';
@@ -46,6 +53,10 @@ import { PaymentDialogComponent } from './payment-dialog/payment-dialog.componen
 import { ReturnDialogComponent } from './return-dialog/return-dialog.component';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { LoginOrSignDialogComponent } from './login-or-sign-dialog/login-or-sign-dialog.component';
+import { SearchComponent } from './search/search.component';
+import {SearchMockService} from './search-mock.service';
+import {SearchService} from './search.service';
+import { CarWindowComponent } from './car-window/car-window.component';
 
 
 @NgModule({
@@ -67,7 +78,9 @@ import { LoginOrSignDialogComponent } from './login-or-sign-dialog/login-or-sign
     RentFormComponent,
     PaymentDialogComponent,
     ReturnDialogComponent,
-    LoginOrSignDialogComponent
+    LoginOrSignDialogComponent,
+    SearchComponent,
+    CarWindowComponent
   ],
   imports: [
     BrowserModule,
@@ -90,10 +103,12 @@ import { LoginOrSignDialogComponent } from './login-or-sign-dialog/login-or-sign
         apiKey: 'AIzaSyCjZpKwxl9P88Y2kGDyTKkkLmS-IMxT8eY'
       }
     ),
-    MatInputModule
+    MatInputModule,
+    MatSliderModule
   ],
   providers: [
     {provide: UsersService, useClass: UsersArrayService},
+    {provide: SearchService, useClass: SearchMockService},
     {provide: CarsService, useClass: MockCarsService},
     {provide: RentService, useClass: MockRentService},
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
@@ -101,7 +116,7 @@ import { LoginOrSignDialogComponent } from './login-or-sign-dialog/login-or-sign
     {provide: MAT_DATE_LOCALE, useValue: 'en-GB'}
 
   ],
-  entryComponents: [SingUpDialogComponent, LoginComponent, PaymentDialogComponent, ReturnDialogComponent, LoginOrSignDialogComponent],
+  entryComponents: [SingUpDialogComponent, LoginComponent, PaymentDialogComponent, ReturnDialogComponent, LoginOrSignDialogComponent, CarWindowComponent],
 
   bootstrap: [AppComponent]
 })

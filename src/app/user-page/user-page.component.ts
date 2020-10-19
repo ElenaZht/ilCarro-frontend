@@ -54,48 +54,50 @@ export class UserPageComponent implements OnInit, OnDestroy {
     this.errorText = '';
     this.user$ = this.usersService.getUser();
     this.user$subscription = this.user$.subscribe(user => {
-      this.user = user;
-      this.myCarsOrdersSubscription = this.rentService.getCarsOrders(user.id).subscribe(res => {
-        console.log('get cars orders');
-        this.carsOrders = res;
-        for (const or of this.carsOrders) {
-          or.dateOn = new Date(`${or.dateOn} UTC`);
-          or.dateOff = new Date(`${or.dateOff} UTC`);
-        }
-        this.carsOrders.sort((a, b) => b.orderId - a.orderId);
-        console.log(this.carsOrders);
-        this.waitingOrders = this.carsOrders.filter(o => o.state === State.WaitToReturn);
-        console.log('waiting orders : ', this.waitingOrders);
-        for (let or of this.waitingOrders) {
-          this.showNotification(or);
-        }
-        this.canceledOrders = this.carsOrders.filter(o => o.state === State.Canceled);
-        console.log('canceled orders : ', this.waitingOrders);
-        for (let orc of this.canceledOrders) {
-          this.showNotification(orc);
-        }
-      });
-      this.myOrdersSubscription = this.rentService.getMyOrders(user.id).subscribe(res => {
-        this.myOrders = res;
+      if (user) {
+          this.user = user;
+          this.myCarsOrdersSubscription = this.rentService.getCarsOrders(user.id).subscribe(res => {
+            console.log('get cars orders');
+            this.carsOrders = res;
+            for (const or of this.carsOrders) {
+              or.dateOn = new Date(`${or.dateOn} UTC`);
+              or.dateOff = new Date(`${or.dateOff} UTC`);
+            }
+            this.carsOrders.sort((a, b) => b.orderId - a.orderId);
+            console.log(this.carsOrders);
+            this.waitingOrders = this.carsOrders.filter(o => o.state === State.WaitToReturn);
+            console.log('waiting orders : ', this.waitingOrders);
+            for (let or of this.waitingOrders) {
+              this.showNotification(or);
+            }
+            this.canceledOrders = this.carsOrders.filter(o => o.state === State.Canceled);
+            console.log('canceled orders : ', this.waitingOrders);
+            for (let orc of this.canceledOrders) {
+              this.showNotification(orc);
+            }
+          });
+          this.myOrdersSubscription = this.rentService.getMyOrders(user.id).subscribe(res => {
+            this.myOrders = res;
 
-        for (const or of this.myOrders) {
-          or.dateOn = new Date(`${or.dateOn} UTC`);
-          or.dateOff = new Date(`${or.dateOff} UTC`);
-          let today = new Date();
-          if (today >= or.dateOn) {
-            this.ordersStatus[or.orderId] = true;
-            // or.orderDateCome = true;
-            console.log('ORDER DATE COME', or.dateOn, 'today', today);
-            console.log('ORDER DATE COME', typeof (or.dateOn), 'today', typeof (today));
+            for (const or of this.myOrders) {
+              or.dateOn = new Date(`${or.dateOn} UTC`);
+              or.dateOff = new Date(`${or.dateOff} UTC`);
+              let today = new Date();
+              if (today >= or.dateOn) {
+                this.ordersStatus[or.orderId] = true;
+                // or.orderDateCome = true;
+                console.log('ORDER DATE COME', or.dateOn, 'today', today);
+                console.log('ORDER DATE COME', typeof (or.dateOn), 'today', typeof (today));
+              }
+
+            }
+            this.myOrders.sort((a, b) => b.orderId - a.orderId);
+            console.log(this.myOrders);
+          });
+          this.displayName = user.first_name + ' ' + user.second_name;
+          this.displayEmail = user.email;
+          this.cars$ = this.carsService.getCarsByUserId(user.id);
           }
-
-        }
-        this.myOrders.sort((a, b) => b.orderId - a.orderId);
-        console.log(this.myOrders);
-      });
-      this.displayName = user.first_name + ' ' +  user.second_name;
-      this.displayEmail = user.email;
-      this.cars$ = this.carsService.getCarsByUserId(user.id);
     });
   }
   onSelectFile(event: any) {
@@ -167,7 +169,6 @@ export class UserPageComponent implements OnInit, OnDestroy {
   returnCar(car) {
         const carClone: Car = {...car};
         console.log('return for car: ', car);
-        // carClone.location = {...car.location};
         const dialogRef = this.dialog.open(ReturnDialogComponent, {panelClass: 'custom-dialog-container', data: {car: carClone, user: this.user}});
         dialogRef.afterClosed().subscribe(result => {
           console.log('The dialog was closed edit car', result);
