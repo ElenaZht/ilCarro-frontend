@@ -38,7 +38,7 @@
           </button>
   </div>
   </form>
-  <div *ngIf="errorText !== ''" class="danger">{{errorText}}</div>
+  <div *ngIf="errorText && errorText.length" class="danger">{{errorText}}</div>
 
     <div class="trapezoid" id="trap"></div>
 

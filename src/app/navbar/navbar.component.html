@@ -14,7 +14,7 @@
     <label >My account</label>
   </li>
     <li routerLink="letthecarwork" *ngIf="!this.usersService.isLoggedIn()" class="nav-link" routerLinkActive="active_tab">
-      <label >Let the car work</label>
+      <label >Let it work</label>
     </li>
     <li *ngIf="!this.usersService.isLoggedIn()" routerLink="signupwind" routerLinkActive="active_tab" (click)="joinUs()" class="nav-link">
       <label>Sign Up</label>

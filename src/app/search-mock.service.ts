@@ -9,7 +9,6 @@ import {HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 export class SearchMockService implements SearchService {
-
   constructor(private http: HttpClient) { }
 
   getAllCars(): Observable<Car[]> {

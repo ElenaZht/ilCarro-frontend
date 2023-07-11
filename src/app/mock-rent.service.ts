@@ -15,12 +15,10 @@ export class MockRentService implements RentService {
   constructor(private http: HttpClient) { }
 
   getCarsOrders(id: number): Observable<Order[]> {
-    console.log('into func getcarsorders');
     this.http.get<Order[]>(`${environment.apiUrl}/orders/${id}`).subscribe(
       res => {
         if (res) {
           this.carsOrders$.next(res);
-          console.log('cars orders res', res);
         }
       }
     );
@@ -31,7 +29,6 @@ export class MockRentService implements RentService {
       res => {
         if (res) {
           this.myOrders$.next(res);
-          console.log('my orders res', res);
         }
       }
     );
@@ -39,7 +36,6 @@ export class MockRentService implements RentService {
 
   }
   addOrder(order: Order): Observable<boolean> {
-    console.log(order);
     const id = order.renterId;
     return  this.http.post<boolean>(`${environment.apiUrl}/orders/addorder`, order).pipe(map(
       res => {
@@ -53,7 +49,6 @@ export class MockRentService implements RentService {
   }
 
   returnCar(order: Order): Observable<boolean> {
-    console.log('before put of return', order);
     return this.http.put<boolean>(`${environment.apiUrl}/orders/returnorder`, order).pipe(map(
       res => {
         if (res) {
@@ -65,7 +60,6 @@ export class MockRentService implements RentService {
   }
 
   intermediateReturn(order: Order): Observable<boolean> {
-    console.log('before put of intermediate return', order);
     return this.http.put<boolean>(`${environment.apiUrl}/orders/intermedreturnorder`, order).pipe(map(
       res => {
         if (res) {
@@ -76,7 +70,6 @@ export class MockRentService implements RentService {
     ));
   }
   cancelOrder(order: Order): Observable<boolean> {
-    console.log('cancel order:', order);
     return this.http.put<boolean>(`${environment.apiUrl}/orders/cancelorder`, order).pipe(map(
       res => {
         if (res) {
@@ -87,7 +80,6 @@ export class MockRentService implements RentService {
     ));
   }
   cancelOrderByOwner(order: Order): Observable<boolean> {
-    console.log('OWNER cancel order:', order);
     return this.http.put<boolean>(`${environment.apiUrl}/orders/cancelorderbyowner`, order).pipe(map(
       res => {
         if (res) {
@@ -108,14 +100,12 @@ export class MockRentService implements RentService {
       resMyCars => {
         if (resMyCars) {
           this.carsOrders$.next(resMyCars);
-          console.log('cars orders res', resMyCars);
         }
       });
     this.http.get<Order[]>(`${environment.apiUrl}/myorder/${id}`).subscribe(
       resMyOrders => {
         if (resMyOrders) {
           this.myOrders$.next(resMyOrders);
-          console.log('my orders res', resMyOrders);
         }
       });
   }

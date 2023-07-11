@@ -16,7 +16,7 @@ export class PaymentDialogComponent implements OnInit {
   }
   onPay() {
     this.dialogRef.close(true);
-    this.router.navigate(['/myaccount']);
+    void this.router.navigate(['/myaccount']);
 
   }
 }

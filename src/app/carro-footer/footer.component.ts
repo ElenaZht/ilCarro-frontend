@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {SingUpDialogComponent} from '../sing-up-dialog/sing-up-dialog.component';
 import {Location} from '@angular/common';
@@ -12,29 +12,32 @@ import {LoginComponent} from '../login/login.component';
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css']
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent implements OnInit, OnDestroy {
   logo = '../assets/img/logo.svg';
+  private joinDialogCloseSubscription;
+  private loginDialogCloseSubscription;
+  constructor(private router: Router,  private location: Location, public dialog: MatDialog) { }
   joinUs() {
     const dialogRef = this.dialog.open(SingUpDialogComponent, {panelClass: 'custom-dialog-container'});
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
+    this.joinDialogCloseSubscription = dialogRef.afterClosed().subscribe(() => {
       this.location.back();
     });
   }
   logIn() {
     const dialogRef = this.dialog.open(LoginComponent, {panelClass: 'custom-dialog-container'});
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
-      if (!result) {this.router.navigate(['/homepage']); }
+    this.loginDialogCloseSubscription = dialogRef.afterClosed().subscribe(result => {
+      if (!result) {void this.router.navigate(['/homepage']); }
     });
   }
-
-  constructor(private router: Router,  private location: Location, public dialog: MatDialog) { }
 
   ngOnInit() {
   }
 
   up() {
     window.scrollTo(0, 0);
+  }
+  ngOnDestroy() {
+    this.joinDialogCloseSubscription.unsubscribe();
+    this.loginDialogCloseSubscription.unsubscribe();
   }
 }

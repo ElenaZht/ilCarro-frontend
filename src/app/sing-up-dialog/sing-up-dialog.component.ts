@@ -7,8 +7,7 @@ import {MatDialogRef} from '@angular/material/dialog';
 })
 export class SingUpDialogComponent {
 
-  constructor(
-    public dialogRef: MatDialogRef<SingUpDialogComponent>) {}
+  constructor(public dialogRef: MatDialogRef<SingUpDialogComponent>) {}
 
   closeDialog(event): void {
     this.dialogRef.close(event);

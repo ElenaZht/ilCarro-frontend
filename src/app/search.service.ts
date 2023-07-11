@@ -22,5 +22,5 @@ export interface Filter {
 export abstract class SearchService {
   abstract getAllCars(): Observable<Car[]>;
   abstract getCarsByFilter(filter: Filter): Observable<Car[]>;
-  constructor() { }
+  protected constructor() { }
 }

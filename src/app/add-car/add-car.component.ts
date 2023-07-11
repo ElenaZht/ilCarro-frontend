@@ -1,12 +1,9 @@
-import {Component, EventEmitter, Inject, OnInit, Output} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {Component, EventEmitter, Inject, OnDestroy, OnInit, Output} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {NgForm} from '@angular/forms';
 import {Car, Location, CarsService, Features} from '../cars.service';
-import {User, UsersService} from '../users.service';
+import {User} from '../users.service';
 import {ToastrService} from 'ngx-toastr';
-import {MouseEvent} from '@agm/core';
-
 
 
 @Component({
@@ -14,27 +11,30 @@ import {MouseEvent} from '@agm/core';
   templateUrl: './add-car.component.html',
   styleUrls: ['./add-car.component.css']
 })
-export class AddCarComponent implements OnInit {
+export class AddCarComponent implements OnInit, OnDestroy {
   @Output() signUpResult = new EventEmitter<boolean>();
 
-  checkboxError: boolean;
   errorText: string;
   selectedFile: File = null;
-  selectedItemsList = [];
   isNew: boolean;
   user: User;
+  car: Car;
   public currentCar: Car;
+  private subscription;
   formTitle: string;
   btnSubmitTitile: string;
   latitude = 32.0804808;
   longitude = 34.7805274;
 
-
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<AddCarComponent>, private http: HttpClient, private carsService: CarsService, private usersService: UsersService, private toastr: ToastrService) {
-    console.log('my data', data);
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private carsService: CarsService,
+              public dialogRef: MatDialogRef<AddCarComponent>,  private toastr: ToastrService) {
     this.user = data.user;
-    if (data.car) {
-      this.currentCar = data.car;
+    this.car = data.car;
+  }
+
+  ngOnInit() {
+    if (this.car) {
+      this.currentCar = this.car;
       this.formTitle = 'Edit your car';
       this.btnSubmitTitile = 'Edit';
       this.isNew = false;
@@ -54,11 +54,7 @@ export class AddCarComponent implements OnInit {
       this.isNew = true;
       this.currentCar.location.lat = this.latitude;
       this.currentCar.location.lng = this.longitude;
-      console.log('No car, add new car mode', this.currentCar);
     }
-  }
-
-  ngOnInit() {
   }
 
   onFileSelected(event: any) {
@@ -78,17 +74,14 @@ export class AddCarComponent implements OnInit {
     const car = addCarForm.value as Car;
     car.img_url = this.currentCar.img_url;
     car.owner_id = this.user.id;
-    car.location = {...this.currentCar.location}; // should be resolved in template//
+    car.location = {...this.currentCar.location}; // should be resolved in template//todo ?
     car.location.lat = this.currentCar.location.lat;
     car.location.lng = this.currentCar.location.lng;
     car.features = this.currentCar.features;
-    console.log('curr car', this.currentCar);
 
     if (this.isNew) {
-      console.log('add car', car);
-      this.carsService.addCar(car)
+      this.subscription = this.carsService.addCar(car)
         .subscribe(res => {
-          console.log(this.selectedItemsList);
 
           if (res) {
             addCarForm.reset();
@@ -96,14 +89,11 @@ export class AddCarComponent implements OnInit {
             this.dialogRef.close();
           }
         }, err => {
-          console.log(err);
           this.errorText = err.statusText;
         });
     } else {
-      console.log('edit car', car);
-      this.carsService.editCar(this.currentCar).subscribe(res => {
+      this.subscription = this.carsService.editCar(this.currentCar).subscribe(res => {
         if (res) {
-          console.log('edit car res');
 
           this.showToastr();
           this.errorText = '';
@@ -111,15 +101,16 @@ export class AddCarComponent implements OnInit {
 
         }
       }, err => {
-        console.log(err);
         this.errorText = err.statusText;
       });
     }
   }
 
   onChosenLocation(event) {
-    console.log(event);
     this.currentCar.location.lat = event.coords.lat;
     this.currentCar.location.lng = event.coords.lng;
+  }
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

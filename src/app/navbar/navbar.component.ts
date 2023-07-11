@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { SingUpDialogComponent } from '../sing-up-dialog/sing-up-dialog.component';
 import {MatDialog} from '@angular/material';
 import {Location} from '@angular/common';
@@ -6,7 +6,6 @@ import {LoginComponent} from '../login/login.component';
 import {Router} from '@angular/router';
 import { UsersService} from '../users.service';
 import {ToastrService} from 'ngx-toastr';
-import { HttpClient } from '@angular/common/http';
 
 
 
@@ -15,29 +14,29 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy {
+  private joinDialogSubscription;
+  private loginDialogSubscription;
+  constructor(public dialog: MatDialog, private location: Location,
+              private router: Router, private usersService: UsersService,
+              private toastr: ToastrService) { }
   joinUs() {
     const dialogRef = this.dialog.open(SingUpDialogComponent, {panelClass: 'custom-dialog-container'});
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
+    this.joinDialogSubscription = dialogRef.afterClosed().subscribe(() => {
       this.location.back();
     });
   }
   logIn() {
     const dialogRef = this.dialog.open(LoginComponent, {panelClass: 'custom-dialog-container'});
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed nav bar', result);
+    this.loginDialogSubscription = dialogRef.afterClosed().subscribe(result => {
       if (!result) {
-        this.router.navigate(['/homepage']);
+        void this.router.navigate(['/homepage']);
       } else  {
-        this.router.navigate(['/myaccount']);
+        void this.router.navigate(['/myaccount']);
 
       }
     });
   }
-
-  // tslint:disable-next-line:max-line-length
-  constructor(public dialog: MatDialog, private location: Location,   private router: Router, private usersService: UsersService, private toastr: ToastrService, private http: HttpClient) { }
 
   ngOnInit() {
   }
@@ -46,11 +45,15 @@ export class NavbarComponent implements OnInit {
     if (confirm('Are you sure to log out?')) {
       this.usersService.logout();
       this.showToastr();
-      this.router.navigate(['/loginwind']);
+      void this.router.navigate(['/loginwind']);
       this.logIn();
     }
   }
   showToastr() {
     this.toastr.success('Logged out successfully', ' ');
+  }
+  ngOnDestroy(): void {
+    this.joinDialogSubscription.unsubscribe();
+    this.loginDialogSubscription.unsubscribe();
   }
 }

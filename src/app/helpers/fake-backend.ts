@@ -2,11 +2,11 @@
 import {Observable, of, throwError} from 'rxjs';
 import {delay, dematerialize, materialize, mergeMap} from 'rxjs/operators';
 import {User} from '../users.service';
-import {Injectable} from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 import {Car} from '../cars.service';
 import {Order, State} from '../rent.service';
 
-const users_init: User[] = [
+const usersUnit: User[] = [
                     { url: '../../assets/user_photo.jpg', id: 1, first_name: 'Lena', second_name: 'Zhytomirsky',
                       email: 'elenazht@gmail.com', password: '12345678'},
                     {  url: '../../assets/face2.jpg', id: 120, first_name: 'Haim', second_name: 'Petrov',
@@ -20,7 +20,7 @@ const users_init: User[] = [
                     {  url: '../../assets/face6.jpg', id: 124, first_name: 'Isak', second_name: 'Pinsky',
                       email: 'isak@gmail.com', password: '12345678'}
                       ];
-const cars_init: Car[] = [
+const carsInit: Car[] = [
   { id: 100, img_url: '../../assets/azlk.jpg', title: 'AZLK', model: '2140',  price: 200, owner_id: 121, year: 2010, location: {country: 'Russia', city: 'Voronezh', region: 'Voronezh Oblast', street: 'Ulitsa Generala Lizyukova, 4', zip: 394053, lat: 51.6605982, lng: 39.2005858}, engine: '3.0L V6 DOHC',
     fuel: 'Gas', gear: 'Automatic', fuel_cons: '12l', wd: 'RWD', hp: 250, torque: 330, doors: 4, seats: 5, class: 'C', about_text: 'BRAND NEW FULLY LOADED CUSTOM 2018 RANGE ROVER HSE with a 3.0 Liter Supercharged V6 Engine. The Range Rover HSE has a 380 horsepower V6, 8-Speed automatic transmission with gearshift paddles, all wheel drive, sliding panoramic roof, Bluetooth and USB.',
     features: {multimediaDisplay: false, abs: false, climatControl: false, childAutoseat: false},
@@ -66,7 +66,7 @@ const cars_init: Car[] = [
     features:  {multimediaDisplay: false, abs: true, climatControl: false, childAutoseat: false},
     rating: 4, comments: [1030, 1022]}
 ];
-const comments_init = [
+const commentsInit = [
                 { id: 1000,
                   url: '../../assets/face1.jpg',
                   name: 'Alex',
@@ -318,7 +318,7 @@ const comments_init = [
                     stars: 5
                   }
                   ];
-const orders_init: Order[] = [
+const ordersInit: Order[] = [
   {
     orderId: 0,
     carId: 100,
@@ -488,8 +488,7 @@ const orders_init: Order[] = [
 
 ];
 
-function calculate_distnace(lat1 , lon1 , lat2, lon2) {
-  console.log('sdasdasdasda')
+function calculate_distance(lat1 , lon1 , lat2, lon2) {
   const R = 6371e3; // metres
   const phi1 = lat1 * Math.PI / 180; // φ, λ in radians
   const phi2 = lat2 * Math.PI / 180;
@@ -501,26 +500,19 @@ function calculate_distnace(lat1 , lon1 , lat2, lon2) {
     Math.sin(deltaGamma / 2 ) * Math.sin(deltaGamma / 2);
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
-  console.log('DISTANCE TO CAR', R * c);
   return  R * c; // in metres
 }
 
-function checkBisyDates(cId, date1, date2) {
-  console.log('if bisy dates', date1, date2);
-  let busy = [];
-  let orders = getOrders().filter(o => o.carId === cId);
-  console.log('orders for this car', orders);
-  for (let or of orders) {
+function checkBusyDates(cId, date1, date2) {
+  const busy = [];
+  const orders = getOrders().filter(o => o.carId === cId);
+  for (const or of orders) {
     busy.push({start: new Date(`${or.dateOn} UTC`).setHours(0, 0, 0, 0),
             end: new Date(`${or.dateOff} UTC`).setHours(0, 0, 0, 0)});
   }
-  console.log('busy dates for the car', busy);
-  let found = busy.find(el => el.start <=  date2 && date1 <= el.end);
-  if (found) {
-    console.log('i found busy');
-    return false;
-  }
-  return true;
+  const found = busy.find(el => el.start <=  date2 && date1 <= el.end);
+  return !found;
+
 }
 
 function getCars() {
@@ -531,7 +523,6 @@ function addCar(car) {
   const cars = getCars();
   cars.push(car);
   localStorage.setItem('cars', JSON.stringify(cars));
-  console.log('cars after add: ', cars);
 }
 
 function updateCar(carID, newValue) {
@@ -539,27 +530,22 @@ function updateCar(carID, newValue) {
   const idx = cars.findIndex(c => c.id === carID);
   cars[idx] = newValue;
   localStorage.setItem('cars', JSON.stringify(cars));
-  console.log('car to be', newValue);
-  console.log('car after update', cars[idx]);
+
 }
 function removeCar(carID) {
-  console.log('fake delete car');
   const cars = getCars();
   const i = cars.findIndex(car => car.id === carID);
   cars.splice(i, 1);
-  console.log(cars);
   localStorage.setItem('cars', JSON.stringify(cars));
 }
 function getUsers() {
   return  JSON.parse(localStorage.getItem('users'));
 }
 function updateUser(userID, newValue) {
-  console.log('fake update user');
-  let users = getUsers();
+  const users = getUsers();
   const idx = users.findIndex(c => c.id === userID);
   if (idx > 0) {
     users[idx] = newValue;
-    console.log(users[idx]);
     localStorage.setItem('users', JSON.stringify(users));
     return true;
   }
@@ -567,18 +553,15 @@ function updateUser(userID, newValue) {
 }
 
 function addUser(user) {
-  let users = getUsers();
+  const users = getUsers();
   users.push(user);
   localStorage.setItem('users', JSON.stringify(users));
-  console.log('users after add: ', users);
 }
 function removeUser(userID) {
-  console.log('fake delete user');
-  let users = getUsers();
+  const users = getUsers();
   const i = users.findIndex(car => car.id === userID);
   if (i > 0) {
     users.splice(i, 1);
-    console.log(users);
     localStorage.setItem('users', JSON.stringify(users));
     return true;
   }
@@ -588,26 +571,23 @@ function getComments() {
   return  JSON.parse(localStorage.getItem('comments'));
 }
 function addComment(comment) {
-  let comments = getComments();
+  const comments = getComments();
   comments.push(comment);
   localStorage.setItem('comments', JSON.stringify(comments));
-  console.log('comments after add: ', comments);
 }
 function getOrders() {
   return  JSON.parse(localStorage.getItem('orders'));
 }
 function addOrder(order) {
-  let orders = getOrders();
+  const orders = getOrders();
   orders.push(order);
   localStorage.setItem('orders', JSON.stringify(orders));
-  console.log('orders after add: ', orders);
 }
 function updateOrder(order) {
-  let orders = getOrders();
+  const orders = getOrders();
   const idx = orders.findIndex(c => c.orderId === order.orderId);
   orders[idx] = order;
   localStorage.setItem('orders', JSON.stringify(orders));
-  console.log('orders after update: ', orders);
 
 }
 function filterCars(fprams) {
@@ -619,7 +599,7 @@ function filterCars(fprams) {
     cars = cars.filter(c => c.price <= fprams.price);
   }
   if (fprams.dateOn && fprams.dateOff) {
-    cars = cars.filter(c => checkBisyDates(c.id, fprams.dateOn, fprams.dateOff));
+    cars = cars.filter(c => checkBusyDates(c.id, fprams.dateOn, fprams.dateOff));
   }
   if (fprams.features.multimediaDisplay) {
     cars = cars.filter(c => c.features.multimediaDisplay === fprams.features.multimediaDisplay);
@@ -634,13 +614,10 @@ function filterCars(fprams) {
     cars = cars.filter(c => c.features.childAutoseat === fprams.features.childAutoseat);
   }
   if (fprams.gear && fprams.gear !== '') {
-    console.log(typeof(fprams.gear));
-    console.log('gear is', fprams.gear);
     cars = cars.filter(c => c.gear === fprams.gear);
   }
   if (fprams.year) {
     cars = cars.filter(c => c.year === fprams.year);
-    console.log('type of f.year is', typeof (fprams.year));
   }
   if (fprams.class && fprams.class !== '') {
     cars = cars.filter(c => c.class === fprams.class);
@@ -649,43 +626,38 @@ function filterCars(fprams) {
     cars = cars.filter(c => c.location.city === fprams.city);
   }
   if (fprams.location.lng && fprams.location.lat && fprams.rad) {
-    cars = cars.filter(c => calculate_distnace(fprams.location.lat, fprams.location.lng, c.location.lat, c.location.lng) <= fprams.rad);
+    cars = cars.filter(c => calculate_distance(fprams.location.lat, fprams.location.lng, c.location.lat, c.location.lng) <= fprams.rad);
   }
-  console.log('CARS COMES', cars);
   return cars;
 }
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
   constructor() {
-    console.log('FAKE BACKEND Ctor');
     const checkCars = localStorage.getItem('cars');
     if (!checkCars) {
-      localStorage.setItem('cars', JSON.stringify(cars_init));
+      localStorage.setItem('cars', JSON.stringify(carsInit));
     }
     const checkUsers = localStorage.getItem('users');
     if (!checkUsers) {
-      localStorage.setItem('users', JSON.stringify(users_init));
+      localStorage.setItem('users', JSON.stringify(usersUnit));
     }
     const checkComments = localStorage.getItem('comments');
     if (!checkComments) {
-      localStorage.setItem('comments', JSON.stringify(comments_init));
+      localStorage.setItem('comments', JSON.stringify(commentsInit));
     }
     const checkOrders = localStorage.getItem('orders');
     if (!checkOrders) {
-      localStorage.setItem('orders', JSON.stringify(orders_init));
+      localStorage.setItem('orders', JSON.stringify(ordersInit));
     }
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const {url, method, headers, body} = request;
-    // console.log('intercepted by fake backend url no', url.substring(0, url.lastIndexOf('/')));
-    console.log('intercepted by fake backend', body, url, method);
-    // wrap in delayed observable to simulate server api call
+    // wrap in delayed observable to simulate server api call todo?
     return of(null)
       .pipe(mergeMap(handleRoute))
-      // tslint:disable-next-line:max-line-length
-      .pipe(materialize()) // call materialize and dematerialize to ensure delay even if an error is thrown (https://github.com/Reactive-Extensions/RxJS/issues/648)
+      .pipe(materialize())
       .pipe(delay(500))
       .pipe(dematerialize());
 
@@ -702,34 +674,24 @@ export class FakeBackendInterceptor implements HttpInterceptor {
           body.id = getComments().length + 1000;
           addComment(body);
           const currentCar = getCars().find(c => c.id === body.carId);
-          console.log('CURRENT CAR', currentCar);
           currentCar.comments.push(body.id);
-          console.log('comment for recount -->', body);
           if (body.stars > 0) {
-            let rat = [];
-            for (let c = 0; c < currentCar.comments.length; c++) {
-              let coId = currentCar.comments[c];
-              console.log('C', c);
-              let co = getComments().find(c => c.id === coId);
+            const rat = [];
+            for (const comment of currentCar.comments) {
+              const coId = comment;
+              const co = getComments().find(c => c.id === coId);
               rat.push(co.stars);
-              console.log('trying to push from comment', co);
-              console.log('rat[] is', rat);
-              let sum = rat.reduce((a, b) => a + b, 0);
-              let newR = Math.round(sum / rat.length);
-              currentCar.rating = newR;
-              console.log('NEW RATING IS', newR);
-              console.log('NOW CAR', currentCar);
+              const sum = rat.reduce((a, b) => a + b, 0);
+              currentCar.rating = Math.round(sum / rat.length);
             }
           }
 
           updateCar(currentCar.id, currentCar);
-          console.log('CURRENT CAR COMMENTS', currentCar.comments);
           return ok(true);
         case url.endsWith('/users/comments') && method === 'GET':
           return ok(getComments());
         case url.endsWith('users/login') && method === 'POST':
-            console.log('fake bakend login');
-            const u = getUsers().find(u => u.email === body.email);
+            const u = getUsers().find(us => us.email === body.email);
             if (u && u.password === body.password) {
               u.token = 'jwt_token';
               return ok(u);
@@ -737,7 +699,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
               return throwError({status: 401, statusText: 'Unauthorized'});
             }
         case url.substring(0, url.lastIndexOf('/')).endsWith('/car') && method === 'GET':
-            const id = parseInt(url.substring(url.lastIndexOf('/') + 1));
+            const id = parseInt(url.substring(url.lastIndexOf('/') + 1), 10);
             if (id) {
               const car = getCars().find(c => c.id === id);
               if (car) {
@@ -756,14 +718,12 @@ export class FakeBackendInterceptor implements HttpInterceptor {
               }
         case url.endsWith('/cars/filteredcars') && method === 'POST':
           const fprams = body;
-          console.log('FILTER', fprams);
           const fcars = filterCars(fprams);
           return ok(fcars);
         case url.substring(0, url.lastIndexOf('/')).endsWith('cars/user') && method === 'GET':
-          const userId = parseInt(url.substring(url.lastIndexOf('/') + 1));
+          const userId = parseInt(url.substring(url.lastIndexOf('/') + 1), 10);
           return ok(getCars().filter(c => c.owner_id === userId));
         case  url.endsWith('cars/addcar') && method === 'POST':
-          console.log(body);
           if (!body.comments) {
             body.comments = [];
           }
@@ -771,10 +731,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
           addCar(body);
           return ok(true);
         case url.endsWith('users/edituser') && method === 'PUT':
-            console.log('USER EDIT COME IN', body);
             const us = getUsers().find(us => us.id === body.id);
             if (us) {
-              console.log('I TRY TO EDIT UDER:', us);
               us.first_name = body.firstName;
               us.second_name = body.secondName;
               us.email = body.email;
@@ -784,79 +742,65 @@ export class FakeBackendInterceptor implements HttpInterceptor {
               } else {
                 return throwError({status: 404, statusText: 'User not found'});
               }
-            } else { (console.log('USER NOT FOUND')); }
+            }
             break;
         case url.endsWith('cars/editcar') && method === 'PUT':
-            console.log(body);
             updateCar(body.id, body);
             return ok(true);
         case url.endsWith('orders/returnorder') && method === 'PUT':
-            console.log('order returned -->', body);
             const ord = getOrders().find(o => o.orderId === body.orderId);
             ord.state = State.Returned;
             updateOrder(ord);
-            console.log('order after return -->', ord);
             return ok(true);
         case url.endsWith('orders/intermedreturnorder') && method === 'PUT':
           const ordr = getOrders().find(o => o.orderId === body.orderId);
           ordr.state = State.WaitToReturn;
           updateOrder(ordr);
-          console.log('order after intermed return -->', ordr);
           return ok(true);
         case url.endsWith('orders/cancelorder') && method === 'PUT':
           const ordC = getOrders().find(o => o.orderId === body.orderId);
           ordC.state = State.Canceled;
           updateOrder(ordC);
-          console.log('order after cancel -->', ordC);
           return ok(true);
         case url.endsWith('orders/cancelorderbyowner') && method === 'PUT':
           const ordO = getOrders().find(o => o.orderId === body.orderId);
           ordO.state = State.CanceledByOwner;
           updateOrder(ordO);
-          console.log('order after owner cancel -->', ordO);
           return ok(true);
         case url.substring(0, url.lastIndexOf('/')).endsWith('cars/removecar') && method === 'DELETE':
-          const carId = parseInt(url.substring(url.lastIndexOf('/') + 1));
+          const carId = parseInt(url.substring(url.lastIndexOf('/') + 1), 10);
           removeCar(carId);
           return ok(true);
         case url.substring(0, url.lastIndexOf('/')).endsWith('users/removeuser') && method === 'DELETE':
-          const usId = parseInt(url.substring(url.lastIndexOf('/') + 1));
-          console.log('fake delete user');
+          const usId = parseInt(url.substring(url.lastIndexOf('/') + 1), 10);
           const succsess = removeUser(usId);
           return ok(succsess);
-          break;
         case url.substring(0, url.lastIndexOf('/')).endsWith('comments') && method === 'GET':
-          const commentId = parseInt(url.substring(url.lastIndexOf('/') + 1));
+          const commentId = parseInt(url.substring(url.lastIndexOf('/') + 1), 10);
           const res =  getComments().find(c => c.id === commentId);
-          console.log('RESULT IS: ', res);
           return ok(res);
         case url.substring(0, url.lastIndexOf('/')).endsWith('orders') && method === 'GET':
-          const myId = parseInt(url.substring(url.lastIndexOf('/') + 1));
+          const myId = parseInt(url.substring(url.lastIndexOf('/') + 1), 10);
           const result =  getOrders().filter(o => o.carOwnerId === myId);
-          console.log('fake res orders: ', result);
           return ok(result);
         case url.substring(0, url.lastIndexOf('/')).endsWith('orders/lastorder') && method === 'GET':
           const orders =  getOrders();
           const lastres = orders[orders.length - 1];
-          console.log('fake last order: ', lastres);
           return ok(lastres);
         case url.substring(0, url.lastIndexOf('/')).endsWith('myorder') && method === 'GET':
-          const mId = parseInt(url.substring(url.lastIndexOf('/') + 1));
+          const mId = parseInt(url.substring(url.lastIndexOf('/') + 1), 10);
           const reslt =  getOrders().filter(o => o.renterId === mId);
-          console.log('fake res my orders: ', reslt);
           return ok(reslt);
         case url.substring(0, url.lastIndexOf('/')).endsWith('users') && method === 'GET':
-          const uId = parseInt(url.substring(url.lastIndexOf('/') + 1));
+          const uId = parseInt(url.substring(url.lastIndexOf('/') + 1), 10);
           const resultat = getUsers().find(u => u.id === uId);
           return ok(resultat);
         case url.substring(0, url.lastIndexOf('/')).endsWith('thiscarorder') && method === 'GET':
-          const thisCarId = parseInt(url.substring(url.lastIndexOf('/') + 1));
+          const thisCarId = parseInt(url.substring(url.lastIndexOf('/') + 1), 10);
           const resOrds = getOrders().filter(o => o.carId === thisCarId);
           return ok(resOrds);
         case url.endsWith('cars/topcars') && method === 'GET':
-          console.log('topCars fake backend');
           const topCars = getCars().sort((a, b) => b.rating - a.rating).slice(0, 3);
-          console.log('top cars', topCars);
           return ok(topCars);
         case url.endsWith('/orders/addorder') && method === 'POST' :
           body.orderId = getOrders().length + 1;
@@ -871,20 +815,6 @@ export class FakeBackendInterceptor implements HttpInterceptor {
       return next.handle(request);
       }
 
-    function authenticate() {
-        const {first_name, password} = body;
-        const user = getUsers().find(x => x.first_name === first_name && x.password === password);
-        if (!user) {
-          return error('Username or password is incorrect');
-        }
-        return ok({
-          id: user.id,
-          first_name: user.first_name,
-          last_name: user.second_name,
-          email: user.email,
-          token: 'fake-jwt-token'
-        });
-      }
 
     function ok(body?) {
         return of(new HttpResponse({status: 200, body}));

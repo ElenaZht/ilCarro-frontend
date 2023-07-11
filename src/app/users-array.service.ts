@@ -3,7 +3,6 @@ import {User, UsersService, Comment} from './users.service';
 import {BehaviorSubject, Observable, of, Subject, throwError} from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from './environments/environment';
-import {Car} from './cars.service';
 import {catchError, map} from 'rxjs/operators';
 
 
@@ -19,16 +18,12 @@ export class UsersArrayService implements UsersService {
     if (u) {
       this.currentUser = JSON.parse(u);
       this.user$ = new BehaviorSubject(this.currentUser);
-      // this.user$.next(this.currentUser);
-      console.log('user session restored');
     } else {
       this.user$ = new BehaviorSubject(null);
     }
   }
 
   AddUser(user: User): Observable<boolean> {
-    console.log(user);
-    console.log(environment.apiUrl);
     return this.http.post<boolean>(`${environment.apiUrl}/users/signup`, user);
 
   }
@@ -42,7 +37,6 @@ export class UsersArrayService implements UsersService {
   logIn(email: string, password: string ): Observable<boolean> {
     return this.http.post<User>(`${environment.apiUrl}/users/login`, {email, password})
       .pipe(map(user => {
-      console.log(user);
       if (user && user.token) {
         localStorage.setItem('user', JSON.stringify(user));
         this.currentUser = user;
@@ -52,13 +46,9 @@ export class UsersArrayService implements UsersService {
       return false;
     }), catchError(err => {
           this.logout();
-          console.log('login error', err);
           return throwError(err.statusText);
       }));
  }
-  getCurrentUser(): User {
-    return this.currentUser;
-  }
 
   logout() {
     localStorage.removeItem('user');
@@ -67,10 +57,8 @@ export class UsersArrayService implements UsersService {
   }
 
   isLoggedIn(): boolean {
-    if (this.currentUser && this.currentUser.token) {
-      return true;
-    }
-    return false;
+    return !!(this.currentUser && this.currentUser.token);
+
   }
 
   getCommentById(id: number): Observable<Comment> {
@@ -78,10 +66,8 @@ export class UsersArrayService implements UsersService {
   }
 
   editUser(id: number, firstName: string, secondName: string, email: string, url: string): Observable<boolean> {
-    // this.user$.next(this.currentUser);
     return this.http.put<boolean>(`${environment.apiUrl}/users/edituser`, {firstName, secondName, id, email, url}).pipe(map( res => {
       if (res) {
-        console.log('change name status', res);
         this.currentUser.first_name = firstName;
         this.currentUser.second_name = secondName;
         this.currentUser.email = email;
@@ -96,16 +82,8 @@ export class UsersArrayService implements UsersService {
   getUser(): Observable<User> {
     return this.user$.asObservable();
   }
-  getUserById(id: number): Observable<User> {
-    return this.http.get<User>(`${environment.apiUrl}/users/${id}`);
-  }
-
-  test() {
-    this.logout();
-  }
 
   removeUser(id: number): Observable<boolean> {
-    console.log('remove user: ', id);
     return this.http.delete<boolean>(`${environment.apiUrl}/users/removeuser/${id}`);
   }
 

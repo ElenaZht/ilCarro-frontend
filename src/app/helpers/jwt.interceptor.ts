@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable, OnDestroy} from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 
@@ -6,17 +6,17 @@ import {User, UsersService} from '../users.service';
 import {catchError} from 'rxjs/operators';
 
 @Injectable()
-export class JwtInterceptor implements HttpInterceptor {
+export class JwtInterceptor implements HttpInterceptor, OnDestroy {
   user: User;
+  private getUserSubscription;
+  // todo constr
   constructor(private usersService: UsersService) {
-    this.usersService.getUser().subscribe(res => {
+    this.getUserSubscription = this.usersService.getUser().subscribe(res => {
       this.user = res;
     });
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log('request intercepted jwt');
-    // add authorization header with jwt token if available
     if (this.user && this.user.token) {
       request = request.clone({
         setHeaders: {
@@ -31,8 +31,10 @@ export class JwtInterceptor implements HttpInterceptor {
         this.usersService.logout();
         location.reload();
       }
-      console.log('error');
       return throwError(err);
     }));
+  }
+  ngOnDestroy(): void {
+    this.getUserSubscription.unsubscribe();
   }
 }

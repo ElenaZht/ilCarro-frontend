@@ -1,10 +1,5 @@
 import {Observable} from 'rxjs';
 
-// export interface TopCar {
-//   url: string;
-//   title: string;
-//   price: number;
-// }
 export interface Location {
   country: string;
   city: string;
@@ -45,7 +40,7 @@ export interface Car {
   model: string;
 }
 export abstract class CarsService {
-  constructor() { }
+  protected constructor() { }
   abstract getTopCars(): Observable<Car[]>;
   abstract getCarById(id: number): Observable<Car>;
   abstract getCarsByUserId(id: number): Observable<Car[]>;

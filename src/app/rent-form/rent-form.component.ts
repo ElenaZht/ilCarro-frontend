@@ -19,54 +19,52 @@ import {Subscription} from 'rxjs';
 })
 export class RentFormComponent implements OnInit, OnDestroy {
   @Input() inputCarId: number;
-  // public value: Date;
   city: string;
   car: Car;
   cars: any;
   id: number;
   errorText = '';
   minDate: Date;
-  minTime: number;
-  bysyDates = [];
+  busyDates = [];
   user: User;
-  subscription: Subscription;
-
-  constructor(private usersService: UsersService, private carsService: CarsService, private route: ActivatedRoute, private rentService: RentService, public dialog: MatDialog,  private location: Location, private toastr: ToastrService) {}
+  getUserSubscription: Subscription;
+  getCarSubscription: Subscription;
+  getCarOrdersSubscription: Subscription;
+  paymentDialogCloseSubscription: Subscription;
+  addOrderSubscription: Subscription;
+  loginDialogCloseSubscription: Subscription;
+  constructor(private usersService: UsersService, private carsService: CarsService,
+              private rentService: RentService, public dialog: MatDialog,  private location: Location, private toastr: ToastrService) {}
 
 
   ngOnInit() {
-    this.subscription = this.usersService.getUser().subscribe(res => {
+    this.getUserSubscription = this.usersService.getUser().subscribe(res => {
       this.user = res;
     });
     this.minDate = new Date();
     this.id = this.inputCarId;
-    this.carsService.getCarById(this.id).subscribe(
+    this.getCarSubscription = this.carsService.getCarById(this.id).subscribe(
       res => {
-        console.log('rent form res: ', res);
         this.car = res;
         this.city = res.location.city;
-        this.rentService.getThisCarOrders(this.car.id).subscribe(res => {
-          for (let ord of res) {
-            console.log('THIS CAR ORDERS:', res);
+        this.getCarOrdersSubscription = this.rentService.getThisCarOrders(this.car.id).subscribe(result => {
+          for (const ord of result) {
             if (ord.state === State.WaitToGo) {
-              this.bysyDates.push({start: new Date(`${ord.dateOn} UTC`).setHours(0, 0, 0, 0),
+              this.busyDates.push({start: new Date(`${ord.dateOn} UTC`).setHours(0, 0, 0, 0),
                 end: new Date(`${ord.dateOff} UTC`).setHours(0, 0, 0, 0)});
             }
           }
-          console.log('BUSY DAYS', this.bysyDates);
         });
-      }, error => {
+      }, () => {
         this.errorText = 'Car not found';
       }
     );
 
   }
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
+
 
   dateFilter(date) {
-    let found = this.bysyDates.find(el => el.start <=  date && date <= el.end);
+    const found = this.busyDates.find(el => el.start <=  date && date <= el.end);
     return found === undefined;
   }
 
@@ -74,22 +72,16 @@ export class RentFormComponent implements OnInit, OnDestroy {
     this.toastr.success('from ' + ' ' + order.dateOn + ' ' + 'till ' + ' ' + order.dateOff, 'You rented car' + ' ' + order.carName);
   }
   checkOverlapping(order) {
-    const foundInside = this.bysyDates.find(el => el.start < order.dateOn && order.dateOff <= el.end);
-    const foundInsideOn = this.bysyDates.find(el => el.start <  order.dateOn && order.dateOn <= el.end);
-    const foundInsideOff = this.bysyDates.find(el => el.start >  order.dateOn && order.dateOff <= el.end);
-    const foundOutside = this.bysyDates.find(el => el.start >  order.dateOn && order.dateOff >= el.end);
-    console.log('foundInside', foundInside);
-    console.log('foundInsideOn', foundInsideOn);
-    console.log('foundInsideOff', foundInsideOff);
-    console.log('foundOutside', foundOutside);
+    const foundInside = this.busyDates.find(el => el.start < order.dateOn && order.dateOff <= el.end);
+    const foundInsideOn = this.busyDates.find(el => el.start <  order.dateOn && order.dateOn <= el.end);
+    const foundInsideOff = this.busyDates.find(el => el.start >  order.dateOn && order.dateOff <= el.end);
+    const foundOutside = this.busyDates.find(el => el.start >  order.dateOn && order.dateOff >= el.end);
     return !(foundInside || foundInsideOn || foundInsideOff || foundOutside);
 
   }
 
   handleSubmit(order, rentForm) {
-    console.log('HANDLING SUBMIT', 'dateon:', order.dateOn, 'dateoff:', order.dateOff);
     if (order.dateOn.getTime() === order.dateOff.getTime()) {
-      console.log('i saw same dates!');
       this.errorText = 'Please, choose at least 1 day of rent.';
       return;
     }
@@ -106,11 +98,9 @@ export class RentFormComponent implements OnInit, OnDestroy {
     order.dateOn = order.dateOn.toUTCString();
     order.dateOff = order.dateOff.toUTCString();
     const dialogRef = this.dialog.open(PaymentDialogComponent, {panelClass: 'custom-dialog-container'});
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The payment dialog was closed', result);
+    this.paymentDialogCloseSubscription = dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.rentService.addOrder(order).subscribe(res => {
-          console.log(res);
+        this.addOrderSubscription = this.rentService.addOrder(order).subscribe(res => {
           if (res) {
             this.showToastr(order);
             rentForm.reset();
@@ -119,15 +109,13 @@ export class RentFormComponent implements OnInit, OnDestroy {
             this.errorText = 'Order can not be made. Please, try later';
           }
         }, err => {
-          console.log(err);
           this.errorText = err.statusText;
         });
       }
     });
   }
   onSubmit(rentForm: NgForm) {
-    let order = rentForm.value as Order;
-    console.log(order);
+    const order = rentForm.value as Order;
     order.dateOn = rentForm.value.dateOn;
     order.dateOff = rentForm.value.dateOff;
     order.carName = this.car.title;
@@ -135,16 +123,36 @@ export class RentFormComponent implements OnInit, OnDestroy {
     order.carUrl = this.car.img_url;
     order.carOwnerId = this.car.owner_id;
     if (this.user && this.user.token) {
-      console.log('user and token presents');
       this.handleSubmit(order, rentForm);
     } else {
       const dialogRef = this.dialog.open(LoginOrSignDialogComponent, {panelClass: 'custom-dialog-container'});
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('The login/sign up dialog was closed', result);
+      this.loginDialogCloseSubscription = dialogRef.afterClosed().subscribe(result => {
         if (result) {
           this.handleSubmit(order, rentForm);
         }
       });
   }
 
-}}
+  }
+
+  ngOnDestroy(): void {
+    if (this.getUserSubscription) {
+      this.getUserSubscription.unsubscribe();
+    }
+    if (this.getCarSubscription) {
+      this.getCarSubscription.unsubscribe();
+    }
+    if (this.getCarOrdersSubscription) {
+      this.getCarOrdersSubscription.unsubscribe();
+    }
+    if (this.paymentDialogCloseSubscription) {
+      this.paymentDialogCloseSubscription.unsubscribe();
+    }
+    if (this.addOrderSubscription) {
+      this.addOrderSubscription.unsubscribe();
+    }
+    if (this.loginDialogCloseSubscription) {
+      this.loginDialogCloseSubscription.unsubscribe();
+    }
+  }
+}

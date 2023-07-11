@@ -7,6 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ilCarro-frontend';
-  logo = '../assets/img/logo.jpeg';
 }
 

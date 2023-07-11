@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import { SingUpDialogComponent } from '../sing-up-dialog/sing-up-dialog.component';
 
@@ -8,7 +8,8 @@ import { SingUpDialogComponent } from '../sing-up-dialog/sing-up-dialog.componen
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.css']
 })
-export class HomePageComponent implements OnInit {
+export class HomePageComponent implements OnInit, OnDestroy {
+  private dialogCloseSubscription;
   constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
@@ -17,8 +18,11 @@ export class HomePageComponent implements OnInit {
 
   joinUs() {
     const dialogRef = this.dialog.open(SingUpDialogComponent, {panelClass: 'custom-dialog-container'});
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
-    });
+    this.dialogCloseSubscription = dialogRef.afterClosed().subscribe(() => {});
+  }
+  ngOnDestroy(): void {
+    if (this.dialogCloseSubscription) {
+      this.dialogCloseSubscription.unsubscribe();
+    }
   }
 }

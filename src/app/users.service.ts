@@ -1,4 +1,4 @@
-import {Observable, Subject} from 'rxjs';
+import {Observable} from 'rxjs';
 
 export interface User {
   url: string;
@@ -24,13 +24,10 @@ export abstract class UsersService {
   abstract getComments(): Observable<Comment[]>;
   abstract getCommentById(id: number): Observable<Comment>;
   abstract addComment(comment: Comment): Observable<boolean>;
-  abstract getUserById(id: number): Observable<User>;
   abstract logIn(email: string, password: string ): Observable<boolean>;
-  // abstract getCurrentUser(): User;
   abstract logout();
   abstract isLoggedIn(): boolean;
   abstract editUser(id: number, firstName: string, secondName: string, email: string, url: string): Observable<boolean>;
   abstract getUser(): Observable<User>;
-  abstract test();
 
 }
