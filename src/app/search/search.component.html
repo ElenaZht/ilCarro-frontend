@@ -30,7 +30,7 @@
           <label>Rating</label>
           <div class="stars-wrap" >
             <div class="stars">
-              <fa-icon *ngFor="let star of stars" class="icon"  [icon]="['fas', 'star']" (click)="onStar(star)" [style.color]="newRating>=star ? 'gold' : '#999999'"></fa-icon>
+              <fa-icon *ngFor="let star of stars" class="icon"  [icon]="['fas', 'star']" (click)="onStar(star)" [style.color]="newRating>=star ? 'gold' : 'var(--light)'"></fa-icon>
 
             </div>
 
@@ -152,11 +152,11 @@
             <option *ngFor="let c of cities">{{c}}</option>
           </datalist>
         </div>
-        <div style="display: flex">
+        <div style="display: flex; align-items: center">
           <h5>Or search cars in radius of</h5>
           <input id="inpDis"type="number" [(ngModel)]="rad">
           <h5>m</h5>
-          <fa-icon style="color: #0000005F;margin-bottom: 5%" class="icon" [icon]="['fas', 'arrow-down']"></fa-icon>
+          <fa-icon style="color: var(--shadow);margin-bottom: 5%" class="icon" [icon]="['fas', 'arrow-down']"></fa-icon>
         </div>
         <div id="map-wrap">
           <agm-map [latitude]="lat"  [longitude]="lng" [zoom]="10" (mapClick)="onChosenLocation($event)">

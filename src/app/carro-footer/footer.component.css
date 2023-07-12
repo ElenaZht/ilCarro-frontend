@@ -1,14 +1,12 @@
 footer {
   left: 0px;
-  width: 80%;
+  width: 100%;
   height: 40vh;
-  background: #062639 0% 0% no-repeat padding-box;
-  box-shadow: 0px 3px 6px #00000029;
+  background: var(--dark) 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px var(--shadow);
   opacity: 1;
   position: relative;
   margin: auto;
-  border-right: 2px solid #0000005f;
-  border-left: 2px solid #0000005f;
 
 }
 
@@ -22,7 +20,7 @@ footer {
   top: 10%;
   left: 7%;
   width: 34%;
-  font: 9px/12px Raleway-Regular;
+  font: var(--small-text) Raleway-Regular;
   display: inline-block;
 
 }
@@ -38,7 +36,7 @@ footer {
 }
 
 .icon {
-  font: 29px/60px Font Awesome Brands;
+  font: var(--big-text) Font Awesome Brands;
   color: #FFFFFF;
   opacity: 1;
   position: relative;
@@ -49,7 +47,7 @@ footer {
   bottom: 0;
   width: 55%;
   height: 70%;
-  background: #EA2340 0% 0% no-repeat padding-box;
+  background: var(--red) 0% 0% no-repeat padding-box;
   opacity: 1;
   position: absolute;
   clip-path: polygon(0% 0%, 42% 0%, 100% 100%, 0% 100%);
@@ -64,14 +62,14 @@ footer {
   position: absolute;
   top: 45%;
   left: 7%;
-  font: Bold 30px/30px Bebas Neue;
+  font: var(--large-text) Bebas Neue;
 }
 
 .footer_number {
   text-align: right;
-  font: Bold 35px/35px Bebas Neue;
+  font: var(--large-text) Bebas Neue;
   letter-spacing: 0;
-  color: #EA2340;
+  color: var(--red);
   text-transform: capitalize;
   opacity: 1;
   position: relative;
@@ -89,7 +87,7 @@ footer {
   position: relative;
   width: 100%;
   height: 35%;
-  font: 11px/20px Raleway;
+  font: var(--small-text) Raleway;
   display: flex;
   margin: 0;
 }
@@ -101,7 +99,7 @@ footer {
 }
 #top_cities{
   text-align: left;
-  font: 14px/22px Raleway;
+  font: var(--medium-text) Raleway;
   letter-spacing: 0;
   color: #FFFFFF;
   opacity: 0.55;
@@ -125,7 +123,7 @@ footer {
   width: 45%;
   height: 100%;
   text-align: left;
-  font: 12px/12px Raleway;
+  font: var(--medium-text) Raleway;
   letter-spacing: 0;
   color: #FFFFFF;
   opacity: 1;
@@ -152,7 +150,7 @@ footer {
 }
 .nav_item {
   text-align: left;
-  font: 12px/15px Raleway;
+  font: var(--medium-text) Raleway;
   letter-spacing: 0;
   color: #FFFFFF;
   opacity: 1;

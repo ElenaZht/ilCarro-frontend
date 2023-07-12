@@ -93,7 +93,7 @@
       <mat-tab label="Orders of my cars">
         <div class="order-main-wrap">
           <div *ngFor="let order of carsOrders" class="order-wrap">
-            <div class="order" [style.border]="order.state == State.WaitToGo ? 'solid #EA2340 2px' : 'solid #0000005F 2px'"  [style.opacity]="order.state === State.WaitToReturn ? 0.5 : 2">
+            <div class="order" [style.border]="order.state == State.WaitToGo ? 'solid var(--red) 2px' : 'solid var(--shadow) 2px'"  [style.opacity]="order.state === State.WaitToReturn ? 0.5 : 2">
               <div style="display: flex; flex-direction: column">
                 <div class="order_img" [ngStyle]="{'background-image': ' url('+order.carUrl+')'}" (click)="toCar(order.carId)"></div>
                 <div class="order_info" style="position: relative; top: -50%;" (click)="toCar(order.carId)">{{order.carName}}</div>
@@ -122,7 +122,7 @@
       <mat-tab label="My orders">
         <div class="order-main-wrap">
           <div *ngFor="let order of myOrders" class="order-wrap">
-            <div class="order" [style.border]="order.state == State.WaitToGo ? 'solid #EA2340 2px' : 'solid #0000005F 2px'" [style.opacity]="order.state == State.WaitToReturn ? '0.5' : '1'">
+            <div class="order" [style.border]="order.state == State.WaitToGo ? 'solid var(--red) 2px' : 'solid var(--shadow) 2px'" [style.opacity]="order.state == State.WaitToReturn ? '0.5' : '1'">
               <div style="display: flex; flex-direction: column; position: relative;">
                 <div class="order_img" [ngStyle]="{'background-image': ' url('+order.carUrl+')'}"  (click)="toCar(order.carId)"></div>
                 <div class="order_info" (click)="toCar(order.carId)" >{{order.carName}}</div>

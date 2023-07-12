@@ -1,13 +1,7 @@
-@font-face {
-  font-family: Raleway-Regular;
-  src: url('../../assets/fonts/Raleway-Regular.ttf') format("opentype");
-}
 .main-container {
   display: flex;
   flex-direction: column;
-  border-left: 2px solid #0000005f;
-  border-right: 2px solid #0000005f;
-  width: 80%;
+  width: 100%;
   margin: auto;
   justify-content: space-between;
 }
@@ -31,7 +25,7 @@
   justify-content: space-between;
   top: 3%;
   background: #FFFFFF 0% 0% no-repeat padding-box;
-  box-shadow: 0px 3px 6px #0000005F;
+  box-shadow: 0px 3px 6px var(--shadow);
 
 }
 .b {
@@ -39,7 +33,7 @@
   width: 25%;
   flex-direction: column;
   justify-content: space-between;
-  border-right: 2px solid #0000005f;
+  border-right: 2px solid var(--shadow);
 
 
 }
@@ -56,7 +50,7 @@
   opacity: 1;
   background-size: cover;
   background-position: center;
-  border-bottom: 2px solid #0000005f;
+  border-bottom: 2px solid var(--shadow);
 
 
 }
@@ -86,9 +80,9 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background: lightgray;
+  background: var(--light);
   min-width: 5vh;
-  box-shadow: 0px 3px 6px #0000005F;
+  box-shadow: 0px 3px 6px var(--shadow);
 
 }
 .g {
@@ -123,8 +117,8 @@
 
 }
 .icon {
-  font: 15px/15px Font Awesome Regular;
-  color: #0000005F;
+  font: var(--medium-text) Font Awesome Regular;
+  color: var(--shadow);
   opacity: 1;
   position: relative;
 }
@@ -147,7 +141,7 @@
 .user_form_left {
   display: flex;
   flex-direction: column;
-  color: #0000005f;
+  color: var(--shadow);
   margin-left: 5%;
 
 }
@@ -169,7 +163,7 @@
 }
 .danger {
   color: red;
-  font: 14px/14px Raleway-Regular;
+  font: var(--medium-text) Raleway-Regular;
   position: absolute;
   top: 103%;
 }
@@ -181,7 +175,7 @@
   display: flex;
   width: 48%;
   height: 40vh;
-  box-shadow: 0px 3px 6px #0000005F;
+  box-shadow: 0px 3px 6px var(--shadow);
   margin-top: 7%;
   margin-bottom: 1%;
 }
@@ -189,7 +183,7 @@
   display: flex;
   width: 48%;
   height: 40vh;
-  box-shadow: 0px 3px 6px #0000005F;
+  box-shadow: 0px 3px 6px var(--shadow);
   margin-bottom: 1%;
   margin-top: 7%;
 
@@ -214,39 +208,35 @@
   margin-bottom: 5%;
 }
 .return {
-  background: #EA2340;
+  background: var(--red);
   border: 0;
   color: white;
-  box-shadow: 0px 3px 6px #0000005F;
+  box-shadow: 0px 3px 6px var(--shadow);
   width: 5vw;
   height: 3vh;
-  font: 14px/14px Raleway-Regular;
+  font: var(--medium-text) Raleway-Regular;
 }
 .cancel {
-  background: #EA2340;
+  background: var(--red);
   border: 0;
   color: white;
-  box-shadow: 0px 3px 6px #0000005F;
+  box-shadow: 0px 3px 6px var(--shadow);
   width: 5vw;
   height: 3vh;
-  font: 14px/14px Raleway-Regular;
+  font: var(--medium-text) Raleway-Regular;
 }
 .status {
   position: absolute;
   top: -8%;
   left: 70%;
-  background: #999999;
+  background: var(--light);
   border: 0;
   color: white;
-  box-shadow: 0px 3px 6px #0000005F;
+  box-shadow: 0px 3px 6px var(--shadow);
   padding-left: 1%;
   padding-right: 1%;
 }
-.order-wrap {
-  /*position: absolute;*/
-  /*top: 0; bottom: 0;*/
-  /*left: 0; right: 0;*/
-}
+
 .order {
   position: relative;
   display: flex;
@@ -280,7 +270,7 @@
 .order-main-wrap {
   overflow-y: auto;
   height: 90%;
-  font-size: 14px;
+  font-size: var(--medium-text);
   padding-top: 1%;
   position: relative;
 
@@ -294,14 +284,13 @@
   position: sticky;
   width: 90%;
   height: 12vh;
-  margin: auto;
-  border: solid #EA2340;
-  box-shadow: 0px 3px 6px #0000005F;
+  border: solid var(--red);
+  box-shadow: 0px 3px 6px var(--shadow);
 
   color: black;
   opacity: 0.8;
-  font: 16px/20px Raleway-Regular;
-  margin-top: 1%;
+  font: var(--medium-text) Raleway-Regular;
+  margin: 1% auto auto;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -318,7 +307,7 @@
   height: 85%;
 }
 .no_orders {
-  color: #0000005f;
+  color: var(--shadow);
 }
 .d:hover .hover-text{
   position: absolute;
@@ -332,7 +321,7 @@
 
 }
 .d:hover {
-  background-color: #999999;
+  background-color: var(--light);
   opacity: 0.5;
 }
 .hover-text {
@@ -342,7 +331,7 @@ mat-tab-group {
   width: 100%;
   padding-right: 1.5%;
   padding-left: 1.5%;
-  box-shadow: 0px 3px 6px #0000005F;
+  box-shadow: 0px 3px 6px var(--shadow);
   padding-top: 2%;
 
 }
@@ -351,12 +340,9 @@ mat-tab-group {
   color: #a94442;
   background-color: #f2dede;
   padding: 2%;
-  margin-bottom: 2%;
-  margin-top: 20px;
-  border: 1px solid #EA2340;
+  border: 1px solid var(--red);
   border-radius: 4px;
-  margin-left: 20px;
-  margin-right: 20px;
-  font: 16px/18px Raleway-Regular;
+  margin: 20px 20px 2%;
+  font: var(--medium-text) Raleway-Regular;
   font-weight: bold;
 }

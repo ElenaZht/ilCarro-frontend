@@ -1,13 +1,7 @@
-@font-face {
-  font-family: Bebas Neue;
-  src: url('../../assets/fonts/Bebas-Neue-Bold.ttf') format("opentype");
-}
 .main {
-  width: 80%;
+  width: 100%;
   margin: auto;
   display: flex;
-  border-right: 2px solid #0000005f;
-  border-left: 2px solid #0000005f;
   height: 110vh;
   justify-content: space-between;
 }
@@ -20,15 +14,17 @@
 .cars-wind {
   display: flex;
   position: relative;
-  width: 65%;
+  width: 70%;
   overflow-y: scroll;
   margin-top: 3%;
+  margin-bottom: 3%;
 }
 .list-wrap {
-  width: 45vw;;
+  width: 75vw;;
   margin: auto;
 }
 .all-cars {
+  margin: 2%;
   display: flex;
   justify-content: space-between;
   padding-left: 0;
@@ -38,13 +34,14 @@
 .car-card {
   display: flex;
   flex-direction: column;
-  width: 49%;
+  width: 47%;
   height: 30vh;
-  margin-top: 2%;
-  box-shadow: 0px 3px 6px #0000005F;
+  margin: 1.5%;
+  box-shadow: 0px 3px 6px var(--shadow);
   transition: transform .2s;
 
 }
+
 .car-card:hover {
   transform: scale(1.1);
 }
@@ -58,7 +55,7 @@
 .info {
   background: #FFFFFF 0% 0% no-repeat padding-box;
   height: 25%;
-  box-shadow: 0px 3px 6px #0000005F;
+  box-shadow: 0px 3px 6px var(--shadow);
   display: flex;
   flex-direction: column;
 }
@@ -72,9 +69,9 @@
 }
 .name {
   display: flex;
-  font: 25px/30px Bebas Neue;
+  font: var(--big-text) Bebas Neue;
   letter-spacing: 0px;
-  color: #EA2340;
+  color: var(--red);
 }
 .price-card {
   display: flex;
@@ -82,7 +79,7 @@
   height: 7vh;
   width: 44%;
   background: #FFFFFF 0% 0% no-repeat padding-box;
-  box-shadow: 0px 3px 6px #00000052;
+  box-shadow: 0px 3px 6px var(--shadow);
   opacity: 1;
   top: -100%;
   left: 10%;
@@ -97,9 +94,9 @@
 }
 .city {
   display: flex;
-  font: 20px/30px Bebas Neue;
+  font: var(--big-text) Bebas Neue;
   letter-spacing: 0px;
-  color: #0000005F;
+  color: var(--shadow);
 }
 .com-star {
   color: gold;
@@ -107,27 +104,27 @@
 .dolar{
   left: 5%;
   text-align: center;
-  font: Bold 25px/102px Raleway;
+  font: var(--big-text) Raleway;
   letter-spacing: 0px;
-  color: #EA2340;
+  color: var(--red);
   opacity: 1;
   position: relative;
 }
 .price{
   left: 10%;
   text-align: center;
-  font: Bold 42px/100px Bebas Neue;
+  font: var(--large-text) Bebas Neue;
   letter-spacing: 0px;
-  color: #EA2340;
+  color: var(--red);
   text-transform: capitalize;
   opacity: 1;
   position: relative;
 }
 .perday {
   height: 3vh;
-  font: 15px/20px Bebas Neue;
+  font: var(--medium-text) Bebas Neue;
   letter-spacing: 0px;
-  color: #06263998;
+  color: var(--dark);
   text-transform: capitalize;
   opacity: 1;
   transform: rotate(-90deg);
@@ -160,7 +157,7 @@ body {
   box-sizing: border-box;
   display: inline-block;
   padding: 15px 25px;
-  color: #ccc;
+  color: var(--medium-gray);
   margin-bottom: -1px;
   margin-left: -1px;
 }
@@ -175,14 +172,14 @@ body {
   z-index:10;
 }
 .tabinator label:hover {
-  color: #888;
+  color: var(--medium-gray);
   cursor: pointer;
 }
 .tabinator > input:checked + label {
   position: relative;
   color: #000;
   background: #fff;
-  border: 1px solid #bbb;
+  border: 1px solid var(--light);
   border-bottom: 1px solid #fff;
   border-radius: 5px 5px 0 0;
 }
@@ -191,34 +188,30 @@ body {
   content: '';
   position: absolute;
   top: 0; right: 0; bottom: 0; left: 0;
-  box-shadow: 0 0 15px #939393;
+  box-shadow: 0 0 15px var(--light);
 }
 #content1, #content2, #content3, #content4 {
   display: none;
-  border-top: 1px solid #bbb;
-  padding-left: 15px;
-  padding-top: 15px;
-  padding-bottom: 25px;
-  padding-right: 25px;
+  border-top: 1px solid var(--light);
+  padding: 25px;
 }
 #tab1:checked ~ #content1,
 #tab2:checked ~ #content2,
 #tab3:checked ~ #content3,
 #tab4:checked ~ #content4 {
   display: block;
-  box-shadow: 0 0 15px #939393;
+  box-shadow: 0 0 15px var(--light);
 }
 
 h1 {
-  font: 40px/40px Bebas Neue;
+  font: var(--large-text) Bebas Neue;
   letter-spacing: 0px;
-  color: #EA2340;
+  color: var(--red);
 }
 h5 {
-  font: 15px/15px Bebas Neue;
+  font: var(--medium-text) Bebas Neue;
   letter-spacing: 0px;
-  color: #0000005F;
-  margin-bottom: 5%;
+  color: var(--shadow);
 
 }
 #price {
@@ -233,9 +226,9 @@ h5 {
 
 .search_button {
   height: 3vh;
-  width: 3vw;
-  background: #EA2340;
-  box-shadow: 0 0 15px #939393;
+  width: 5vw;
+  background: var(--red);
+  box-shadow: 0 0 15px var(--light);
   border: 0;
   margin-top: 3vh;
 }
@@ -244,7 +237,7 @@ h5 {
 }
 .btn-wrap {
   display: flex;
-  width: 10vw;
+  width: 13vw;
   margin: auto;
   justify-content: space-between;
 }
@@ -264,12 +257,15 @@ h5 {
   align-items: flex-end;
 }
 .btn-clear {
-  width: 3vw;
+  width: 5vw;
   height: 3vh;
   margin-top: 3vh;
 }
 #inp-city {
   display: flex;
+}
+#inp-city::placeholder{
+  padding: 2%;
 }
 #cities_wrap {
   display: flex;
@@ -282,7 +278,7 @@ h5 {
 agm-map {
   height: 30vh;
   width: 20vw;
-  box-shadow: 0px 3px 6px #00000052;
+  box-shadow: 0px 3px 6px var(--shadow);
 
 }
 #f1, #f2, #f3, #f4 {
@@ -309,8 +305,11 @@ agm-map {
 }
 #inpDis {
   display:flex;
-  width: 3vw;
-  height: 1vh;
+  width: 5vw;
+  height: 3vh;
   margin-left: 1%;
   margin-right: 1%;
+}
+#inpDis::placeholder{
+  padding: 2%;
 }

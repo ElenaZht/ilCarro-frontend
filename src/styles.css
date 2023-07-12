@@ -6,7 +6,39 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+/*FONTS */
+@font-face {
+  font-family: Raleway-Regular;
+  src: url('/assets/fonts/Raleway-Regular.ttf') format("opentype");
+}
+@font-face {
+  font-family: Raleway-Bold;
+  src: url('/assets/fonts/Raleway-Bold.ttf') format("opentype");
+}
+@font-face {
+  font-family: Bebas Neue;
+  src: url('/assets/fonts/Bebas-Neue-Bold.ttf') format("opentype");
+}
+@font-face {
+  font-family: Raleway-Black;
+  src: url('/assets/fonts/Raleway-Black.ttf') format("opentype");
+}
+:root{
+  --small-text: 1vmax;
+  --medium-text: 1.3vmax;
+  --big-text: 2vmax;
+  --large-text: 3.3vmax;
+}
 
+/* COLORS */
+:root{
+  --red: #ea2340;
+  --black: black;
+  --dark: #06243b;
+  --medium-gray:  #383838;
+  --shadow: rgba(0, 0, 0, 0.2);
+  --light: #999999;
+}
 
 /* based on angular-toastr css https://github.com/Foxandxss/angular-toastr/blob/cb508fe6801d6b288d3afc525bb40fee1b101650/dist/angular-toastr.css */
 
@@ -37,20 +69,20 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   width: 100%;
 }
 .toast-top-left {
-  top: 12px;
-  left: 12px;
+  top: 1.1vmin;
+  left: 1.1vmin;
 }
 .toast-top-right {
-  top: 12px;
-  right: 12px;
+  top: 1.1vmin;
+  right: 1.1vmin;
 }
 .toast-bottom-right {
-  right: 12px;
-  bottom: 12px;
+  right: 1.1vmin;
+  bottom: 1.1vmin;
 }
 .toast-bottom-left {
-  bottom: 12px;
-  left: 12px;
+  bottom: 1.1vmin;
+  left: 1.1vmin;
 }
 
 /* toast styles */
@@ -113,11 +145,11 @@ button.toast-close-button {
   background-position: 15px center;
   background-repeat: no-repeat;
   background-size: 24px;
-  box-shadow: 0 0 12px #999999;
+  box-shadow: 0 0 1.1vmin var(--light);
   color: #FFFFFF;
 }
 .toast-container .ngx-toastr:hover {
-  box-shadow: 0 0 12px #000000;
+  box-shadow: 0 0 1.1vmin #000000;
   opacity: 1;
   cursor: pointer;
 }

@@ -1,11 +1,4 @@
-@font-face {
-  font-family: Bebas Neue;
-  src: url('../../assets/fonts/Bebas-Neue-Bold.ttf') format("opentype");
-}
-@font-face {
-  font-family: Raleway-Regular;
-  src: url('../../assets/fonts/Raleway-Regular.ttf') format("opentype");
-}
+
 #div3{
   flex-direction: row;
   top: 0px;
@@ -25,9 +18,9 @@
 }
 #three{
   size: 40px;
-  font: 100px/100px "Bebas Neue";
+  font: var(--large-text) "Bebas Neue";
   letter-spacing: 0;
-  color: #EA2340;
+  color:  var(--red);
   text-transform: capitalize;
   opacity: 1;
   height: 100px;
@@ -44,7 +37,7 @@
   size: 36px;
   font: 36px/36px "Bebas Neue";
   letter-spacing: 0;
-  color: #062639;
+  color:  var(--dark);
   text-transform: capitalize;
   width: 245px;
   height: 100px;
@@ -59,9 +52,9 @@
 }
 #some_text_4{
   size: 11px;
-  font: 11px/16px Raleway-Regular;
+  font: var(--small-text) Raleway-Regular;
   letter-spacing: 0;
-  color: #062639;
+  color:  var(--dark);
   width: 430px;
   height: 100px;
   position: relative;
@@ -70,7 +63,7 @@
 #div4{
   width: 100%;
   height: 50vh;
-  background: #062639 0% 0% no-repeat padding-box;
+  background:  var(--dark) 0% 0% no-repeat padding-box;
   opacity: 1;
   position: relative;
   overflow: hidden;
@@ -79,7 +72,7 @@
   position: relative;
   width: 102%;
   height: 90%;
-  background: #EA2340 0% 0% no-repeat padding-box;
+  background:  var(--red) 0% 0% no-repeat padding-box;
   opacity: 1;
   -webkit-transform: skew(30deg);
   -moz-transform: skew(30deg);
@@ -101,8 +94,7 @@
 #zaz{
   width: 80%;
   height: 90%;
-  background: transparent url('../../assets/no_car_image2.jpg') 0% 0% no-repeat padding-box ;
-  background-position: center;
+  background: transparent url('../../assets/no_car_image2.jpg') no-repeat center;
   background-size: cover;
   opacity: 1;
   clip-path: polygon(0 0, 70% 0, 100% 100%, 30% 100%);
@@ -112,8 +104,7 @@
 #gaz{
   width: 80%;
   height: 90%;
-  background: transparent url('../../assets/no_car_image2.jpg') 0% 0% no-repeat padding-box;
-  background-position: center;
+  background: transparent url('../../assets/no_car_image2.jpg') no-repeat center;
   background-size: cover;
   opacity: 1;
   clip-path: polygon(0 0, 70% 0, 100% 100%, 30% 100%);
@@ -124,8 +115,7 @@
 #azlk{
   width: 80%;
   height: 90%;
-  background: transparent url('../../assets/no_car_image2.jpg') 0% 0% no-repeat padding-box;
-  background-position: center;
+  background: transparent url('../../assets/no_car_image2.jpg') no-repeat center;
   background-size: cover;
   opacity: 1;
   clip-path: polygon(0 0, 70% 0, 100% 100%, 30% 100%);
@@ -145,14 +135,14 @@
   width: 100%;
   height: 45%;
   background: #FFFFFF 0% 0% no-repeat padding-box;
-  box-shadow: 0px 3px 6px #00000052;
+  box-shadow: 0px 3px 6px  var(--shadow);
   opacity: 1;
   top: -10px;
   display: flex;
   align-items: center;
 }
 .whitecard p{
-  font: 30px/35px Bebas Neue;
+  font: var(--large-text) Bebas Neue;
   letter-spacing: 0px;
   color: #FFFFFF;
   text-transform: capitalize;
@@ -164,27 +154,28 @@
 .dolar{
   left: 5%;
   text-align: center;
-  font: Bold 31px/102px Raleway;
+  font: var(--large-text) Raleway;
   letter-spacing: 0px;
-  color: #EA2340;
+  color:  var(--red);
   opacity: 1;
   position: relative;
 }
 .price{
   left: 10%;
   text-align: center;
-  font: Bold 70px/106px Bebas Neue;
-  letter-spacing: 0px;
-  color: #EA2340;
+  font: var(--large-text) Bebas Neue;
+  letter-spacing: 0;
+  color:  var(--red);
   text-transform: capitalize;
   opacity: 1;
   position: relative;
 }
 .perday{
   height: 3vh;
-  font: 20px/25px Bebas Neue;
-  letter-spacing: 0px;
-  color: #06263998;
+  margin: 1%;
+  font: var(--medium-text) Bebas Neue;
+  letter-spacing: 0;
+  color:  var(--dark);
   text-transform: capitalize;
   opacity: 1;
   transform: rotate(-90deg);
@@ -199,15 +190,10 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 22vh;
+  height: fit-content;
+  width: fit-content;
 }
-#whitecard1{
-  position: relative;
-}
-#whitecard2{
-  position: relative;
-}
-#whitecard3{
+#whitecard1, #whitecard2, #whitecard3{
   position: relative;
 }
 #wrap2{

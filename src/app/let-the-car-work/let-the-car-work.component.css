@@ -1,17 +1,7 @@
-@font-face {
-  font-family: Raleway-Regular;
-  src: url('../../assets/fonts/Raleway-Regular.ttf') format("opentype");
-}
-@font-face {
-  font-family: Raleway-Bold;
-  src: url('../../assets/fonts/Raleway-Bold.ttf') format("opentype");
-}
 .container {
   display: flex;
   flex-direction: column;
-  border-left: 2px solid #0000005f;
-  border-right: 2px solid #0000005f;
-  width: 80%;
+  width: 100%;
   margin: auto;
   justify-content: space-between;
   background:transparent url('../../assets/ilcarroMAIN.png') 0% 0% no-repeat padding-box;
@@ -31,18 +21,18 @@
 }
 .form-title {
   display: flex;
-  font: 54px/54px Raleway-Bold;
+  font: var(--large-text) Raleway-Bold;
 }
 .form-text {
   display: flex;
-  font: 19px/19px Raleway-Regular;
+  font: var(--big-text) Raleway-Regular;
 }
 .pls {
   display: flex;
-  font: 20px/20px Raleway-Bold;
+  font: var(--big-text) Raleway-Bold;
 }
 .btn-text {
-  font: 20px/18px Raleway-Bold;
+  font: var(--big-text) Raleway-Bold;
   letter-spacing: 0;
   color: #FFFFFF;
   margin: auto;
@@ -51,15 +41,15 @@
   display: flex;
   width: 40%;
   height: 80%;
-  background: #EA2340 0% 0% no-repeat padding-box;
-  box-shadow: 0px 3px 6px #00000052;
+  background:  var(--red) 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px  var(--shadow);
   opacity: 1;
   position: relative;
 
 }
 
 .or {
-  font: 20px/20px Raleway-Bold;
+  font: var(--big-text) Raleway-Bold;
   display: flex;
   position: relative;
 }

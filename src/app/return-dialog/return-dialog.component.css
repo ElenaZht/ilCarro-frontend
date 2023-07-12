@@ -1,11 +1,3 @@
-@font-face {
-  font-family: Raleway-Black;
-  src: url('../../assets/fonts/Raleway-Black.ttf') format("opentype");
-}
-@font-face {
-  font-family: Raleway-Regular;
-  src: url('../../assets/fonts/Raleway-Regular.ttf') format("opentype");
-}
 .container {
   display: flex;
   height: 80vh;
@@ -13,16 +5,16 @@
   flex-direction: column;
 }
 .title {
-  font: 22px/29px Raleway-Black;
-  color: #EA2340;
+  font: var(--big-text) Raleway-Black;
+  color:  var(--red);
   width: 65%;
   position: relative;
   top: 5%;
   left: 18%;
 }
 .mini-title {
-  font: 14px/7px Raleway-Regular;
-  color: #06263998;
+  font: var(--medium-text) Raleway-Regular;
+  color:  var(--dark);
   position: relative;
   top: 6%;
   left: 18%;
@@ -30,7 +22,7 @@
 
 }
 .ihaveproblem {
-  font: 14px/7px Raleway-Regular;
+  font: var(--medium-text) Raleway-Regular;
   display: flex;
   position: relative;
   align-items: center;
@@ -47,7 +39,7 @@
   top: 15%;
 }
 .comment-title {
-font: 18px/29px Raleway-Regular;
+font: var(--big-text) Raleway-Regular;
 
 }
 .addbtn {
@@ -56,26 +48,26 @@ font: 18px/29px Raleway-Regular;
   left: 40%;
 }
 .a {
-  font: 12px/27px Raleway-Bold;
+  font: var(--medium-text) Raleway-Bold;
 }
 textarea {
   height: 35%;
   width: 100%;
-  box-shadow: 0px 3px 6px #00000052;
+  box-shadow: 0px 3px 6px  var(--shadow);
   border: 0;
-  font: 16px/20px Raleway-Regular;
+  font: var(--medium-text) Raleway-Regular;
   resize: none;
 }
 .return {
-  background: #EA2340 0% 0% no-repeat padding-box;
-  box-shadow: 0px 3px 6px #00000052;
+  background: var(--red) 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px var(--shadow);
   opacity: 1;
   width: 25%;
   position: relative;
   left: 36%;
 }
 .r {
-  font: 12px/27px Raleway-Bold;
+  font: var(--medium-text) Raleway-Bold;
   color: #FFFFFF;
 }
 .divider {
@@ -90,7 +82,7 @@ textarea {
   top: 10%;
   left: 10%;
   display: flex;
-  box-shadow: 0px 3px 6px #00000052;
+  box-shadow: 0px 3px 6px var(--shadow);
 
 }
 .image {
@@ -99,10 +91,10 @@ textarea {
   background-size: cover;
 }
 .car-name {
-  font: 18px/29px Raleway-Bold;
+  font: var(--big-text) Raleway-Bold;
 }
 .order-dates {
-  font: 18px/29px Raleway-Bold;
+  font: var(--big-text) Raleway-Bold;
 }
 .stars {
   width: 30%;
@@ -119,7 +111,7 @@ textarea {
 .problem-text {
   display: flex;
   width: 65%;
-  font: 16px/20px Raleway-Regular;
+  font: var(--medium-text) Raleway-Regular;
 
 }
 form {
@@ -131,7 +123,7 @@ form {
   top: 7%;
 }
 .icon {
-  color: #999999;
+  color: var(--light);
 }
 .exit{
   width: 23px;

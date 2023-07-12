@@ -3,7 +3,7 @@
   height: 426px;
   width: 100%;
   background: #FFFFFF 0% 0% no-repeat padding-box;
-  box-shadow: 0px 3px 6px #0000005F;
+  box-shadow: 0px 3px 6px  var(--shadow);
   opacity: 1;
   display: flex;
   flex-direction: column;
@@ -15,9 +15,9 @@
   width: 130px;
   height: 25px;
   text-align: left;
-  font: 22px/29px Raleway-Black;
+  font: var(--big-text) Raleway-Black;
   letter-spacing: 0;
-  color: #EA2340;
+  color:  var(--red);
   opacity: 1;
   padding-left: 50px;
   margin-bottom: 0px;
@@ -27,8 +27,8 @@
   left: 1365px;
   width: 126px;
   height: 32px;
-  background: #EA2340 0% 0% no-repeat padding-box;
-  box-shadow: 0px 3px 6px #00000052;
+  background:  var(--red) 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px  var(--shadow);
   opacity: 1;
   margin-left: 50px;
 }
@@ -47,9 +47,9 @@
   width: 139px;
   height: 13px;
   text-align: left;
-  font: 10px/7px Raleway-Regular;
+  font: var(--small-text) Raleway-Regular;
   letter-spacing: 0;
-  color: #06263998;
+  color:  var(--dark);
   opacity: 1;
   margin-top: 0px;
   padding-top: 2.5px;
@@ -73,28 +73,16 @@
   margin-bottom: 8px;
 }
 .trapezoid {
-  border-bottom: 10px solid #EA2340;
+  border-bottom: 10px solid  var(--red);
   border-right: 15px solid transparent;
   opacity: 1;
   width: 67px;
-}
-@font-face {
-  font-family: Raleway-Black;
-  src: url('../../assets/fonts/Raleway-Black.ttf') format("opentype");
-}
-@font-face {
-  font-family: Raleway-Regular;
-  src: url('../../assets/fonts/Raleway-Regular.ttf') format("opentype");
-}
-@font-face {
-  font-family: Raleway-Bold;
-  src: url('../../assets/fonts/Raleway-Bold.ttf') format("opentype");
 }
 
 #trap{
   width: 50px;
   height: 10px;
-  border-bottom: 12px solid #EA2340;
+  border-bottom: 1.1vmin solid  var(--red);
   border-right: 17px solid transparent;
   opacity: 1;
   margin-bottom: 6px;
@@ -106,7 +94,7 @@
   width: 36px;
   height: 14px;
   text-align: center;
-  font: 12px/27px Raleway-Bold;
+  font: var(--medium-text) Raleway-Bold;
   letter-spacing: 0;
   color: #FFFFFF;
   opacity: 1;
@@ -114,16 +102,16 @@
 }
 
 input::placeholder{
-  font-size: 18px;
-  color: #06263998;
+  font-size: var(--big-text);
+  color:  var(--dark);
 }
 input{
-  font-size: 16px;
+  font-size: var(--medium-text);
   color: black;
 }
 .error{
-  color: red;
-  font: 11px/13px Raleway-Regular;
+  color:  var(--red);
+  font: var(--small-text) Raleway-Regular;
   padding-left: 50px;
 }
 .danger{
@@ -131,11 +119,11 @@ input{
   background-color: #f2dede;
   padding: 15px;
   margin-top: 20px;
-  border: 1px solid #EA2340;
+  border: 1px solid  var(--red);
   border-radius: 4px;
   margin-left: 20px;
   margin-right: 20px;
-  font: 18px/24px Raleway-Regular;
+  font: var(--big-text) Raleway-Regular;
   font-weight: bold;
 }
 .exit{

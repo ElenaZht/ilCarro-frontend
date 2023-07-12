@@ -1,7 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {SingUpDialogComponent} from '../sing-up-dialog/sing-up-dialog.component';
 import {MatDialog} from '@angular/material';
-import {Location} from '@angular/common';
 import {LoginComponent} from '../login/login.component';
 import {Router} from '@angular/router';
 

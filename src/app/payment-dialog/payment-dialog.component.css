@@ -1,21 +1,17 @@
-@font-face {
-  font-family: Raleway-Regular;
-  src: url('../../assets/fonts/Raleway-Regular.ttf') format("opentype");
-}
 .container {
   height: 40vh;
   width: 20vw;
   display: flex;
   flex-direction: column;
-  box-shadow: 0px 3px 6px #0000005F;
+  box-shadow: 0px 3px 6px  var(--shadow);
 
 }
 .title {
-  color: #EA2340;
+  color:  var(--red);
   height: 6vh;
   position: relative;
   top: 3vh;
-  font: 25px/29px Raleway-Black;
+  font: var(--big-text) Raleway-Black;
   width: 80%;
   left: 10%;
 }
@@ -69,10 +65,10 @@
   justify-content: space-between;
 }
 .pay-btn {
-  background: #EA2340;
+  background:  var(--red);
   border: 0;
   color: white;
-  box-shadow: 0px 3px 6px #0000005F;
+  box-shadow: 0px 3px 6px  var(--shadow);
   width: 10vw;
   height: 3vh;
   position: relative;

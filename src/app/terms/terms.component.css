@@ -1,25 +1,15 @@
-@font-face {
-  font-family: Raleway-Regular;
-  src: url('../../assets/fonts/Raleway-Regular.ttf') format("opentype");
-}
-@font-face {
-  font-family: Raleway-Bold;
-  src: url('../../assets/fonts/Raleway-Bold.ttf') format("opentype");
-}
 .main_container {
   opacity: 1;
   background-size: cover;
-  width: 80%;
+  width: 100%;
   margin: auto;
-  border-right: 2px solid #0000005f;
-  border-left: 2px solid #0000005f;
   background-position-x: center;
 
 }
 .main_list {
   width: 80%;
   margin: auto;
-  font: 11px/16px Raleway-Regular;
+  font: var(--small-text) Raleway-Regular;
   color: black;
   padding-top: 2%;
   padding-bottom: 5%;
@@ -31,7 +21,7 @@ ol, ul {
 
 }
 .bold {
-  font: 11px/16px Raleway-Bold;
+  font: var(--small-text) Raleway-Bold;
   padding-left: 3%;
 }
 .img {
@@ -54,11 +44,11 @@ ol, ul {
 }
 #terms_big {
   display: flex;
-  font: 41px/16px Raleway-Bold;
+  font: var(--large-text) Raleway-Bold;
 
 }
 #terms_small {
   display: flex;
-  font: 14px/16px Raleway-Bold;
+  font: var(--medium-text) Raleway-Bold;
 
 }

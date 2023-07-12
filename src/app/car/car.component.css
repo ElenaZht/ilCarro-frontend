@@ -1,16 +1,6 @@
-@font-face {
-  font-family: Bebas Neue;
-  src: url('../../assets/fonts/Bebas-Neue-Bold.ttf') format("opentype");
-}
-@font-face {
-  font-family: Raleway-Regular;
-  src: url('../../assets/fonts/Raleway-Regular.ttf') format("opentype");
-}
 .main {
-  width: 80%;
+  width: 100%;
   margin: auto;
-  border-left: 2px solid #0000005f;
-  border-right: 2px solid #0000005f;
 }
 .container {
   display: flex;
@@ -45,7 +35,7 @@
   width: 148px;
   height: 100%;
   background: #FFFFFF 0% 0% no-repeat padding-box;
-  box-shadow: 0px 3px 6px #00000052;
+  box-shadow: 0px 3px 6px var(--shadow);
   opacity: 1;
   top: -10px;
   display: flex;
@@ -62,7 +52,6 @@
 }
 .wcard {
   position: absolute;
-  /*width: 100%;*/
   height: 15%;
   top: 82%;
   left: 52%;
@@ -71,7 +60,7 @@
 .dolar{
   left: 5%;
   text-align: center;
-  font: Bold 31px/102px Raleway;
+  font: var(--large-text) Raleway-Bold;
   letter-spacing: 0px;
   color: black;
   opacity: 1;
@@ -80,7 +69,7 @@
 .price{
   left: 10%;
   text-align: center;
-  font: Bold 70px/106px Bebas Neue;
+  font: var(--large-text) Bebas Neue;
   letter-spacing: 0px;
   color: black;
   text-transform: capitalize;
@@ -89,9 +78,9 @@
 }
 .perday{
   height: 3vh;
-  font: 20px/25px Bebas Neue;
+  font: var(--big-text) Bebas Neue;
   letter-spacing: 0px;
-  color: #06263998;
+  color: var(--dark);
   text-transform: capitalize;
   opacity: 1;
   transform: rotate(-90deg);
@@ -111,19 +100,19 @@
   justify-content: center;
 }
 .title {
-  font: Bold 54px/66px Bebas Neue;
+  font: var(--large-text) Bebas Neue;
   color: black;
 
 }
 .year {
-  font: Bold 20px/20px Bebas Neue;
-  color: #06263998;
+  font: var(--big-text)x Bebas Neue;
+  color: var(--medium-gray);
   padding-left: 1%;
 }
 .parallelogram {
   width: 36%;
   height: 4vh;
-  background: #EA2340 0% 0% no-repeat padding-box;
+  background: var(--red) 0% 0% no-repeat padding-box;
   opacity: 1;
   clip-path: polygon(0% 0%, 90% 0%, 80% 100%, 0% 100%);
   display: flex;
@@ -149,13 +138,13 @@
   height: 100%;
   width: 55%;
   justify-content: space-between;
-  font: 15px/20px Raleway-Regular;
+  font: var(--medium-text) Raleway-Regular;
 }
 
 agm-map {
   height: 54vh;
   width: 30vw;
-  box-shadow: 0px 3px 6px #00000052;
+  box-shadow: 0px 3px 6px var(--shadow);
 
 }
 .col1 {
@@ -258,7 +247,7 @@ agm-map {
 }
 .star .icon{
   color: white;
-  box-shadow: 0px 3px 6px #00000052;
+  box-shadow: 0px 3px 6px var(--shadow);
 
 }
 .btns {
@@ -277,7 +266,7 @@ agm-map {
   border: solid orange;
 }
 .location-item-title {
-  color: #06263998;
+  color: var(--dark);
   margin-right: 5%;
 }
 .comments-wrap {
@@ -322,9 +311,9 @@ background-size: cover;
 width: 100%;
 height: 50%;
 text-align: left;
-font: 12px/18px Raleway-Regular;
+font: var(--medium-text) Raleway-Regular;
 letter-spacing: 0px;
-color: #062639;
+color: var(--dark);
 opacity: 1;
 margin: auto;
 }
@@ -344,17 +333,17 @@ flex-direction: row;
 width: 30%;
 height: 20%;
 text-align: left;
-font: 16px/24px Raleway-Bold;
+font: var(--medium-text) Raleway-Bold;
 letter-spacing: 0px;
-color: #EA2340;
+color: var(--red);
 opacity: 1;
 margin: 0;
 }
 .comment_date{
 text-align: left;
-font: 13px/24px Raleway-Regular;
+font: var(--medium-text) Raleway-Regular;
 letter-spacing: 0px;
-color: #06263998;
+color: var(--dark);
 opacity: 1;
 margin: 0;
 }
@@ -366,7 +355,7 @@ flex-direction: row;
 padding-left: 5%;
 }
 .icon {
-color: #06263998;
+color: var(--dark);
 
 }
 .com-star {

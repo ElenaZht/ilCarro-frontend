@@ -1,25 +1,19 @@
-@font-face {
-  font-family: Raleway-Bold;
-  src: url('../../assets/fonts/Raleway-Bold.ttf') format("opentype");
-}
 .container{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  width: 80%;
+  width: 100%;
   margin: auto;
   align-content: center;
   height: 11vh;
-  background: #062639 0% 0% no-repeat padding-box;
-  box-shadow: 0px 3px 6px #00000029;
+  background:  var(--dark) 0% 0% no-repeat padding-box;
+  box-shadow: 0 3px 6px  var(--shadow);
   opacity: 1;
-  border-left: 2px solid #0000005f;
-  border-right: 2px solid #0000005f;
 }
 .nav-link{
   text-align: center;
-  font: 10px/16px Raleway-Bold;
-  letter-spacing: 0px;
+  font: var(--small-text) Raleway-Bold;
+  letter-spacing: 0;
   color: #FFFFFF;
   opacity: 1;
   margin-right: 3vw;
@@ -29,8 +23,8 @@
 }
 label{
   text-align: left;
-  font: 16px/19px Raleway-Bold;
-  letter-spacing: 0px;
+  font: var(--medium-text) Raleway-Bold;
+  letter-spacing: 0;
   color: #FFFFFF;
   opacity: 1;
 }
@@ -45,15 +39,17 @@ ul{
 }
 #logo{
   width: 18%;
+  min-width: 200px;
   height: 49%;
-  background: transparent url('../../assets/logo.svg') 0% 0% no-repeat padding-box;
+  min-height: 50px;
+  background: transparent url('../../assets/logo.svg') 0 0 no-repeat padding-box;
   opacity: 1;
   margin-top: 3vh;
 }
 .active_tab{
-  background: #EA2340 0% 0% no-repeat padding-box;
+  background:  var(--red) 0% 0% no-repeat padding-box;
   z-index: 0;
-  box-shadow: 0px 3px 6px #00000029;
+  box-shadow: 0 3px 6px  var(--shadow);
 }
 ::ng-deep.custom-dialog-container > mat-dialog-container {
   padding: 0!important;
