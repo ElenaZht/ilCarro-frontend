@@ -175,3 +175,58 @@ input{
   font-weight: bold;
 }
 
+@media only screen and (max-width: 800px){
+  .card-body{
+    display: flex;
+    flex-direction: column;
+    width: 80vmin;
+    height: 100%;
+  }
+  .reg-data{
+    width: 65%;
+    margin: auto;
+    padding: 5%;
+  }
+  input{
+    margin: auto;
+  }
+  .exit{
+    left: 90%;
+  }
+  #button_y_div{
+    padding-top: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #button_yalla{
+    margin: 0;
+  }
+  header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 10%;
+  }
+  input.form-control{
+    margin: 5%;
+  }
+  #check{
+    width: 18px;
+    height: 18px;
+  }
+  #reg_lable{
+    padding-left: 0;
+  }
+  #iagree{
+    margin: auto;
+    padding-top: 0;
+  }
+  #type_data{
+    padding-left: 0;
+  }
+  .cdk-overlay-pane{
+    max-width: 100%;
+  }
+}

@@ -50,8 +50,8 @@
   height: 5vh;
 }
 #button_add {
-  width: 5vw;
-  height: 3vh;
+  width: 5vmax;
+  height: 3vmin;
   color: #383838;
   font: var(--big-text) Raleway-Regular;
   background: var(--red) 0% 0% no-repeat padding-box;
@@ -134,4 +134,65 @@ agm-map {
 .img-wrap {
   border: 2px solid var(--shadow);
   height: 52.5%;
+}
+@media only screen and (max-width: 800px){
+  form.card-body{
+    width: 100%;
+    height: 75vh;
+    box-shadow: none;
+  }
+  #reg_lable{
+    width: 90%;
+    height: 10%;
+  }
+  .wrap{
+    width: 90%;
+    margin: auto;
+  }
+  .groups{
+    flex-direction: column;
+  }
+  .group-img{
+    width: 90%;
+    height: 100%;
+    left: 0;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+  }
+  .img-wrap{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+  }
+  .group-img >*{
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+  agm-map{
+    width: 100%;
+    height: 100%;
+  }
+  .map-wrap{
+    width: 100%;
+    height: 25vh;
+  }
+  img{
+    width: 90%;
+  }
+  .btn-wrap{
+    width: 90%;
+    height: 90%;
+  }
+  #button_add{
+    width: 10vmax;
+    height: 10vmin;
+    margin: 5%;
+
+  }
 }

@@ -12,7 +12,7 @@
 
 }
 #div3_1{
-  width: 40px;
+  width: 40%;
   height: 100px;
   text-align: left;
 }
@@ -28,7 +28,7 @@
 }
 #div3_2{
   width: 245px;
-  height: 73px;
+  height: 50%;
   text-align: left;
   opacity: 1;
   position: relative;
@@ -214,4 +214,76 @@
 }
 .com-star {
   color: gold;
+}
+@media only screen and (max-width: 800px){
+  #div3{
+    justify-content: flex-start;
+    height: 20vmax;
+  }
+  #div3_3, #div5{
+    display: none;
+
+  }
+  #div3_1, #div3_2{
+    display: flex;
+    height: 13vmax;
+    align-items: center;
+  }
+  #div3_1 p, #div3_2 p{
+    margin: auto;
+    display: flex;
+    align-items: center;
+  }
+  #div3_1{
+    justify-content: flex-end;
+    width: 5vmax;
+    margin-left: 10%;
+  }
+  #div3_2{
+    width: 50vw;
+  }
+  #three{
+    font-size: 13vmax;
+    align-items: center;
+    height: 13vmax;
+
+  }
+  #div6{
+    flex-direction: column;
+  }
+  #some_text_3{
+    height: auto;
+    width: auto;
+    font-size: 5vmax;
+  }
+  #div4{
+    height: 70vmax;
+    background-color: var(--red);
+  }
+  #div6{
+    height: 90%;
+    width: 90%;
+    margin: auto;
+  }
+  #div6 >*{
+    clip-path: inherit;
+    left: 0;
+    margin: 2%;
+    width: 100%;
+    height: 100%;
+  }
+  #div6_wrapper{
+    height: 70vmax;
+  }
+  #car_titles{
+    top: 0;
+    height: 100%;
+    width: 30%;
+    flex-direction: column;
+    margin-left: 10%;
+  }
+  #car_titles >div{
+    display: flex;
+    align-items: flex-start;
+  }
 }

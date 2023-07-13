@@ -186,3 +186,29 @@ footer {
   left: 60%;
   position: relative;
 }
+@media only screen and (max-width: 800px){
+  .footer_context_left, .nav_wrap, .footer_social_links_list, .footer_top_cities{
+    display: none;
+  }
+  .data_wrap{
+    bottom: 0;
+    left: 0;
+    width: 50%;
+    align-items: flex-end;
+    margin-left: auto;
+    margin-right: 5%;
+  }
+  .footer_address{
+    font-size: var(--big-text);
+  }
+  footer{
+    height: 20vmax;
+  }
+  .parall_context{
+    margin-bottom: 5%;
+    top: 40%
+  }
+  .footer_number{
+    justify-content: flex-end;
+  }
+}

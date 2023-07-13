@@ -64,6 +64,8 @@ export class SearchComponent implements OnInit, OnDestroy {
   private toCarDialogCloseSubscription;
   private getCarsByFilterSubscription;
 
+  isOpen = true;
+
   constructor(private searchService: SearchService, public dialog: MatDialog) { }
 
   ngOnInit() {

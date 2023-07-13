@@ -17,6 +17,7 @@ import {ToastrService} from 'ngx-toastr';
 export class NavbarComponent implements OnInit, OnDestroy {
   private joinDialogSubscription;
   private loginDialogSubscription;
+  mobileMenu = false;
   constructor(public dialog: MatDialog, private location: Location,
               private router: Router, private usersService: UsersService,
               private toastr: ToastrService) { }

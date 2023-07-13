@@ -19,9 +19,11 @@
         <fa-icon class="icon" [icon]="['fas', 'map-marker-alt']"></fa-icon>
 
       </label>
+      <label *ngIf="isOpen" (click)="isOpen = !isOpen">close filters</label>
+      <label *ngIf="!isOpen" (click)="isOpen = !isOpen">open filters</label>
 
 
-      <div id = "content1">
+      <div id = "content1" *ngIf="isOpen">
         <div class="price-wrap">
           <label for="price" >Price under ($)</label>
           <mat-slider thumbLabel step="50" id="price" min="0" max="500" color="warn" [(ngModel)]="priceval"></mat-slider>
@@ -66,7 +68,7 @@
           </button>
         </div>
       </div>
-      <div id = "content2">
+      <div id = "content2" *ngIf="isOpen">
         <div>
           <div class="group-features">
             <span>Features:</span>
@@ -144,7 +146,7 @@
           </button>
         </div>
       </div>
-      <div id = "content3">
+      <div id = "content3" *ngIf="isOpen">
         <div id="cities_wrap">
           <label class="group-details-left">City: </label>
           <input list="cities" class="form-control" placeholder="Tel Aviv" [(ngModel)]="city" type="string" id="inp-city" name="cities" >
@@ -152,11 +154,11 @@
             <option *ngFor="let c of cities">{{c}}</option>
           </datalist>
         </div>
-        <div style="display: flex; align-items: center">
-          <h5>Or search cars in radius of</h5>
+        <div style="display: flex; align-items: center; width: 100%; margin: 1%">
+          <h5 style="margin: 0">Or search cars in radius of</h5>
           <input id="inpDis"type="number" [(ngModel)]="rad">
-          <h5>m</h5>
-          <fa-icon style="color: var(--shadow);margin-bottom: 5%" class="icon" [icon]="['fas', 'arrow-down']"></fa-icon>
+          <h5  style="margin: 0">m</h5>
+          <fa-icon style="color: var(--shadow);" class="icon" [icon]="['fas', 'arrow-down']"></fa-icon>
         </div>
         <div id="map-wrap">
           <agm-map [latitude]="lat"  [longitude]="lng" [zoom]="10" (mapClick)="onChosenLocation($event)">

@@ -132,3 +132,37 @@ input{
   left: 93%;
   bottom: 94%;
 }
+@media only screen and (max-width: 800px){
+  .card-body{
+    width: 100%;
+  }
+  .reg-data{
+    width: 70%;
+    margin: auto;
+    padding: 5%;
+  }
+  input{
+    margin: auto;
+  }
+  .exit{
+    left: 90%;
+  }
+  #button_y_div{
+    padding-top: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #button_yalla{
+    margin: 0;
+  }
+  header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  input.form-control{
+    margin: 5%;
+  }
+}

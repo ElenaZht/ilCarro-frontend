@@ -10,7 +10,7 @@
     <li routerLink="terms" class="nav-link" routerLinkActive="active_tab">
       <label >Terms of use</label>
     </li>
-    <li routerLink="myaccount" *ngIf="this.usersService.isLoggedIn()" class="nav-link" routerLinkActive="active_tab">
+    <li routerLink="myaccount"  class="nav-link" routerLinkActive="active_tab">
     <label >My account</label>
   </li>
     <li routerLink="letthecarwork" *ngIf="!this.usersService.isLoggedIn()" class="nav-link" routerLinkActive="active_tab">
@@ -26,6 +26,16 @@
       <label  (click)="logout()">logout</label>
 
 
+  </ul>
+  <button class="mobile_list" (click)="mobileMenu = !mobileMenu">MENU</button>
+  <ul class="mobile_menu_list" *ngIf="mobileMenu">
+    <li routerLink="search" (click)="mobileMenu = false">search</li>
+    <li routerLink="terms" (click)="mobileMenu = false">terms of use</li>
+    <li routerLink="myaccount" *ngIf="this.usersService.isLoggedIn()"  (click)="mobileMenu = false">my account</li>
+    <li *ngIf="!this.usersService.isLoggedIn()"  (click)="logIn()">login</li>
+    <li *ngIf="!this.usersService.isLoggedIn()" (click)="joinUs()">sign up</li>
+    <li *ngIf="this.usersService.isLoggedIn()"  (click)="logout()">log out</li>
+    <li (click)="mobileMenu = !mobileMenu">X close</li>
   </ul>
 </div>
 <router-outlet></router-outlet>

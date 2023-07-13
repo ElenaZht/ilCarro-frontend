@@ -97,7 +97,8 @@ export class UserPageComponent implements OnInit, OnDestroy {
     const reader = new FileReader();
     reader.readAsDataURL(this.selectedFile);
     reader.onload = (_) => {
-      this.editUserSubscription = this.usersService.editUser(this.user.id, this.user.first_name, this.user.second_name, this.user.email, reader.result.toString()).subscribe(() => {
+      this.editUserSubscription = this.usersService.editUser(this.user.id, this.user.first_name,
+        this.user.second_name, this.user.email, reader.result.toString()).subscribe(() => {
       });
     };
   }
