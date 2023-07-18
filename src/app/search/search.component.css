@@ -47,9 +47,10 @@
 }
 .img {
   height: 75%;
-  background: transparent url('../../assets/no_image.jpg') no-repeat padding-box;
   opacity: 1;
   background-size: cover;
+  background-image: url('../../assets/no_image.jpg');
+  background-repeat: no-repeat;
   background-position: center;
 }
 .info {
@@ -58,6 +59,7 @@
   box-shadow: 0px 3px 6px var(--shadow);
   display: flex;
   flex-direction: column;
+  padding: 2%;
 }
 .info-row {
   height: 50%;
@@ -77,7 +79,6 @@
   display: flex;
   position: relative;
   height: 7vh;
-  width: 44%;
   background: #FFFFFF 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 6px var(--shadow);
   opacity: 1;
@@ -121,17 +122,22 @@
   position: relative;
 }
 .perday {
-  height: 3vh;
+
+  flex-wrap: nowrap;
+  margin: auto;
   font: var(--medium-text) Bebas Neue;
   letter-spacing: 0px;
   color: var(--dark);
   text-transform: capitalize;
   opacity: 1;
+  -webkit-transform: rotate(-90deg);
   transform: rotate(-90deg);
+  display: -webkit-box;
   display: flex;
   position: relative;
   text-align: center;
-  left: 9%;
+  padding-top: 10%;
+  flex-shrink: 0;
 
 }
 * {

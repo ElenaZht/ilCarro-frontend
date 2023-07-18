@@ -1,7 +1,6 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {Car, CarsService} from '../cars.service';
 import {User, UsersService} from '../users.service';
-import {ActivatedRoute} from '@angular/router';
 import {Order, RentService, State} from '../rent.service';
 import {NgForm} from '@angular/forms';
 import {MatDialog} from '@angular/material';
@@ -10,7 +9,11 @@ import {PaymentDialogComponent} from '../payment-dialog/payment-dialog.component
 import {ToastrService} from 'ngx-toastr';
 import {LoginOrSignDialogComponent} from '../login-or-sign-dialog/login-or-sign-dialog.component';
 import {Subscription} from 'rxjs';
-
+import {library} from '@fortawesome/fontawesome-svg-core';
+import {faChevronDown} from '@fortawesome/free-solid-svg-icons/faChevronDown';
+import {faChevronUp} from '@fortawesome/free-solid-svg-icons/faChevronUp';
+library.add(faChevronDown);
+library.add(faChevronUp);
 
 @Component({
   selector: 'app-rent-form',
@@ -27,6 +30,10 @@ export class RentFormComponent implements OnInit, OnDestroy {
   minDate: Date;
   busyDates = [];
   user: User;
+
+  mobile = false;
+  openCard = false;
+
   getUserSubscription: Subscription;
   getCarSubscription: Subscription;
   getCarOrdersSubscription: Subscription;
@@ -38,6 +45,11 @@ export class RentFormComponent implements OnInit, OnDestroy {
 
 
   ngOnInit() {
+    if (window.screen.width <= 800) {
+      this.mobile = true;
+    } else if (window.screen.width > 800) {
+      this.mobile = false;
+    }
     this.getUserSubscription = this.usersService.getUser().subscribe(res => {
       this.user = res;
     });

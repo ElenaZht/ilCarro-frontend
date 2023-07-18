@@ -65,10 +65,16 @@ export class SearchComponent implements OnInit, OnDestroy {
   private getCarsByFilterSubscription;
 
   isOpen = true;
+  mobile = false;
 
   constructor(private searchService: SearchService, public dialog: MatDialog) { }
 
   ngOnInit() {
+    if (window.screen.width <= 800) {
+      this.mobile = true;
+    } else if (window.screen.width > 800) {
+      this.mobile = false;
+    }
     this.lat = 32.0804808;
     this.lng = 34.7805274;
     this.getCarsSubscription = this.searchService.getAllCars().subscribe(

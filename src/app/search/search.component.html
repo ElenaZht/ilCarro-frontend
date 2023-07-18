@@ -19,8 +19,8 @@
         <fa-icon class="icon" [icon]="['fas', 'map-marker-alt']"></fa-icon>
 
       </label>
-      <label *ngIf="isOpen" (click)="isOpen = !isOpen">close filters</label>
-      <label *ngIf="!isOpen" (click)="isOpen = !isOpen">open filters</label>
+      <label *ngIf="isOpen && mobile" (click)="isOpen = !isOpen">close filters</label>
+      <label *ngIf="!isOpen && mobile" (click)="isOpen = !isOpen">open filters</label>
 
 
       <div id = "content1" *ngIf="isOpen">
@@ -188,7 +188,7 @@
           <div class="info">
             <div class="info-row">
               <div class="name">{{car.title}}</div>
-              <div class="price-card">
+              <div *ngIf="car.price" class="price-card">
                 <span class="dolar">$</span>
                 <span class="price">{{car.price}}</span>
                 <span class="perday">per day</span>

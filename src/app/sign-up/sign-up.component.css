@@ -1,6 +1,5 @@
 #reg_card{
   flex-grow: 1;
-  height: 426px;
   width: 100%;
   background: #FFFFFF 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 6px var(--shadow);
@@ -9,16 +8,10 @@
   flex-direction: column;
 }
 #reg_lable{
-  top: 189px;
-  left: 1365px;
-  width: 130px;
-  height: 25px;
   text-align: left;
   font: var(--big-text) Raleway-Black;
   letter-spacing: 0;
   color: var(--red);
-  opacity: 1;
-  padding-left: 50px;
   margin-bottom: 0;
 }
 #button_yalla{
@@ -35,29 +28,31 @@
   padding-top: 44px;
 }
 .card-body{
-  width: 360px;
+  width: 25vw;
+  height: fit-content;
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
+
 #type_data{
-  padding-left: 50px;
-  top: 221px;
-  left: 1365px;
-  width: 139px;
-  height: 13px;
+  margin: 2%;
   text-align: left;
   font: var(--small-text) Raleway-Regular;
   letter-spacing: 0;
   color: var(--dark);
   opacity: 1;
-  margin-top: 0px;
   padding-top: 2.5px;
 }
 .reg-data{
-  width: 249px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
   height: 10px;
   opacity: 1;
-  margin-left: 50px;
   padding-left: 6px;
   padding-top: 13px;
   padding-bottom: 6px;
@@ -79,17 +74,13 @@
   top: 451px;
 }
 #iagree{
-  top: 548px;
-  left: 1388px;
+  margin: 5% 5% 5% 14%;
   width: 201px;
-  height: 10px;
+  height: 10%;
   text-align: left;
   font: var(--small-text) Raleway-Regular;
-  letter-spacing: 0;
   color: var(--dark);
-  opacity: 1;
-  margin-left: 50px;
-  padding-top: 34px;
+
 }
 .trapezoid {
   border-bottom: 10px solid var(--red);
@@ -98,8 +89,7 @@
   width: 67px;
 }
 #check{
-  top: 549px;
-  left: 1365px;
+  margin: 0;
   width: 1.1vmin;
   height: 1.1vmin;
   text-align: left;
@@ -152,6 +142,7 @@ input::placeholder{
 input{
   font-size: var(--medium-text);
   color: black;
+  margin: 0 0 8px 12%
 }
 .error{
   color: red;
@@ -174,7 +165,14 @@ input{
   font: 18px/24px Raleway-Regular;
   font-weight: bold;
 }
-
+ header{
+   height: fit-content;
+   margin-left: 12%;
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   justify-content: space-around;
+ }
 @media only screen and (max-width: 800px){
   .card-body{
     display: flex;
@@ -194,8 +192,9 @@ input{
     left: 90%;
   }
   #button_y_div{
-    padding-top: 10%;
+    margin-left: 25%;
     display: flex;
+    height: 15%;
     justify-content: center;
     align-items: center;
   }
@@ -207,7 +206,6 @@ input{
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    height: 10%;
   }
   input.form-control{
     margin: 5%;

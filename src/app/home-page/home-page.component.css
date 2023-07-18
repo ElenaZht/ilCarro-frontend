@@ -33,78 +33,67 @@
   display: flex;
   flex-direction: row;
   top: 825px;
-  left: 0px;
+  left: 0;
   width: 100%;
-  height: 100%;
+  height: 90%;
+
   justify-content: space-evenly;
+  align-items: center;
+}
+#div2 >div{
+  padding: 5%;
+  align-items: center;
+  justify-content: center;
 }
 #never_mis{
-  size: 36px;
-  padding-top: 36px;
-  font: var(--large-text) "Bebas Neue" ;
-  letter-spacing: 0;
+  font: var(--large-text) "Bebas Neue";
   color: #FFFFFF;
   text-transform: capitalize;
-  opacity: 1;
-  width: 215px;
-  height: 73px;
-  border:  var(--red);
-  border-radius: 1px;
+  height: 100%;
+  -webkit-box-flex: 1;
   flex-grow: 1;
-  margin-left: 20%;
 }
 #some_text_1{
-  size: 11px;
-  top: 62px;
-  width: 343px;
-  height: 65px;
+  height: 100%;
   text-align: left;
   font: var(--small-text) Raleway-Regular;
-  letter-spacing: 0;
   color: #FFFFFF;
-  opacity: 1;
   position: relative;
-  margin-top: 4px;
 }
 #div2\.1{
   display: flex;
   flex-direction: column;
-  top: 608px;
   text-align: left;
   font: var(--big-text) Raleway-Black;
-  letter-spacing: 0;
   color:  var(--red);
-  opacity: 1;
-  width: fit-content;
+  width: 30%;
+  height: 100%;
 
 }
 #some_text_2{
-  size: 21px;
-  width: 182px;
-  height: 69px;
+  height: 30%;
+  width: 80%;
+  margin: auto;
   text-align: left;
   font: var(--big-text) Raleway-Black;
-  letter-spacing: 0;
   color:  var(--red);
-  opacity: 1;
-  top: 40px;
   position: relative;
-  padding-left: 90px;
 
 }
 #button_join{
-  top: 20px;
-  left: 109px;
-  width: 98px;
-  height: 32px;
+  display: flex;
+  margin: 0 auto auto;
+  width: fit-content;
+  height: fit-content;
   background:  var(--red) 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 6px  var(--shadow);
-  opacity: 1;
-  position: relative;
   font: var(--medium-text) Raleway-Bold;
   color: white;
   border: none;
-  line-height: 32px;
+  padding: 1% 4%;
+}
+#button_join >*{
+  margin: auto;
 }
 
 #red_line_max{
@@ -112,23 +101,24 @@
   border-right: 21px solid transparent;
   opacity: 1;
   width: 88%;
-  top: -167px;
+  padding-top: .5%;
   position: relative;
 }
 #never_wrap{
-  width: 338px;
+  width: 35%;
   display: flex;
 }
 #wrap{
-  height: 178px;
   top: 825px;
-  left: 0px;
+  left: 0;
+  height: 30vh;
   background:  var(--dark) 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 6px;
 }
 
 #never_text{
   display: flex;
+  width: 30%;
 }
 
 ::ng-deep.custom-dialog-container > mat-dialog-container {
@@ -136,44 +126,54 @@
 }
 
 @media only screen and (max-width: 800px){
-  #div1, #red_line_max, #div2\.1{
-    display: none;
-  }
-  .mobile-flex-container{
-    display: flex;
-    width: 100vw;
-    height: 50vh;
-  }
-  #some_text_1{
-    width: 90%;
-  }
-  #div2{
-    flex-direction: column;
-    height: 30vmax;
-    width: 90%;
-    margin: auto;
-  }
-  #never_wrap{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: left;
-    height: 20%;
-  }
-  #never_mis{
-    padding: 0;
-    margin: auto;
-  }
-  #wrap{
+#div1, #red_line_max, #div2\.1{
+  display: none;
+}
+.mobile-flex-container{
+  display: flex;
+  width: 100vw;
+  height: 50vh;
+}
+#some_text_1{
+  width: 90%;
+}
+#div2{
+  flex-direction: column;
+  height: fit-content;
+  width: 90%;
+  margin: auto;
+  padding: 5%;
+}
+#div2 > div{
+  padding: 2%;
+}
+#never_wrap{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  width: 100%;
+}
+#never_mis{
+  padding: 0;
+  text-align: center;
+  margin: 0;
+}
+#wrap{
   height: auto;
-  }
-  #some_text_1{
-    top: 0;
-    width: auto;
-    height: auto;
-    font-size: var(--big-text);
-    margin: 0;
-  }
+
+}
+#some_text_1{
+  top: 0;
+  width: auto;
+  height: auto;
+  font-size: var(--big-text);
+  margin: 0;
+  text-align: center;
+}
+#never_text{
+  width: 100%;
+}
 
 
 }

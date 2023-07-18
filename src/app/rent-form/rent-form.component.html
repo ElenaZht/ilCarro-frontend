@@ -1,14 +1,19 @@
 <div class="card" id="reg_card">
   <form class="card-body" #rentForm="ngForm" (ngSubmit)="onSubmit(rentForm)">
     <header class="card-title">
-      <h1 id="reg_lable">Rent this car</h1>
-      <h5 id="type_data">Choose date and hit Rent!</h5>
-      <div class="rent-time">
+      <h1 (click)="openCard = !openCard" class="reg_lable">
+        Rent this car
+        <span *ngIf="mobile &&!openCard"> <fa-icon [icon]="['fas', 'chevron-down']"></fa-icon></span>
+        <span *ngIf="mobile &&openCard"> <fa-icon [icon]="['fas', 'chevron-up']"></fa-icon></span>
+      </h1>
+      <h5 *ngIf="!mobile || mobile&&openCard" class="type_data">Choose date and hit Rent!</h5>
+      <div class="rent-time" *ngIf="!mobile || mobile&&openCard">
         <span>Rent car for day and more. Renting and returning time is <strong style="color: var(--red)">12:00</strong>.</span>
       </div>
 
+
     </header>
-    <div class="input-wrap">
+    <div class="input-wrap" *ngIf="!mobile || mobile&&openCard">
       <div class="input-div">
         <label>City: </label>
         <input  class="form-control" type="text" [value]="city" disabled>

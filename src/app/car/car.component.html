@@ -6,7 +6,7 @@
         <app-rent-form [inputCarId]="id"></app-rent-form>
       </div>
     </div>
-    <div class="wcard">
+    <div class="wcard" *ngIf="car.price">
       <div class="card-body">
         <span class="dolar">$</span>
         <span class="price">{{car.price}}</span>
@@ -15,7 +15,7 @@
     </div>
     <div class="car-title">
       <span class="title">{{car.title}}</span>
-      <span class="year">{{car.year}}</span>
+      <span *ngIf="car.year" class="year">{{car.year}}</span>
     </div>
   </div>
   <div class="paral-wrap">
@@ -41,32 +41,32 @@
       <div class="col1">
         <div class="col3">
           <div class="col7">
-            <span>Engine:</span>
-            <span>Fuel:</span>
-            <span>Gear:</span>
-            <span>Fuel cons:</span>
-            <span>WD:</span>
+            <span *ngIf="car.engine">Engine:</span>
+            <span *ngIf="car.fuel">Fuel:</span>
+            <span *ngIf="car.gear">Gear:</span>
+            <span *ngIf="car.fuel_cons">Fuel cons:</span>
+            <span *ngIf="car.wd">WD:</span>
           </div>
           <div class="col8">
-            <span>{{car.engine}}</span>
-            <span>{{car.fuel}}</span>
-            <span>{{car.gear}}</span>
-            <span>{{car.fuel_cons}}</span>
-            <span>{{car.wd}}</span>
+            <span *ngIf="car.engine">{{car.engine}}</span>
+            <span *ngIf="car.fuel">{{car.fuel}}</span>
+            <span *ngIf="car.gear">{{car.gear}}</span>
+            <span *ngIf="car.fuel_cons">{{car.fuel_cons}}</span>
+            <span *ngIf="car.wd">{{car.wd}}</span>
           </div>
           <div class="col9">
-            <span>HP:</span>
-            <span> Torque: </span>
-            <span>Doors:</span>
-            <span> Seats:</span>
-            <span> Class:</span>
+            <span  *ngIf="car.hp">HP:</span>
+            <span  *ngIf="car.torque"> Torque: </span>
+            <span  *ngIf="car.doors">Doors:</span>
+            <span *ngIf="car.seats"> Seats:</span>
+            <span *ngIf="car.class"> Class:</span>
           </div>
           <div class="col10">
-            <span>{{car.hp}}</span>
-            <span>{{car.torque}}</span>
-            <span>{{car.doors}}</span>
-            <span>{{car.seats}}</span>
-            <span>{{car.class}}</span>
+            <span *ngIf="car.hp">{{car.hp}}</span>
+            <span *ngIf="car.torque">{{car.torque}}</span>
+            <span *ngIf="car.doors">{{car.doors}}</span>
+            <span *ngIf="car.seats">{{car.seats}}</span>
+            <span *ngIf="car.class">{{car.class}}</span>
           </div>
         </div>
         <div class="col4">
@@ -74,7 +74,7 @@
             <span>About:</span>
           </div>
           <div class="col12">
-            <span>{{car.about_text}}</span>
+            <span  *ngIf="car.about_text">{{car.about_text}}</span>
           </div>
         </div>
       </div>
@@ -84,23 +84,25 @@
           <div class="location-list">
             <div class="location-item">
               <span class="location-item-title">Country:</span>
-              <span>{{car.location.country}}</span>
+              <span *ngIf="car.location.country; else isr">{{car.location.country}}</span>
+              <ng-template #isr>Israel</ng-template>
             </div>
             <div class="location-item">
               <span class="location-item-title">City:</span>
-              <span>{{car.location.city}}</span>
+              <span *ngIf="car.location.city; else tlv">{{car.location.city}}</span>
+              <ng-template #tlv>Tel Aviv</ng-template>
             </div>
             <div class="location-item">
-              <span class="location-item-title">Region:</span>
-              <span>{{car.location.region}}</span>
+              <span *ngIf="car.location.region" class="location-item-title">Region:</span>
+              <span *ngIf="car.location.region">{{car.location.region}}</span>
             </div>
             <div class="location-item">
-              <span class="location-item-title">Street:</span>
-              <span>{{car.location.street}}</span>
+              <span *ngIf="car.location.street" class="location-item-title">Street:</span>
+              <span *ngIf="car.location.street">{{car.location.street}}</span>
             </div>
             <div class="location-item">
-              <span class="location-item-title">ZIP:</span>
-              <span>{{car.location.zip}}</span>
+              <span *ngIf="car.location.zip" class="location-item-title">ZIP:</span>
+              <span *ngIf="car.location.zip">{{car.location.zip}}</span>
             </div>
           </div>
         </div>

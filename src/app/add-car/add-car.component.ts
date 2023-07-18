@@ -69,7 +69,6 @@ export class AddCarComponent implements OnInit, OnDestroy {
     this.toastr.success('Car edited successfully', ' ');
   }
 
-
   onSubmit(addCarForm: NgForm) {
     const car = addCarForm.value as Car;
     car.img_url = this.currentCar.img_url;
@@ -78,6 +77,7 @@ export class AddCarComponent implements OnInit, OnDestroy {
     car.location.lat = this.currentCar.location.lat;
     car.location.lng = this.currentCar.location.lng;
     car.features = this.currentCar.features;
+    if (!car.title) {car.title = 'Private car'; }
 
     if (this.isNew) {
       this.subscription = this.carsService.addCar(car)

@@ -46,7 +46,7 @@ ul{
   min-width: 200px;
   height: 49%;
   min-height: 50px;
-  background: transparent url('../../assets/logo.svg') 0 0 no-repeat padding-box;
+  background: url('../../assets/logo.svg') 0 0 no-repeat padding-box;
   opacity: 1;
   margin-top: 3vh;
 }

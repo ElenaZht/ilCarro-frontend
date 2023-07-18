@@ -5,7 +5,7 @@
 .container {
   display: flex;
   width: 90%;
-  height: 60vh;
+  height: 100%;
   margin: auto;
   position: relative;
   padding-top: 1%;
@@ -14,13 +14,15 @@
 
 }
 .photo {
-  height: 100%;
-  width: 65%;
+  height: 60vmin;
+  width: 70vmax;
   opacity: 1;
-  background-size: cover;
-  background: transparent url('../../assets/no_image.jpg') no-repeat center;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
   position: relative;
   display: flex;
+  overflow: hidden;
 
 
 }
@@ -31,15 +33,19 @@
   display: flex;
 
 }
+
 .card-body {
-  width: 148px;
-  height: 100%;
+  padding: 1%;
+  width: fit-content;
+  min-height: 9vmin;
+  height: fit-content;
   background: #FFFFFF 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 6px var(--shadow);
   opacity: 1;
   top: -10px;
   display: flex;
   align-items: center;
+  justify-content: space-around;
 }
 .wrap {
   display: flex;
@@ -58,9 +64,11 @@
 
 }
 .dolar{
+  width: fit-content;
   left: 5%;
   text-align: center;
-  font: var(--large-text) Raleway-Bold;
+  font: var(--big-text) Raleway-Bold;
+  display: flex;
   letter-spacing: 0px;
   color: black;
   opacity: 1;
@@ -75,20 +83,24 @@
   text-transform: capitalize;
   opacity: 1;
   position: relative;
+  display: flex;
+  width: fit-content;
+  min-width: 7vmin;
 }
 .perday{
-  height: 3vh;
-  font: var(--big-text) Bebas Neue;
+  flex-wrap: nowrap;
+  margin: auto;
+  font: var(--medium-text) Bebas Neue;
   letter-spacing: 0px;
   color: var(--dark);
   text-transform: capitalize;
   opacity: 1;
   transform: rotate(-90deg);
-  display: block;
+  display: flex;
   position: relative;
-  left: 6%;
-  width: 4vw;
   text-align: center;
+  padding-top: 10%;
+  flex-shrink: 0;
 
 }
 .car-title{
@@ -140,28 +152,25 @@
   justify-content: space-between;
   font: var(--medium-text) Raleway-Regular;
 }
-
+.col4{
+  overflow: hidden;
+}
 agm-map {
   height: 54vh;
   width: 30vw;
   box-shadow: 0px 3px 6px var(--shadow);
 
 }
-.col1 {
+.col1, .col2{
   display: flex;
   flex-direction: column;
   height: 100%;
   width: auto;
   max-width: 48%;
+  justify-content: space-around;
 
 }
-.col2 {
-  display: flex;
-  height: 100%;
-  max-width: 48%;
-  flex-direction: column;
 
-}
 .col3 {
   display: flex;
   height: 40%;
@@ -290,6 +299,7 @@ agm-map {
   -webkit-box-pack: justify;
 
 }
+
 .comment{
 display: flex;
 flex-direction: row;
@@ -321,7 +331,7 @@ margin: auto;
 display: flex;
 flex-direction: column;
 width: 60%;
-height: 80%;
+height: fit-content;
 padding-left: 10px;
 
 }
@@ -369,4 +379,34 @@ color: var(--dark);
   margin-left: 5%;
   margin-top: 1%;
 
+}
+@media only screen and (max-width: 800px){
+  .parallelogram, .photo{
+    width: 100%;
+  }
+  .data-wrap{
+    flex-direction: column;
+    align-items: center;
+  }
+  .data-wrap > div{
+    width: 100%;
+    height: 100%;
+  }
+  agm-map{
+    width: 100%;
+    height: 100%;
+  }
+  .wrap{
+    flex-direction: column;
+  }
+  .wcard{
+    top: 6%;
+    left: 76%;
+  }
+  .form{
+    width: 100%;
+  }
+  .stars{
+    left: 50%;
+  }
 }

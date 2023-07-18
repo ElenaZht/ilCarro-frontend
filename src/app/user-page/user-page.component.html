@@ -20,28 +20,22 @@
           <input style="visibility: hidden" class="hover-text" id="chooseFile" type='file' (change)="onSelectFile($event)">
           <label for="chooseFile" class="hover-text"> <fa-icon size="4x" [icon]="['fas', 'images']"></fa-icon></label>
         </div>
-        <form class="e" #editUserForm="ngForm" (ngSubmit)="onSubmit(editUserForm)">
-          <div class="user_form_left">
+        <form class="user_form" #editUserForm="ngForm" (ngSubmit)="onSubmit(editUserForm)">
+          <div class="user_form_labels">
             <span>name: </span>
             <span>email: </span>
           </div>
-          <div class="user_form_rigth">
-            <span >{{userVar.first_name + ' ' + userVar.second_name}}</span>
-            <span>{{userVar.email}}</span>
+          <div class="user_form_values">
+            <input *ngIf="show" value="{{userVar.first_name + ' ' + userVar.second_name}}" type="email" id="email_input" placeholder="My name" name="userName">
+            <span *ngIf="!show">{{userVar.first_name + ' ' + userVar.second_name}}</span>
+            <input *ngIf="show" value="{{userVar.email}}" id="name_input" placeholder="My new email" name="userEmail">
+            <span *ngIf="!show">{{userVar.email}}</span>
           </div>
           <div class="user_form_btns">
             <button class="edit_user"  (click)="show = !show; errorText = '';" type="button">
               <fa-icon *ngIf="!show" class="icon" [icon]="['fas', 'pen']"></fa-icon>
               <span *ngIf="show">Close</span>
             </button>
-
-            <div *ngIf="show">
-              <input type="email" id="email_input" placeholder="My name" name="userName" [(ngModel)]="displayName">
-
-            </div>
-            <div *ngIf="show">
-              <input type="email" id="name_input" placeholder="My new email" name="userEmail" [(ngModel)]="displayEmail" pattern="[^@\s]+@[^@\s]+\.[^@\s]+">
-            </div>
 
 
             <button *ngIf="show" type="submit" class="submitEdition">Change</button>

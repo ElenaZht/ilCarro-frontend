@@ -9,50 +9,55 @@
   flex-direction: column;
   position: relative;
 }
-#reg_lable{
-  top: 189px;
-  left: 1365px;
-  width: 42%;
-  height: 25px;
+.reg_lable{
   text-align: left;
   font: var(--big-text) Raleway-Black;
   letter-spacing: 0;
   color:  var(--red);
   opacity: 1;
-  padding-left: 50px;
-  margin-bottom: 0px;
+}
+form{
+  display: flex;
+  flex-direction: column;
+  align-items: self-start;
+  justify-content: space-around;
+}
+form header{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 90%;
+  margin: auto;
 }
 #button_yalla{
-  top: 629px;
-  left: 1365px;
-  width: 126px;
-  height: 32px;
+  width: fit-content;
+  height: fit-content;
+  padding: 1% 2%;
   background:  var(--red) 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 6px  var(--shadow);
   border: 0;
   opacity: 1;
-  margin-left: 20%;
 }
 #button_y_div{
   padding-top: 15%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .card-body{
   flex-grow: 1;
 }
 
-#type_data{
-  padding-left: 50px;
-  top: 221px;
-  left: 1365px;
-  width: 50%;
-  height: 13px;
+.type_data{
   text-align: left;
   font: var(--small-text) Raleway-Regular;
   letter-spacing: 0;
   color:  var(--dark);
   opacity: 1;
-  margin-top: 0px;
-  padding-top: 2.5px;
+  margin: 0;
 }
 #y{
   top: 641px;
@@ -75,7 +80,7 @@ input::placeholder{
 input{
   font-size: var(--medium-text);
   color: black;
-  width: 80%;
+  width: 10vmax;
 }
 .error{
   color: red;
@@ -100,8 +105,7 @@ input{
   width: 70%;
   height: 50%;
   justify-content: space-around;
-  margin-left: 5%;
-  margin-top: 5%;
+  margin: 5%;
   align-items: inherit;
 
 }
@@ -116,10 +120,9 @@ label {
   font: var(--medium-text) Raleway-Regular;
   letter-spacing: 0;
   color: var(--dark);
+  margin-right: 3%;
 }
 .rent-time {
-  width: 80%;
-  margin: auto;
   font: var(--medium-text) Raleway-Regular;
   color: var(--dark);
 
@@ -136,3 +139,20 @@ label {
   font-weight: bold;
   margin: 5% 4% 2%;
 }
+@media only screen and (max-width: 800px){
+  #reg_card{
+    width: 70vmin;
+  }
+  .reg_lable{
+    font-size: var(--large-text);
+    margin: 0;
+  }
+  h5, .rent-time, .type_data, .input-div>*{
+    font-size: var(--big-text);
+  }
+  #button_yalla{
+    width: 15vmax;
+    height: 5vmax;
+  }
+}
+
