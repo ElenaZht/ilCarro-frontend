@@ -109,7 +109,7 @@ import { CarWindowComponent } from './car-window/car-window.component';
     {provide: RentService, useClass: MockRentService},
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: FakeBackendInterceptor, multi: true},
-    {provide: MAT_DATE_LOCALE, useValue: 'en-GB'}
+    {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
 
   ],
   entryComponents: [SingUpDialogComponent, LoginComponent,

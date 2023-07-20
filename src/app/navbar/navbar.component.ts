@@ -23,18 +23,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
               private toastr: ToastrService) { }
   joinUs() {
     const dialogRef = this.dialog.open(SingUpDialogComponent, {panelClass: 'custom-dialog-container'});
-    this.joinDialogSubscription = dialogRef.afterClosed().subscribe(() => {
-      this.location.back();
-    });
+    this.joinDialogSubscription = dialogRef.afterClosed().subscribe(() => {});
   }
   logIn() {
     const dialogRef = this.dialog.open(LoginComponent, {panelClass: 'custom-dialog-container'});
     this.loginDialogSubscription = dialogRef.afterClosed().subscribe(result => {
-      if (!result) {
-        void this.router.navigate(['/homepage']);
-      } else  {
+      if (result) {
         void this.router.navigate(['/myaccount']);
-
       }
     });
   }
@@ -46,7 +41,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
     if (confirm('Are you sure to log out?')) {
       this.usersService.logout();
       this.showToastr();
-      void this.router.navigate(['/loginwind']);
       this.logIn();
     }
   }

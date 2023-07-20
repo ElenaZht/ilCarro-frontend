@@ -24,6 +24,7 @@ export class UsersArrayService implements UsersService {
   }
 
   AddUser(user: User): Observable<boolean> {
+    // this.logIn(user.email, user.password);
     return this.http.post<boolean>(`${environment.apiUrl}/users/signup`, user);
 
   }

@@ -19,10 +19,10 @@
     <li routerLink="letthecarwork" *ngIf="!this.usersService.isLoggedIn()" class="nav-link" routerLinkActive="active_tab">
       <label >Let it work</label>
     </li>
-    <li *ngIf="!this.usersService.isLoggedIn()" routerLink="signupwind" routerLinkActive="active_tab" (click)="joinUs()" class="nav-link">
+    <li *ngIf="!this.usersService.isLoggedIn()" (click)="joinUs()" class="nav-link">
       <label>Sign Up</label>
     </li>
-    <li *ngIf="!this.usersService.isLoggedIn()" routerLink="loginwind" routerLinkActive="active_tab" (click)="logIn()" class="nav-link">
+    <li *ngIf="!this.usersService.isLoggedIn()"  (click)="logIn()" class="nav-link">
       <label>Log in</label>
     </li>
     <li *ngIf="this.usersService.isLoggedIn()" class="nav-link" >

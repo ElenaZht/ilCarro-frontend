@@ -18,4 +18,8 @@ export class CarWindowComponent implements OnInit {
   exit() {
     this.dialogRef.close();
   }
+
+  closeWindow($event: boolean) {
+    this.exit();
+  }
 }

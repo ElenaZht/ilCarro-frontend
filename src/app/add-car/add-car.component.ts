@@ -78,6 +78,7 @@ export class AddCarComponent implements OnInit, OnDestroy {
     car.location.lng = this.currentCar.location.lng;
     car.features = this.currentCar.features;
     if (!car.title) {car.title = 'Private car'; }
+    if (!car.location.city) {car.location.city = 'Tel Aviv';}
 
     if (this.isNew) {
       this.subscription = this.carsService.addCar(car)

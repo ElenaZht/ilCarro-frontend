@@ -15,4 +15,7 @@ export class LoginOrSignDialogComponent implements OnInit {
   exit() {
     this.dialogRef.close();
   }
+  closeDialog(event): void {
+    this.dialogRef.close(event);
+  }
 }

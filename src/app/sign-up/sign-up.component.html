@@ -6,13 +6,14 @@
       <h5 id="type_data">Type your data and hit Yalla!</h5>
     </header>
     <input  class="form-control reg-data"  placeholder="Name"  type="string" id="inp1"
-                    #name="ngModel" name="first_name" required  [(ngModel)]="sign_upForm.name">
+                    #name="ngModel" name="first_name" required  [(ngModel)]="sign_upForm.name" pattern="^[a-zA-Z]+$">
     <div class="error" *ngIf="!name.valid && name.touched">
-      Name is required.
+      Name is required(letters only).
     </div>
-            <input  class="form-control reg-data" placeholder="Last name"  type="string" id="inp2" #last_name="ngModel" name="second_name"  required [(ngModel)]="sign_upForm.last_name">
+            <input  class="form-control reg-data" placeholder="Last name"  type="string" id="inp2" #last_name="ngModel"
+                    name="second_name"  required [(ngModel)]="sign_upForm.last_name" pattern="^[a-zA-Z]+$">
     <div class="error" *ngIf="!last_name.valid && last_name.touched">
-      Last name is required.
+      Last name is required(letters only).
     </div>
             <input  class="form-control reg-data" placeholder="Email"  type="email" id="inp3" #email="ngModel" name="email"
                     [(ngModel)]="sign_upForm.email" required pattern="[^@\s]+@[^@\s]+\.[^@\s]+">
@@ -27,7 +28,7 @@
   <div id="iagree">
             <input type="checkbox" id="check" name="check"  #check="ngModel"
                    [(ngModel)]="sign_upForm.check">
-    <label id="agree_lable">I agree to the <a>terms of use</a> and <a>privacy policy</a>.</label>
+    <label id="agree_lable">I agree to the <a (click)="goToTerms()" routerLink="/terms">terms of use and privacy policy</a>.</label>
     <p class="error" *ngIf="checkboxError" id="err_check">
       Choose to continue.
     </p>

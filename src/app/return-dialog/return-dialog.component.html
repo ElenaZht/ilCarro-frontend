@@ -23,7 +23,7 @@
       <textarea type="text" maxlength="100" name="text"  #text="ngModel" [(ngModel)]="commentForm.text"></textarea>
       <div class="stars-wrap">
         <div class="stars">
-          <fa-icon *ngFor="let star of stars" class="icon" [icon]="['fas', 'star']" (click)="onStar(star)" [style.color]="newRating>=star ? 'gold' : 'var(--light)'"></fa-icon>
+          <fa-icon *ngFor="let star of stars" class="icon" [icon]="['fas', 'star']" (click)="onStar(star)" [style.color]="newRating>=star ? 'gold' : 'gray'"></fa-icon>
 
         </div>
 

@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {Car, CarsService} from '../cars.service';
 import {User, UsersService} from '../users.service';
 import {Order, RentService, State} from '../rent.service';
@@ -22,6 +22,10 @@ library.add(faChevronUp);
 })
 export class RentFormComponent implements OnInit, OnDestroy {
   @Input() inputCarId: number;
+
+  @Output() newRentEvent = new EventEmitter<boolean>();
+  rent = true;
+
   city: string;
   car: Car;
   cars: any;
@@ -113,6 +117,7 @@ export class RentFormComponent implements OnInit, OnDestroy {
     this.paymentDialogCloseSubscription = dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.addOrderSubscription = this.rentService.addOrder(order).subscribe(res => {
+          this.newRentEvent.emit(this.rent);
           if (res) {
             this.showToastr(order);
             rentForm.reset();
@@ -144,8 +149,8 @@ export class RentFormComponent implements OnInit, OnDestroy {
         }
       });
   }
-
   }
+
 
   ngOnDestroy(): void {
     if (this.getUserSubscription) {
@@ -166,5 +171,9 @@ export class RentFormComponent implements OnInit, OnDestroy {
     if (this.loginDialogCloseSubscription) {
       this.loginDialogCloseSubscription.unsubscribe();
     }
+  }
+
+  closeParentDialog() {
+
   }
 }

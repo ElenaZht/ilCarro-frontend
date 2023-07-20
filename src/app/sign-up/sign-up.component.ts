@@ -1,6 +1,8 @@
 import {Component, OnInit, Output, EventEmitter, OnDestroy} from '@angular/core';
 import {User, UsersService} from '../users.service';
 import {NgForm} from '@angular/forms';
+import {Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-sign-up',
@@ -12,8 +14,9 @@ export class SignUpComponent implements OnInit, OnDestroy {
   checkboxError: boolean;
   errorText: string;
   private subscription: any;
+  private loginSubscription: any;
 
-  constructor(private usersService: UsersService) {}
+  constructor(private usersService: UsersService, private router: Router) {}
   ngOnInit() {}
 
   onSubmit(signUpForm: NgForm) {
@@ -25,9 +28,12 @@ export class SignUpComponent implements OnInit, OnDestroy {
     this.subscription = this.usersService.AddUser(user)
       .subscribe(res => {
         if (res) {
-          signUpForm.reset();
-          this.errorText = '';
-          this.signUpResult.emit(true);
+          this.loginSubscription = this.usersService.logIn(user.email, user.password)
+            .subscribe((result) => {
+              signUpForm.reset();
+              this.errorText = '';
+              this.signUpResult.emit(true);
+            });
         }
       }, err => {
         this.errorText = err.statusText;
@@ -37,7 +43,13 @@ export class SignUpComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     if (this.subscription) {
       this.subscription.unsubscribe();
+      this.loginSubscription.unsubscribe();
     }
+  }
+
+  goToTerms() {
+    this.signUpResult.emit(true);
+
   }
 }
 

@@ -7,6 +7,7 @@ import {Comment, User, UsersService} from '../users.service';
 import {NgForm} from '@angular/forms';
 import {RentService} from '../rent.service';
 import {ToastrService} from 'ngx-toastr';
+
 library.add(faStar);
 
 @Component({
@@ -48,7 +49,8 @@ export class ReturnDialogComponent implements OnInit, OnDestroy {
     comment.stars = this.newRating;
     comment.name = this.order.renterName;
     comment.url = this.user.url;
-    comment.date = new Date();
+    comment.date = (new Date()).getDate() + ' ' + (new Date())
+      .toLocaleString('en-GB', {month: 'long'}) + ' ' + (new Date()).getFullYear();
     comment.carId = this.order.carId;
     if (commentForm.value.text) {
       comment.text = commentForm.value.text;
@@ -87,8 +89,8 @@ export class ReturnDialogComponent implements OnInit, OnDestroy {
     );
   }
   ngOnDestroy(): void {
-    this.returnSubscription.unsubscribe();
-    this.addCommentSubscription.unsubscribe();
-    this.returnCarSubscription.unsubscribe();
+    // this.returnSubscription.unsubscribe();
+    // this.addCommentSubscription.unsubscribe();
+    // this.returnCarSubscription.unsubscribe();
   }
 }

@@ -15,7 +15,7 @@
     </header>
     <div class="input-wrap" *ngIf="!mobile || mobile&&openCard">
       <div class="input-div">
-        <label>City: </label>
+        <label >City: </label>
         <input  class="form-control" type="text" [value]="city" disabled>
       </div>
       <div class="input-div">
@@ -43,7 +43,7 @@
       </div>
 
       <div id="button_y_div">
-        <button id="button_yalla" type="submit"  >
+        <button id="button_yalla" type="submit"  (click)="closeParentDialog()"  [(ngModel)]="rent">
           <span id="y">Rent!</span>
         </button>
       </div>

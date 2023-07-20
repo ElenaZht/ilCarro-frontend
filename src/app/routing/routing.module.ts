@@ -21,12 +21,12 @@ const routes: Routes = [
   {path: 'letthecarwork', component: LetTheCarWorkComponent},
   {path: 'signup', component: SignUpComponent },
   {path: 'car/:id', component: CarComponent},
-  {path: 'signupwind', component: EmptyPageComponent},
+  // {path: 'signupwind', component: EmptyPageComponent},
   {path: 'addcarwind', component: UserPageComponent},
   {path: 'login', component: LoginComponent},
   {path: 'addcar', component: AddCarComponent},
-  {path: 'loginwind', component: EmptyPageComponent},
-  {path: 'logout', component: EmptyPageComponent, canActivate: [AuthGuard], children: []},
+  // {path: 'loginwind', component: EmptyPageComponent},
+  {path: 'logout', component: HomePageComponent, canActivate: [AuthGuard], children: []},
   {path: '**', redirectTo: 'homepage' }
     ];
 

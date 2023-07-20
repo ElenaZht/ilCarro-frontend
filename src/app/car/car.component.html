@@ -1,9 +1,10 @@
 <div class="main">
   <div class="container">
     <div class="wrap">
-      <div class="photo" [ngStyle]="{'background-image': ' url('+car.img_url+')'}"></div>
+      <div *ngIf="car.img_url" class="photo" [ngStyle]="{'background-image': ' url('+car.img_url+')'}"></div>
+      <div *ngIf="!car.img_url" class="photo" [ngStyle]="{'background-image': 'url(../../assets/no_car_image2.jpg)'} "></div>
       <div class="form">
-        <app-rent-form [inputCarId]="id"></app-rent-form>
+        <app-rent-form [inputCarId]="id" (newRentEvent)="closeParent($event)" [(ngModel)]="closeDialog"></app-rent-form>
       </div>
     </div>
     <div class="wcard" *ngIf="car.price">
@@ -70,7 +71,7 @@
           </div>
         </div>
         <div class="col4">
-          <div class="col11">
+          <div class="col11" *ngIf="car.about_text">
             <span>About:</span>
           </div>
           <div class="col12">
@@ -156,17 +157,17 @@
   <div class="comments-wrap">
     <div class="comments-container">
       <div class="comment" *ngFor="let comment of comments">
-        <div class="user_photo" [ngStyle]="{'background-image': ' url('+comment.url+')'}"></div>
+        <div *ngIf="comment && comment.url" class="user_photo" [ngStyle]="{'background-image': ' url('+comment.url+')'}"></div>
         <div class="comment_body">
-          <div class="com-stars">
-            <div class="com-star" *ngFor="let s of [].constructor(comment.stars)">
+          <div class="com-stars" *ngIf="comment && comment.stars">
+            <div  class="com-star" *ngFor="let s of [].constructor(comment.stars)">
               <fa-icon [icon]="['fas', 'star']"></fa-icon>
             </div>
           </div>
-          <span>{{comment.text}}</span>
+          <span *ngIf="comment && comment.text">{{comment.text}}</span>
           <div class="comment_info">
-            <p class="user_name">{{comment.name}}</p>
-            <p class="comment_date">{{comment.date | date: 'd MMMM yyyy'}}</p>
+            <p class="user_name" *ngIf="comment && comment.name">{{comment.name}}</p>
+            <p class="comment_date" *ngIf="comment && comment.date">{{comment.date | date: 'd MMMM yyyy'}}</p>
           </div>
         </div>
       </div>

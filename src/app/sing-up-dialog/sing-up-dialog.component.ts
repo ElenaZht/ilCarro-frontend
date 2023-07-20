@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {MatDialogRef} from '@angular/material/dialog';
+
 @Component({
   selector: 'app-sing-up-dialog',
   templateUrl: './sing-up-dialog.component.html',

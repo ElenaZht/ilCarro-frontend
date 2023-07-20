@@ -12,8 +12,7 @@
   position: relative;
   top: 3vh;
   font: var(--big-text) Raleway-Black;
-  width: 80%;
-  left: 10%;
+  text-align: center;
 }
 .mastercard {
   background-image: url('../../assets/mastercard.png');

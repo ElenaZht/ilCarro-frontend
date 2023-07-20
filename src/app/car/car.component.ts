@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Car, CarsService} from '../cars.service';
 import {User, UsersService} from '../users.service';
@@ -21,6 +21,8 @@ library.add(faStar);
 })
   export class CarComponent implements OnInit, OnDestroy {
   @Input() inputCarId: number;
+  @Output() newCloseEvent = new EventEmitter<boolean>();
+
   car: Car = {id: 0, img_url: '../../assets/no_image.jpg', title: 'no name', model: 'no model',
     price: 0, owner_id: 0, year: 0, location: {country: 'unknown', city: 'unknown', region: 'unknown',
       street: 'unknown', zip: 0, lat: 0.0, lng: 0.0}, engine: 'unknown',
@@ -37,6 +39,9 @@ library.add(faStar);
   private getCommentSubscription;
   private closeDialogSubscription;
   private removeCarSubscription;
+
+  rented = false;
+  closeDialog = false;
   constructor(private route: ActivatedRoute, private carsService: CarsService, private usersService: UsersService,
               public dialog: MatDialog,  private router: Router, private toastr: ToastrService) {}
 
@@ -107,4 +112,8 @@ library.add(faStar);
     }
   }
 
+  closeParent($event: boolean) {
+    this.rented = true;
+    this.newCloseEvent.emit(this.closeDialog);
+  }
 }
