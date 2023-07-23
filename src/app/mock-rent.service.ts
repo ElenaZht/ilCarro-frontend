@@ -36,6 +36,7 @@ export class MockRentService implements RentService {
 
   }
   addOrder(order: Order): Observable<boolean> {
+    console.log('rent server got date', order.dateOn, order.dateOff);
     const id = order.renterId;
     return  this.http.post<boolean>(`${environment.apiUrl}/orders/addorder`, order).pipe(map(
       res => {

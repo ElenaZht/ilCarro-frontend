@@ -20,6 +20,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
   ngOnInit() {}
 
   onSubmit(signUpForm: NgForm) {
+    const el = document.getElementById('button_yalla');
     this.checkboxError = !signUpForm.value.check ;
     if (this.checkboxError) {
       return;
@@ -30,6 +31,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
         if (res) {
           this.loginSubscription = this.usersService.logIn(user.email, user.password)
             .subscribe((result) => {
+              void this.router.navigate(['/myaccount']);
               signUpForm.reset();
               this.errorText = '';
               this.signUpResult.emit(true);
@@ -51,6 +53,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
     this.signUpResult.emit(true);
 
   }
+
 }
 
 

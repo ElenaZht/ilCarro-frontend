@@ -109,11 +109,10 @@
   display: flex;
 }
 #wrap{
-  top: 825px;
-  left: 0;
   height: 30vh;
   background:  var(--dark) 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 6px;
+
 }
 
 #never_text{

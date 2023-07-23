@@ -140,6 +140,21 @@ agm-map {
   border: 2px solid var(--shadow);
   height: 52.5%;
 }
+.danger{
+  color: #a94442;
+  background-color: #f2dede;
+  padding: 15px;
+  margin-top: 20px;
+  border: 1px solid var(--red);
+  border-radius: 4px;
+  margin-left: 20px;
+  margin-right: 20px;
+  font: 18px/24px Raleway-Regular;
+  font-weight: bold;
+}
+.halo{
+  border: solid var(--red);
+}
 @media only screen and (max-width: 800px){
   form.card-body{
     width: 100%;

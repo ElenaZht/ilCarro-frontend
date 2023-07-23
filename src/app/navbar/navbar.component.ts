@@ -40,6 +40,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   logout() {
     if (confirm('Are you sure to log out?')) {
       this.usersService.logout();
+      void this.router.navigate(['homepage']);
       this.showToastr();
       this.logIn();
     }

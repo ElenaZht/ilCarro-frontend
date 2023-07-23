@@ -25,6 +25,7 @@ export class AddCarComponent implements OnInit, OnDestroy {
   btnSubmitTitile: string;
   latitude = 32.0804808;
   longitude = 34.7805274;
+  validated = true;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private carsService: CarsService,
               public dialogRef: MatDialogRef<AddCarComponent>,  private toastr: ToastrService) {
@@ -71,6 +72,14 @@ export class AddCarComponent implements OnInit, OnDestroy {
 
   onSubmit(addCarForm: NgForm) {
     const car = addCarForm.value as Car;
+    if (!car || !car.model || !car.price || !car.year) {
+      this.validated = false;
+      document.getElementById('inp2').classList.add('halo');
+      document.getElementById('inp3').classList.add('halo');
+      document.getElementById('inp14').classList.add('halo');
+      console.log('validating fail', car.model, car.price, car.year);
+      return;
+    } else {this.validated = true;}
     car.img_url = this.currentCar.img_url;
     car.owner_id = this.user.id;
     car.location = {...this.currentCar.location}; // should be resolved in template//todo ?
@@ -78,16 +87,18 @@ export class AddCarComponent implements OnInit, OnDestroy {
     car.location.lng = this.currentCar.location.lng;
     car.features = this.currentCar.features;
     if (!car.title) {car.title = 'Private car'; }
-    if (!car.location.city) {car.location.city = 'Tel Aviv';}
+    if (!car.location.city) {car.location.city = 'Tel Aviv'; }
+
 
     if (this.isNew) {
       this.subscription = this.carsService.addCar(car)
         .subscribe(res => {
 
           if (res) {
+            this.dialogRef.close();
             addCarForm.reset();
             this.errorText = '';
-            this.dialogRef.close();
+
           }
         }, err => {
           this.errorText = err.statusText;

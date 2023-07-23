@@ -74,10 +74,10 @@ export class UserPageComponent implements OnInit, OnDestroy {
           });
           this.myOrdersSubscription = this.rentService.getMyOrders(user.id).subscribe(res => {
             this.myOrders = res;
-
             for (const or of this.myOrders) {
               or.dateOn = new Date(`${or.dateOn} UTC`);
               or.dateOff = new Date(`${or.dateOff} UTC`);
+              console.log('date came back to user page', or.dateOn, or.dateOff);
               const today = new Date();
               if (today >= or.dateOn) {
                 this.ordersStatus[or.orderId] = true;

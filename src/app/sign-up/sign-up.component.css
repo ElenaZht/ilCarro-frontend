@@ -129,6 +129,7 @@
   color: #FFFFFF;
   opacity: 1;
   margin: auto;
+  position: inherit;
 }
 a{
   text-decoration: underline;

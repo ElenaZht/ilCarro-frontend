@@ -111,8 +111,9 @@ export class RentFormComponent implements OnInit, OnDestroy {
       this.errorText = 'Please, choose dates, that not includes orders of other consumers';
       return;
     }
-    order.dateOn = order.dateOn.toUTCString();
+    order.dateOn = order.dateOn.toUTCString(); // wrong date conversations
     order.dateOff = order.dateOff.toUTCString();
+    console.log('date in handle', order.dateOn, order.dateOff)
     const dialogRef = this.dialog.open(PaymentDialogComponent, {panelClass: 'custom-dialog-container'});
     this.paymentDialogCloseSubscription = dialogRef.afterClosed().subscribe(result => {
       if (result) {
@@ -134,6 +135,7 @@ export class RentFormComponent implements OnInit, OnDestroy {
   onSubmit(rentForm: NgForm) {
     const order = rentForm.value as Order;
     order.dateOn = rentForm.value.dateOn;
+    console.log('date from form', order.dateOn, order.dateOff);
     order.dateOff = rentForm.value.dateOff;
     order.carName = this.car.title;
     order.carId = this.car.id;
