@@ -40,12 +40,6 @@ export class UserPageComponent implements OnInit, OnDestroy {
   errorText: string;
   myCarsOrdersSubscription: Subscription;
   myOrdersSubscription: Subscription;
-  editUserSubscription: Subscription;
-  returnCarSubscription: Subscription;
-  returnCarCloseSubscription: Subscription;
-  addCarSubscription: Subscription;
-  editCarSubscription: Subscription;
-  removeCarSubcription: Subscription;
 
   constructor(private usersService: UsersService,  private router: Router,
               private carsService: CarsService, private route: ActivatedRoute,
@@ -97,7 +91,7 @@ export class UserPageComponent implements OnInit, OnDestroy {
     const reader = new FileReader();
     reader.readAsDataURL(this.selectedFile);
     reader.onload = (_) => {
-      this.editUserSubscription = this.usersService.editUser(this.user.id, this.user.first_name,
+      this.usersService.editUser(this.user.id, this.user.first_name,
         this.user.second_name, this.user.email, reader.result.toString()).subscribe(() => {
       });
     };
@@ -111,14 +105,14 @@ export class UserPageComponent implements OnInit, OnDestroy {
 
   }
   onCloseNotifReturn(order, idx) {
-    this.returnCarSubscription = this.rentService.returnCar(order).subscribe(() => {
+    this.rentService.returnCar(order).subscribe(() => {
       this.waitingOrders.splice(idx, 1);
       this.showNotifToastr(order);
 
     });
   }
   onCloseNotifCancel(order, idx) {
-    this.returnCarCloseSubscription = this.rentService.returnCar(order).subscribe(() => {
+    this.rentService.returnCar(order).subscribe(() => {
       this.canceledOrders.splice(idx, 1);
       this.showNotifToastr(order);
 
@@ -135,15 +129,14 @@ export class UserPageComponent implements OnInit, OnDestroy {
 
   addCar() {
     const dialogRef = this.dialog.open(AddCarComponent, {panelClass: 'custom-dialog-container', data: {user: this.user}});
-    this.addCarSubscription = dialogRef.afterClosed().subscribe(() => {
-    });
+    dialogRef.afterClosed().subscribe(() => {});
   }
 
   editCar(car) {
     const carClone: Car = {...car};
     carClone.location = {...car.location};
     const dialogRef = this.dialog.open(AddCarComponent, {panelClass: 'custom-dialog-container', data: {car: carClone, user: this.user}});
-    this.editCarSubscription = dialogRef.afterClosed().subscribe(() => {
+    dialogRef.afterClosed().subscribe(() => {
     });
   }
   returnCar(car) {
@@ -155,7 +148,8 @@ export class UserPageComponent implements OnInit, OnDestroy {
   }
   removeCar(car: Car) {
     if (confirm('Delete car ' + car.title + '?')) {
-      this.removeCarSubcription = this.carsService.removeCar(car.id).subscribe(() => {
+      this.carsService.removeCar(car.id)
+        .subscribe(() => {
         this.showToastr();
       });
     }
@@ -192,8 +186,7 @@ export class UserPageComponent implements OnInit, OnDestroy {
     user.first_name = editUserForm.value.userName.substr(0, editUserForm.value.userName.indexOf(' '));
     user.second_name = editUserForm.value.userName.substr(editUserForm.value.userName.indexOf(' ') + 1, editUserForm.value.userName.length);
 
-    this.removeCarSubcription = this.usersService
-      .editUser(this.user.id, user.first_name, user.second_name, user.email, this.user.url).subscribe(() => {});
+    this.usersService.editUser(this.user.id, user.first_name, user.second_name, user.email, this.user.url).subscribe(() => {});
 
   }
 
@@ -233,14 +226,8 @@ export class UserPageComponent implements OnInit, OnDestroy {
 
   }
   ngOnDestroy() {
-    // this.user$subscription.unsubscribe();
-    // this.myCarsOrdersSubscription.unsubscribe();
-    // this.myOrdersSubscription.unsubscribe();
-    // this.editUserSubscription.unsubscribe();
-    // this.returnCarSubscription.unsubscribe();
-    // this.returnCarCloseSubscription.unsubscribe();
-    // this.addCarSubscription.unsubscribe();
-    // this.editCarSubscription.unsubscribe();
-    // this.removeCarSubcription.unsubscribe();
+    this.user$subscription.unsubscribe();
+    this.myCarsOrdersSubscription.unsubscribe();
+    this.myOrdersSubscription.unsubscribe();
   }
 }

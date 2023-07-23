@@ -56,8 +56,10 @@ export class MockCarsService implements CarsService {
   }
 
   removeCar(id: number): Observable<boolean> {
+    console.log('hi1');
     return this.http.delete<boolean>(`${environment.apiUrl}/cars/removecar/${id}`).pipe(map(
       res => {
+        console.log('hi2')
         if (res) {
             this.myCars$.next(this.myCars$.getValue().filter(c => c.id !== id));
         }
