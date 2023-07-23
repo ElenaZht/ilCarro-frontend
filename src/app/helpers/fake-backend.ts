@@ -2,7 +2,7 @@
 import {Observable, of, throwError} from 'rxjs';
 import {delay, dematerialize, materialize, mergeMap} from 'rxjs/operators';
 import {User} from '../users.service';
-import {Injectable, OnInit} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Car} from '../cars.service';
 import {Order, State} from '../rent.service';
 
@@ -21,16 +21,28 @@ const usersUnit: User[] = [
                       email: 'isak@gmail.com', password: '12345678'}
                       ];
 const carsInit: Car[] = [
-  { id: 100, img_url: '../../assets/nissan.jpg', title: 'nissan', model: 'Qashqai',  price: 200, owner_id: 121, year: 2010, location: {country: 'Israel', city: 'Ramat Gan', region: 'Gush dan', street: 'Hayatsyra, 4', zip: 394053, lat: 32.083333, lng: 34.8166634}, engine: '3.0L V6 DOHC',
-    fuel: 'Gas', gear: 'Automatic', fuel_cons: '12l', wd: 'RWD', hp: 250, torque: 330, doors: 4, seats: 5, class: 'C', about_text: 'BRAND NEW FULLY LOADED CUSTOM 2018 RANGE ROVER HSE with a 3.0 Liter Supercharged V6 Engine. The Range Rover HSE has a 380 horsepower V6, 8-Speed automatic transmission with gearshift paddles, all wheel drive, sliding panoramic roof, Bluetooth and USB.',
+  { id: 100, img_url: '../../assets/nissan.jpg', title: 'nissan', model: 'Qashqai',  price: 200, owner_id: 121, year: 2010,
+    location: {country: 'Israel', city: 'Ramat Gan', region: 'Gush dan', street: 'Hayatsyra, 4', zip: 394053, lat: 32.083333,
+      lng: 34.8166634}, engine: '3.0L V6 DOHC',
+    fuel: 'Gas', gear: 'Automatic', fuel_cons: '12l', wd: 'RWD', hp: 250, torque: 330, doors: 4, seats: 5, class: 'C',
+    about_text: 'BRAND NEW FULLY LOADED CUSTOM 2018 RANGE ROVER HSE with a 3.0 Liter Supercharged V6 Engine. The Range ' +
+      'Rover HSE has a 380 horsepower V6, 8-Speed automatic transmission with gearshift paddles, all wheel drive, sliding panoramic roof,' +
+      ' Bluetooth and USB.',
     features: {multimediaDisplay: false, abs: false, climatControl: false, childAutoseat: false},
     rating: 4, comments: [1000, 1001, 1002]},
-  { id: 101, img_url: '../../assets/zaz.jpg', title: 'ZAZ', model: '200',  price: 180, owner_id: 121, year: 2008,  location: {country: 'Israel', city: 'Lod', region: 'Gush dan', street: 'Haaron Lublin, 6', zip: 394053, lat: 31.9467, lng: 34.8903}, engine: '3.0L V6 DOHC',
-    fuel: 'Benzin', gear: 'Mehanic', fuel_cons: '101', wd: 'RWD', hp: 200, torque: 330, doors: 4, seats: 5, class: 'C', about_text: 'BRAND NEW FULLY LOADED CUSTOM 2018 RANGE ROVER HSE with a 3.0 Liter Supercharged V6 Engine. The Range Rover HSE has a 380 horsepower V6, 8-Speed automatic transmission with gearshift paddles, all wheel drive, sliding panoramic roof, Bluetooth and USB.',
+  { id: 101, img_url: '../../assets/zaz.jpg', title: 'ZAZ', model: '200',  price: 180, owner_id: 121, year: 2008,
+    location: {country: 'Israel', city: 'Lod', region: 'Gush dan', street: 'Haaron Lublin, 6', zip: 394053, lat: 31.9467, lng: 34.8903},
+    engine: '3.0L V6 DOHC', fuel: 'Benzin', gear: 'Mehanic', fuel_cons: '101', wd: 'RWD', hp: 200, torque: 330, doors: 4, seats: 5,
+    class: 'C', about_text: 'BRAND NEW FULLY LOADED CUSTOM 2018 RANGE ROVER HSE with a 3.0 Liter Supercharged V6 Engine. The Range Rover' +
+      ' HSE has a 380 horsepower V6, 8-Speed automatic transmission with gearshift paddles, all wheel drive, sliding panoramic roof,' +
+      ' Bluetooth and USB.',
     features: {multimediaDisplay: true, abs: true, climatControl: true, childAutoseat: false},
     rating: 3, comments: [1003, 1004, 1005]},
-  { id: 102, img_url: '../../assets/mazda.jpg', title: 'mazda', model: '2',  price: 170, owner_id: 120, year: 1999,  location: {country: 'Israel', city: 'Haifa', region: 'Mahoz Haifa', street: 'HaTsvi, 10', zip: 394053, lat: 32.81841, lng:  34.9885}, engine: '3.0L V6 DOHC',
-    fuel: 'Benzin', gear: 'CVT', fuel_cons: '80', wd: 'RWD', hp: 180, torque: 300, doors: 4, seats: 5, class: 'C', about_text: 'BRAND NEW FULLY LOADED CUSTOM 2018 RANGE ROVER HSE with a 3.0 Liter Supercharged V6 Engine. The Range Rover HSE has a 380 horsepower V6, 8-Speed automatic transmission with gearshift paddles, all wheel drive, sliding panoramic roof, Bluetooth and USB.',
+  { id: 102, img_url: '../../assets/mazda.jpg', title: 'mazda', model: '2',  price: 170, owner_id: 120, year: 1999,
+    location: {country: 'Israel', city: 'Haifa', region: 'Mahoz Haifa', street: 'HaTsvi, 10', zip: 394053, lat: 32.81841, lng:  34.9885}, engine: '3.0L V6 DOHC',
+    fuel: 'Benzin', gear: 'CVT', fuel_cons: '80', wd: 'RWD', hp: 180, torque: 300, doors: 4, seats: 5, class: 'C',
+    about_text: 'BRAND NEW FULLY LOADED CUSTOM 2018 RANGE ROVER HSE with a 3.0 Liter Supercharged V6 Engine. The Range Rover HSE has a ' +
+      '380 horsepower V6, 8-Speed automatic transmission with gearshift paddles, all wheel drive, sliding panoramic roof, Bluetooth and USB.',
     features: {multimediaDisplay: false, abs: false, climatControl: false, childAutoseat: true},
     rating: 5, comments: [1006, 1007, 1008]},
   { id: 103, img_url: '../../assets/bmv.jpg', title: 'BMV', model: 'x6', price: 200, owner_id: 122, year: 2018, location: {country: 'Israel', city: 'Holon', region: 'Gush Dan', street: 'Ulitsa HaBika, 9', zip: 394883, lat: 32.0193121, lng: 34.7804076}, engine: '3.0L V6 DOHC',
@@ -521,7 +533,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     function handleRoute() {
       switch (true) {
         case url.endsWith('/users/signup') && method === 'POST' :
-          if (getUsers().find(u => u.email === body.email)) {
+          if (getUsers().find(ur => ur.email === body.email)) {
                 return throwError({status: 409, statusText: 'already exist'});
               }
           body.id = getUsers().length + 1;
@@ -548,7 +560,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         case url.endsWith('/users/comments') && method === 'GET':
           return ok(getComments());
         case url.endsWith('users/login') && method === 'POST':
-            const u = getUsers().find(us => us.email === body.email);
+            const u = getUsers().find(ur => ur.email === body.email);
             if (u && u.password === body.password) {
               u.token = 'jwt_token';
               return ok(u);
@@ -574,8 +586,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 return throwError({status: 404, statusText: 'Cars not found'});
               }
         case url.endsWith('/cars/filteredcars') && method === 'POST':
-          const fprams = body;
-          const fcars = filterCars(fprams);
+          const fcars = filterCars(body);
           return ok(fcars);
         case url.substring(0, url.lastIndexOf('/')).endsWith('cars/user') && method === 'GET':
           const userId = parseInt(url.substring(url.lastIndexOf('/') + 1), 10);
@@ -588,7 +599,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
           addCar(body);
           return ok(true);
         case url.endsWith('users/edituser') && method === 'PUT':
-            const us = getUsers().find(us => us.id === body.id);
+            const us = getUsers().find(ur => ur.id === body.id);
             if (us) {
               us.first_name = body.firstName;
               us.second_name = body.secondName;
@@ -650,7 +661,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
           return ok(reslt);
         case url.substring(0, url.lastIndexOf('/')).endsWith('users') && method === 'GET':
           const uId = parseInt(url.substring(url.lastIndexOf('/') + 1), 10);
-          const resultat = getUsers().find(u => u.id === uId);
+          const resultat = getUsers().find(ur => ur.id === uId);
           return ok(resultat);
         case url.substring(0, url.lastIndexOf('/')).endsWith('thiscarorder') && method === 'GET':
           const thisCarId = parseInt(url.substring(url.lastIndexOf('/') + 1), 10);
@@ -661,12 +672,11 @@ export class FakeBackendInterceptor implements HttpInterceptor {
           return ok(topCars);
         case url.endsWith('/orders/addorder') && method === 'POST' :
           body.orderId = getOrders().length + 1;
-          const user = getUsers().find(u => u.id === body.carOwnerId);
+          const user = getUsers().find(ur => ur.id === body.carOwnerId);
           if (user) {
             body.carOwnerName = user.first_name + ' ' + user.second_name;
             body.state = State.WaitToGo;
             addOrder(body);
-            console.log('backend order', body);
             return ok(true);
           }
       }
@@ -678,17 +688,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         return of(new HttpResponse({status: 200, body}));
       }
 
-    function error(message) {
-        return throwError({error: {message}});
-      }
 
-    function unauthorized() {
-        return throwError({status: 401, error: {message: 'Unauthorised'}});
-      }
 
-    function isLoggedIn() {
-        return headers.get('Authorization') === 'Bearer fake-jwt-token';
-      }
     }
   }
 

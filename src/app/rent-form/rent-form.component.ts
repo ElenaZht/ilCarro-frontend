@@ -113,7 +113,6 @@ export class RentFormComponent implements OnInit, OnDestroy {
     }
     order.dateOn = order.dateOn.toUTCString(); // wrong date conversations
     order.dateOff = order.dateOff.toUTCString();
-    console.log('date in handle', order.dateOn, order.dateOff)
     const dialogRef = this.dialog.open(PaymentDialogComponent, {panelClass: 'custom-dialog-container'});
     this.paymentDialogCloseSubscription = dialogRef.afterClosed().subscribe(result => {
       if (result) {

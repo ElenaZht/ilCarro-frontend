@@ -77,9 +77,8 @@ export class AddCarComponent implements OnInit, OnDestroy {
       document.getElementById('inp2').classList.add('halo');
       document.getElementById('inp3').classList.add('halo');
       document.getElementById('inp14').classList.add('halo');
-      console.log('validating fail', car.model, car.price, car.year);
       return;
-    } else {this.validated = true;}
+    } else {this.validated = true; }
     car.img_url = this.currentCar.img_url;
     car.owner_id = this.user.id;
     car.location = {...this.currentCar.location}; // should be resolved in template//todo ?

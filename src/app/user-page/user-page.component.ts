@@ -71,7 +71,6 @@ export class UserPageComponent implements OnInit, OnDestroy {
             for (const or of this.myOrders) {
               or.dateOn = new Date(`${or.dateOn} UTC`);
               or.dateOff = new Date(`${or.dateOff} UTC`);
-              console.log('date came back to user page', or.dateOn, or.dateOff);
               const today = new Date();
               if (today >= or.dateOn) {
                 this.ordersStatus[or.orderId] = true;
@@ -87,7 +86,7 @@ export class UserPageComponent implements OnInit, OnDestroy {
     });
   }
   onSelectFile(event: any) {
-    this.selectedFile = <File> event.target.files[0];
+    this.selectedFile = event.target.files[0] as File;
     const reader = new FileReader();
     reader.readAsDataURL(this.selectedFile);
     reader.onload = (_) => {
