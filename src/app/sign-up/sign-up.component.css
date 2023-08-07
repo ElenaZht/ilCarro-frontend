@@ -1,6 +1,7 @@
 #reg_card{
   flex-grow: 1;
   width: 100%;
+  min-width: 300px;
   background: #FFFFFF 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 6px var(--shadow);
   opacity: 1;
@@ -15,13 +16,12 @@
   margin-bottom: 0;
 }
 #button_yalla{
-  top: 629px;
-  left: 1365px;
+
   width: 126px;
-  height: 32px;
   background: var(--red) 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 6px var(--shadow);
   opacity: 1;
+  border: none;
   margin-left: 50px;
 }
 #button_y_div{
@@ -103,11 +103,12 @@
   width: 181px;
   height: 10px;
   text-align: left;
-  font: var(--medium-text) Raleway-Regular;
+  font: var(--small-text) Raleway-Regular;
   letter-spacing: 0;
   color: var(--dark);
   opacity: 1;
   padding-left: 11px;
+  white-space: normal;
  }
 #trap{
   width: 50px;
@@ -119,8 +120,6 @@
   margin-left: 5px;
 }
 #y{
-  top: 641px;
-  left: 1432px;
   width: 36px;
   height: 14px;
   text-align: center;
@@ -137,11 +136,11 @@ a{
 }
 
 input::placeholder{
-  font-size: var(--medium-text);
+  font-size: var(--small-text);
   color: var(--dark);
 }
 input{
-  font-size: var(--medium-text);
+  font-size: var(--small-text);
   color: black;
   margin: 0 0 8px 12%
 }
@@ -174,7 +173,7 @@ input{
    align-items: flex-start;
    justify-content: space-around;
  }
-@media only screen and (max-width: 800px){
+@media only screen and (max-width: 768px){
   .card-body{
     display: flex;
     flex-direction: column;

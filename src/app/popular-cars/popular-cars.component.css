@@ -8,7 +8,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 13rem;
+  min-height: 13rem;
 
 }
 #div3_1{
@@ -39,25 +39,22 @@
   height: 100%;
 }
 #div3_3{
-  width: 430px;
-  height: 65px;
+
   text-align: left;
   opacity: 1;
 
 }
 #some_text_4{
-  size: 11px;
   font: var(--small-text) Raleway-Regular;
   letter-spacing: 0;
   color:  var(--dark);
   width: 430px;
-  height: 100px;
   position: relative;
-  margin-top: 0;
 }
 #div4{
   width: 100%;
   height: 50vh;
+  min-height: 400px;
   background:  var(--dark) 0% 0% no-repeat padding-box;
   opacity: 1;
   position: relative;
@@ -82,6 +79,7 @@
   top: 1rem;
   overflow: hidden;
   left: -2%;
+  min-height: 300px;
 
 
 }
@@ -127,14 +125,15 @@
 
 }
 .card-body{
-  width: 10vmax;
-  height: 45%;
   background: #FFFFFF 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 6px  var(--shadow);
   opacity: 1;
   top: -10px;
   display: flex;
   align-items: center;
+  width: 200px;
+  height: 70px;
+
 }
 .whitecard p{
   font: var(--large-text) Bebas Neue;
@@ -144,7 +143,7 @@
   opacity: 1;
   margin-top: 5px;
   margin-bottom: 0px;
-  text-align: center;
+  white-space: nowrap;
 }
 .dolar{
   left: 5%;
@@ -168,7 +167,7 @@
 .perday{
   height: 3vh;
   margin: 1%;
-  font: var(--medium-text) Bebas Neue;
+  font: var(--small-text) Bebas Neue;
   letter-spacing: 0;
   color:  var(--dark);
   text-transform: capitalize;
@@ -187,25 +186,19 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: fit-content;
-  width: fit-content;
-}
-#whitecard1, #whitecard2, #whitecard3{
   position: relative;
 }
+
 #wrap2{
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.flex_column_relative{
-  display:flex;
-  flex-direction: column;
-  position: relative;
-}
+
 #div6_wrapper{
   width: 100%;
   height: 60vh;
+  min-height: 400px;
   overflow: hidden;
   position: absolute;
   top: 0;
@@ -214,7 +207,7 @@
 .com-star {
   color: gold;
 }
-@media only screen and (max-width: 800px){
+@media only screen and (max-width: 768px){
   #div3{
     justify-content: flex-start;
     height: 20vmax;

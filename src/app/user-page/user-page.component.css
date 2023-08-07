@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  min-height: 800px;
   margin: auto;
   justify-content: space-between;
 }
@@ -10,6 +11,8 @@
   width: 90%;
   margin: auto;
   height: 50vh;
+  min-height: 700px;
+  min-width: 500px;
   position: relative;
   flex-direction: column;
 
@@ -31,6 +34,8 @@
 .b {
   height: 100%;
   width: 25%;
+  min-width: 300px;
+  min-height: 300px;
   flex-direction: column;
   justify-content: space-between;
   border-right: 2px solid var(--shadow);
@@ -253,6 +258,8 @@
 }
 .order_info {
   display: flex;
+  position: relative;
+  top: -50%;
 }
 .order_time {
   display: flex;
@@ -340,7 +347,11 @@ mat-tab-group {
   font: var(--medium-text) Raleway-Regular;
   font-weight: bold;
 }
-@media only screen and (max-width: 800px){
+
+@media only screen and (max-width: 768px){
+  .container{
+    min-height: 500px;
+  }
   .orders-container{
     width: 90%;
     margin: auto;
@@ -391,9 +402,6 @@ mat-tab-group {
   }
   .edit_user{
     left: 0;
-  }
-  .ng-star-inserted{
-    width: 90vmin;
   }
   button.submitEdition{
     width: 10vmax;

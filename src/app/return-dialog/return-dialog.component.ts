@@ -89,8 +89,15 @@ export class ReturnDialogComponent implements OnInit, OnDestroy {
     );
   }
   ngOnDestroy(): void {
-    // this.returnSubscription.unsubscribe();
-    // this.addCommentSubscription.unsubscribe();
-    // this.returnCarSubscription.unsubscribe();
+    if (this.returnSubscription) {
+      this.returnSubscription.unsubscribe();
+    }
+    if (this.addCommentSubscription) {
+      this.addCommentSubscription.unsubscribe();
+    }
+    if (this.returnCarSubscription) {
+      this.returnCarSubscription.unsubscribe();
+    }
+
   }
 }

@@ -4,7 +4,7 @@
   <span class="mini-title">We are hopping you enjoyed this experience!</span>
   <div class="order-details">
     <div class="image" [ngStyle]="{'background-image': ' url('+order.carUrl+')'}"></div>
-    <div style="margin: auto;">
+    <div class="auto_margin">
       <div class="car-name">{{order.carName}}</div>
       <div class="order-dates">
         <div>{{order.dateOn | date: 'dd-MMM-yyyy h:mm'}}</div>
@@ -29,10 +29,10 @@
 
       </div>
       <div class="ihaveproblem">
-        <div style="display: flex; justify-content: space-between">
+        <div class="problem">
           <span class="problem-text">You have any problems with this car? We will take care of this.</span>
           <button>
-            <span style="color: var(--red)" (click)="onSupport()">Support</span>
+            <span class="red_text" (click)="onSupport()">Support</span>
           </button>
         </div>
         <div class="divider">

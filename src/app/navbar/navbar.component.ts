@@ -34,8 +34,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   logout() {
     if (confirm('Are you sure to log out?')) {

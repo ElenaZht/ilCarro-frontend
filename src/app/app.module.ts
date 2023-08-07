@@ -15,7 +15,6 @@ import {CarsService} from './cars.service';
 import {MockCarsService} from './mock-cars.service';
 import {NavbarComponent} from './navbar/navbar.component';
 import {RoutingModule} from './routing/routing.module';
-import {EmptyPageComponent} from './empty-page/empty-page.component';
 import {LoginComponent} from './login/login.component';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {JwtInterceptor} from './helpers/jwt.interceptor';
@@ -64,7 +63,6 @@ import { CarWindowComponent } from './car-window/car-window.component';
     CommentsComponent,
     SingUpDialogComponent,
     NavbarComponent,
-    EmptyPageComponent,
     LoginComponent,
     TermsComponent,
     UserPageComponent,

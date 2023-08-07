@@ -4,6 +4,10 @@
   width: 40vw;
   flex-direction: column;
 }
+.problem{
+  display: flex;
+  justify-content: space-between;
+}
 .title {
   font: var(--big-text) Raleway-Black;
   color:  var(--red);
@@ -131,3 +135,4 @@ form {
   left: 68.5%;
   bottom: 87%;
 }
+

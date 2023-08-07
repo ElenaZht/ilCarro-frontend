@@ -111,7 +111,7 @@ export class RentFormComponent implements OnInit, OnDestroy {
       this.errorText = 'Please, choose dates, that not includes orders of other consumers';
       return;
     }
-    order.dateOn = order.dateOn.toUTCString(); // wrong date conversations
+    order.dateOn = order.dateOn.toUTCString();
     order.dateOff = order.dateOff.toUTCString();
     const dialogRef = this.dialog.open(PaymentDialogComponent, {panelClass: 'custom-dialog-container'});
     this.paymentDialogCloseSubscription = dialogRef.afterClosed().subscribe(result => {

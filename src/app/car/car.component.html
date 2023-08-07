@@ -157,19 +157,20 @@
   <div class="comments-wrap">
     <div class="comments-container">
       <div class="comment" *ngFor="let comment of comments">
-        <div *ngIf="comment && comment.url" class="user_photo" [ngStyle]="{'background-image': ' url('+comment.url+')'}"></div>
-        <div class="comment_body">
-          <div class="com-stars" *ngIf="comment && comment.stars">
-            <div  class="com-star" *ngFor="let s of [].constructor(comment.stars)">
-              <fa-icon [icon]="['fas', 'star']"></fa-icon>
+          <div *ngIf="comment && comment.url" class="user_photo" [ngStyle]="{'background-image': ' url('+comment.url+')'}"></div>
+          <div class="comment_body">
+            <div class="com-stars" *ngIf="comment && comment.stars">
+              <div  class="com-star" *ngFor="let s of [].constructor(comment.stars)">
+                <fa-icon [icon]="['fas', 'star']"></fa-icon>
+              </div>
+            </div>
+            <span *ngIf="comment && comment.text">{{comment.text}}</span>
+            <div class="comment_info">
+              <p class="user_name" *ngIf="comment && comment.name">{{comment.name}}</p>
+              <p class="comment_date" *ngIf="comment && comment.date">{{comment.date | date: 'd MMMM yyyy'}}</p>
             </div>
           </div>
-          <span *ngIf="comment && comment.text">{{comment.text}}</span>
-          <div class="comment_info">
-            <p class="user_name" *ngIf="comment && comment.name">{{comment.name}}</p>
-            <p class="comment_date" *ngIf="comment && comment.date">{{comment.date | date: 'd MMMM yyyy'}}</p>
-          </div>
-        </div>
+
       </div>
       <div *ngIf="comments && comments.length < 1" class="no_comments">
         <span> No comments yet.</span>

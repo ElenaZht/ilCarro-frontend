@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { SignUpComponent } from '../sign-up/sign-up.component';
 import { HomePageComponent } from '../home-page/home-page.component';
 import {RouterModule, Routes} from '@angular/router';
-import {EmptyPageComponent} from '../empty-page/empty-page.component';
 import {LoginComponent} from '../login/login.component';
 import {AuthGuard} from '../helpers/auth.guard';
 import {TermsComponent} from '../terms/terms.component';
@@ -21,11 +20,9 @@ const routes: Routes = [
   {path: 'letthecarwork', component: LetTheCarWorkComponent},
   {path: 'signup', component: SignUpComponent },
   {path: 'car/:id', component: CarComponent},
-  // {path: 'signupwind', component: EmptyPageComponent},
   {path: 'addcarwind', component: UserPageComponent},
   {path: 'login', component: LoginComponent},
   {path: 'addcar', component: AddCarComponent},
-  // {path: 'loginwind', component: EmptyPageComponent},
   {path: 'logout', component: HomePageComponent, canActivate: [AuthGuard], children: []},
   {path: '**', redirectTo: 'homepage' }
     ];

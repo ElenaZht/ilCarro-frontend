@@ -1,5 +1,3 @@
-/* You can add global styles to this file, and also import other style files */
-
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
@@ -23,13 +21,53 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   font-family: Raleway-Black;
   src: url('/assets/fonts/Raleway-Black.ttf') format("opentype");
 }
+
 :root{
   --small-text: 1vmax;
   --medium-text: 1.3vmax;
   --big-text: 2vmax;
   --large-text: 3.3vmax;
 }
+/*325 - 768 - mobilka*/
+/*768 - 1024 - tablet*/
+/*1024 - 1400 - tablet*/
+/*1400 < desktop*/
+@media only screen and (max-width: 768px){
+  :root{
+    --small-text: 14px;
+    --medium-text: 20px;
+    --big-text: 24px;
+    --large-text: 50px;
+  }
 
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px){
+  :root{
+    --small-text: 18px;
+    --medium-text: 24px;
+    --big-text: 31px;
+    --large-text: 42px;
+  }
+}
+@media only screen and (min-width: 1024px){
+  :root{
+    --small-text: 20px;
+    --medium-text: 25px;
+    --big-text: 42px;
+    --large-text: 56px;
+  }
+  .nav-link{
+    height: 13vh;
+  }
+}
+
+input{
+  font-size: var(--small-text);
+}
+label{
+  white-space: nowrap;
+}
 /* COLORS */
 :root{
   --red: #ea2340;
@@ -38,6 +76,37 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   --medium-gray:  #383838;
   --shadow: rgba(0, 0, 0, 0.2);
   --light: #999999;
+}
+form{
+  min-width: 100%;
+}
+.red_text{
+  color: var(--red);
+}
+.no_margin{
+  margin: 0;
+}
+.shadow{
+  color: var(--shadow);
+}
+.flex_column{
+  display: flex;
+  flex-direction: column;
+}
+.hidden{
+  visibility: hidden;
+}
+.auto_margin{
+  margin: auto;
+}
+.flex_column_relative{
+  display:flex;
+  flex-direction: column;
+  position: relative;
+}
+.owner{
+  width: 36%;
+  padding-left: 2%;
 }
 
 /* based on angular-toastr css https://github.com/Foxandxss/angular-toastr/blob/cb508fe6801d6b288d3afc525bb40fee1b101650/dist/angular-toastr.css */
@@ -109,7 +178,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   font-weight: bold;
   color: #FFFFFF;
   text-shadow: 0 1px 0 #ffffff;
-  /* opacity: 0.8; */
 }
 .toast-close-button:hover,
 .toast-close-button:focus {
@@ -231,7 +299,20 @@ button.toast-close-button {
     padding: 15px 15px 15px 50px;
     width: 25em;
   }
+
 }
+@media all and (max-width: 1000px){
+  button{
+    min-height: 50px;
+    min-width: 100px;
+    position: relative;
+    z-index: 100;
+  }
+  .card{
+    min-width: 300px;
+  }
+}
+
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

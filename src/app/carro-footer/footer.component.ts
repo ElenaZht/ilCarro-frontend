@@ -13,7 +13,6 @@ import {LoginComponent} from '../login/login.component';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit, OnDestroy {
-  logo = '../assets/img/logo.svg';
   private joinDialogCloseSubscription;
   private loginDialogCloseSubscription;
   constructor(private router: Router,  private location: Location, public dialog: MatDialog) { }

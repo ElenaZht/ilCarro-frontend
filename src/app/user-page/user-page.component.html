@@ -17,7 +17,7 @@
     <div class="a" >
       <div class="b" *ngIf="user$ | async as userVar">
         <div class="d" [ngStyle]="{'background-image': ' url('+userVar.url+')', 'background-position': 'center'}">
-          <input style="visibility: hidden" class="hover-text" id="chooseFile" type='file' (change)="onSelectFile($event)">
+          <input  class="hover-text hidden" id="chooseFile" type='file' (change)="onSelectFile($event)">
           <label for="chooseFile" class="hover-text"> <fa-icon size="4x" [icon]="['fas', 'images']"></fa-icon></label>
         </div>
         <form class="user_form" #editUserForm="ngForm" (ngSubmit)="onSubmit(editUserForm)">
@@ -88,11 +88,11 @@
         <div class="order-main-wrap">
           <div *ngFor="let order of carsOrders" class="order-wrap">
             <div class="order" [style.border]="order.state == State.WaitToGo ? 'solid var(--red) 2px' : 'solid var(--shadow) 2px'"  [style.opacity]="order.state === State.WaitToReturn ? 0.5 : 2">
-              <div style="display: flex; flex-direction: column">
+              <div class="flex_column">
                 <div class="order_img" [ngStyle]="{'background-image': ' url('+order.carUrl+')'}" (click)="toCar(order.carId)"></div>
-                <div class="order_info" style="position: relative; top: -50%;" (click)="toCar(order.carId)">{{order.carName}}</div>
+                <div class="order_info"  (click)="toCar(order.carId)">{{order.carName}}</div>
               </div>
-              <div style="display: flex; flex-direction: column;width: 36%; padding-left: 2%;">
+              <div class="flex_column owner">
                 <span>rented by: </span>
                 <div class="order_info">{{order.renterName}}</div>
               </div>
@@ -117,11 +117,11 @@
         <div class="order-main-wrap">
           <div *ngFor="let order of myOrders" class="order-wrap">
             <div class="order" [style.border]="order.state == State.WaitToGo ? 'solid var(--red) 2px' : 'solid var(--shadow) 2px'" [style.opacity]="order.state == State.WaitToReturn ? '0.5' : '1'">
-              <div style="display: flex; flex-direction: column; position: relative;">
+              <div class="flex_column_relative">
                 <div class="order_img" [ngStyle]="{'background-image': ' url('+order.carUrl+')'}"  (click)="toCar(order.carId)"></div>
                 <div class="order_info" (click)="toCar(order.carId)" >{{order.carName}}</div>
               </div>
-              <div style="display: flex; flex-direction: column;width: 36%; padding-left: 2%;">
+              <div class="flex_column owner" >
                 <span>car owner: </span>
                 <div class="order_info">{{order.carOwnerName}}</div>
               </div>

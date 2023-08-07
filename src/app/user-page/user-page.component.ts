@@ -40,6 +40,17 @@ export class UserPageComponent implements OnInit, OnDestroy {
   errorText: string;
   myCarsOrdersSubscription: Subscription;
   myOrdersSubscription: Subscription;
+  editUserPhotoSubscription: Subscription;
+  editUserSubscription: Subscription;
+  returnCarSubscriptionReturn: Subscription;
+  returnCarSubscriptionCancel: Subscription;
+  addCarSubscription: Subscription;
+  aditCarSubscription: Subscription;
+  returnCarDialogSubscription: Subscription;
+  removeUserSubscription: Subscription;
+  removeCarSubscription: Subscription;
+  cancelOrderSubscription: Subscription;
+  cancelOrderByOwnerSubscription: Subscription;
 
   constructor(private usersService: UsersService,  private router: Router,
               private carsService: CarsService, private route: ActivatedRoute,
@@ -90,7 +101,7 @@ export class UserPageComponent implements OnInit, OnDestroy {
     const reader = new FileReader();
     reader.readAsDataURL(this.selectedFile);
     reader.onload = (_) => {
-      this.usersService.editUser(this.user.id, this.user.first_name,
+      this.editUserPhotoSubscription = this.usersService.editUser(this.user.id, this.user.first_name,
         this.user.second_name, this.user.email, reader.result.toString()).subscribe(() => {
       });
     };
@@ -104,14 +115,14 @@ export class UserPageComponent implements OnInit, OnDestroy {
 
   }
   onCloseNotifReturn(order, idx) {
-    this.rentService.returnCar(order).subscribe(() => {
+    this.returnCarSubscriptionReturn = this.rentService.returnCar(order).subscribe(() => {
       this.waitingOrders.splice(idx, 1);
       this.showNotifToastr(order);
 
     });
   }
   onCloseNotifCancel(order, idx) {
-    this.rentService.returnCar(order).subscribe(() => {
+    this.returnCarSubscriptionCancel = this.rentService.returnCar(order).subscribe(() => {
       this.canceledOrders.splice(idx, 1);
       this.showNotifToastr(order);
 
@@ -128,26 +139,26 @@ export class UserPageComponent implements OnInit, OnDestroy {
 
   addCar() {
     const dialogRef = this.dialog.open(AddCarComponent, {panelClass: 'custom-dialog-container', data: {user: this.user}});
-    dialogRef.afterClosed().subscribe(() => {});
+    this.addCarSubscription = dialogRef.afterClosed().subscribe(() => {});
   }
 
   editCar(car) {
     const carClone: Car = {...car};
     carClone.location = {...car.location};
     const dialogRef = this.dialog.open(AddCarComponent, {panelClass: 'custom-dialog-container', data: {car: carClone, user: this.user}});
-    dialogRef.afterClosed().subscribe(() => {
+    this.aditCarSubscription = dialogRef.afterClosed().subscribe(() => {
     });
   }
   returnCar(car) {
         const carClone: Car = {...car};
         const dialogRef = this.dialog.open(ReturnDialogComponent,
           {panelClass: 'custom-dialog-container', data: {car: carClone, user: this.user}});
-        dialogRef.afterClosed().subscribe(() => {
+        this.returnCarDialogSubscription = dialogRef.afterClosed().subscribe(() => {
         });
   }
   removeCar(car: Car) {
     if (confirm('Delete car ' + car.title + '?')) {
-      this.carsService.removeCar(car.id)
+      this.removeCarSubscription = this.carsService.removeCar(car.id)
         .subscribe(() => {
         this.showToastr();
       });
@@ -185,7 +196,8 @@ export class UserPageComponent implements OnInit, OnDestroy {
     user.first_name = editUserForm.value.userName.substr(0, editUserForm.value.userName.indexOf(' '));
     user.second_name = editUserForm.value.userName.substr(editUserForm.value.userName.indexOf(' ') + 1, editUserForm.value.userName.length);
 
-    this.usersService.editUser(this.user.id, user.first_name, user.second_name, user.email, this.user.url).subscribe(() => {});
+    this.editUserSubscription = this.usersService.editUser(this.user.id, user.first_name, user.second_name,
+      user.email, this.user.url).subscribe(() => {});
 
   }
 
@@ -193,7 +205,7 @@ export class UserPageComponent implements OnInit, OnDestroy {
 
   removeUser(id: number) {
     if (confirm('Do you really want to delete your account?')) {
-      this.usersService.removeUser(id).subscribe(res => {
+      this.removeUserSubscription = this.usersService.removeUser(id).subscribe(res => {
         this.usersService.logout();
         this.showUserToastr();
       });
@@ -206,7 +218,7 @@ export class UserPageComponent implements OnInit, OnDestroy {
     order.dateOff = new Date(`${order.dateOff} UTC`).toDateString();
     if (confirm('Do your want to cancel order:' + ' ' + (order.carName)
       + ' ' + 'rented for dates' + order.dateOn + '-' + order.dateOff + '?')) {
-      this.rentService.cancelOrder(order).subscribe(() => {
+      this.cancelOrderSubscription = this.rentService.cancelOrder(order).subscribe(() => {
         this.showCancelToastr(order);
       });
     }
@@ -217,7 +229,7 @@ export class UserPageComponent implements OnInit, OnDestroy {
     order.dateOff = new Date(`${order.dateOff} UTC`).toDateString();
     if (confirm('Do your want to cancel order:' + ' ' + (order.carName) +
       ' ' + 'rented for dates' + order.dateOn + '-' + order.dateOff + '?')) {
-      this.rentService.cancelOrderByOwner(order).subscribe(() => {
+      this.cancelOrderByOwnerSubscription = this.rentService.cancelOrderByOwner(order).subscribe(() => {
         this.canceledOrders = [];
         this.showCancelToastr(order);
       });
@@ -228,5 +240,38 @@ export class UserPageComponent implements OnInit, OnDestroy {
     this.user$subscription.unsubscribe();
     this.myCarsOrdersSubscription.unsubscribe();
     this.myOrdersSubscription.unsubscribe();
+    if (this.editUserPhotoSubscription) {
+      this.editUserPhotoSubscription.unsubscribe();
+    }
+    if (this.returnCarSubscriptionReturn) {
+      this.returnCarSubscriptionReturn.unsubscribe();
+    }
+    if (this.returnCarSubscriptionCancel) {
+      this.returnCarSubscriptionCancel.unsubscribe();
+    }
+    if (this.addCarSubscription) {
+      this.addCarSubscription.unsubscribe();
+    }
+    if (this.aditCarSubscription) {
+      this.aditCarSubscription.unsubscribe();
+    }
+    if (this.returnCarDialogSubscription) {
+      this.returnCarDialogSubscription.unsubscribe();
+    }
+    if (this.removeUserSubscription) {
+      this.removeUserSubscription.unsubscribe();
+    }
+    if (this.removeCarSubscription) {
+      this.removeCarSubscription.unsubscribe();
+    }
+    if (this.editUserSubscription) {
+      this.editUserSubscription.unsubscribe();
+    }
+    if (this.cancelOrderSubscription) {
+      this.cancelOrderSubscription.unsubscribe();
+    }
+    if (this.cancelOrderByOwnerSubscription) {
+      this.cancelOrderByOwnerSubscription.unsubscribe();
+    }
   }
 }

@@ -154,11 +154,11 @@
             <option *ngFor="let c of cities">{{c}}</option>
           </datalist>
         </div>
-        <div style="display: flex; align-items: center; width: 100%; margin: 1%">
-          <h5 style="margin: 0">Or search cars in radius of</h5>
+        <div class="container">
+          <h5 class="no_margin">Or search cars in radius of</h5>
           <input id="inpDis"type="number" [(ngModel)]="rad">
-          <h5  style="margin: 0">m</h5>
-          <fa-icon style="color: var(--shadow);" class="icon" [icon]="['fas', 'arrow-down']"></fa-icon>
+          <h5 class="no_margin">m</h5>
+          <fa-icon  class="icon shadow" [icon]="['fas', 'arrow-down']"></fa-icon>
         </div>
         <div id="map-wrap">
           <agm-map [latitude]="lat"  [longitude]="lng" [zoom]="10" (mapClick)="onChosenLocation($event)">

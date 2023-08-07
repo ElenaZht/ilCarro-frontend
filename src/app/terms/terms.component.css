@@ -26,6 +26,7 @@ ol, ul {
 }
 .img {
   height: 10vh;
+  min-height: 100px;
   padding-top: 10%;
   background-size: cover;
   background: transparent url('../../assets/ilcarroMAIN.png') no-repeat bottom center;
@@ -35,7 +36,9 @@ ol, ul {
   display: flex;
   flex-direction: column;
   width: 30%;
+  min-width: 500px;
   height: 100%;
+  min-height: 100px;
   position: relative;
   left: 5%;
   top: -86%;
@@ -51,7 +54,7 @@ ol, ul {
   font: var(--medium-text) Raleway-Bold;
 
 }
-@media only screen and (max-width: 800px){
+@media only screen and (max-width: 768px){
   .main_container{
     display: flex;
     flex-direction: column;

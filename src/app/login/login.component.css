@@ -22,6 +22,7 @@
   background:  var(--red) 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 6px  var(--shadow);
   opacity: 1;
+  border: none;
   margin-left: 50px;
 }
 #button_y_div{
@@ -114,7 +115,7 @@ input{
   border-radius: 4px;
   margin-left: 20px;
   margin-right: 20px;
-  font: var(--big-text) Raleway-Regular;
+  font: var(--small-text) Raleway-Regular;
   font-weight: bold;
 }
 header{
@@ -131,9 +132,10 @@ header{
   position: relative;
   margin: 5% 5% auto auto;
 }
-@media only screen and (max-width: 800px){
+@media only screen and (max-width: 768px){
   .card-body{
     width: 100%;
+    overflow: hidden;
   }
   .reg-data{
     width: 70%;
@@ -144,7 +146,11 @@ header{
     margin: auto;
   }
   .exit{
-    left: 90%;
+    min-height: 20px;
+    min-width: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   #button_y_div{
     padding-top: 50%;
